@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css" />
+
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Home</a>
+  <a href="#">Mentor Program</a>
+  <a href="#">GullCode</a>
+  <a href="#">Math Challenge</a>
+  <a href="#">Mathematics Emporium</a>
+  <a href="#">Calendar</a>
+  <a href="#">Officers</a>
+  <a href="#">Activities &amp; Field Trips</a>
+  <a href="#">Request Grad Cords</a>
+  <a href="#">Contact Us</a>
+
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+<h1>hi</h1>
+
+  
+</div>
+
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+     
+</body>
+
+ </html> 
