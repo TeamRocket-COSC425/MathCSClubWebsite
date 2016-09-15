@@ -1,5 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: #EEE;
 }
 
 .sidenav,
@@ -28,18 +29,21 @@ body {
     margin-left: 200px;
     padding: 6px 10px 0px 10px;
 
-    font-size:30px;
+    font-size: 30px;
     color: #818181;
-    cursor:pointer;
+    cursor: pointer;
+}
+
+.sidenav > a {
+    padding: 8px 0px 8px 16px;
+    font-size: 16px;
+    display: block;
+    margin-right: 50px;
 }
 
 .sidenav a {
-    padding: 8px 0px 8px 16px;
-    margin-right: 50px;
     text-decoration: none;
-    font-size: 16px;
     color: #818181;
-    display: block;
 }
 
 .sidenav a:hover,
@@ -48,17 +52,29 @@ body {
     color: #12BFC3;
 }
 
-#navlinks{
-padding: 8px 8px 8px 32px;
-position: fixed;
- bottom: 0;
-}
-.navlinkimgs{
-    width: 40px;
-    float:left;
+#navlinks {
+    padding: 16px 0px 16px 0px;
+    margin-right: 50px;
+    margin-left: 16px;
+    overflow: hidden;
 }
 
-.homeImage{
+#navlinks hr {
+    border: 1px solid #EEE;
+}
+
+.navlinkimgs {
+    float: left;
+    color: #818181;
+    padding-right: 8px;
+}
+
+.navlinkimgs span {
+    font-size: 40px;
+    text-align: center;
+}
+
+.homeImage {
     width:100%;
     height:auto;
 }
