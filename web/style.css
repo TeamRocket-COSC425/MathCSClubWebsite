@@ -17,6 +17,7 @@ body {
     left: 0;
     overflow-x: hidden;
     transform: translate(-250px, 0px);
+    //background-color: #ccc;
 }
 
 .sidenav--active {
@@ -27,11 +28,15 @@ body {
 .sidenav #button {
     transform: translate(0px, 0px);
     margin-left: 250px;
-    padding: 6px 10px 0px 10px;
+    padding: 0px 6px 0px 6px;
 
-    font-size: 30px;
-    color: #818181;
+    font-size: 40px;
+    color: #777;
     cursor: pointer;
+}
+
+.sidenav--active #button {
+    color: #999;
 }
 
 .sidenav > a {
@@ -43,7 +48,7 @@ body {
 
 .sidenav a {
     text-decoration: none;
-    color: #818181;
+    color: #999;
 }
 
 .sidenav a:hover,
@@ -85,6 +90,7 @@ body {
 
 #main #content {
     max-width: 1000px;
+    font-size: 16px;
     line-height: 1.6;
     padding: 0 10px;
     margin: 40px auto;
