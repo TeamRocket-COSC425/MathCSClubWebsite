@@ -10,13 +10,13 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 250px;
+    width: 300px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
-    transform: translate(-200px, 0px);
+    transform: translate(-250px, 0px);
 }
 
 .sidenav--active {
@@ -26,7 +26,7 @@ body {
 
 .sidenav #button {
     transform: translate(0px, 0px);
-    margin-left: 200px;
+    margin-left: 250px;
     padding: 6px 10px 0px 10px;
 
     font-size: 30px;
@@ -36,7 +36,7 @@ body {
 
 .sidenav > a {
     padding: 8px 0px 8px 16px;
-    font-size: 16px;
+    font-size: 20px;
     display: block;
     margin-right: 50px;
 }
@@ -81,17 +81,16 @@ body {
 
 #main {
     margin-left: 50px;
-    float: left;
-    text-align: center;
 }
 
 #main #content {
-    max-width: 60%;
-    margin: auto;
-    padding: 16px;
+    max-width: 1000px;
+    line-height: 1.6;
+    padding: 0 10px;
+    margin: 40px auto;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 500px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
-}
+}*/
