@@ -14,13 +14,13 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
     transform: translate(-200px, 0px);
 }
 
 .sidenav--active {
     transform: translate(0px, 0px);
+    background-color: #111;
 }
 
 .sidenav #button {
@@ -45,12 +45,28 @@ body {
 .sidenav a:hover,
 .sidenav #button:hover,
 .offcanvas a:focus {
-    color: #f1f1f1;
+    color: #12BFC3;
+}
+
+#navlinks{
+padding: 8px 8px 8px 32px;
+position: fixed;
+ bottom: 0;
+}
+.navlinkimgs{
+    width: 40px;
+    float:left;
+}
+
+.homeImage{
+    width:100%;
+    height:auto;
 }
 
 #main {
     margin-left: 50px;
     float: left;
+    text-align: center;
 }
 
 #main #content {
