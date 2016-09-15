@@ -59,10 +59,6 @@ body {
     padding: 16px;
 }
 
-.main--slide {
-    transform: translate(200px, 0px);
-}
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
