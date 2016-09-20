@@ -3,6 +3,7 @@
     $title = "SU Math/CS Club Home";
     include("includes/header.html");
     include("includes/sidenav.html");
+    include("includes/Login.html");
 ?>
 
 <body>
