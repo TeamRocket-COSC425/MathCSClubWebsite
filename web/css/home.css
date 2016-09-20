@@ -95,6 +95,28 @@ body {
     padding: 0 10px;
     margin: 40px auto;
 }
+
+#Login {
+    text-align: right;
+}
+
+#Logout {
+    text-align: right;
+}
+
+#Dashboard {
+    text-align: right;
+}
+
+#SignUp {
+    text-align: center;
+    margin-top: 50%;
+} 
+
+#Register {
+    text-align: center;
+    margin-top: 50%;
+}
 /*
 @media screen and (max-width: 500px) {
   .sidenav {padding-top: 15px;}

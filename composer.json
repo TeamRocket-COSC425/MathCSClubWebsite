@@ -1,4 +1,8 @@
 {
+    "config": {
+        "vendor-dir": "web/vendor"
+    },
+    
     "name": "tterrag/math-cs-club-website",
     "authors": [
         {
@@ -6,5 +10,8 @@
             "email": "tterrag1098@gmail.com"
         }
     ],
-    "require": {}
+    
+    "require": {
+        "joshcam/mysqli-database-class": "dev-master"
+    }
 }
