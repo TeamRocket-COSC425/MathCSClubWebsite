@@ -36,7 +36,7 @@ div.loginbackground
     border: 1px solid #ccc;
     background-position: center;
     text-align:center;
-    background: url("images/mathproblem.jpg");
+    background: url("../images/mathproblem.jpg");
     }
 div.logintransbox {
     margin: 30px;
