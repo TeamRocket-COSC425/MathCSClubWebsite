@@ -1,1 +1,10 @@
-DirectoryIndex home.html
+DirectoryIndex index.html index.php home.html home.php
+AddType application/x-httpd-php .html
+
+# Enable rewriting
+RewriteEngine on
+
+# Add .php to all URLs (that don't already end with .php)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
