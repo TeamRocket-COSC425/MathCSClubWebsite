@@ -12,7 +12,7 @@
 
 <div id="content">
 
-<img src="images/mathCSbanner.png" alt="mathCSbannerIMG" class="homeImage"/><br>
+<img src="images/mathCSbanner_transparent.png" alt="mathCSbannerIMG" class="homeImage"/><br>
 <br>
 
 Welcome to the Salisbury University Mathematics and Computer Science Club Website, featuring the Dead Poet's Society! The club is open to everyone - majors, minors, and anyone else in the SU
