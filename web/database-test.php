@@ -5,11 +5,8 @@
     require_once("includes/database.php");
 ?>
 
-<style>
-body{margin:40px
-auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
-10px}h1,h2,h3{line-height:1.2}
-</style>
+<div id="main">
+  <div id="content">
 
 <?php
     $result = $db->get('test_table');
@@ -18,6 +15,9 @@ auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
         echo "id: " . $row["id"]. " - Name: " . $row["name"]. "<br>";
     }
 ?>
+
+  </div>
+</div>
 
 </body>
 </html>
