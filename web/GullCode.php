@@ -15,6 +15,10 @@
 GullCode
 </h1>
 
+<?php
+include("includes/Register.html");
+?>
+
 </div>
 </div>
 

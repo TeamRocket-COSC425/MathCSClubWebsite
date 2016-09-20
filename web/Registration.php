@@ -1,8 +1,8 @@
 <?php
-    $title = "SU Math/CS Club Log in";
+    $title = "SU Math/CS Club Registration";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Dashboard.html");
+    include("includes/Login.html");
 ?>
 
 <body>
@@ -12,12 +12,8 @@
 <div id="content">
 
 <h1>
-Log in
+Register for GullCode/Math Challenge
 </h1>
-
-<?php
-include("includes/SignUp.html");
-?>
 
 </div>
 </div>
