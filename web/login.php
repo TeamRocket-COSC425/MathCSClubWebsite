@@ -1,4 +1,5 @@
 <html>
+
 <?php
     $title = "SU Math/CS Club Log in";
     include("includes/header.html");
@@ -6,26 +7,22 @@
     include("includes/Dashboard.html");
 ?>
 
-
-
-
-<div class = "loginbackground">
-<div class ="logintransbox">
-<form action="process_login.php" enctype= multipart/form-data>
+<div class = "login-background">
+<div class ="login-transbox">
+<form action="process-login.php" enctype= multipart/form-data> 
     <p>
-                                   Email  <br> <input style="width:200px;" name="email" type="text" required>
-                                   <br>
-                                   Password  <br> <input style="width:200px;" name = "password" type = "text" required>
-                                   <br>
-                                   <a href="index.html">
-forgot password?
-</a>
-                                   <input style="background-color:#12BFC3;" type="submit"style="" value="LOGIN" name = "memberlogin">
-
-                                   
+    	Email  
+    	<br>
+    	<input style="width:250px;" name="email" type="text" required>
+    	<br>
+    	Password 
+    	<br> 
+    	<input style="width:250px;" name = "password" type = "text" required>
+    	<br>
+    	<a href=""> <!-- link to change password -->forgot password? </a>
+        <input style="background-color:#12BFC3;" type="submit" value="login" name ="member-login">                              
 </form>
-</div>
-</div>
-
+</div> <!-- end login-transbox -->
+</div> <!-- end login-background -->
 
 </html>
