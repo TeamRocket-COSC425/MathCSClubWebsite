@@ -13,11 +13,11 @@
     <p>
     	Email  
     	<br>
-    	<input style="width:200px;" name="email" type="text" required>
+    	<input style="width:200px;" name="email" type="text" class="input-box" required>
     	<br>
     	Password 
     	<br> 
-    	<input style="width:200px;" name = "password" type = "text" required>
+    	<input style="width:200px;" name = "password" type = "text" class="input-box" required>
     	<br>
     	<a href=""> <!-- link to change password -->forgot password? </a>
         <input type="submit" value="login" class="loginSubmit" name ="member-login">  

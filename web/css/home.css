@@ -56,6 +56,11 @@ div.login-transbox p {
     background-color:#12BFC3;
 }
 
+input.input-box, textarea 
+{ 
+background: cyan; 
+}
+
 #Logout {
     text-align: right;
 }
