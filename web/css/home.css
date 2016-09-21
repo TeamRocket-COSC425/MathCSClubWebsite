@@ -24,7 +24,7 @@ body {
     text-align: right;
 }
 
-div.loginbackground
+div.login-background
  {
     position:fixed;
     top: 50%;
@@ -36,9 +36,9 @@ div.loginbackground
     border: 1px solid #ccc;
     background-position: center;
     text-align:center;
-    background: url("../images/login.jpg");
+    background: url("../images/mathproblem.jpg");
     }
-div.logintransbox {
+div.login-transbox {
     margin: 30px;
     background-color: #ffffff;
     border: 1px solid black;
@@ -46,7 +46,7 @@ div.logintransbox {
     filter: alpha(opacity=60); 
 }
 
-div.logintransbox p {
+div.login-transbox p {
     margin:2 auto;
     font-weight: bold;
     color: #000000;
