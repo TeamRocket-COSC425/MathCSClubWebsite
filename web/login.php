@@ -20,7 +20,8 @@
     	<input style="width:200px;" name = "password" type = "text" required>
     	<br>
     	<a href=""> <!-- link to change password -->forgot password? </a>
-        <input style="background-color:#12BFC3;" type="submit" value="login" name ="member-login">                              
+        <input style="background-color:#12BFC3;" type="submit" value="login" name ="member-login">  
+        </p>                            
 </form>
 </div> <!-- end login-transbox -->
 </div> <!-- end login-background -->
