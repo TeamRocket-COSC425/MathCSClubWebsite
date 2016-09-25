@@ -6,6 +6,10 @@
     include("includes/Login.html");
 ?>
 
+<head>
+	<title>Math CS Club - Home</title>
+</head>
+
 <body>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
