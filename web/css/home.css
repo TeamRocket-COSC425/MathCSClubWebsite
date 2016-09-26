@@ -47,17 +47,11 @@ body {
 
 div.login-background
  {
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    width:28em;
-    height:12em;
-    margin-top: -9em; /*set to a negative number 1/2 of your height*/
-    margin-left: -14em; /*set to a negative number 1/2 of your width*/
-    border: 1px solid #ccc;
-    background-position: center;
-    text-align:center;
-    background: url("../images/login.jpg");
+    background: url("../images/login.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     }
 
 div.login-transbox {
