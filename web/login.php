@@ -20,13 +20,12 @@
 
 <body>
 <div class="container">
-  <div class="info">
-    <h1>Math CS Club<br>Login</h1>
-  </div>
+  
 </div>
 <div class="form">
-  <div class="thumbnail"><img src="../web/images/loginicon.jpg"/></div>
-
+  <br>
+   <div class="loginWords">Math CS Club<br>Login</div>
+   <br><br>
   <form class="forgot-form">
     <p class="message">Forgot your password?</p><br>
     <input type="password" placeholder="password"/>

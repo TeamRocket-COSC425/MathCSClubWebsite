@@ -74,6 +74,12 @@ div.login-transbox p {
     color: #000000;
 }
 
+.loginWords{
+  font-size: 36px;
+  color: #12BFC3;
+
+}
+
 .loginSubmit{
     background-color:#12BFC3;
 }
@@ -92,12 +98,7 @@ div.login-transbox p {
   border-bottom-right-radius: 3px;
   text-align: center;
 }
-.form .thumbnail img {
-  display: block;
-  width: 50%;
-  margin-left: 25%;
-  margin-bottom: 10%;
-}
+
 .form input {
   outline: 0;
   background: #f2f2f2;
@@ -151,26 +152,5 @@ div.login-transbox p {
   content: "";
   display: block;
   clear: both;
-}
-.container .info {
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
 }
 
