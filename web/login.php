@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="form">
-  <div class="thumbnail"><img src="../web/images/loginicon.jpg"/></div>
+  
 
   <form class="forgot-form">
     <p class="message">Forgot your password?</p><br>
