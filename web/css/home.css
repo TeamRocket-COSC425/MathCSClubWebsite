@@ -3,6 +3,28 @@ body {
     background-color: #EEE;
 }
 
+
+.sessionButton {
+  text-decoration: none;
+      float: right;
+    background: #ccc;
+   -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #777;
+  font-size: 16px;
+  background: #ccc;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+
+.sessionButton:hover {
+  background: #12BFC3;
+  text-decoration: none;
+}
+
 .homeImage {
     width:100%;
     height:auto;
@@ -18,26 +40,20 @@ body {
     line-height: 1.6;
     padding: 0 10px;
     margin: 40px auto;
+    margin-top: 10px;
 }
 
-#Login {
-    text-align: right;
-}
 
-div.login-background
+
+.login-background
  {
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    width:28em;
-    height:12em;
-    margin-top: -9em; /*set to a negative number 1/2 of your height*/
-    margin-left: -14em; /*set to a negative number 1/2 of your width*/
-    border: 1px solid #ccc;
-    background-position: center;
-    text-align:center;
-    background: url("../images/login.jpg");
+    background: url("../images/login.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     }
+
 div.login-transbox {
     margin: 30px;
     background-color: #ffffff;
@@ -52,35 +68,83 @@ div.login-transbox p {
     color: #000000;
 }
 
+.loginWords{
+  font-size: 36px;
+  color: #12BFC3;
+
+}
+
 .loginSubmit{
     background-color:#12BFC3;
 }
 
-input.input-box, textarea 
-{ 
-background: cyan; 
+/* LOGIN FORM FROM HERE DOWN!!! */
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 300px;
+  margin: 0 auto 10px;
+  padding: 30px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-align: center;
 }
 
-#Logout {
-    text-align: right;
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  outline: 0;
+  background: #12BFC3;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #12BFC3;
+  text-decoration: none;
+}
+.form .forgot-form {
+  display: none;
 }
 
-#Dashboard {
-    text-align: right;
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
-#SignUp {
-    text-align: center;
-    margin-top: 50%;
-} 
-
-#Register {
-    text-align: center;
-    margin-top: 50%;
-}
-/*
-@media screen and (max-width: 500px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-*/
