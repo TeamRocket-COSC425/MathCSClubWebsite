@@ -148,3 +148,19 @@ div.login-transbox p {
   clear: both;
 }
 
+
+/*ACTIVITIES/TRIPS INFINITE ROTATING IMAGES*/
+#activities-rotating-item-wrapper {
+  position: relative;
+  width: 980px;
+  height: 347px;
+}
+.activities-rotating-item {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:980px; 
+  height:347px;
+}
+
