@@ -47,7 +47,7 @@ body {
 
 .login-background
  {
-    background: url("../images/login.jpg") no-repeat center center fixed; 
+    background: url("../images/login.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -59,7 +59,7 @@ div.login-transbox {
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.8;
-    filter: alpha(opacity=60); 
+    filter: alpha(opacity=60);
 }
 
 div.login-transbox p {
@@ -107,7 +107,7 @@ div.login-transbox p {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form #login_input_submit {
   outline: 0;
   background: #12BFC3;
   width: 100%;
@@ -147,4 +147,3 @@ div.login-transbox p {
   display: block;
   clear: both;
 }
-

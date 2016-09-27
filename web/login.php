@@ -12,10 +12,10 @@
 
      <link rel="stylesheet" href="css/loginreset.css">
 
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <!--<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">-->
 </head>
 
 <body class="login-background">
@@ -38,7 +38,7 @@
   <form method="post" action="home" name="login-form">
     <input id="login_input_email" name="user_email" type="text" placeholder="email" required>
     <input id="login_input_password" name="user_password" type="password" placeholder="password" required />
-    <button>login</button>
+    <input id="login_input_submit" type="submit" name="login" value="Log in" />
     <p class="message">Forgot your password? <a href="#">Get password</a></p>
     <p class="message">Not registered? <a href="#">Create an account</a></p> <!-- needs link to create account -->
   </form>
@@ -49,7 +49,7 @@
 <!--   <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
 </video> -->
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
   <script src="js/index.js"></script>
 
 </body>

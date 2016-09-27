@@ -1,12 +1,13 @@
 <?php
 
+include_once(__DIR__."/../includes/database.php");
+
 /**
  * Class login
  * handles the user's login and logout process
  */
 class Login
 {
-    require_once(__DIR__."/../includes/database.php");
 
     /**
      * @var array Collection of error messages
@@ -42,24 +43,19 @@ class Login
      */
     private function dologinWithPostData()
     {
+        global $db;
+        
         // check login form contents
-        if (empty($_POST['user_name'])) {
-            $this->errors[] = "Username field was empty.";
+        if (empty($_POST['user_email'])) {
+            $this->errors[] = "Email field was empty.";
         } elseif (empty($_POST['user_password'])) {
             $this->errors[] = "Password field was empty.";
-        } elseif (!empty($_POST['user_name']) && !empty($_POST['user_password'])) {
-
-/* Not needed?
-            // change character set to utf8 and check it
-            if (!$this->db_connection->set_charset("utf8")) {
-                $this->errors[] = $this->db_connection->error;
-            }
-*/
+        } else {
 
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
-                Array cols = ("email", "password");
-                $result = $db->where("email", $user_name)->getOne("users", null, $cols);
+                $cols = array("email", "password");
+                $result = $db->where("email", $_POST['user_email'])->getOne("users", null, $cols);
 
                 // if this user exists
                 if ($result) {
