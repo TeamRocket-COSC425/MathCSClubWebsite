@@ -5,6 +5,10 @@
     include("includes/Logout.html");
 ?>
 
+<head> 
+	<title>Math CS Club - Dashboard</title>
+</head>
+
 <body>
 
 <div id="main">

@@ -4,6 +4,9 @@
     include("includes/sidenav.html");
     include("includes/Login.html");
 ?>
+<head>
+	<title>Math CS Club - GullCode</title>
+</head>
 
 <body>
 
