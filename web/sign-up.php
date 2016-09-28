@@ -1,19 +1,14 @@
 <?php
-    $title = "SU Math/CS Club Sign Up";
+    $title = "SU Math/CS Club Log in";
     include("includes/header.html");
     include("includes/sidenav.html");
+    include("includes/Dashboard.html");
 ?>
 
 <head>
     <title>Math CS Club - Sign Up</title>
-
-     <link rel="stylesheet" href="css/loginreset.css">
-
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
-    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="css/style.css">
 </head>
+
 
 <body class="login-background">
 <div class="container">
@@ -21,7 +16,7 @@
 </div>
 <div class="form">
   <br>
-   <div class="SignUp">Math CS Club<br>Sign Up</div>
+   <div class="loginWords">Math CS Club<br>Sign Up</div>
    <br><br>
 
   <form class="login-form">
@@ -38,16 +33,13 @@
 	<option value="junior">Junior</option>
 	<option value="super senior">Super Senior</option>
 	</select>
-	<br>
+	<br><br>
 
-    <button>submit</button>
+    <button>sign up</button>
+    <p class="message">Already registered? <a href="login.php">Login</a></p>
   </form>
   
   </div>
-
-<!-- <video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg"> -->
-<!--   <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
-</video> -->
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/index.js"></script>
