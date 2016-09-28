@@ -40,7 +40,7 @@
     <input type="password" placeholder="password"/>
     <button>login</button>
     <p class="message">Forgot your password? <a href="#">Get password</a></p>
-    <p class="message">Not registered? <a href="#">Create an account</a></p> <!-- needs link to create account -->
+    <p class="message">Not registered? <a href="sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
   
   </div>
