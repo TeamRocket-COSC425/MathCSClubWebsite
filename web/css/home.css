@@ -23,6 +23,27 @@ body {
 .sessionButton:hover {
   background: #12BFC3;
   text-decoration: none;
+  color: #ffffff;
+}
+
+/*CONTACT US STYLING*/
+.contact-submit{
+  text-decoration: none;
+    background: #ccc;
+   -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #777;
+  font-size: 16px;
+  background: #ccc;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.contact-submit:hover {
+  background: #12BFC3;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .homeImage {

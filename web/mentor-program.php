@@ -5,6 +5,10 @@
     include("includes/Login.html");
 ?>
 
+<head>
+	<title>Math CS Club - Mentor Program</title>
+</head>
+
 <body>
 
 <div id="main">

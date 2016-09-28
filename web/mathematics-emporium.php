@@ -5,6 +5,10 @@
     include("includes/Login.html");
 ?>
 
+<head>
+	<title>Math CS Club - Mathematics Emporium</title>
+</head>
+
 <body>
 
 <div id="main">

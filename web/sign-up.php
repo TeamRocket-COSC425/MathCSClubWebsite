@@ -4,6 +4,10 @@
     include("includes/sidenav.html");
 ?>
 
+<head>
+	<title>Math CS Club - Sign Up</title>
+</head>
+
 <body>
 
 <div id="main">
