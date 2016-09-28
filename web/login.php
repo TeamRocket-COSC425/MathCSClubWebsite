@@ -1,5 +1,3 @@
-<html>
-
 <?php
     $title = "SU Math/CS Club Log in";
     include("includes/header.html");
@@ -9,13 +7,6 @@
 
 <head>
     <title>Math CS Club - Login</title>
-
-     <link rel="stylesheet" href="css/loginreset.css">
-
-    <!--<link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Montserrat:400,700'>
-    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="css/style.css">-->
 </head>
 
 <body class="login-background">
@@ -31,8 +22,8 @@
     <input type="password" placeholder="password"/>
     <input type="text" placeholder="email address"/>
     <button>submit</button>
-    <p class="message">Already registered? <a href="#">Sign In</a></p>
-    <p class="message">Not registered? <a href="#">Create an account</a></p> <!-- needs link to create account -->
+    <p class="message">Already registered? <a href="#login.php">Sign In</a></p>
+    <p class="message">Not registered? <a href="#sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
   <form method="post" action="home" name="login-form">
@@ -45,11 +36,7 @@
 
   </div>
 
-<!-- <video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg"> -->
-<!--   <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
-</video> -->
-
-  <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/index.js"></script>
 
 </body>
