@@ -40,7 +40,7 @@
     <input id="login_input_password" name="user_password" type="password" placeholder="password" required />
     <input id="login_input_submit" type="submit" name="login" value="Log in" />
     <p class="message">Forgot your password? <a href="#">Get password</a></p>
-    <p class="message">Not registered? <a href="#">Create an account</a></p> <!-- needs link to create account -->
+    <p class="message">Not registered? <a href="sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
   </div>
