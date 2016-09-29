@@ -3,27 +3,6 @@ body {
     background-color: #EEE;
 }
 
-.sessionButton {
-  text-decoration: none;
-      float: right;
-    background: #ccc;
-   -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  font-family: Arial;
-  color: #777;
-  font-size: 16px;
-  background: #ccc;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-}
-
-.sessionButton:hover {
-  background: #12BFC3;
-  text-decoration: none;
-  color: #ffffff;
-}
-
 /*CONTACT US STYLING*/
 #mainform{
 width:960px;
@@ -91,18 +70,16 @@ text-align:center;
 
 #main {
     margin-left: 50px;
+    margin-top: 50px;
 }
 
 #main #content {
     max-width: 1000px;
     font-size: 16px;
     line-height: 1.6;
-    padding: 0 10px;
+    padding: 10px;
     margin: 40px auto;
-    margin-top: 10px;
 }
-
-
 
 .login-background
  {

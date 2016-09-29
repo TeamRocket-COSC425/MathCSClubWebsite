@@ -2,10 +2,10 @@
     $title = "SU Math/CS Club Dashboard";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Logout.html");
+    include("includes/topnav.php");
 ?>
 
-<head> 
+<head>
 	<title>Math CS Club - Dashboard</title>
 </head>
 

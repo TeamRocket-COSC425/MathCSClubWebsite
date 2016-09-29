@@ -5,14 +5,7 @@
     include("includes/sidenav.html");
     require_once("classes/Login.php");
 
-    $login = new Login();
-
-    if ($login->isUserLoggedIn()) {
-      include('views/Logout.html');
-    } else {
-      include('views/Login.html');
-      include('views/Register.html');
-    }
+    include("includes/topnav.php");
 ?>
 </body>
 
