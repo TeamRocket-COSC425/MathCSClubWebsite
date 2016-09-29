@@ -31,16 +31,6 @@
 <img src="images/mathCSbanner_transparent.png" alt="mathCSbannerIMG" class="homeImage"/><br>
 <br>
 
-<?php
-  if ($login->isUserLoggedIn()) {
-    echo "You are logged in as " . $_SESSION['user_email'] . ".";
-  } else {
-    echo "You are not logged in.<br><br>Errors: ";
-    print_r($login->errors);
-  }
-?>
-<br>
-
 Welcome to the Salisbury University Mathematics and Computer Science Club Website, featuring the Dead Poet's Society!
 The club is open to everyone - majors, minors, and anyone else in the SU
 community with an interest in mathematics, computer science, and much more.
