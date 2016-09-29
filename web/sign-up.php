@@ -20,22 +20,23 @@
    <br><br>
 
   <form class="login-form">
-    <input type="text" placeholder="email"/>
-    <input type="password" placeholder="password"/>
-    <input type="First Name" placeholder="First Name"/>
-    <input type="Last Name" placeholder="Last Name"/>
-    <input type="Major" placeholder="Major"/>
+    <input type="text" placeholder="Email"/>
+    <input type="password" placeholder="Password"/>
+    <input type="text" placeholder="First Name"/>
+    <input type="text" placeholder="Last Name"/>
+    <input type="text" placeholder="Major"/>
 
 	<br>
 	<select>
 	<option value="freshman">Freshman</option>
 	<option value="sophmore">Sophmore</option>
 	<option value="junior">Junior</option>
-	<option value="super senior">Super Senior</option>
+	<option value="senior">Senior</option>
+	<option value="other">Other</option>
 	</select>
 	<br><br>
 
-    <button>sign up</button>
+    <button>Sign Up</button>
     <p class="message">Already registered? <a href="login.php">Login</a></p>
   </form>
   
