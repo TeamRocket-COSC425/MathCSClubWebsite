@@ -3,7 +3,6 @@ body {
     background-color: #EEE;
 }
 
-
 .sessionButton {
   text-decoration: none;
       float: right;
@@ -18,7 +17,6 @@ body {
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
-
 
 .sessionButton:hover {
   background: #12BFC3;
@@ -108,7 +106,7 @@ text-align:center;
 
 .login-background
  {
-    background: url("../images/login.jpg") no-repeat center center fixed; 
+    background: url("../images/login.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -120,7 +118,7 @@ div.login-transbox {
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.8;
-    filter: alpha(opacity=60); 
+    filter: alpha(opacity=60);
 }
 
 div.login-transbox p {
@@ -168,7 +166,7 @@ div.login-transbox p {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form #login_input_submit {
   outline: 0;
   background: #12BFC3;
   width: 100%;
@@ -184,6 +182,11 @@ div.login-transbox p {
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
+.form #login_input_submit:hover {
+  background: #129FA3;
+}
+
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
@@ -209,7 +212,6 @@ div.login-transbox p {
   clear: both;
 }
 
-
 /*ACTIVITIES/TRIPS INFINITE ROTATING IMAGES*/
 #activities-rotating-item-wrapper {
   position: relative;
@@ -221,7 +223,7 @@ div.login-transbox p {
   position: absolute;
   top: 0;
   left: 0;
-  width:980px; 
+  width:980px;
   height:347px;
 }
 
@@ -269,6 +271,3 @@ table#teams tr:nth-child(even) {
   max-width: 100%;
   height: auto;
 }
-
-
-
