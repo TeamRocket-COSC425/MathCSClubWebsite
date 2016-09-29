@@ -22,18 +22,36 @@
     <!-- START: Rotating Images -->
     <div id="activities-rotating-item-wrapper">
       <img src="images/meeting/fall16september.jpg" alt="meetingpicture" class="activities-rotating-item" />
-      <img src="https://raw.githubusercontent.com/mcnitt/jquery-infinite-rotator/master/images/entrance.jpg" alt="meetingpicture" class="activities-rotating-item" />
-      <img src="https://raw.githubusercontent.com/mcnitt/jquery-infinite-rotator/master/images/bluepeople.jpg" alt="meetingpicture" class="activities-rotating-item" />
-      <img src="https://raw.githubusercontent.com/mcnitt/jquery-infinite-rotator/master/images/reflection3.jpg" alt="meetingpicture" class="activities-rotating-item" />
-      <img src="https://raw.githubusercontent.com/mcnitt/jquery-infinite-rotator/master/images/reflection2.jpg" alt="meetingpicture" class="activities-rotating-item" />
-      <img src="https://raw.githubusercontent.com/mcnitt/jquery-infinite-rotator/master/images/manequine.jpg" alt="meetingpicture" class="activities-rotating-item" />
+      <img src="images/activities/meetingsp2015.jpg" alt="multicultural day" class="activities-rotating-item" />
+      <img src="images/activities/image3.jpg" alt="Wiffle ball" class="activities-rotating-item" />
+      <img src="images/activities/IMG_1895.jpg" alt="chicken dinner" class="activities-rotating-item" />
+      <img src="images/activities/oriolessp2016.png" alt="activities fair" class="activities-rotating-item" />
+      <img src="images/activities/slaughterhousefa2015.jpg" alt="tower of hanoi" class="activities-rotating-item" />
     </div>
     <!-- END: Rotating images images -->
-<h1>
+<h1 class="center">
 Activites &amp; Field Trips
 </h1>
 
+<h2 class="center">
+Fall 2016 
+</h2>
 
+<h3 style="text-align: left;">
+Orioles Game
+</h3>
+
+<p>
+<strong>Date:</strong> Friday September 23rd 2016<br>
+<strong>Price:</strong> $20 per person <br>
+<strong>Availability:</strong> 30 tickets for sale <br>
+<strong>Transportation:</strong> Van will be provided along with car poolers <br>
+<strong>Details:</strong> Game starts at 7:05pm and we will leave the GUC parking lot at 4pm. THe Orioles will be playing the Arizona Diamondbacks. It is a fan appreciation night and everyone will recieve a Hyun Soo Kim T-shirt and fireworks will take place after the game. <br>
+<strong>What you need to do:</strong> Contact Sam at <u>smaillie1@gulls.salisbury.edu</u> to RSVP and pay. <br>
+<br>
+<img src="images/activities/camdenyards.jpg" alt="Camden Yards" width="100%">
+
+</p>
 </div>
 </div>
 

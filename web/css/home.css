@@ -225,3 +225,50 @@ div.login-transbox p {
   height:347px;
 }
 
+/* Gullcode/math challenge columns and tables stuff*/
+#cols {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+
+table#teams {
+  border: 3px solid Black;
+  border-collapse: collapse;
+  width: 100%;
+}
+table#teams  th {
+  background-color: Black;
+  color: #12BFC3;
+  vertical-align: center;
+  border: 3px solid Black;
+}
+
+table#teams  td {
+  text-align: left;
+  color: Black;
+  vertical-align: center;
+  border: 3px solid Black;
+}
+
+table#teams tr:nth-child(odd) {
+  background-color: LightGray;
+}
+
+table#teams tr:nth-child(even) {
+  background-color: ;
+}
+
+.center {
+  text-align: center;
+  vertical-align: center;
+}
+
+.gullcodepic {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
