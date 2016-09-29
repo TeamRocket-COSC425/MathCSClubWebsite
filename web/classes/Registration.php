@@ -17,6 +17,8 @@ class Registration
      */
     public $messages = array();
 
+    public $registered = false;
+
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$registration = new Registration();"
@@ -42,10 +44,6 @@ class Registration
             $this->errors[] = "Password and password repeat are not the same";
         } elseif (strlen($_POST['user_password_new']) < 6) {
             $this->errors[] = "Password has a minimum length of 6 characters";
-        } elseif (strlen($_POST['user_name']) > 64 || strlen($_POST['user_name']) < 2) {
-            $this->errors[] = "Username cannot be shorter than 2 or longer than 64 characters";
-        } elseif (!preg_match('/^[a-z\d]{2,64}$/i', $_POST['user_name'])) {
-            $this->errors[] = "Username does not fit the name scheme: only a-Z and numbers are allowed, 2 to 64 characters";
         } elseif (strlen($_POST['user_email']) > 64) {
             $this->errors[] = "Email cannot be longer than 64 characters";
         } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
@@ -63,26 +61,33 @@ class Registration
                 $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
                 // Check for existing account
-                $existing = $db->where('email', $user_email).get('users');
+                $db->where('email', $user_email);
+                $existing = $db->get('users');
 
-                if ($existing->length >= 1) {
-                    $this->errors[] = "Sorry, that username / email address is already taken.";
+                if (count($existing) > 0) {
+                    $this->errors = array("Sorry, that username / email address is already taken.", print_r($existing[0]));
                 } else {
 
+                    $data = array(
+                      'email' => $user_email,
+                      'preferred_email' => $user_email, //temp
+                      'password' => $user_password_hash,
+                      'name' => $_POST['user_firstname'] . ' ' . $_POST['user_lastname'],
+                      'year' => $_POST['user_year'],
+                      'major' => $_POST['user_major']
+                    );
+
                     // write new user's data into database
-                    $sql = "INSERT INTO users (user_name, user_password_hash, user_email)
-                            VALUES('" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "');";
-                    $query_new_user_insert = $this->db_connection->query($sql);
+                    $id = $db->insert('users', $data);
 
                     // if user has been added successfully
-                    if ($query_new_user_insert) {
+                    if ($id) {
                         $this->messages[] = "Your account has been created successfully. You can now log in.";
+                        $this->registered = true;
                     } else {
-                        $this->errors[] = "Sorry, your registration failed. Please go back and try again.";
+                        $this->errors[] = $db->getLastError();
                     }
                 }
-        } else {
-            $this->errors[] = "An unknown error occurred.";
         }
     }
 }

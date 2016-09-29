@@ -3,7 +3,6 @@ body {
     background-color: #EEE;
 }
 
-
 .sessionButton {
   text-decoration: none;
       float: right;
@@ -18,7 +17,6 @@ body {
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
-
 
 .sessionButton:hover {
   background: #12BFC3;
@@ -184,6 +182,11 @@ div.login-transbox p {
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
+.form #login_input_submit:hover {
+  background: #129FA3;
+}
+
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;

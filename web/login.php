@@ -1,8 +1,15 @@
 <?php
+  require_once("classes/Login.php");
+  $login = new Login();
+  if ($login->isUserLoggedIn()) {
+    header("Location: home");
+    die();
+  } else {
     $title = "SU Math/CS Club Log in";
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/Dashboard.html");
+  }
 ?>
 
 <head>
@@ -15,8 +22,20 @@
 </div>
 <div class="form">
   <br>
-   <div class="loginWords">Math CS Club<br>Login</div>
-   <br><br>
+   <div class="loginWords">
+     Math CS Club<br>Login
+   </div>
+   <div class="loginErrrors" style="color:red;">
+     <?php
+      if ($login->errors) {
+        echo "<br>";
+        foreach ($login->errors as $err) {
+          echo $err . "<br>";
+        }
+      }
+    ?>
+  </div>
+  <br><br>
   <form class="forgot-form">
     <p class="message">Forgot your password?</p><br>
     <input type="password" placeholder="Password"/>
@@ -26,7 +45,7 @@
     <p class="message">Not registered? <a href="#sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
-  <form method="post" action="home" name="login-form">
+  <form method="post" action="login" name="login-form">
     <input id="login_input_email" name="user_email" type="text" placeholder="Email" required>
     <input id="login_input_password" name="user_password" type="password" placeholder="Password" required />
     <input id="login_input_submit" type="submit" name="login" value="Log in" />
