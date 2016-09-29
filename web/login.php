@@ -19,17 +19,17 @@
    <br><br>
   <form class="forgot-form">
     <p class="message">Forgot your password?</p><br>
-    <input type="password" placeholder="password"/>
-    <input type="text" placeholder="email address"/>
-    <button>submit</button>
+    <input type="password" placeholder="Password"/>
+    <input type="text" placeholder="Email"/>
+    <button>Submit</button>
     <p class="message">Already registered? <a href="#login.php">Sign In</a></p>
     <p class="message">Not registered? <a href="#sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
   <form class="login-form">
-    <input type="text" placeholder="email"/>
-    <input type="password" placeholder="password"/>
-    <button>login</button>
+    <input type="text" placeholder="Email"/>
+    <input type="password" placeholder="Password"/>
+    <button>Login</button>
     <p class="message">Forgot your password? <a href="#">Get password</a></p>
     <p class="message">Not registered? <a href="sign-up.php">Create an account</a></p> <!-- needs link to create account -->
   </form>
