@@ -7,7 +7,8 @@
   echo '<div id="topnav">';
   if ($login->isUserLoggedIn()) {
     include("views/Logout.html");
-    echo '<div id="sessiondata"> You are logged in as <b>'. $_SESSION['user_email'] .'<b></div>';
+    echo '<div id="sessiondata"> <i class="fa fa-user" aria-hidden="true"></i>
+ You are logged in as <b>'. $_SESSION['user_email'] .'<b></div>';
   } else {
     include("views/SignUp.html");
     include("views/Login.html");

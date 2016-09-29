@@ -4,7 +4,11 @@
     left: 0;
     top: 0;
     height: 50px;
-    background-color: #ddd;
+    background-color: #888;
+}
+
+#topnav #sessiondata {
+  color: black;
 }
 
 #topnav .sessionButton, #sessiondata {
