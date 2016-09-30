@@ -8,7 +8,6 @@
     $title = "SU Math/CS Club Log in";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Dashboard.html");
   }
 ?>
 

@@ -12,7 +12,7 @@
     left: 0;
     overflow-x: hidden;
     transform: translate(-250px, 0px);
-    background-color: #ccc;
+    background-color: #CCC;
 }
 
 .sidenav--active {
@@ -25,13 +25,9 @@
     margin-left: 250px;
     padding: 0px 6px 0px 6px;
     font-size: 36.5px;
-    color: #777;
+    color: #12BFC3;
     cursor: pointer;
     text-align: center;
-}
-
-.sidenav--active #button {
-    color: #999;
 }
 
 .sidenav > a {
@@ -46,10 +42,13 @@
     color: #999;
 }
 
-.sidenav a:hover,
+.sidenav a:hover {
+  color: #19BFC3;
+}
+
 .sidenav #button:hover,
 .offcanvas a:focus {
-    color: #12BFC3;
+    color: #129FA3;
 }
 
 #navlinks {
