@@ -1,5 +1,6 @@
 <?php
 
+require_once('vendor/phpmailer/phpmailer/PHPMailerAutoload.php');
 include_once(__DIR__."/../includes/database.php");
 
 /**
@@ -120,7 +121,26 @@ class Login
 
                 // Send email with reset link including token
                 $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?reset_token=$token";
-                mail($user['preferred_email'], "SU Math/CS Club Password Reset", $msg);
+
+                $mail = new PHPMailer;
+
+                $mail->isSMTP();
+                $mail->Host = 'mailtrap.io';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'e3386170e7a765';
+                $mail->Password = 'd8ab29b5c13eb0';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 25;
+
+                $mail->setFrom($user['preferred_email'], "SU Math/CS Club");
+                $mail->Subject = "SU Math/CS Club Password Reset";
+                $mail->Body = $msg;
+
+                if ($mail->send()) {
+                    $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
+                } else {
+                    $this->messages[] = "Message has been sent.";
+                }
             } else {
                 $this->errors[] = "No user by that email.";
             }
