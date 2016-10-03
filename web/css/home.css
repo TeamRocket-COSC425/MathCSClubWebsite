@@ -81,38 +81,7 @@ text-align:center;
     margin: 40px auto;
 }
 
-.login-background
- {
-    background: url("../images/login.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-    }
 
-div.login-transbox {
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.8;
-    filter: alpha(opacity=60);
-}
-
-div.login-transbox p {
-    margin:2 auto;
-    font-weight: bold;
-    color: #000000;
-}
-
-.loginWords{
-  font-size: 36px;
-  color: #12BFC3;
-
-}
-
-.loginSubmit{
-    background-color:#12BFC3;
-}
 
 /* LOGIN FORM FROM HERE DOWN!!! */
 .form {
@@ -148,7 +117,7 @@ div.login-transbox p {
   background: #12BFC3;
   width: 100%;
   border: 0;
-  padding: 15px;
+  padding: 9px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -162,6 +131,40 @@ div.login-transbox p {
 
 .form #login_input_submit:hover {
   background: #129FA3;
+}
+
+.login-background
+ {
+  margin-top: 5%;
+    background: url("../images/login.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+
+div.login-transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+}
+
+div.login-transbox p {
+    margin:2 auto;
+    font-weight: bold;
+    color: #000000;
+}
+
+.loginWords{
+  font-size: 36px;
+  color: #12BFC3;
+
+}
+
+.loginSubmit{
+    background-color:#12BFC3;
 }
 
 .form .message {
@@ -189,20 +192,14 @@ div.login-transbox p {
   clear: both;
 }
 
-/*ACTIVITIES/TRIPS INFINITE ROTATING IMAGES*/
-#activities-rotating-item-wrapper {
-  position: relative;
-  width: 980px;
-  height: 347px;
+/*SIGN UP PAGE STYLING - DROP DOWNS*/
+
+#signUpDrop{
+  font-size: 100%;
+border: 0;
+-webkit-appearance: none;
 }
-.activities-rotating-item {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:980px;
-  height:347px;
-}
+
 
 /* Gullcode/math challenge columns and tables stuff*/
 #cols {
