@@ -1,10 +1,10 @@
 
 <?php
-    $title = "SU Math/CS Club Home";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Login.html");
+    include("includes/topnav.php");
 ?>
+</body>
 
 <head>
 	<title>Math CS Club - Home</title>
@@ -28,16 +28,16 @@
 <img src="images/mathCSbanner_transparent.png" alt="mathCSbannerIMG" class="homeImage"/><br>
 <br>
 
-Welcome to the Salisbury University Mathematics and Computer Science Club Website, featuring the Dead Poet's Society! 
+Welcome to the Salisbury University Mathematics and Computer Science Club Website, featuring the Dead Poet's Society!
 The club is open to everyone - majors, minors, and anyone else in the SU
 community with an interest in mathematics, computer science, and much more.
-We host a wide variety of events including: talks, field trips, coding competitions, 
+We host a wide variety of events including: talks, field trips, coding competitions,
 math challenge competitions, pumpkin carving, Association for Computing Machinery (<a href="https://www.acm.org/">ACM</a>) meetings, and more!
 <p>Club meetings currently take place in Henson 101 at 6pm every Thursday. </p>
 
 <br>
-<div class="fb-page" data-href="https://www.facebook.com/sumathcoscclub/" data-tabs="timeline" data-width="500px" 
-data-height="500px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" 
+<div class="fb-page" data-href="https://www.facebook.com/sumathcoscclub/" data-tabs="timeline" data-width="500px"
+data-height="500px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
 data-show-facepile="true"><blockquote cite="https://www.facebook.com/sumathcoscclub/" class="fb-xfbml-parse-ignore">
 <a href="https://www.facebook.com/sumathcoscclub/">SU Math &amp; COSC Club</a></blockquote>
  </div>
