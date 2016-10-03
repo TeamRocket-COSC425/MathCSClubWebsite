@@ -125,9 +125,10 @@ class Login
                 $mail = new PHPMailer;
 
                 $mail->isSMTP();
-                $mail->SMTPDebug = 4;
+                $mail->SMTPDebug = 3;
+                $mail->Debugoutput = 'html';
 
-                if (!getenv('MAILTRAP_API_TOKEN')) {
+                if (getenv('MAILTRAP_API_TOKEN')) {
                   $mail->Host = 'mailtrap.io';
                   $mail->SMTPAuth = true;
                   $mail->Username = 'e3386170e7a765';
@@ -138,17 +139,19 @@ class Login
                   $mail->Port = 25;
                 }
 
-                $mail->SMTPSecure = 'ssl';
-
                 $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
                 $mail->addAddress($user['preferred_email']);
                 $mail->Subject = "SU Math/CS Club Password Reset";
                 $mail->Body = $msg;
 
-                if (!$mail->Send()) {
+                if (!$mail->send()) {
                     $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
                 } else {
                     $this->messages[] = "Message has been sent.";
+
+                    // Assure this code only runs once
+                    header('Location: login?reset');
+                    die();
                 }
 
                 //mail($user['preferred_email'], "Test", "test");
