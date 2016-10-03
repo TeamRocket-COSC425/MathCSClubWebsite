@@ -270,5 +270,105 @@ table#teams tr:nth-child(even) {
   height: auto;
 }
 
+/* OFFICERS STYLE SHEET */
+/**
+ * Position icons into circle (SO)
+ * http://stackoverflow.com/q/12813573/1397351 
+ */
+.circle-container {
+  position: relative;
+  width: 24em;
+  height: 24em;
+  padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
+  border-radius: 100%;
+  margin: 1.75em auto 0;
+}
+.circle-container a {
+  /*display: block;*/    /*For some reason this made it not center*/
+  overflow: hidden;
+  position: absolute;
+  top: 40%;
+  width: 8em; height: 8em;
+  margin: -2em; /* 2em = 4em/2 */ /* half the width */
+  border-radius: 50%;
+}
+
+.groupPic {
+  width: 50%, height: 50%;
+}
+.circle-container img { display: block; width: 100%; }
+.president { transform: rotate(270deg) translate(12em) rotate(-270deg); }
+.treasurer { transform: rotate(167deg) translate(12em) rotate(-167deg); }
+.webMaster { transform: rotate(115.571deg) translate(12em) rotate(-115.571deg); }
+.secretary { transform: rotate(12.713deg) translate(12em) rotate(-12.713deg); }
+.representative { transform: rotate(321.429deg) translate(12em) rotate(-321.329deg); }
+.vicePresident { transform: rotate(218.429deg) translate(12em) rotate(-218.429deg); }
+.DPS { transform: rotate(64.142deg) translate(12em) rotate(-64.142deg); }
 
 
+
+
+
+/*
+
+Circle Shit
+
+.officerCircle {
+  padding-top: 12%;
+
+}
+.circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    position: fixed;
+}
+
+.circle.big {
+    width: 351px;
+    height: 350px;
+    background-color: blue;
+    margin: 100px;
+    vertical-align: center;
+}
+
+.one {
+    background-color: green;
+    top: -586px;
+    right: -64px;
+}
+
+.two {
+    background-color: yellow;
+    top: -633px;
+    left: 79px;
+}
+
+.three {
+    background-color: black;
+    right: -25px;
+    top: -25px;
+}
+
+.four {
+    background-color: purple;
+    left: -25px;
+    bottom: -25px;
+}
+
+.five {
+    background-color: grey;
+    bottom: -60px;
+    left: 50px;
+}
+
+.six {
+    background-color: cyan;
+    right: -25px;
+    bottom: -25px;
+}
+
+.seven {
+    background-color: brown;
+}*/
