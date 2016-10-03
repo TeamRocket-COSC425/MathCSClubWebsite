@@ -125,22 +125,33 @@ class Login
                 $mail = new PHPMailer;
 
                 $mail->isSMTP();
-                $mail->Host = 'mailtrap.io';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'e3386170e7a765';
-                $mail->Password = 'd8ab29b5c13eb0';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 25;
+                $mail->SMTPDebug = 4;
 
-                $mail->setFrom($user['preferred_email'], "SU Math/CS Club");
+                if (!getenv('MAILTRAP_API_TOKEN')) {
+                  $mail->Host = 'mailtrap.io';
+                  $mail->SMTPAuth = true;
+                  $mail->Username = 'e3386170e7a765';
+                  $mail->Password = 'd8ab29b5c13eb0';
+                  $mail->Port = 2525;
+                } else {
+                  $mail->Host = 'localhost';
+                  $mail->Port = 25;
+                }
+
+                $mail->SMTPSecure = 'ssl';
+
+                $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
+                $mail->addAddress($user['preferred_email']);
                 $mail->Subject = "SU Math/CS Club Password Reset";
                 $mail->Body = $msg;
 
-                if ($mail->send()) {
+                if (!$mail->Send()) {
                     $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
                 } else {
                     $this->messages[] = "Message has been sent.";
                 }
+
+                //mail($user['preferred_email'], "Test", "test");
             } else {
                 $this->errors[] = "No user by that email.";
             }

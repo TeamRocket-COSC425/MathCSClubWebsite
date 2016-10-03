@@ -32,6 +32,11 @@
         foreach ($login->errors as $err) {
           echo $err . "<br>";
         }
+      } else if ($login->messages) {
+        echo "<br>Messages:<br>";
+        foreach ($login->messages as $msg) {
+          echo $msg . "<br>";
+        }
       }
     ?>
   </div>
