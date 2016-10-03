@@ -1,5 +1,6 @@
 <?php
 
+require_once('vendor/phpmailer/phpmailer/PHPMailerAutoload.php');
 include_once(__DIR__."/../includes/database.php");
 
 /**
@@ -25,7 +26,7 @@ class Login
     public function __construct()
     {
         // create/read session, absolutely necessary
-        session_start();
+        @session_start();
 
         // check the possible login actions:
         // if user tried to log out (happen when user clicks logout button)
@@ -36,6 +37,10 @@ class Login
         elseif (isset($_POST["login"])) {
             $this->dologinWithPostData();
         }
+        // mark account for reset and email token
+        elseif (isset($_POST["reset"])) {
+            $this->sendResetLink();
+        }
     }
 
     /**
@@ -44,7 +49,7 @@ class Login
     private function dologinWithPostData()
     {
         global $db;
-        
+
         // check login form contents
         if (empty($_POST['user_email'])) {
             $this->errors[] = "Email field was empty.";
@@ -52,8 +57,7 @@ class Login
             $this->errors[] = "Password field was empty.";
         } else {
 
-                // database query, getting all the info of the selected user (allows login via email address in the
-                // username field)
+                // Get user with same email
                 $cols = array("email", "password");
                 $result = $db->where("email", $_POST['user_email'])->getOne("users", null, $cols);
 
@@ -88,6 +92,59 @@ class Login
         // return a little feeedback message
         $this->messages[] = "You have been logged out.";
 
+    }
+
+    public function sendResetLink()
+    {
+        global $db;
+
+        if (empty($_POST['user_email'])) {
+            $this->errors[] = "Email field was empty.";
+        } else {
+
+            $user = $db->where("email", $_POST["user_email"])->getOne("users");
+
+            if ($user) {
+                // Generate token
+                $token = bin2hex(openssl_random_pseudo_bytes(16));
+
+                // Store token in database
+                $data = array(
+                    'reset_token' => $token
+                );
+                $db->where('id', $user['id']);
+                if ($db->update ('users', $data)) {
+                    $this->messages[] = $db->count . ' records were updated';
+                } else {
+                    $this->errors[] = 'update failed: ' . $db->getLastError();
+                }
+
+                // Send email with reset link including token
+                $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?reset_token=$token";
+
+                $mail = new PHPMailer;
+
+                $mail->isSMTP();
+                $mail->Host = 'mailtrap.io';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'e3386170e7a765';
+                $mail->Password = 'd8ab29b5c13eb0';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 25;
+
+                $mail->setFrom($user['preferred_email'], "SU Math/CS Club");
+                $mail->Subject = "SU Math/CS Club Password Reset";
+                $mail->Body = $msg;
+
+                if ($mail->send()) {
+                    $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
+                } else {
+                    $this->messages[] = "Message has been sent.";
+                }
+            } else {
+                $this->errors[] = "No user by that email.";
+            }
+        }
     }
 
     /**
