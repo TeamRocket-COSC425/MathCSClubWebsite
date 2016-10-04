@@ -2,12 +2,12 @@
     $title = "SU Math/CS Club Contact Us";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Login.html");
+    include("includes/topnav.php");
 ?>
 
-<head> 
+<head>
 	<title>Math CS Club - Contact Us</title>
-</head> 
+</head>
 
 <body>
 
@@ -69,7 +69,7 @@ echo "<require>* invalid email *</require>";
 
 
 </div>
-</div> 
+</div>
 
 <script>
 $(document).ready(function() {

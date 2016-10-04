@@ -85,12 +85,15 @@ text-align:center;
 }
 
 /* LOGIN FORM FROM HERE DOWN!!! */
+
+
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
   max-width: 300px;
   margin: 0 auto 10px;
+  margin-top: 100px;
   padding: 30px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -192,13 +195,43 @@ div.login-transbox p {
 }
 
 /*SIGN UP PAGE STYLING - DROP DOWNS*/
+.login-form > select{
+  border: none;
+  background-color: #fff;
+  outline: none;
+  background: #f2f2f2;
+  margin: 0 0 15px;
+  width:100%;
+  padding: 15px;
+  font-size: 14px;
+  color: #A9A9A9;
+  height: 35px;
+}
+.login-form > option{
+  padding: 100px;
 
-#signUpDrop{
-  font-size: 100%;
-border: 0;
--webkit-appearance: none;
 }
 
+.select:after{
+   content:"▼"; 
+}
+
+.login-form > option{
+  padding: 15px;
+}
+
+.login-form > li {
+   border: none;
+  background-color: #fff;
+  outline: none;
+  background: #f2f2f2;
+  margin: 0 0 15px;
+  width:100%;
+  padding: 15px;
+  font-size: 14px;
+  color: #A9A9A9;
+  height: 35px;
+}
 
 /* Gullcode/math challenge columns and tables stuff*/
 #cols {
@@ -250,8 +283,13 @@ table#teams tr:nth-child(even) {
   position: relative;
   width: 24em;
   height: 24em;
+<<<<<<< HEAD
   padding: 2.8em; 
   margin-bottom: 6em;
+=======
+  padding: 2.8em;
+  margin-bottom: 2em;
+>>>>>>> master
   left: 25em;
 }
 .circle-container a {
@@ -260,7 +298,7 @@ table#teams tr:nth-child(even) {
   top: 50%;
   width: 8em;
   height: 8em;
-  margin: -2em; 
+  margin: -2em;
   border-radius: 50%;
 }
 
@@ -284,7 +322,7 @@ table#teams tr:nth-child(even) {
 
 /*Below is the css for the math challenge page. */
 
-.floated_left 
+.floated_left
 {
   float: left;
   width: 500px;
@@ -293,18 +331,18 @@ table#teams tr:nth-child(even) {
   text-justify: inter-word;
 
     /* outer shadows  (note the rgba is red, green, blue, alpha) */
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 
   /* rounded corners */
   -webkit-border-radius: 12px;
-  -moz-border-radius: 7px; 
+  -moz-border-radius: 7px;
   border-radius: 7px;
 
 /* gradients */
-  background: -webkit-gradient(linear, left top, left bottom, 
-  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9)); 
-  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%); 
+  background: -webkit-gradient(linear, left top, left bottom,
+  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9));
+  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%);
 }
 
 .floated_right
@@ -316,18 +354,18 @@ table#teams tr:nth-child(even) {
     text-align: justify;
     text-justify: inter-word;
   /* outer shadows  (note the rgba is red, green, blue, alpha) */
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 
   /* rounded corners */
   -webkit-border-radius: 12px;
-  -moz-border-radius: 7px; 
+  -moz-border-radius: 7px;
   border-radius: 7px;
 
   /* gradients */
-  background: -webkit-gradient(linear, left top, left bottom, 
-  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9)); 
-  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%); 
+  background: -webkit-gradient(linear, left top, left bottom,
+  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9));
+  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%);
 }
 
 .floated_middle
@@ -339,18 +377,18 @@ table#teams tr:nth-child(even) {
  text-align: justify;
   text-justify: inter-word;
   /* outer shadows  (note the rgba is red, green, blue, alpha) */
-  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+  -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 
   /* rounded corners */
   -webkit-border-radius: 12px;
-  -moz-border-radius: 7px; 
+  -moz-border-radius: 7px;
   border-radius: 7px;
 
   /* gradients */
-  background: -webkit-gradient(linear, left top, left bottom, 
-  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9)); 
-  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%); 
+  background: -webkit-gradient(linear, left top, left bottom,
+  color-stop(0%, white), color-stop(35%, white), color-stop(100%, #33A1C9));
+  background: -moz-linear-gradient(top, white 0%, white 55%, #33A1C9 130%);
 
 }
 
@@ -368,9 +406,9 @@ header{
 
 }
 
-.gradientBoxesWithOuterShadows { 
+.gradientBoxesWithOuterShadows {
 height: 200px;
-width: 400px; 
+width: 400px;
 padding: 20px;
 
 }
@@ -382,7 +420,7 @@ padding: 20px;
   column-count: 5;
 
   -webkit-column-rule: 1px outset #003366;
-  -moz-column-rule: 1px outset #003366; 
+  -moz-column-rule: 1px outset #003366;
   column-rule: 1px outset #003366;
 }
 
