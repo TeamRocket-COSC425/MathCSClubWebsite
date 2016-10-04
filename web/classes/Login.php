@@ -195,7 +195,10 @@ class Login
                 // PHP 5.3/5.4, by the password hashing compatibility library
                 $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
-                $data = array( 'password' => $user_password_hash );
+                $data = array(
+                  'password' => $user_password_hash,
+                  'reset_token' => null
+                );
                 $db->where('id', $user['id']);
                 if ($db->update ('users', $data)) {
                     $this->messages[] = $db->count . ' records were updated';
