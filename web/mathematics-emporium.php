@@ -39,7 +39,7 @@ Mathematics Emporium
 <br>
 <hr style="background-color: #003366; height: 3px;">
 <br>
-<img src="images/Fall2016Tutor.png" alt="Tutor Schedule" style="width: 80%; height: auto; border-radius: 8px; display: block; margin: 0 auto">
+<img src="images/Fall2016Tutor.PNG" alt="Tutor Schedule" style="width: 80%; height: auto; border-radius: 8px; display: block; margin: 0 auto">
 </div>
 </div>
 
