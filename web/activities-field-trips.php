@@ -2,7 +2,7 @@
     $title = "SU Math/CS Club Activities & Field Trips";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Login.html");
+    include("includes/topnav.php");
 ?>
 
 <head>

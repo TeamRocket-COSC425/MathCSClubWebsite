@@ -2,7 +2,7 @@
     $title = "SU Math/CS Club Registration";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Login.html");
+    include("includes/topnav.php");
 ?>
 
 <head>

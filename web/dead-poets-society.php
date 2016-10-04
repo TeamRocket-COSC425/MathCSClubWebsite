@@ -1,12 +1,12 @@
 <?php
-    $title = "SU Math/CS Club Math Challenge";
+    $title = "SU Math/DPS";
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
 ?>
 
 <head>
-	<title>Math CS Club - Math Challenge</title>
+	<title>DPS</title>
 </head>
 
 <body>
@@ -16,9 +16,8 @@
 <div id="content">
 
 <h1>
-Math Challenge
+Dead Poets Society
 </h1>
-
 
 </div>
 </div>

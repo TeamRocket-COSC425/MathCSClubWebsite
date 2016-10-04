@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #EEE;
+    background-color: #003366;
 }
 
 /*CONTACT US STYLING*/
@@ -66,6 +66,7 @@ text-align:center;
 .homeImage {
     width:100%;
     height:auto;
+    border-radius: 8px;
 }
 
 #main {
@@ -79,6 +80,8 @@ text-align:center;
     line-height: 1.6;
     padding: 10px;
     margin: 40px auto;
+    background-color: #CCC;
+    color: #003366;
 }
 
 
@@ -276,3 +279,26 @@ table#teams tr:nth-child(even) {
 .representative { transform: rotate(321.429deg) translate(12em) rotate(-321.329deg); }
 .vicePresident { transform: rotate(218.429deg) translate(12em) rotate(-218.429deg); }
 .DPS { transform: rotate(64.142deg) translate(12em) rotate(-64.142deg); }
+
+/*mentor program hings*/
+#cols5 {
+  -webkit-column-count: 5;
+  -moz-column-count: 5;
+  column-count: 5;
+
+  -webkit-column-rule: 1px outset #003366;
+  -moz-column-rule: 1px outset #003366; 
+  column-rule: 1px outset #003366;
+}
+
+.mentorpic {
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+#cols2 {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
