@@ -85,6 +85,8 @@ text-align:center;
 }
 
 /* LOGIN FORM FROM HERE DOWN!!! */
+
+
 .form {
   position: relative;
   z-index: 1;
@@ -192,13 +194,43 @@ div.login-transbox p {
 }
 
 /*SIGN UP PAGE STYLING - DROP DOWNS*/
+.login-form > select{
+  border: none;
+  background-color: #fff;
+  outline: none;
+  background: #f2f2f2;
+  margin: 0 0 15px;
+  width:100%;
+  padding: 15px;
+  font-size: 14px;
+  color: #A9A9A9;
+  height: 35px;
+}
+.login-form > option{
+  padding: 100px;
 
-#signUpDrop{
-  font-size: 100%;
-border: 0;
--webkit-appearance: none;
 }
 
+.select:after{
+   content:"▼"; 
+}
+
+.login-form > option{
+  padding: 15px;
+}
+
+.login-form > li {
+   border: none;
+  background-color: #fff;
+  outline: none;
+  background: #f2f2f2;
+  margin: 0 0 15px;
+  width:100%;
+  padding: 15px;
+  font-size: 14px;
+  color: #A9A9A9;
+  height: 35px;
+}
 
 /* Gullcode/math challenge columns and tables stuff*/
 #cols {
