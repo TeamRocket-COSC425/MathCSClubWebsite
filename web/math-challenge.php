@@ -42,7 +42,7 @@
 <!--Images container -->
  <div class ="floated_middle">
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
-	<img src ="images/math-challenege/mc-triangles.jpg"  			 class ="gullcodepic">
+	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
 </div>
 <!--End Images container-->
 
