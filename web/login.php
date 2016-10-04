@@ -8,6 +8,7 @@
     $title = "SU Math/CS Club Log in";
     include("includes/header.html");
     include("includes/sidenav.html");
+    include("includes/topnav.php");
   }
 ?>
 
@@ -34,28 +35,43 @@
       }
     ?>
   </div>
-  <br><br>
-  <form class="forgot-form">
-    <p class="message">Forgot your password?</p><br>
-    <input type="password" placeholder="Password"/>
-    <input type="text" placeholder="Email"/>
-    <button>Submit</button>
-    <p class="message">Already registered? <a href="#login.php">Sign In</a></p>
-    <p class="message">Not registered? <a href="#sign-up.php">Create an account</a></p> <!-- needs link to create account -->
+  <div class="loginMessages">
+      <?php
+        if (isset($_GET['reset'])) {
+            echo '<br>A reset link has been emailed to you.';
+        } elseif(isset($_GET['updated'])) {
+            echo '<br>Your password was updated.';
+        } elseif ($login->messages) {
+            echo '<br>';
+            foreach ($login->messages as $msg) {
+              echo $msg . "<br>";
+            }
+        }
+      ?>
+  </div>
+  <br>
+  <form method="post" action="login" name="forgot-form" class="forgot-form">
+    <p class="message">
+        Forgot your password?<br><br>
+        Enter your account email here. A reset link will be sent to you.
+    </p><br>
+    <input id="reset_input_email" name="user_email" type="text" placeholder="Email" required/>
+    <input id="login_input_submit" type="submit" name="reset" value="Send" />
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+    <p class="message">Not registered? <a href="sign-up">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
   <form method="post" action="login" name="login-form">
     <input id="login_input_email" name="user_email" type="text" placeholder="Email" required>
     <input id="login_input_password" name="user_password" type="password" placeholder="Password" required />
     <input id="login_input_submit" type="submit" name="login" value="Log in" />
-    <p class="message">Forgot your password? <a href="#">Get password</a></p>
-    <p class="message">Not registered? <a href="sign-up.php">Create an account</a></p> <!-- needs link to create account -->
+    <p class="message">Forgot your password? <a href="#">Reset password</a></p>
+    <p class="message">Not registered? <a href="sign-up">Create an account</a></p> <!-- needs link to create account -->
   </form>
 
   </div>
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
 
 </body>
 </html>

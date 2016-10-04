@@ -12,6 +12,7 @@
     ],
     
     "require": {
-        "joshcam/mysqli-database-class": "dev-master"
+        "joshcam/mysqli-database-class": "dev-master",
+        "phpmailer/phpmailer": "^5.2"
     }
 }

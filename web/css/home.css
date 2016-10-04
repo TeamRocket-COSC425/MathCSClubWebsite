@@ -84,8 +84,6 @@ text-align:center;
     color: #003366;
 }
 
-
-
 /* LOGIN FORM FROM HERE DOWN!!! */
 .form {
   position: relative;
@@ -138,7 +136,6 @@ text-align:center;
 
 .login-background
  {
-  margin-top: 5%;
     background: url("../images/login.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -163,7 +160,6 @@ div.login-transbox p {
 .loginWords{
   font-size: 36px;
   color: #12BFC3;
-
 }
 
 .loginSubmit{
@@ -254,7 +250,7 @@ table#teams tr:nth-child(even) {
   position: relative;
   width: 24em;
   height: 24em;
-  padding: 2.8em; 
+  padding: 2.8em;
   border-radius: 100%;
   margin: 1.75em auto 0;
 }
@@ -264,7 +260,7 @@ table#teams tr:nth-child(even) {
   position: absolute;
   top: 40%;
   width: 8em; height: 8em;
-  margin: -2em; 
+  margin: -2em;
   border-radius: 50%;
 }
 

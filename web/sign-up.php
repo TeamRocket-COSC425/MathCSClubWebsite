@@ -8,6 +8,7 @@
     $title = "SU Math/CS Club Sign Up";
     include("includes/header.html");
     include("includes/sidenav.html");
+    include("includes/topnav.php");
   }
 ?>
 
@@ -40,18 +41,16 @@
     <input id="reg_input_password_repeat" name="user_password_repeat" type="password" placeholder="Repeat Password" required/>
     <input id="reg_input_firstname" name="user_firstname" type="text" placeholder="First Name" required/>
     <input id="reg_input_lastname" name="user_lastname" type="text" placeholder="Last Name" required/>
-    
-    
-      <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
+
+    <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
       <?php
-      $majors = $db->get('majors');
-      foreach($majors as $major) {
-        $name = $major['major'];
-        echo '<option value="'. $name .'">'. $name .'</option>';
-      }
+        $majors = $db->get('majors');
+        foreach($majors as $major) {
+            $name = $major['major'];
+            echo '<option value="'. $name .'">'. $name .'</option>';
+        }
       ?>
     </select>
-  
 
 	<br>
 	<select id="reg_input_year" name="user_year">
