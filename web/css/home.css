@@ -283,13 +283,8 @@ table#teams tr:nth-child(even) {
   position: relative;
   width: 24em;
   height: 24em;
-<<<<<<< HEAD
   padding: 2.8em; 
   margin-bottom: 6em;
-=======
-  padding: 2.8em;
-  margin-bottom: 2em;
->>>>>>> master
   left: 25em;
 }
 .circle-container a {
