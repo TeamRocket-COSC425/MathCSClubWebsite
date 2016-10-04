@@ -35,6 +35,20 @@
       }
     ?>
   </div>
+  <div class="loginMessages">
+      <?php
+        if (isset($_GET['reset'])) {
+            echo '<br>A reset link has been emailed to you.';
+        } elseif(isset($_GET['updated'])) {
+            echo '<br>Your password was updated.';
+        } elseif ($login->messages) {
+            echo '<br>';
+            foreach ($login->messages as $msg) {
+              echo $msg . "<br>";
+            }
+        }
+      ?>
+  </div>
   <br>
   <form method="post" action="login" name="forgot-form" class="forgot-form">
     <p class="message">

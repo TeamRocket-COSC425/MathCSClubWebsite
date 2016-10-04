@@ -41,6 +41,13 @@ class Login
         elseif (isset($_POST["reset"])) {
             $this->sendResetLink();
         }
+<<<<<<< HEAD
+        // validate token and reset password
+        elseif (isset($_POST["update_password"])) {
+            $this->updatePassword();
+        }
+=======
+>>>>>>> master
     }
 
     /**
@@ -120,29 +127,93 @@ class Login
                 }
 
                 // Send email with reset link including token
-                $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?reset_token=$token";
+                $params = array(
+                    'email' => $user['preferred_email'],
+                    'reset_token' => $token,
+                );
+                $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?" . http_build_query($params);
+                $msg = str_replace('login', 'password_reset', $msg);
 
                 $mail = new PHPMailer;
 
                 $mail->isSMTP();
-                $mail->Host = 'mailtrap.io';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'e3386170e7a765';
-                $mail->Password = 'd8ab29b5c13eb0';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 25;
+                $mail->SMTPDebug = 3;
+                $mail->Debugoutput = 'html';
 
-                $mail->setFrom($user['preferred_email'], "SU Math/CS Club");
+                if (getenv('MAILTRAP_API_TOKEN')) {
+                  $mail->Host = 'mailtrap.io';
+                  $mail->SMTPAuth = true;
+                  $mail->Username = 'e3386170e7a765';
+                  $mail->Password = 'd8ab29b5c13eb0';
+                  $mail->Port = 2525;
+                } else {
+                  $mail->Host = 'localhost';
+                  $mail->Port = 25;
+                }
+
+                $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
+                $mail->addAddress($user['preferred_email']);
                 $mail->Subject = "SU Math/CS Club Password Reset";
                 $mail->Body = $msg;
 
-                if ($mail->send()) {
+                if (!$mail->send()) {
                     $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
                 } else {
                     $this->messages[] = "Message has been sent.";
+
+                    // Assure this code only runs once
+                    header('Location: login?reset');
+                    die();
                 }
+
+                //mail($user['preferred_email'], "Test", "test");
             } else {
                 $this->errors[] = "No user by that email.";
+            }
+        }
+    }
+
+    private function updatePassword()
+    {
+        if (empty($_POST['user_reset_token'])) {
+            $this->errors[] = "No token provided.";
+        } elseif (empty($_POST['user_password_new'])) {
+            $this->errors[] = "No password given.";
+        } elseif (empty($_POST['user_password_repeat'])) {
+            $this->errors[] = "No repeat password given.";
+        } elseif ($_POST['user_password_new'] != $_POST['user_password_repeat']) {
+            $this->errors[] = "Passwords do not match.";
+        } else {
+
+            global $db;
+
+            $db->where('reset_token', $_POST['user_reset_token']);
+            $user = $db->getOne('users');
+
+            if ($user) {
+                $user_password = $_POST['user_password_new'];
+
+                // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
+                // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
+                // PHP 5.3/5.4, by the password hashing compatibility library
+                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
+
+                $data = array(
+                  'password' => $user_password_hash,
+                  'reset_token' => null
+                );
+                $db->where('id', $user['id']);
+                if ($db->update ('users', $data)) {
+                    $this->messages[] = $db->count . ' records were updated';
+
+                    // Assure this code only runs once
+                    header('Location: login?updated');
+                    die();
+                } else {
+                    $this->errors[] = 'update failed: ' . $db->getLastError();
+                }
+            } else {
+                $this->errors[] = "No user with that token.";
             }
         }
     }
