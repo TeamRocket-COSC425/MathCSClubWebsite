@@ -81,38 +81,6 @@ text-align:center;
     margin: 40px auto;
 }
 
-.login-background
- {
-    background: url("../images/login.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-    }
-
-div.login-transbox {
-    margin: 30px;
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.8;
-    filter: alpha(opacity=60);
-}
-
-div.login-transbox p {
-    margin:2 auto;
-    font-weight: bold;
-    color: #000000;
-}
-
-.loginWords{
-  font-size: 36px;
-  color: #12BFC3;
-}
-
-.loginSubmit{
-    background-color:#12BFC3;
-}
-
 /* LOGIN FORM FROM HERE DOWN!!! */
 .form {
   position: relative;
@@ -147,7 +115,7 @@ div.login-transbox p {
   background: #12BFC3;
   width: 100%;
   border: 0;
-  padding: 15px;
+  padding: 9px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -161,6 +129,38 @@ div.login-transbox p {
 
 .form #login_input_submit:hover {
   background: #129FA3;
+}
+
+.login-background
+ {
+    background: url("../images/login.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+
+div.login-transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+}
+
+div.login-transbox p {
+    margin:2 auto;
+    font-weight: bold;
+    color: #000000;
+}
+
+.loginWords{
+  font-size: 36px;
+  color: #12BFC3;
+}
+
+.loginSubmit{
+    background-color:#12BFC3;
 }
 
 .form .message {
@@ -188,20 +188,14 @@ div.login-transbox p {
   clear: both;
 }
 
-/*ACTIVITIES/TRIPS INFINITE ROTATING IMAGES*/
-#activities-rotating-item-wrapper {
-  position: relative;
-  width: 980px;
-  height: 347px;
+/*SIGN UP PAGE STYLING - DROP DOWNS*/
+
+#signUpDrop{
+  font-size: 100%;
+border: 0;
+-webkit-appearance: none;
 }
-.activities-rotating-item {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:980px;
-  height:347px;
-}
+
 
 /* Gullcode/math challenge columns and tables stuff*/
 #cols {
@@ -247,3 +241,34 @@ table#teams tr:nth-child(even) {
   max-width: 100%;
   height: auto;
 }
+
+/* OFFICERS STYLE SHEET */
+.circle-container {
+  position: relative;
+  width: 24em;
+  height: 24em;
+  padding: 2.8em;
+  border-radius: 100%;
+  margin: 1.75em auto 0;
+}
+.circle-container a {
+  /*display: block;*/    /*For some reason this made it not center*/
+  overflow: hidden;
+  position: absolute;
+  top: 40%;
+  width: 8em; height: 8em;
+  margin: -2em;
+  border-radius: 50%;
+}
+
+.groupPic {
+  width: 50%, height: 50%;
+}
+.circle-container img { display: block; width: 100%; }
+.president { transform: rotate(270deg) translate(12em) rotate(-270deg); }
+.treasurer { transform: rotate(167deg) translate(12em) rotate(-167deg); }
+.webMaster { transform: rotate(115.571deg) translate(12em) rotate(-115.571deg); }
+.secretary { transform: rotate(12.713deg) translate(12em) rotate(-12.713deg); }
+.representative { transform: rotate(321.429deg) translate(12em) rotate(-321.329deg); }
+.vicePresident { transform: rotate(218.429deg) translate(12em) rotate(-218.429deg); }
+.DPS { transform: rotate(64.142deg) translate(12em) rotate(-64.142deg); }
