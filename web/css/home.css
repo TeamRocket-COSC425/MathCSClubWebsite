@@ -260,13 +260,15 @@ table#teams tr:nth-child(even) {
   overflow: hidden;
   position: absolute;
   top: 40%;
-  width: 8em; height: 8em;
+  width: 8em;
+  height: 8em;
   margin: -2em; 
   border-radius: 50%;
 }
 
 .groupPic {
-  width: 50%, height: 50%;
+  width: 50%;
+  height: 50%;
 }
 .circle-container img { display: block; width: 100%; }
 .president { transform: rotate(270deg) translate(12em) rotate(-270deg); }
