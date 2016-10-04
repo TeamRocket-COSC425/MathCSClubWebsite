@@ -251,7 +251,7 @@ table#teams tr:nth-child(even) {
   width: 24em;
   height: 24em;
   padding: 2.8em; 
-  margin-bottom: 2em;
+  margin-bottom: 6em;
   left: 25em;
 }
 .circle-container a {
