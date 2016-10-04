@@ -14,7 +14,7 @@
 
 <div id="main">
 
-<div id="content">
+<div id="content" style="background-color: #003366">
 
 <!--Top header line -->
 <header>

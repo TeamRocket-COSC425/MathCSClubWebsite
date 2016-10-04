@@ -283,8 +283,8 @@ table#teams tr:nth-child(even) {
   position: relative;
   width: 24em;
   height: 24em;
-  padding: 2.8em;
-  margin-bottom: 2em;
+  padding: 2.8em; 
+  margin-bottom: 6em;
   left: 25em;
 }
 .circle-container a {
@@ -303,7 +303,7 @@ table#teams tr:nth-child(even) {
   overflow: hidden;
   position: relative;
   border-radius: 50%;
-  right: 6.6em;
+  right: 6.5em;
   top: 5.6em;
 }
 .circle-container img { display: block; width: 100%; }
