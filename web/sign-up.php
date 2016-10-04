@@ -43,27 +43,26 @@
     <input id="reg_input_lastname" name="user_lastname" type="text" placeholder="Last Name" required/>
     
     
-      <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
+      <select id="reg_input_major" name="user_major" required/>
+      <option selected disabled>Major</option>
       <?php
       $majors = $db->get('majors');
       foreach($majors as $major) {
         $name = $major['major'];
-        echo '<option value="'. $name .'">'. $name .'</option>';
+        echo '<option value="'. $name .'">&nbsp;&nbsp;'. $name .'</option>';
       }
       ?>
     </select>
-  
 
 	<br>
-	<select id="reg_input_year" name="user_year">
-	<option value="0">Freshman</option>
-	<option value="1">Sophmore</option>
-	<option value="2">Junior</option>
-	<option value="3">Senior</option>
-	<option value="4">Other</option>
+	<select id="reg_input_year" name="user_year" required>
+    <option selected disabled>&nbsp;&nbsp;Class</option>
+	<option value="0">&nbsp;&nbsp;Freshman</option>
+	<option value="1">&nbsp;&nbsp;Sophmore</option>
+	<option value="2">&nbsp;&nbsp;Junior</option>
+	<option value="3">&nbsp;&nbsp;Senior</option>
+	<option value="4">&nbsp;&nbsp;Other</option>
 	</select>
-	<br><br>
-
 
    <p class="message">Upload a photo:</p>
               <input type="file" name="fileToUpload" id="fileToUpload">
@@ -73,6 +72,7 @@
 
 
   <input id="login_input_submit" type="submit" name="register" value="Register" />
+  <!--submit button needs to do something-->
     <p class="message">Already registered? <a href="login">Login</a></p>
   </form>
 
@@ -82,6 +82,8 @@
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/index.js"></script>
+
+
 
 </body>
 </html>
