@@ -41,13 +41,10 @@ class Login
         elseif (isset($_POST["reset"])) {
             $this->sendResetLink();
         }
-<<<<<<< HEAD
         // validate token and reset password
         elseif (isset($_POST["update_password"])) {
             $this->updatePassword();
         }
-=======
->>>>>>> master
     }
 
     /**
