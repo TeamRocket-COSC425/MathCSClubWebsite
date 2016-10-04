@@ -8,7 +8,7 @@
     $title = "SU Math/CS Club Sign Up";
     include("includes/header.html");
     include("includes/sidenav.html");
-    include("includes/Dashboard.html");
+    include("includes/topnav.php");
   }
 ?>
 
@@ -42,8 +42,7 @@
     <input id="reg_input_firstname" name="user_firstname" type="text" placeholder="First Name" required/>
     <input id="reg_input_lastname" name="user_lastname" type="text" placeholder="Last Name" required/>
     
-    
-      <select id="reg_input_major" name="user_major" required/>
+    <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
       <option selected disabled>Major</option>
       <?php
       $majors = $db->get('majors');
