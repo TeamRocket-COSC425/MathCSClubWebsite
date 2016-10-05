@@ -14,6 +14,7 @@
 
 <head>
   <title>Math CS Club - Reset Password</title>
+  <link rel="stylesheet" href="css/forms.css"/>
 </head>
 
 <body class="login-background">
