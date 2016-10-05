@@ -1,7 +1,7 @@
 <?php
 
-require_once('vendor/autoload.php');
-include_once(__DIR__."/../includes/database.php");
+require_once 'vendor/autoload.php';
+require_once __DIR__."/../includes/database.php";
 
 /**
  * Class login
@@ -66,22 +66,22 @@ class Login
                 $result = $db->where("email", $_POST['user_email'])->getOne("users", null, $cols);
 
                 // if this user exists
-                if ($result) {
+            if ($result) {
 
-                    // using PHP 5.5's password_verify() function to check if the provided password fits
-                    // the hash of that user's password
-                    if (password_verify($_POST['user_password'], $result['password'])) {
+                // using PHP 5.5's password_verify() function to check if the provided password fits
+                // the hash of that user's password
+                if (password_verify($_POST['user_password'], $result['password'])) {
 
-                        // write user data into PHP SESSION (a file on your server)
-                        $_SESSION['user_email'] = $result['email'];
-                        $_SESSION['user_login_status'] = 1;
+                    // write user data into PHP SESSION (a file on your server)
+                    $_SESSION['user_email'] = $result['email'];
+                    $_SESSION['user_login_status'] = 1;
 
-                    } else {
-                        $this->errors[] = "Wrong password. Try again.";
-                    }
                 } else {
-                    $this->errors[] = "This user does not exist.";
+                    $this->errors[] = "Wrong password. Try again.";
                 }
+            } else {
+                $this->errors[] = "This user does not exist.";
+            }
         }
     }
 
@@ -117,7 +117,7 @@ class Login
                     'reset_token' => $token
                 );
                 $db->where('id', $user['id']);
-                if ($db->update ('users', $data)) {
+                if ($db->update('users', $data)) {
                     $this->messages[] = $db->count . ' records were updated';
                 } else {
                     $this->errors[] = 'update failed: ' . $db->getLastError();
@@ -138,14 +138,14 @@ class Login
                 $mail->Debugoutput = 'html';
 
                 if (getenv('MAILTRAP_API_TOKEN')) {
-                  $mail->Host = 'mailtrap.io';
-                  $mail->SMTPAuth = true;
-                  $mail->Username = 'e3386170e7a765';
-                  $mail->Password = 'd8ab29b5c13eb0';
-                  $mail->Port = 2525;
+                    $mail->Host = 'mailtrap.io';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'e3386170e7a765';
+                    $mail->Password = 'd8ab29b5c13eb0';
+                    $mail->Port = 2525;
                 } else {
-                  $mail->Host = 'localhost';
-                  $mail->Port = 25;
+                    $mail->Host = 'localhost';
+                    $mail->Port = 25;
                 }
 
                 $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
@@ -200,7 +200,7 @@ class Login
                   'reset_token' => null
                 );
                 $db->where('id', $user['id']);
-                if ($db->update ('users', $data)) {
+                if ($db->update('users', $data)) {
                     $this->messages[] = $db->count . ' records were updated';
 
                     // Assure this code only runs once
@@ -217,6 +217,7 @@ class Login
 
     /**
      * simply return the current state of the user's login
+     *
      * @return boolean user's login status
      */
     public function isUserLoggedIn()

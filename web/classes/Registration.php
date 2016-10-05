@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__."/../includes/database.php");
+require_once __DIR__."/../includes/database.php";
 
 /**
  * Class registration
@@ -64,30 +64,30 @@ class Registration
                 $db->where('email', $user_email);
                 $existing = $db->get('users');
 
-                if (count($existing) > 0) {
-                    $this->errors = array("Sorry, that username / email address is already taken.", print_r($existing[0]));
+            if (count($existing) > 0) {
+                $this->errors = array("Sorry, that username / email address is already taken.", print_r($existing[0]));
+            } else {
+
+                $data = array(
+                    'email' => $user_email,
+                    'preferred_email' => $user_email, //temp
+                    'password' => $user_password_hash,
+                    'name' => $_POST['user_firstname'] . ' ' . $_POST['user_lastname'],
+                    'year' => $_POST['user_year'],
+                    'major' => $_POST['user_major']
+                );
+
+                // write new user's data into database
+                $id = $db->insert('users', $data);
+
+                // if user has been added successfully
+                if ($id) {
+                    $this->messages[] = "Your account has been created successfully. You can now log in.";
+                    $this->registered = true;
                 } else {
-
-                    $data = array(
-                      'email' => $user_email,
-                      'preferred_email' => $user_email, //temp
-                      'password' => $user_password_hash,
-                      'name' => $_POST['user_firstname'] . ' ' . $_POST['user_lastname'],
-                      'year' => $_POST['user_year'],
-                      'major' => $_POST['user_major']
-                    );
-
-                    // write new user's data into database
-                    $id = $db->insert('users', $data);
-
-                    // if user has been added successfully
-                    if ($id) {
-                        $this->messages[] = "Your account has been created successfully. You can now log in.";
-                        $this->registered = true;
-                    } else {
-                        $this->errors[] = $db->getLastError();
-                    }
+                    $this->errors[] = $db->getLastError();
                 }
+            }
         }
     }
 }
