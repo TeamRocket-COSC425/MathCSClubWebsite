@@ -1,0 +1,20 @@
+#cols5 {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+    -webkit-column-rule: 1px outset #003366;
+    -moz-column-rule: 1px outset #003366;
+    column-rule: 1px outset #003366;
+}
+
+.mentorpic {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+#cols2 {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}

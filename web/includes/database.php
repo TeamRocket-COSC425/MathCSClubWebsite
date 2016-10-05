@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__.'/../vendor/joshcam/mysqli-database-class/MysqliDb.php');
+    require_once(__DIR__.'/../vendor/autoload.php');
 
     if (!MysqliDb::getInstance()) {
         $url = parse_url(getenv("DATABASE_URL"));

@@ -8,6 +8,7 @@
 
 <head>
 	<title>Math CS Club - GullCode</title>
+    <link rel="stylesheet" href="css/math-challenge.css"/>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
  <div class="floated_left">
  	<center><b> About </b></center>
  	The Math Challenge is new to Salisbury. Everyone who signs up for the math challenge will
-	be given problems to solve in a given time limit. 
+	be given problems to solve in a given time limit.
 	awards will be given out for the individual portion; First Place between Freshman and Sophomores
 	&amp; First Place between Juniors and Seniors. In the group portion, teams of three will be given a set
 	of problems to be solved in a set amount of time. There will be a award for First Place, Second

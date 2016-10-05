@@ -1,5 +1,5 @@
-.sidenav,
-#main {
+#main,
+.sidenav {
     transition: all 0.5s ease-out;
 }
 
@@ -23,7 +23,7 @@
 .sidenav #button {
     transform: translate(0px, 0px);
     margin-left: 250px;
-    padding: 0px 6px 0px 6px;
+    padding: 0 6px;
     font-size: 36.5px;
     color: #777;
     cursor: pointer;
@@ -35,7 +35,7 @@
 }
 
 .sidenav > a {
-    padding: 8px 0px 8px 16px;
+    padding: 8px 0 8px 16px;
     font-size: 20px;
     display: block;
     margin-right: 50px;
@@ -46,14 +46,14 @@
     color: #999;
 }
 
-.sidenav a:hover,
+.offcanvas a:focus,
 .sidenav #button:hover,
-.offcanvas a:focus {
+.sidenav a:hover {
     color: #12BFC3;
 }
 
 #navlinks {
-    padding: 16px 0px 16px 0px;
+    padding: 16px 0;
     margin-right: 50px;
     margin-left: 16px;
     overflow: hidden;

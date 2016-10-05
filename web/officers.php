@@ -7,6 +7,7 @@
 
 <head>
 	<title>Math CS Club - Officers</title>
+    <link rel="stylesheet" href="css/officers.css"/>
 </head>
 
 <body>

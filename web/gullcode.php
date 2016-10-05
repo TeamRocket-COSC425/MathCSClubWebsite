@@ -6,6 +6,7 @@
 ?>
 <head>
 	<title>Math CS Club - GullCode</title>
+    <link rel="stylesheet" href="css/gullcode.css"/>
 </head>
 
 <body>

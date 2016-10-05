@@ -1,6 +1,6 @@
 <?php
 
-require_once('vendor/phpmailer/phpmailer/PHPMailerAutoload.php');
+require_once('vendor/autoload.php');
 include_once(__DIR__."/../includes/database.php");
 
 /**

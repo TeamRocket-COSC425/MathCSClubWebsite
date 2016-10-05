@@ -14,6 +14,7 @@
 
 <head>
   <title>Math CS Club - Sign Up</title>
+  <link rel="stylesheet" href="css/forms.css"/>
 </head>
 
 <body class="login-background">
@@ -41,38 +42,39 @@
     <input id="reg_input_password_repeat" name="user_password_repeat" type="password" placeholder="Repeat Password" required/>
     <input id="reg_input_firstname" name="user_firstname" type="text" placeholder="First Name" required/>
     <input id="reg_input_lastname" name="user_lastname" type="text" placeholder="Last Name" required/>
-    
+
+    <p class="message">Major:</p>
     <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
-      <option selected disabled>Major</option>
+      <optgroup label="Major">
       <?php
       $majors = $db->get('majors');
       foreach($majors as $major) {
         $name = $major['major'];
-        echo '<option value="'. $name .'">&nbsp;&nbsp;'. $name .'</option>';
+        echo '<option value="'. $name .'">'. $name .'</option>';
       }
       ?>
+    </optgroup>
     </select>
 
 	<br>
+    <p class="message">Year:</p>
 	<select id="reg_input_year" name="user_year" required>
-    <option selected disabled>&nbsp;&nbsp;Class</option>
-	<option value="0">&nbsp;&nbsp;Freshman</option>
-	<option value="1">&nbsp;&nbsp;Sophmore</option>
-	<option value="2">&nbsp;&nbsp;Junior</option>
-	<option value="3">&nbsp;&nbsp;Senior</option>
-	<option value="4">&nbsp;&nbsp;Other</option>
+    <optgroup label="Class">
+	    <option value="0">Freshman</option>
+	    <option value="1">Sophmore</option>
+	    <option value="2">Junior</option>
+	    <option value="3">Senior</option>
+	    <option value="4">Other</option>
+    </optgroup>
 	</select>
 
-   <p class="message">Upload a photo:</p>
-              <input type="file" name="fileToUpload" id="fileToUpload">
-              <input type="submit" class="message" value="Upload Image" name="submit" required>
-  <br><br>
+   <p class="message">Profile photo:</p>
+   <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload">
+   <br><br>
 
+   <input id="login_input_submit" type="submit" name="register" value="Register" />
 
-
-  <input id="login_input_submit" type="submit" name="register" value="Register" />
-  <!--submit button needs to do something-->
-    <p class="message">Already registered? <a href="login">Login</a></p>
+   <p class="message">Already registered? <a href="login">Login</a></p>
   </form>
 
   </div>

@@ -7,6 +7,7 @@
 
 <head>
 	<title>Math CS Club - Contact Us</title>
+    <link rel="stylesheet" href="css/contact-us.css"/>
 </head>
 
 <body>

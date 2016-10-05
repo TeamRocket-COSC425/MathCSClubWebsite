@@ -7,6 +7,7 @@
 
 <head>
 	<title>Math CS Club - Mentor Program</title>
+    <link rel="stylesheet" href="css/mentor-program.css"/>
 </head>
 
 <body>
@@ -22,12 +23,12 @@ Mentor Program
 <hr style="background-color: #003366; height: 3px;">
 
 <p class="center">
-The SU Math and Computer Science club mento program is a way for underclassmen and upperclassmen to get connected in a way that might not happen otherwise. The upperclassmen become mentors to their underclassmen mentee for the purpose of getting them acclimated to living and studying here at SU. The goal of this program is help incoming students build relationships and hopefully establish a source of support, advice and friedship. 
+The SU Math and Computer Science club mento program is a way for underclassmen and upperclassmen to get connected in a way that might not happen otherwise. The upperclassmen become mentors to their underclassmen mentee for the purpose of getting them acclimated to living and studying here at SU. The goal of this program is help incoming students build relationships and hopefully establish a source of support, advice and friedship.
 </p>
 
 <hr style="background-color: #003366; height: 3px;">
 
-<h2 class="center"> 
+<h2 class="center">
 <u>Meet the Mentors</u>
 </h2>
 

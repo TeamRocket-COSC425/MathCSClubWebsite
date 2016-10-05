@@ -8,25 +8,26 @@
 }
 
 #topnav #sessiondata {
-  color: black;
+    color: black;
 }
 
-#topnav .sessionButton, #sessiondata {
+#sessiondata,
+#topnav .sessionButton {
     text-decoration: none;
     float: right;
     font-size: 16px;
-    padding: 10px 20px 10px 20px;
-    margin: 5px 10px 5px 0px;
+    padding: 10px 20px;
+    margin: 5px 10px 5px 0;
     font-family: Arial;
 }
 
 #topnav .sessionButton {
-  text-align: center;
-  background-color: #CCC;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  color: #003366;
+    text-align: center;
+    background-color: #CCC;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    color: #003366;
 }
 
 #topnav .sessionButton:hover {

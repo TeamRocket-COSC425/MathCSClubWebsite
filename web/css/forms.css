@@ -1,0 +1,147 @@
+.form {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 100px auto 10px;
+    padding: 30px;
+    text-align: center;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background: #fff;
+}
+
+.form input {
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 10px;
+    border: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    outline: 0;
+    background: #f2f2f2;
+}
+
+.form #login_input_submit {
+    font-size: 14px;
+    width: 100%;
+    padding: 9px;
+    cursor: pointer;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    color: #fff;
+    border: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    outline: 0;
+    background: #12bfc3;
+}
+
+.form #login_input_submit:hover {
+    background: #129fa3;
+}
+
+.login-background {
+    background: url('../images/login.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+div.login-transbox {
+    margin: 30px;
+    opacity: 0.8;
+    border: 1px solid black;
+    background-color: #fff;
+    filter: alpha(opacity=60);
+}
+
+div.login-transbox p {
+    font-weight: bold;
+    margin: 2 auto;
+    color: #000;
+}
+
+.loginWords {
+    font-size: 36px;
+    color: #12bfc3;
+}
+
+.loginSubmit {
+    background-color: #12bfc3;
+}
+
+.form .message {
+    font-size: 12px;
+    margin: 0;
+    color: #b3b3b3;
+}
+
+.form .message a {
+    text-decoration: none;
+    color: #12bfc3;
+}
+
+.form .forgot-form {
+    display: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.container:after,
+.container:before {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+/* SIGN UP PAGE STYLING - DROP DOWNS */
+
+.login-form > select {
+    font-size: 14px;
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 9px 10px 9px 10px; /* For some reason these are 2px taller */
+    color: #a9a9a9;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+}
+
+.login-form > option {
+    padding: 100px;
+}
+
+.select:after {
+    content: '▼';
+}
+
+.login-form > option {
+    padding: 15px;
+}
+
+.login-form > li {
+    font-size: 14px;
+    width: 100%;
+    height: 35px;
+    margin: 0 0 15px;
+    padding: 15px;
+    color: #a9a9a9;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+    background-color: #fff;
+}
