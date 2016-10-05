@@ -25,7 +25,7 @@
 <div id="main">
 <div id="content">
 
-<img src="images/mathCSbanner_transparent.png" alt="mathCSbannerIMG" class="homeImage"/><br>
+<!--<img src="images/mathCSbanner_transparent.png" alt="mathCSbannerIMG" class="homeImage"/><br>-->
 <br>
 
 Welcome to the Salisbury University Mathematics and Computer Science Club Website, featuring the Dead Poet's Society!
@@ -36,12 +36,13 @@ math challenge competitions, pumpkin carving, Association for Computing Machiner
 <p>Club meetings currently take place in Henson 101 at 6pm every Thursday. </p>
 
 <br>
+<!--
 <div class="fb-page" data-href="https://www.facebook.com/sumathcoscclub/" data-tabs="timeline" data-width="500px"
 data-height="500px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
 data-show-facepile="true"><blockquote cite="https://www.facebook.com/sumathcoscclub/" class="fb-xfbml-parse-ignore">
 <a href="https://www.facebook.com/sumathcoscclub/">SU Math &amp; COSC Club</a></blockquote>
  </div>
-
+-->
 </div>
 </div>
 

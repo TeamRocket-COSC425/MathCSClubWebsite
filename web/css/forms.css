@@ -108,6 +108,13 @@ div.login-transbox p {
     content: '';
 }
 
+@media (max-width: 1080px) {
+    .form input,
+    .form #login_input_submit {
+        font-size: 20px;
+    }
+}
+
 /* SIGN UP PAGE STYLING - DROP DOWNS */
 
 .login-form > select {

@@ -1,25 +1,31 @@
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+    html { font-size: 20px; }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #003366;
+    margin: 0px;
 }
 
 .homeImage {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
 }
 
 #main {
     margin-left: 50px;
-    margin-top: 50px;
 }
 
 #main #content {
     max-width: 1000px;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
-    padding: 10px;
-    margin: 40px auto;
+    padding: 10px 20px;
+    margin: 0px auto;
     background-color: #CCC;
     color: #003366;
 }

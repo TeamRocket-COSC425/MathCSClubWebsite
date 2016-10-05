@@ -1,9 +1,6 @@
 #topnav {
     position: fixed;
     width: 100%;
-    left: 0;
-    top: 0;
-    height: 50px;
     background-color: #DDD;
 }
 
@@ -15,7 +12,7 @@
 #topnav .sessionButton {
     text-decoration: none;
     float: right;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 10px 20px;
     margin: 5px 10px 5px 0;
     font-family: Arial;

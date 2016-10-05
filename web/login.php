@@ -21,6 +21,7 @@
 <div class="container">
 
 </div>
+<div id="main">
 <div class="form">
   <br>
    <div class="loginWords">
@@ -71,6 +72,7 @@
   </form>
 
   </div>
+</div>
 
   <script src="js/login.js"></script>
 
