@@ -23,7 +23,7 @@
     <img src="images/meeting/fall16september.jpg" alt="meetingpicture" class="mySlides w3-animate-fading"/>
     <img src="images/activities/meetingsp2015.jpg" alt="multicultural day" class="mySlides w3-animate-fading"/>
 	<img src="images/activities/image3.jpg" alt="Wiffle ball" class="mySlides w3-animate-fading"/>
-  	<img src="images/activities/oriolessp2016.png" alt="activities fair" class="mySlides w3-animate-fading"/> 
+  	<img src="images/activities/oriolessp2016.png" alt="activities fair" class="mySlides w3-animate-fading"/>
   	<img src="images/activities/IMG_1895.jpg" alt="chicken dinner" class="mySlides w3-animate-fading"/>
 
 <h1 class="center">
@@ -45,7 +45,8 @@ Fall 2016
 	<b>Details:</b> Game starts at 7:05pm and we will leave the GUC parking lot at 4pm. The Orioles will be playing the Arizona Diamondbacks. It is a fan appreciation night and everyone will recieve a Hyun Soo Kim T-shirt and fireworks will take place after the game. <br>
 	<b>What you need to do:</b> Contact Sam at <u>smaillie1@gulls.salisbury.edu</u> to RSVP and pay. <br>
 <br>
-<img src="images/activities/camdenYards.jpg" alt="Camden Yards"></div>
+<img src="images/activities/camdenyards.jpg" alt="Camden Yards">
+</div>
 
 <button class="accordion">Slaughter House Farm</button>
 <div class="panel">
