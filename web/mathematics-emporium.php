@@ -15,7 +15,7 @@
 
 <div id="content">
  
- <div id="cols2">
+ <div style="-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;">
 <h1 class="center">
 Mathematics Emporium
 </h1>

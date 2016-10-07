@@ -37,41 +37,20 @@ var text = document.forms[0].txt.value;
 text = text.replace(/\r?\n/g, '<br>');
 </script>
 
-<section id="cols5">
-<div>
-<h3 class="center">
+<table id="mentors">
+<th>
 <u>Ben Kenobi</u>
-</h3>
+</th>
+<tr>
+<td>
 <img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</div>
-<div>
-<h3 class="center">
-<u>Ben Kenobi</u>
-</h3>
-<img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</div>
-<div>
-<h3 class="center">
-<u>Ben Kenobi</u>
-</h3>
-<img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</div>
-<div>
-<h3 class="center">
-<u>Ben Kenobi</u>
-</h3>
-<img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</div>
-<div>
-<h3 class="center">
-<u>Ben Kenobi</u>
-</h3>
-<img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</div>
-</section>
+</td>
+</tr>
+</table>
+<br>
 
 <form class="center">
-<textarea style="width: 50%; height:200px; font-size: 20px; border-radius: 8px" name="Mentor Info" placeholder="Select a Mentor" readonly>
+<textarea class="mentorinfo" name="Mentor Info" placeholder="Select a Mentor" readonly>
 </textarea>
 </form>
 
