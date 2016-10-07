@@ -71,3 +71,9 @@ header {
     width: 400px;
     padding: 20px;
 }
+
+#cols {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+}

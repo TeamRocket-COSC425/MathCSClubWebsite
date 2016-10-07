@@ -15,19 +15,17 @@
 
 <div id="main">
 
-<div id="content" style="background-color: #003366">
+<div id="content">
 
 <!--Top header line -->
 <header>
 <code> MATH CHALLENGE</code>
 </header>
-
-
 <br>
 
-
+<div id="cols">
 <!-- About container  -->
- <div class="floated_left">
+ <div class="center">
  	<center><b> About </b></center>
  	The Math Challenge is new to Salisbury. Everyone who signs up for the math challenge will
 	be given problems to solve in a given time limit.
@@ -37,19 +35,14 @@
 	Place, Third Place, and Most Creative Problem Solving Team.
  </div>
 <!-- End About container -->
-<br>
-<br>
-
 <!--Images container -->
- <div class ="floated_middle">
+ <div class="center">
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
 	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
 </div>
 <!--End Images container-->
-
-
 <!--Rules container -->
- <div class="floated_right">
+ <div class="center">
     <center><b><h3>Rules</h3></b></center>
 	There will be a individual and group portion.<br>
 	<b><u>Individual</u></b><br>
@@ -59,13 +52,8 @@
 			<li>There is a time limit</li>
 		</ul>
  </div>
+ </div>
 <!--End Rules container-->
-
-
-
-
-
-
 </div>
 <!--End content container-->
 </div>

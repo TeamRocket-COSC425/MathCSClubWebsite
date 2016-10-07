@@ -1,20 +1,28 @@
-#cols5 {
-    -webkit-column-count: 5;
-    -moz-column-count: 5;
-    column-count: 5;
-    -webkit-column-rule: 1px outset #003366;
-    -moz-column-rule: 1px outset #003366;
-    column-rule: 1px outset #003366;
-}
-
 .mentorpic {
     border-radius: 50%;
-    max-width: 100%;
+    max-width: 30%;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-#cols2 {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
+table #mentors {
+    max-width: 100%
+}
+
+table #mentors th {
+    text-align: center;
+    text-decoration: underline;
+}
+
+table #mentors td {
+    border: 1px solid #333;
+}
+
+.mentorinfo {
+    width: 50%; 
+    height:200px; 
+    font-size: 20px; 
+    border-radius: 8px;
+    border: 3px solid #333;
 }

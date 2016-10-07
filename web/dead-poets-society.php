@@ -6,7 +6,7 @@
 ?>
 
 <head>
-	<title>DPS</title>
+	<title>Dead Poets Society</title>
 </head>
 
 <body>
@@ -18,6 +18,8 @@
 <h1>
 Dead Poets Society
 </h1>
+
+
 
 </div>
 </div>
