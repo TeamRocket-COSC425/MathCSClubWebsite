@@ -19,7 +19,7 @@
 
 <!--Top header line -->
 <header>
-<code> MATH CHALLENGE</code>
+<h1><code> MATH   &nbsp;   &nbsp; CHALLENGE</code></h1>
 </header>
 <br>
 
@@ -43,7 +43,7 @@
 <!--End Images container-->
 <!--Rules container -->
  <div class="center">
-    <center><b><h3>Rules</h3></b></center>
+    <center><b>Rules</b></center>
 	There will be a individual and group portion.<br>
 	<b><u>Individual</u></b><br>
 		<ul>
