@@ -25,33 +25,38 @@
 
 <div id="cols">
 <!-- About container  -->
- <div class="center">
- 	<center><b> About </b></center>
- 	The Math Challenge is new to Salisbury. Everyone who signs up for the math challenge will
-	be given problems to solve in a given time limit.
-	awards will be given out for the individual portion; First Place between Freshman and Sophomores
-	&amp; First Place between Juniors and Seniors. In the group portion, teams of three will be given a set
-	of problems to be solved in a set amount of time. There will be a award for First Place, Second
-	Place, Third Place, and Most Creative Problem Solving Team.
+ <div class="center" style="text-align:justify;">
+ 	<center><b><h3><u> About</u></h3> </b></center>
+ 	The Math Challenge is new to Salisbury University! Are you prepared to test yourself against the mightest of mathematicians? Whether you choose to take the individual challenge or fight side by side against other teams competing, we promise you will take from this a great deal of knowledge and fun! Signing up is easy, just follow information below. 
  </div>
 <!-- End About container -->
 <!--Images container -->
- <div class="center">
+ <div class="center" >
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
 	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
+
+
 </div>
 <!--End Images container-->
 <!--Rules container -->
- <div class="center">
-    <center><b>Rules</b></center>
-	There will be a individual and group portion.<br>
-	<b><u>Individual</u></b><br>
+ <div class="center"style="text-align:justify;">
+    <center><b><h3><u>Rules</u></h3></b></center>
+	
+	<b>Individual</b><br>
 		<ul>
 			<li>Each individual will recieve a certain number of problems. </li>
-			<li>Everyone who signs up will recieve a number of problems.</li>
 			<li>There is a time limit</li>
 		</ul>
+	<b>Group</b><br>
+		<ul>
+			<li>Teams of <b>3</b> will recieve a certain number of problems. </li>
+			<li>There is a time limite </li>
  </div>
+
+ </div>
+  <div class="center">
+ 	<center><b><h3><u>Prizes</u></h3></b></center>
+ 	There will be a award for First Place, Second Place, Third Place, and Most Creative Problem Solving Team.
  </div>
 <!--End Rules container-->
 </div>
