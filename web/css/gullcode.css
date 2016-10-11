@@ -31,3 +31,31 @@ table#teams tr:nth-child(odd) {
 table#teams tr:nth-child(even) {
     background-color:;
 }
+
+.sessionButton {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-family: Arial;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100px;
+}
+
+.sessionButton {
+    text-align: center;
+    color: #111;
+    background-color: #CCC;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.sessionButton:hover {
+    background: #BBB;
+}

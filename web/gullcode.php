@@ -3,6 +3,9 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+
+	require_once("classes/Login.php");
+  	$login = new Login();
 ?>
 <head>
 	<title>Math CS Club - GullCode</title>
@@ -116,6 +119,13 @@ Fall 2016 Teams and Participants
 
 <br>
 
+<?php 
+	if($login->isUserLoggedIn()) {
+		include("views/GC-MC-Register.html");
+	} else {
+		include("views/SignUp.html");
+	}
+?>
 </div>
 </div>
 
