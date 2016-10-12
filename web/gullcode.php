@@ -56,12 +56,12 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 	echo "<th>" . 'Free Agents' . "</th>";
 	while($row = mysql_fetch_array($result)) {   
-		echo "<tr><td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['major'] . "</td><td>" . $row['year'] . "</td></tr>";  */
+		echo "<tr><td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['major'] . "</td><td>" . $row['year'] . "</td></tr>";  
 	}
 
 echo "</table>"; 
 
-mysql_close();
+mysql_close();*/
 
 ?>
 
