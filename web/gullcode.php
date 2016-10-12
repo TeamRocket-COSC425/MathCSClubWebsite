@@ -42,80 +42,22 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <hr style="background-color: #003366; height: 3px;">
 
-<!-- <h2 class="center">
-<code>
-Fall 2016 Teams and Participants
-</code>
-</h2>
+<?php 
+	$connection = mysql_connect('us-cdbr-iron-east-04.cleardb.net','b63248631bc19c','0bfd0b1f');
+	$query = "SELECT name, email, major, year FROM users";
 
+	echo "<table class="Teams"">
 
-<div id="cols">
-<table id="teams">
-<th colspan="3"> Team 1 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td> Name 3 </td>
-<td> Major 3 </td>
-<td> Year 3 </td>
-</tr>
-</table>
+	echo "<th>" . 'Free Agents' . "</th>";
+	while($row = mysql_fetch_array($result)) {   
+		echo "<tr><td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['major'] . "</td><td>" . $row['year'] . "</td></tr>";  
+	}
 
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
+echo "</table>"; 
 
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
-</div>  -->
+mysql_close();
 
-<br>
-
-<table id="teams">
-<th colspan="4"> Free Agents </th>
-<tr>
-<td> Name </td>
-<td> Email </td>
-<td> Major </td>
-<td> Year </td>
-</tr>
-</table>
+?>
 
 <br>
 

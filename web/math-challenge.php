@@ -35,7 +35,7 @@
 <!--Images container -->
  <div class="center" >
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
-	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
+	<img src ="images/math-challenge/mc-triangles.jpg" class ="gullcodepic">
 
 
 </div>
