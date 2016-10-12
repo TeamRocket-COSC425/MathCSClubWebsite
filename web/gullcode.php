@@ -43,25 +43,16 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 <hr style="background-color: #003366; height: 3px;">
 
 <?php 
-	//$query = "SELECT name, email, major, year FROM users";
-
-
-	$cols = Array ("name", "email", "major", "year");
-	$users = $db->get ("users", null, $cols);
-	if ($db->count > 0)
-   	 foreach ($users as $user) { 
-        print_r ($user);
-    }
-	/*echo "<table class="Teams"">
+	$users = $db->get('users');
+	echo "<table class="Teams"">
 
 	echo "<th>" . 'Free Agents' . "</th>";
-	while($row = mysql_fetch_array($result)) {   
-		echo "<tr><td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['major'] . "</td><td>" . $row['year'] . "</td></tr>";  
+	$count = 0;
+	while($count < $users.length) {   
+		echo "<tr><td>" . $users[$count]['name'] . "</td><td>" . $users[$count]['email'] . "</td><td>" . $users[$count]['major'] . "</td><td>" . $users[$count]['year'] . "</td></tr>";  
 	}
 
 echo "</table>"; 
-
-mysql_close();*/
 
 ?>
 
