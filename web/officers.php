@@ -30,6 +30,12 @@ Meet Your Officers
     	  }
     ?>
 </div>
+
+<form method="post" name="officerPic">
+    <p class="message">Enter URL for picture</p>
+    <input id="input_officer_pic" name="officer_pic" type="text" placeholder="URL" required>
+    <input id="login_input_submit" type="submit" name="submit_button" value="Submit" />
+  </form>
 </div>
 </div>
 
