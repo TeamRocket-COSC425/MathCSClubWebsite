@@ -1,0 +1,58 @@
+
+#tabbox
+{
+height:50px
+
+}
+#panel
+{
+background-color:#FFF;
+height:400px;
+
+}
+
+.tab
+{
+background: #dedede;
+display: block;
+height: 50px;
+line-height: 50px;
+text-align: center;
+max-width: 300px;
+float: right;
+font-weight: bold;
+-webkit-border-top-left-radius: 4px;
+-webkit-border-top-right-radius: 4px;
+-moz-border-radius: 4px 4px 0px 0px;
+
+}
+
+a
+{
+color: #000;
+margin: 0;
+padding-left: 10px;
+padding-right: 10px;
+text-decoration: none;
+}
+.gullcode
+{
+margin-left:8px;
+}
+.select
+{
+background-color:#FFF;
+}
+
+#math_challenge_box
+{
+min-height:300px;
+padding:10px;
+}
+#gullcode_box
+{
+min-height:300px;
+padding:10px;
+display:none;
+}
+

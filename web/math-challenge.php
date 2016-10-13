@@ -4,6 +4,8 @@
     include("includes/sidenav.html");
     include("includes/topnav.php");
 
+    require_once("classes/Login.php");
+  	$login = new Login();
 ?>
 
 <head>
@@ -59,6 +61,17 @@
  	There will be a award for First Place, Second Place, Third Place, and Most Creative Problem Solving Team.
  </div>
 <!--End Rules container-->
+
+<br>
+
+<?php 
+	if($login->isUserLoggedIn()) {
+		include("views/GC-MC-Register.html");
+	} else {
+		include("views/SignUp.html");
+	}
+?>
+
 </div>
 <!--End content container-->
 </div>
