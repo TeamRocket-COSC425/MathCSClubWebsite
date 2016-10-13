@@ -32,8 +32,6 @@
 
 <br>
 
-</div>
-<div id="gullcode_box">
 
 
 
@@ -43,13 +41,40 @@
 <!-- if 1 then say you already signed up for gullcode -->
 
 
+
+
+
+
+</div>
+<div id="gullcode_box">
 <code><strong>Gull Code Signup Form</strong></code>
-<br>
-Enter Team Name:
+<?php $db->where ("email",$_SESSION["user_email"]); $user = $db->getOne ("users");?> <br> You have not signed up for Gull Code yet,
+<?php echo $user['name']; ?>
+<br><br>
+Create a Team Name:
 <br>
  <input id="gullcode_team" type="text" name="team_name" placeholder="Team Name"  > <input type = "submit" placeholder="Submit">
 <br>
+<br>
+OR select from the teams below that still need players:
 
+
+<table>
+
+
+<?php
+$cols = Array ("name");
+$users = $db->get ("users", null, $cols);
+?>
+
+<?php
+if ($db->count > 0)
+    foreach ($users as $user) ?> <tr><br> <?php { 
+     print_r ($user); 
+    }?> </tr>
+ ?>
+
+</table>
 
 
 
