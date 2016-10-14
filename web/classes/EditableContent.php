@@ -5,19 +5,35 @@ include_once('classes/Utils.php');
 
 class EditableContent {
 
+    const TABLE_CONTENT = 'page_content';
+    const TABLE_HISTORY = 'page_content_history';
+
+    const COLUMN_ID = 'id';
+    const COLUMN_CONTENT = 'content';
+    const COLUMN_TIMESTAMP = 'timestamp';
+
     private $parser;
 
-    private $filename;
-    private $dir;
+    private $id;
 
-    function __construct($file) {
-        $this->filename = $file;
-        $this->dir      = dirname($this->filename);
+    function __construct($id) {
+        $this->id       = $id;
         $this->parser   = Parsedown::instance();
     }
 
     public function text() {
-        return stream_get_contents(self::getStream());
+      $content = $db->where(self::COLUMN_ID, $this->id)->getOne(self::TABLE_CONTENT);
+
+      if (!$content) {
+        $content = array(
+          self::COLUMN_ID = $this->id;
+          self::COLUMN_CONTENT = self::getDefaultContent();
+          self::COLUMN_TIMESTAMP = $db->now();
+        );
+        $db->insert(self::TABLE_CONTENT, $content);
+      }
+
+      return $content[self::COLUMN_CONTENT];
     }
 
     public function printText() {
@@ -25,8 +41,7 @@ class EditableContent {
     }
 
     public function printHTML() {
-        $text = stream_get_contents(self::getStream());
-        echo $this->parser->text($text);
+        echo $this->parser->text(self::text());
     }
 
     public function printEditBox() {
@@ -46,15 +61,8 @@ class EditableContent {
         }
     }
 
-    public function getStream() {
-        if (!file_exists($this->dir)) {
-            mkdir($this->dir);
-        }
-        if (!file_exists($this->filename)) {
-            $file = fopen($this->filename, 'w') or die("Unable to open file $file!");
-            fwrite($file, file_get_contents('res/template.md'));
-        }
-        return fopen($this->filename, 'r');
+    public function getDefaultContent() {
+      return file_get_contents('res/template.md');
     }
 }
 
