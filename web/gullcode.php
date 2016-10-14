@@ -43,22 +43,33 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 <hr style="background-color: #003366; height: 3px;">
 
 <?php 
-	$db->where ("id", 1);
-$user = $db->getOne ("users");
-echo $user['id'];
+	
+	$users = $db->get('users');
+	echo '<table id="teams">';
 
-$stats = $db->getOne ("users", "sum(id), count(*) as cnt");
-echo "total ".$stats['cnt']. "users found";
-	/*$users = $db->get('users');
-	echo "<table class="Teams"">
+	echo '<th colspan="4">' . 'Free Agents' . "</th>";
 
-	echo "<th>" . 'Free Agents' . "</th>";
-	$count = 0;
-	while($count < $users.length) {   
-		echo "<tr><td>" . $users[$count]['name'] . "</td><td>" . $users[$count]['email'] . "</td><td>" . $users[$count]['major'] . "</td><td>" . $users[$count]['year'] . "</td></tr>";  
+	foreach ($users as $user) {  
+		if ($user['year'] == 0)
+		{
+			$class = 'Freshman';
+		}
+		if ($user['year'] == 1)
+		{
+			$class = 'Sophomore';
+		}
+		if ($user['year'] == 2)
+		{
+			$class = 'Junior';
+		}
+		if ($user['year'] == 3)
+		{
+			$class = 'Senior';
+		}
+		echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . $class . "</td></tr>";  
 	}
 
-echo "</table>"; */
+echo "</table>"; 
 
 ?>
 
