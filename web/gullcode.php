@@ -43,7 +43,13 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 <hr style="background-color: #003366; height: 3px;">
 
 <?php 
-	$users = $db->get('users');
+	$db->where ("id", 1);
+$user = $db->getOne ("users");
+echo $user['id'];
+
+$stats = $db->getOne ("users", "sum(id), count(*) as cnt");
+echo "total ".$stats['cnt']. "users found";
+	/*$users = $db->get('users');
 	echo "<table class="Teams"">
 
 	echo "<th>" . 'Free Agents' . "</th>";
@@ -52,7 +58,7 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 		echo "<tr><td>" . $users[$count]['name'] . "</td><td>" . $users[$count]['email'] . "</td><td>" . $users[$count]['major'] . "</td><td>" . $users[$count]['year'] . "</td></tr>";  
 	}
 
-echo "</table>"; 
+echo "</table>"; */
 
 ?>
 
