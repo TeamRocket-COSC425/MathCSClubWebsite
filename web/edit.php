@@ -16,7 +16,7 @@
     echo "Invalid URL";
     die();
   }
-  if (!isset($_SESSION['admin']) || !$_SESSION['admin']) {
+  if (!Utils::currentUserAdmin()) {
     http_response_code(403);
     echo "You are not authorized to be here!";
     die();
