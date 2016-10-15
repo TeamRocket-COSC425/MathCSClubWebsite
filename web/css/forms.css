@@ -12,11 +12,11 @@
     background: #fff;
 }
 
-.form input {
+input {
     font-size: 14px;
     box-sizing: border-box;
     width: 100%;
-    margin: 0 0 10px;
+    margin-top: 10px;
     padding: 10px;
     border: 0;
     border-top-left-radius: 3px;
@@ -25,27 +25,6 @@
     border-bottom-left-radius: 3px;
     outline: 0;
     background: #f2f2f2;
-}
-
-.form #login_input_submit {
-    font-size: 14px;
-    width: 100%;
-    padding: 9px;
-    cursor: pointer;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    color: #fff;
-    border: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    outline: 0;
-    background: #12bfc3;
-}
-
-.form #login_input_submit:hover {
-    background: #129fa3;
 }
 
 .login-background {

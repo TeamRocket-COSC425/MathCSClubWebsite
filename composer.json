@@ -2,7 +2,7 @@
     "config": {
         "vendor-dir": "web/vendor"
     },
-    
+
     "name": "tterrag/math-cs-club-website",
     "authors": [
         {
@@ -10,11 +10,19 @@
             "email": "tterrag1098@gmail.com"
         }
     ],
-    
+
     "require": {
         "joshcam/mysqli-database-class": "dev-master",
         "phpmailer/phpmailer": "^5.2",
         "twig/twig": "~1.0",
-        "erusev/parsedown": "^1.6"
-    }
+        "erusev/parsedown": "^1.6",
+        "chrisboulton/php-diff": "dev-master"
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/chrisboulton/php-diff"
+        }
+    ]
 }

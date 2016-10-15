@@ -4,9 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6def3cd4944171aa9d18078ed9591054",
-    "content-hash": "079d022e2c042b7baa82e8a717fc98ac",
+    "hash": "c0722172ad494cc53a58c9ffc191eb74",
+    "content-hash": "642a5535311fe2e436bf13093ab41ed8",
     "packages": [
+        {
+            "name": "chrisboulton/php-diff",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chrisboulton/php-diff.git",
+                "reference": "3cb3f7ce6bb8b910f5a41ea1887b1faceba6a7d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chrisboulton/php-diff/zipball/3cb3f7ce6bb8b910f5a41ea1887b1faceba6a7d7",
+                "reference": "3cb3f7ce6bb8b910f5a41ea1887b1faceba6a7d7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Diff": "lib/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Chris Boulton",
+                    "email": "@chrisboulton"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
+            "support": {
+                "source": "https://github.com/chrisboulton/php-diff/tree/master",
+                "issues": "https://github.com/chrisboulton/php-diff/issues"
+            },
+            "time": "2016-10-14 23:54:40"
+        },
         {
             "name": "erusev/parsedown",
             "version": "1.6.0",
@@ -52,12 +88,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joshcam/PHP-MySQLi-Database-Class.git",
-                "reference": "9b9f1b08b5ed06fab1a65e004e152a3692a4c345"
+                "reference": "7f0803aebdfad108515826f4b1ababeddc0818ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joshcam/PHP-MySQLi-Database-Class/zipball/9b9f1b08b5ed06fab1a65e004e152a3692a4c345",
-                "reference": "9b9f1b08b5ed06fab1a65e004e152a3692a4c345",
+                "url": "https://api.github.com/repos/joshcam/PHP-MySQLi-Database-Class/zipball/7f0803aebdfad108515826f4b1ababeddc0818ad",
+                "reference": "7f0803aebdfad108515826f4b1ababeddc0818ad",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +125,7 @@
                 }
             ],
             "description": "PHP MySQL Wrapper and object mapper which utilizes MySQLi and prepared statements",
-            "time": "2016-08-29 16:16:52"
+            "time": "2016-10-02 22:18:02"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -153,16 +189,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.26.0",
+            "version": "v1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513"
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/81c2b5fd36581370c7731387f05dcdb577050513",
-                "reference": "81c2b5fd36581370c7731387f05dcdb577050513",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
+                "reference": "a09d8ee17ac1cfea29ed60c83960ad685c6a898d",
                 "shasum": ""
             },
             "require": {
@@ -210,14 +246,15 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-10-02 16:19:13"
+            "time": "2016-10-05 18:57:41"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "joshcam/mysqli-database-class": 20
+        "joshcam/mysqli-database-class": 20,
+        "chrisboulton/php-diff": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
