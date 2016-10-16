@@ -5,6 +5,7 @@
     top: 0;
     height: 50px;
     background-color: #31a2ac;
+    z-index: 1;
 }
 
 #topnav #sessiondata {
