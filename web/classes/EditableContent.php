@@ -87,7 +87,10 @@ class EditableContent {
             echo '<div class="diff"><div class="difftable">' . $diff->Render($renderer) . '</div>';
 
             ?>
-            <input id="edit_revert_to" type="submit" name="revert_to" value="Revert to This Version" onclick="toggleText(<?php echo "'" . $row[self::COLUMN_TIMESTAMP] . "'" ?>)"/>
+            <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="revert">
+                <input id="edit_revert" type="submit" name="revert" value="Revert to This Version" />
+                <input id="edit_revert_to" type="hidden" name="revert_to" value="<?php echo $row[self::COLUMN_TIMESTAMP] ?>"/>
+            </form>
             </div>
             <?php
 
@@ -127,18 +130,6 @@ class EditableContent {
                     $(".difflist").slideToggle();
                 });
             });
-
-            // lol 2AM
-            function toggleText(id) {
-                var button = $("#edit_revert_to")
-                var val    = button.val()
-                var choices = ["Nah.", "No.", "Nuh-uh.", "Nope.", "Don't feel like it.", "Maybe later.", "I'm busy.", "Try the next button down."]
-                var rand = choices[Math.floor(Math.random() * choices.length)];
-                button.val(rand)
-                setTimeout(function() {
-                    button.val("Revert to This Version")
-                }, 1000);
-            }
 
         </script>
 <?php

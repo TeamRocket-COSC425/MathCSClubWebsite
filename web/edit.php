@@ -18,7 +18,7 @@ if (!isset($_GET['page']) || empty($_GET['page'])) {
     echo "Invalid URL";
     die();
 }
-if (isset($_POST['edit_id']) && !isset($_POST['edit_content'])) {
+if ((isset($_POST['edit_id']) && !isset($_POST['edit_content'])) || (isset($_POST['revert']) && !isset($_POST['revert_to']))) {
     http_response_code(400);
     echo "Malformed Request";
     die();
@@ -43,7 +43,18 @@ if (isset($_GET['page'])) {
     $dest = $_GET['page'];
 }
 
-if (isset($_POST['edit_id'])) {
+if (isset($_POST['revert'])) {
+    // find version we are reverting to
+    $version = $db->where(EditableContent::COLUMN_TIMESTAMP, $_POST['revert_to'])->getOne(EditableContent::TABLE_HISTORY);
+    $id = $version[EditableContent::COLUMN_ID];
+
+    // Delete all newer versions from history
+    $db->where(EditableContent::COLUMN_TIMESTAMP, $version[EditableContent::COLUMN_TIMESTAMP], ">=")->delete(EditableContent::TABLE_HISTORY);
+
+    // Update the content table
+    $db->where(EditableContent::COLUMN_ID, $id)->update(EditableContent::TABLE_CONTENT, $version);
+    
+} elseif (isset($_POST['edit_id'])) {
     $content = new EditableContent($_POST['edit_id']);
     $content->save($_POST['edit_content']);
 
