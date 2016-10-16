@@ -24,7 +24,7 @@ Meet Your Officers
 <div class='circle-container'>
 	<div class='groupPic'><img src="images/officers/fall16septemberOfficers.jpg"></div>
 	<?php
-      	$positions = $db->get('officers');
+      	$positions = $db->get('test_officers');
       	foreach($positions as $pos) {
         	echo '<a  class="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" ></a>';                    
     	  }
@@ -36,6 +36,18 @@ Meet Your Officers
     <input id="input_officer_pic" name="officer_pic" type="text" placeholder="URL" required>
     <input id="login_input_submit" type="submit" name="submit_button" value="Submit" />
   </form>
+
+<?php
+    $data = Array (
+    'image' => $_POST['officer_pic']
+    );
+   
+    $db->where ('name', 'Chelsey Clement');
+    $db->update ('test_officers', $data)
+        //echo $db->count . ' records were updated';
+    //else
+       // echo 'update failed: ' . $db->getLastError();
+?>
 </div>
 </div>
 
