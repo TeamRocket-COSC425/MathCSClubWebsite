@@ -1,64 +1,176 @@
-#mainform {
-    width: 960px;
-    margin: 20px auto;
-    padding-top: 20px;
-    font-family: 'Fauna One', serif;
+/* Primary form styling*/
+.group            { 
+  position:relative; 
+  margin-bottom:45px; 
+  width: 425px;
 }
 
-#form {
-    border-radius: 2px;
-    padding: 20px 30px;
-    box-shadow: 0 0 15px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 350px;
-    margin: 20px 250px 0 35px;
-    float: left;
+
+#outer{ /*same as content class in home.css but without transparency.*/
+    background: #fff;
 }
 
-h3 {
-    text-align: center;
-    font-size: 20px;
+h1{
+margin-bottom: -2%;
+margin-top: 0%;
+}
+p{
+  color: #31a2ac;
+  font-size: 14px;
 }
 
 input {
-    width: 100%;
-    height: 35px;
-    margin-top: 5px;
-    border: 1px solid #999;
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:400px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+/*prevents from box being around text entry spot*/
+input:focus         
+{ 
+    outline:none; 
+} 
+
+/* Moves placeholder above text entry box */
+label                {
+
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+
+}
+
+/* active state, removes placeholder up preventing it from overlapping input */
+input:focus ~ label, input:valid ~ label        {
+  top:-20px;
+  font-size:14px;
+  color:#31a2ac;
+}
+
+/* Makes botom bars bold and color */
+.bar { 
+    position:relative; 
+    display:block; 
+    width:415px; 
+}
+
+.bar:before, .bar:after     {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#31a2ac; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER OVER FORM ANIMATION*/
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#31a2ac; }
+  to    { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#31a2ac; }
+  to    { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#31a2ac; }
+  to    { width:0; background:transparent; }
+}
+
+
+/* Submit button styling */ 
+.btn-start-order {
+    background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
     border-radius: 3px;
-    padding: 5px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+    border-color: #31a2ac;
+    color: #31a2ac;
 }
 
-input[type=button] {
-    background-color: #123456;
-    border: 1px solid white;
-    font-family: 'Fauna One', serif;
-    font-Weight: bold;
-    font-size: 18px;
-    color: white;
+
+/*message text area styling*/
+.group textarea {
+  display: block;
+  width: 415px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  left: 25px;
+  padding: 5px;
+  font-size: 18px;
+  background: none;
+  color: #000;
+  outline:none; 
 }
 
-textarea {
-    width: 100%;
-    height: 80px;
-    margin-top: 5px;
-    border-radius: 3px;
-    padding: 5px;
-    resize: none;
-}
+.group textarea:focus ~ label,
+.group textarea:valid ~ label {
+  top: -20px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color:#31a2ac;
+} /*color specifications*/
 
-require {
-    color: red;
-}
+/*.group textarea:focus ~ .bar:before,
+.group textarea:focus ~ .bar:after {
+  width:425px;
+  left: 1px;
+}*/ /*colored bar dimensions (specifically length)*/
 
-#note {
-    color: black;
-    font-Weight: 400;
-}
-
-#returnmessage {
-    font-size: 14px;
-    color: green;
-    text-align: center;
-}
+.group textarea {
+  height: 100px;
+  width: 415px;
+  overflow: auto;
+  resize: none;
+} /*text area box size*/
