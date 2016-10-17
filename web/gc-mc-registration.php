@@ -22,14 +22,29 @@
 <div id="panel">
 <div id="math_challenge_box">
 <strong><code>Math Challenge Signup Form</code></strong>
- 	<select id="reg_input_group" name="group" required>
-    <optgroup label="Group">
-	    <option value="0">Individual</option>
-	    <option value="1">Team</option>
+ 	
 
-    </optgroup>
-	</select>
+		<form action="">
+		<div id="opwp_woo_tickets">
+			<input type="checkbox" class="maxtickets_enable_cb" name="opwp_wootickets[tickets][0][enable]">Free Agent
+			<div class="max_tickets">
 
+		
+				<input type="text" placeholder="Team Name" name="opwp_wootickets[tickets][0][maxtickets]">
+			</div>
+			<br>
+			T-Shirt Size:
+<select>
+  <option value="small">small</option>
+  <option value="medium">medium</option>
+  <option value="large">large</option>
+  <option value="xlarge">xlarge</option>
+</select>
+         </div>
+
+
+         <button> Register </button>
+		</form>
 <br>
 
 
@@ -48,20 +63,37 @@
 </div>
 <div id="gullcode_box">
 <code><strong>Gull Code Signup Form</strong></code>
-<?php $db->where ("email",$_SESSION["user_email"]); $user = $db->getOne ("users");?> <br> You have not signed up for Gull Code yet,
-<?php echo $user['name']; ?>
-<br><br>
-Create a Team Name:
+<!-- <?php $db->where ("email",$_SESSION["user_email"]); $user = $db->getOne ("users");?> <br> You have not signed up for Gull Code yet,
+<?php echo $user['name']; ?> -->
 <br>
- <input id="gullcode_team" type="text" name="team_name" placeholder="Team Name"  > <input type = "submit" placeholder="Submit">
-<br>
-<br>
-OR select from the teams below that still need players:
+
+
+		<form action="">
+		<div id="opwp_woo_tickets">
+			<input type="checkbox" class="maxtickets_enable_cb" name="opwp_wootickets[tickets][0][enable]">Free Agent
+			<div class="max_tickets">
+
+			<b>Team Name:</b> <br>
+				<input type="text" name="opwp_wootickets[tickets][0][maxtickets]">
+			</div>
+			<br>
+			T-Shirt Size:
+<select>
+  <option value="small">small</option>
+  <option value="medium">medium</option>
+  <option value="large">large</option>
+  <option value="xlarge">xlarge</option>
+</select>
+         </div>
+
+
+         <button> Register </button>
+		</form>
 
 
 <table>
 
-
+<!-- 
 <?php
 $cols = Array ("name");
 $users = $db->get ("users", null, $cols);
@@ -72,7 +104,7 @@ if ($db->count > 0)
     foreach ($users as $user) ?> <tr><br> <?php { 
      print_r ($user); 
     }?> </tr>
- ?>
+ ?> -->
 
 </table>
 
@@ -116,6 +148,16 @@ $("#gullcode_box").slideDown();
 
 });
 
+});
+
+jQuery(document).ready(function($) {
+   // STOCK OPTIONS
+	$('input.maxtickets_enable_cb').change(function(){
+		if ($(this).is(':checked'))
+    $(this).next('div.max_tickets').hide();
+else
+    $(this).next('div.max_tickets').show();
+	}).change();
 });
 </script>
 </body>
