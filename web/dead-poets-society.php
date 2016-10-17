@@ -1,5 +1,8 @@
 <?php
     $title = "SU Math/DPS";
+
+    require_once("classes/EditableContent.php");
+
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
@@ -14,12 +17,9 @@
 <div id="main">
 
 <div id="content">
-
-<h1>
-Dead Poets Society
-</h1>
-
-
+<?php
+  (new EditableContent("dps"))->getContent();
+?>
 
 </div>
 </div>
