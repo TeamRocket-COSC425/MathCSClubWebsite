@@ -59,3 +59,49 @@
 .DPS {
     transform: rotate(64.142deg) translate(14em) rotate(-64.142deg);
 }
+
+/*Speech Bubbles*/
+.bubble 
+{
+    position: relative;
+    width: 240px;
+    height: 300px;
+    padding: 0px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #7F7F7F solid 9px;
+    left: 41em;
+    bottom: 40em;
+}
+
+.bubble:after 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 16px 99px 16px 0;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-top: -16px;
+    left: -99px;
+    top: 26%;
+}
+
+.bubble:before 
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 24px 107px 24px 0;
+    border-color: transparent #7F7F7F;
+    display: block;
+    width: 0;
+    z-index: 0;
+    margin-top: -24px;
+    left: -116px;
+    top: 26%;
+}
