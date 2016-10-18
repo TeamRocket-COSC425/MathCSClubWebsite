@@ -56,8 +56,9 @@ padding:10px;
 display:none;
 }
 
-.gc-mc-background {
-    background: url('../images/gullcode/gullcode-bws.jpg') no-repeat center center fixed;
+.gc-mc-background 
+{
+    background: url('../images/gullcode/gullcode-bws.JPG') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
