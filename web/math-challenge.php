@@ -35,7 +35,7 @@
 <!--Images container -->
  <div class="center" >
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
-	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
+	<img src ="images/math-challenge/mc-triangles.jpg" class ="gullcodepic">
 
 
 </div>
@@ -61,6 +61,38 @@
  	There will be a award for First Place, Second Place, Third Place, and Most Creative Problem Solving Team.
  </div>
 <!--End Rules container-->
+<br>
+
+<?php 
+	
+	$users = $db->get('users');
+	echo '<table id="teams">';
+
+	echo '<th colspan="4">' . 'Free Agents' . "</th>";
+
+	foreach ($users as $user) {  
+		if ($user['year'] == 0)
+		{
+			$class = 'Freshman';
+		}
+		if ($user['year'] == 1)
+		{
+			$class = 'Sophomore';
+		}
+		if ($user['year'] == 2)
+		{
+			$class = 'Junior';
+		}
+		if ($user['year'] == 3)
+		{
+			$class = 'Senior';
+		}
+		echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . $class . "</td></tr>";  
+	}
+
+echo "</table>"; 
+
+?>
 
 <br>
 
