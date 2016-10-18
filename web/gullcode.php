@@ -42,80 +42,36 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <hr style="background-color: #003366; height: 3px;">
 
-<!-- <h2 class="center">
-<code>
-Fall 2016 Teams and Participants
-</code>
-</h2>
+<?php 
+	
+	$users = $db->get('users');
+	echo '<table id="teams">';
 
+	echo '<th colspan="4">' . 'Free Agents' . "</th>";
 
-<div id="cols">
-<table id="teams">
-<th colspan="3"> Team 1 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td> Name 3 </td>
-<td> Major 3 </td>
-<td> Year 3 </td>
-</tr>
-</table>
+	foreach ($users as $user) {  
+		if ($user['year'] == 0)
+		{
+			$class = 'Freshman';
+		}
+		if ($user['year'] == 1)
+		{
+			$class = 'Sophomore';
+		}
+		if ($user['year'] == 2)
+		{
+			$class = 'Junior';
+		}
+		if ($user['year'] == 3)
+		{
+			$class = 'Senior';
+		}
+		echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . $class . "</td></tr>";  
+	}
 
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
+echo "</table>"; 
 
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
-</div>  -->
-
-<br>
-
-<table id="teams">
-<th colspan="4"> Free Agents </th>
-<tr>
-<td> Name </td>
-<td> Email </td>
-<td> Major </td>
-<td> Year </td>
-</tr>
-</table>
+?>
 
 <br>
 
