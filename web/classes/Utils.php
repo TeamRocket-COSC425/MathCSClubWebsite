@@ -22,7 +22,11 @@ class Utils {
     }
 
     public static function currentUserAdmin() {
-        return self::getCurrentUser()?:[self::KEY_ADMIN] === 1;
+        $user = self::getCurrentUser();
+        if ($user) {
+          return $user[self::KEY_ADMIN] === 1;
+        }
+        return false;
     }
 
     public static function editModeEnabled() {
