@@ -50,7 +50,6 @@
         }
       ?>
   </div>
-  <br>
   <form method="post" action="login" name="forgot-form" class="forgot-form">
     <p class="message">
         Forgot your password?<br><br>
@@ -58,6 +57,7 @@
     </p><br>
     <input id="reset_input_email" name="user_email" type="text" placeholder="Email" required/>
     <input id="login_input_submit" type="submit" name="reset" value="Send" />
+    <p/>
     <p class="message">Already registered? <a href="#">Sign In</a></p>
     <p class="message">Not registered? <a href="sign-up">Create an account</a></p> <!-- needs link to create account -->
   </form>
@@ -66,6 +66,7 @@
     <input id="login_input_email" name="user_email" type="text" placeholder="Email" required>
     <input id="login_input_password" name="user_password" type="password" placeholder="Password" required />
     <input id="login_input_submit" type="submit" name="login" value="Log in" />
+    <p/>
     <p class="message">Forgot your password? <a href="#">Reset password</a></p>
     <p class="message">Not registered? <a href="sign-up">Create an account</a></p> <!-- needs link to create account -->
   </form>
