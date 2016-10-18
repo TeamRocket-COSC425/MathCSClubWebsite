@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="login-background">
+<body class="gc-mc-background">
 <div class="container">
 <br><br><br><br><br><br>
 <div id="tabbox">
@@ -20,30 +20,28 @@
 <a href="#" id="math-challenge" class="tab math-challenge">Math Challenge</a>;
 </div>
 <div id="panel">
+
 <div id="math_challenge_box">
-<strong><code>Math Challenge Signup Form</code></strong>
+<center><h1><code>Math Challenge Sign up Form</code></h1></center>
  	
 
 		<form action="">
-		<div id="opwp_woo_tickets">
-			<input type="checkbox" class="maxtickets_enable_cb" name="opwp_wootickets[tickets][0][enable]">Free Agent
-			<div class="max_tickets">
-
-		
-				<input type="text" placeholder="Team Name" name="opwp_wootickets[tickets][0][maxtickets]">
-			</div>
-			<br>
+		<strong><p>Register as (check one):</p></strong>
+		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
+		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<br>
 			T-Shirt Size:
 <select>
+
   <option value="small">small</option>
   <option value="medium">medium</option>
   <option value="large">large</option>
   <option value="xlarge">xlarge</option>
 </select>
-         </div>
+       
 
 
-         <button> Register </button>
+         <button> Submit </button>
 		</form>
 <br>
 
@@ -62,32 +60,29 @@
 
 </div>
 <div id="gullcode_box">
-<code><strong>Gull Code Signup Form</strong></code>
+<center><h1><code>GullCode Sign up Form</code></h1></center>
 <!-- <?php $db->where ("email",$_SESSION["user_email"]); $user = $db->getOne ("users");?> <br> You have not signed up for Gull Code yet,
 <?php echo $user['name']; ?> -->
-<br>
+
 
 
 		<form action="">
-		<div id="opwp_woo_tickets">
-			<input type="checkbox" class="maxtickets_enable_cb" name="opwp_wootickets[tickets][0][enable]">Free Agent
-			<div class="max_tickets">
-
-			<b>Team Name:</b> <br>
-				<input type="text" name="opwp_wootickets[tickets][0][maxtickets]">
-			</div>
-			<br>
+		<strong><p>Register as (check one):</p></strong>
+		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
+		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<br>
 			T-Shirt Size:
 <select>
+
   <option value="small">small</option>
   <option value="medium">medium</option>
   <option value="large">large</option>
   <option value="xlarge">xlarge</option>
 </select>
-         </div>
+       
 
 
-         <button> Register </button>
+         <button> Submit </button>
 		</form>
 
 
