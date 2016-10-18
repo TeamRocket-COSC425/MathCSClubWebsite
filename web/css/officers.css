@@ -65,15 +65,15 @@
 {
     position: relative;
     width: 300px;
-    height: 350px;
+    height: 400px;
     padding: 10px;
     background: #FFFFFF;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     border: #7F7F7F solid 9px;
-    left: 41em;
-    bottom: 40em;
+    left: 20em;
+    bottom: 25em;
     text-align: justify;
 }
 

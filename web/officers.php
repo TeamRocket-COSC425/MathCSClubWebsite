@@ -29,13 +29,19 @@ Meet Your Officers
         	echo '<a  class="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" ></a>';                    
     	  }
     ?>
-</div>
-
- <div class="bubble">
-        <h2>President</h2>
+     <div class="bubble">
+        <h2>Chelsey Clement<br>President</h2>
+        
         <!--<p>I’m also the Chair/Founder of SU ACM Chapter. Currently, I am a Data Analyst for Perdue Farms Inc. This will be my first year as an SI for Math 213 (Statistical Thinking) and Tutor for Project Enchant. I teach advanced tap, modern, jazz, and ballet at Xtreme Dance Studio. In my free time, I ride my motorcycle and take pictures for B&ampB Snapshots.</p>-->
         <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. for quick jigs vex!</p>
+    </div>
 </div>
+
+ <!--<div class="bubble">
+        <h2>President</h2>
+        <p>I’m also the Chair/Founder of SU ACM Chapter. Currently, I am a Data Analyst for Perdue Farms Inc. This will be my first year as an SI for Math 213 (Statistical Thinking) and Tutor for Project Enchant. I teach advanced tap, modern, jazz, and ballet at Xtreme Dance Studio. In my free time, I ride my motorcycle and take pictures for B&ampB Snapshots.</p>
+        <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. for quick jigs vex!</p>
+</div>-->
 
 
 
