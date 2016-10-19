@@ -76,7 +76,7 @@ include("includes/topnav.php");
         <br>
         <h1>Contact Us</h1>
         <p>*All fields are required*</p>
-        <br><br>
+        <br>
 
 
         <form method="POST">
@@ -111,7 +111,6 @@ include("includes/topnav.php");
           <button type="submit" class="btn btn-start-order">Send Message</button>
 
         </form>
-
 
       </div>
     </div>

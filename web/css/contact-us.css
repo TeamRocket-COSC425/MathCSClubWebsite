@@ -14,7 +14,6 @@
 
 #outer{ /*same as content class in home.css but without transparency.*/
   background: #fff;
-  margin-top: 50px;
 }
 
 .messageArea{
