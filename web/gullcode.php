@@ -72,6 +72,13 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <br>
 
+<?php 
+	if($login->isUserLoggedIn()) {
+		include("views/GC-MC-Register.html");
+	} else {
+		include("views/SignUp.html");
+	}
+?>
 
 </div>
 </div>
