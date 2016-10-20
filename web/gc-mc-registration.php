@@ -28,7 +28,7 @@
 		<form action="">
 		<strong><p>Register as (check one):</p></strong>
 		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
-		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" required="Must enter a team name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 		<br>
 			T-Shirt Size:
 <select>
