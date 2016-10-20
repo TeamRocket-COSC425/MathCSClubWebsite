@@ -75,13 +75,7 @@ echo "</table>";
 
 <br>
 
-<?php 
-	if($login->isUserLoggedIn()) {
-		include("views/GC-MC-Register.html");
-	} else {
-		include("views/SignUp.html");
-	}
-?>
+
 </div>
 </div>
 
