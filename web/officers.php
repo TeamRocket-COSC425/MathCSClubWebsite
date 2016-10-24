@@ -13,6 +13,14 @@
 
 <body>
 
+<script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+function toggleByID(IDName) {
+    $("#default").hide();
+    $(".bio").hide();
+    $("#"+IDName).toggle();
+}</script>
+
 <div id="main">
 
 <div id="content">
@@ -26,9 +34,28 @@ Meet Your Officers
 	<?php
       	$positions = $db->get('officers');
       	foreach($positions as $pos) {
-        	echo '<a  class="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" ></a>';                    
+            echo '<a id="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" onclick="toggleByID(\''. $pos["position"] .'-bio\');"></a>';                    
     	  }
     ?>
+
+<div id='officer-bio'>
+    <div id='default'>
+        <p>Click on an officer's picture to learn more about them</p>
+    </div>
+
+    <?php
+        $bios = $db->get('officers');
+        foreach($bios as $bio) {
+            echo '<div id=\'' . $bio["position"] .'-bio\' class=\'bio\'>';
+            echo '<H2>' . $bio["name"] . '</H2>';
+            echo '<H3>' . $bio["title"] . '</H3>';
+            echo '<p>' . $bio["bio"] . '</p>';
+            echo '</div>';
+        }
+
+    ?>
+
+</div>
 </div>
 </div>
 </div>
