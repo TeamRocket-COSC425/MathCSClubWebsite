@@ -5,6 +5,7 @@
     include("includes/topnav.php");
 
 	require_once("classes/Login.php");
+	require_once("classes/Utils.php");
   	$login = new Login();
 ?>
 <head>
@@ -42,35 +43,31 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <hr style="background-color: #003366; height: 3px;">
 
-<?php 
+<?php
+	if($login)
 	
-	$users = $db->get('users');
-	echo '<table id="teams">';
+?>
+<?php 
+	if($login->isUserLoggedIn())
+	{
+		$free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams");
+		$users = $db->get("users");
+		echo '<table id="teams">';
 
-	echo '<th colspan="4">' . 'Free Agents' . "</th>";
+		if($free_agents) {			
+			echo '<th colspan="4">' . 'Free Agents' . "</th>";
+		}
 
-	foreach ($users as $user) {  
-		if ($user['year'] == 0)
-		{
-			$class = 'Freshman';
+		foreach ($free_agents as $free_agent) {  
+			foreach($users as $user) {
+				if ($free_agent['id'] == $user['id']) {
+					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
+				}
+			}
 		}
-		if ($user['year'] == 1)
-		{
-			$class = 'Sophomore';
-		}
-		if ($user['year'] == 2)
-		{
-			$class = 'Junior';
-		}
-		if ($user['year'] == 3)
-		{
-			$class = 'Senior';
-		}
-		echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . $class . "</td></tr>";  
+
+		echo "</table>"; 
 	}
-
-echo "</table>"; 
-
 ?>
 
 <br>
@@ -82,6 +79,7 @@ echo "</table>";
 		include("views/SignUp.html");
 	}
 ?>
+
 </div>
 </div>
 

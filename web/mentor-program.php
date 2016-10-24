@@ -23,7 +23,7 @@ Mentor Program
 <hr style="background-color: #003366; height: 3px;">
 
 <p class="center">
-The SU Math and Computer Science club mento program is a way for underclassmen and upperclassmen to get connected in a way that might not happen otherwise. The upperclassmen become mentors to their underclassmen mentee for the purpose of getting them acclimated to living and studying here at SU. The goal of this program is help incoming students build relationships and hopefully establish a source of support, advice and friedship.
+The SU Math and Computer Science club mentor program is a way for underclassmen and upperclassmen to get connected in a way that might not happen otherwise. The upperclassmen become mentors to their underclassmen mentee for the purpose of getting them acclimated to living and studying here at SU. The goal of this program is help incoming students build relationships and hopefully establish a source of support, advice and friedship.
 </p>
 
 <hr style="background-color: #003366; height: 3px;">
@@ -37,16 +37,19 @@ var text = document.forms[0].txt.value;
 text = text.replace(/\r?\n/g, '<br>');
 </script>
 
-<table id="mentors">
-<th>
-<u>Ben Kenobi</u>
-</th>
-<tr>
-<td>
-<img src="images/mentors/ben-kenobi.jpg" alt="Ben Kenobi" class="mentorpic" onclick="document.forms[0].elements['Mentor Info'].value = 'Name:  Ben Kenobi \nYear:  Senior \nMajor: Jedi \nBio:   Ben is a hermit living in the wastelands of Tatonine. He is incredly wise and would make a great mentor to anyone looking to learn the ways of the force and go on adventures'">
-</td>
-</tr>
-</table>
+<?php 
+	
+	$mentors = $db->where('mentor', 1)->get('users');
+
+	echo '<table id="mentors">';	
+		foreach ($mentors as $mentor) 
+		{  
+			echo "<th>" . $mentor['name'] . "</th>";
+			echo '<tr><td> <img src="' . $mentor["image"] . '"alt="' . 
+			$mentor["name"] . '"class="mentorpic" onclick="document.forms[0].elements["Mentor Info"].value = "' . $mentor["bio"] . '""> </td></tr>';
+		}
+		echo "</table>";
+?>
 <br>
 
 <form class="center">
