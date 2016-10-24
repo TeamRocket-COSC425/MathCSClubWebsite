@@ -5,6 +5,7 @@
     include("includes/topnav.php");
 
     require_once("classes/Login.php");
+    require_once("classes/Utils.php");
   	$login = new Login();
 ?>
 
@@ -35,7 +36,7 @@
 <!--Images container -->
  <div class="center" >
    	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
-	<img src ="images/math-challenge/mc-triangles.jpg"  			 class ="gullcodepic">
+	<img src ="images/math-challenge/mc-triangles.jpg" class ="gullcodepic">
 
 
 </div>
@@ -61,6 +62,30 @@
  	There will be a award for First Place, Second Place, Third Place, and Most Creative Problem Solving Team.
  </div>
 <!--End Rules container-->
+<br>
+
+<?php 
+	if($login->isUserLoggedIn())
+	{
+		$free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams");
+		$users = $db->get("users");
+		echo '<table id="teams">';
+
+		if($free_agents) {			
+			echo '<th colspan="4">' . 'Free Agents' . "</th>";
+		}
+
+		foreach ($free_agents as $free_agent) {  
+			foreach($users as $user) {
+				if ($free_agent['id'] == $user['id']) {
+					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
+				}
+			}
+		}
+
+		echo "</table>"; 
+	}
+?>
 
 <br>
 

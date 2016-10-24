@@ -5,6 +5,7 @@
     include("includes/topnav.php");
 
 	require_once("classes/Login.php");
+	require_once("classes/Utils.php");
   	$login = new Login();
 ?>
 <head>
@@ -42,80 +43,32 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <hr style="background-color: #003366; height: 3px;">
 
-<!-- <h2 class="center">
-<code>
-Fall 2016 Teams and Participants
-</code>
-</h2>
+<?php
+	if($login)
+	
+?>
+<?php 
+	if($login->isUserLoggedIn())
+	{
+		$free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams");
+		$users = $db->get("users");
+		echo '<table id="teams">';
 
+		if($free_agents) {			
+			echo '<th colspan="4">' . 'Free Agents' . "</th>";
+		}
 
-<div id="cols">
-<table id="teams">
-<th colspan="3"> Team 1 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td> Name 3 </td>
-<td> Major 3 </td>
-<td> Year 3 </td>
-</tr>
-</table>
+		foreach ($free_agents as $free_agent) {  
+			foreach($users as $user) {
+				if ($free_agent['id'] == $user['id']) {
+					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
+				}
+			}
+		}
 
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td> Name 2 </td>
-<td> Major 2 </td>
-<td> Year 2 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
-
-<table id="teams">
-<th colspan="3"> Team 2 </th>
-<tr>
-<td> Name 1 </td>
-<td> Major 1 </td>
-<td> Year 1 </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-<tr>
-<td colspan="3"> <?php include("includes/jointeam.html");
-?> </td>
-</tr>
-</table>
-</div>  -->
-
-<br>
-
-<table id="teams">
-<th colspan="4"> Free Agents </th>
-<tr>
-<td> Name </td>
-<td> Email </td>
-<td> Major </td>
-<td> Year </td>
-</tr>
-</table>
+		echo "</table>"; 
+	}
+?>
 
 <br>
 
@@ -126,6 +79,7 @@ Fall 2016 Teams and Participants
 		include("views/SignUp.html");
 	}
 ?>
+
 </div>
 </div>
 
