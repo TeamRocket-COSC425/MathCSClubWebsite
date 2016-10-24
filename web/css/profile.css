@@ -1,0 +1,17 @@
+#main #content {
+  margin-top: 75px;
+}
+
+#left_column {
+  float:left;
+  max-width: 25%;
+}
+
+#right_column {
+  float:right;
+  width: 70%;
+}
+
+#user_info {
+  overflow: auto;
+}

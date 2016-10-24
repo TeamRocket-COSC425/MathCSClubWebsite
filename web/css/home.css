@@ -3,6 +3,15 @@ body {
     background-color: #eee;
 }
 
+a {
+  text-decoration: none;
+  color: #ce8900;
+}
+
+a:visited {
+  color: #689AAB;
+}
+
 #main #content img {
     max-width: 100%;
     height: auto;
@@ -65,6 +74,14 @@ input[type="submit"]:hover {
   border: 2px solid #ddd;
   height: auto !important;
   line-height: normal;
+}
+
+.CodeMirror-fullscreen {
+  z-index: 9999 !important;
+}
+
+.fullscreen {
+  z-index: 9999 !important;
 }
 
 .difflist {
