@@ -56,26 +56,8 @@ require_once('classes/registration-gc-mc.php');
 
          <input name="mc-register" type="submit" value="Register for Math Challenge" class="insert"/>
 
-<?php 
-$db->where ("team_id", 1);
-$mc = $db->getOne ("math_challenge_teams");
-echo $mc['team_name'];
-
-?>
 
 		</form>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -89,8 +71,8 @@ echo $mc['team_name'];
   
 		<form method="post">
 		<label class="radio" for="pick">Register as (check one):</label><br>
-		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
-		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" required="Must Enter Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<input type="radio" name="registert-as" value="0">Free Agent<br>
+		<input type="radio" name="registert-as" value="1">Team <input type="text" name="team-name" placeholder="Team Name" >​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 		<br>
 			T-Shirt Size:
 <select name="t-size">
@@ -105,7 +87,7 @@ echo $mc['team_name'];
 <br><br>
        
 
-<input name="insert" type="submit" value="Register for GullCode" class="insert"/>
+<input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
           
 
 

@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__."/../includes/database.php";
     require_once("classes/Utils.php");
+
+
+
 class math_challenge{
 	 public $errors = array();
 
@@ -14,21 +17,24 @@ class math_challenge{
  private function registerNewMathChallenge()
     {
     	$user = Utils::getCurrentUser();
-            global $db;
-         $or = $_POST['registert-as'];
-       
+        global $db;
+
+         $or = $_POST['registert-as'];       
      
         if( $or != 0)
         {
+           
             $data = array(
-                    'id'=> $user,
-                    'team_id' => $or
-                    );
-            $db->insert('math_challenge_users_on_teams',$data);
-            $data = array(
+
                     'team_name' => $_POST['team-name']);
-                    
-            $id = $db->insert('math_challenge_teams', $data);
+            $id = $db -> insert("math_challenge_teams",$data);
+
+            $team = $db->where("team_name", $_POST['team-name'])->getOne("math_challenge_teams");
+             $data = array(
+                    'id'=> $user['id'],
+                    'team_id' => $team['team_id']
+                    );
+           $id = $db->insert('math_challenge_users_on_teams',$data);
         }
 
          elseif (strlen($_POST['team-name']) < 4) {
@@ -37,45 +43,74 @@ class math_challenge{
             $this->errors[] = "Email cannot be longer than 32 characters";
         }
         else{
-        	$data = array(
-                    'team_name' => $_POST['team-name']);
+        	$data = array('id' => $user['id'],
+                    'team_id' => 0 );
                     
-            $id = $db->insert('math_challenge_teams', $data);
+            $id = $db->insert('math_challenge_users_on_teams', $data);
 }
+            
+             $data = array(
 
+                    't_size' => $_POST['t-size']);
+             $db->where("id", $user['id']);
+            $id = $db ->update('users',$data);
       
     }
 }
-
 class gullcode{
      public $errors = array();
 
     public function __construct()
     {
         if (isset($_POST["gc-register"])) {
-            $this->registerNewGullcode();
+            $this->registerNewGullCode();
         }
     }
 
- private function registerNewGullcode()
+ private function registerNewGullCode()
     {
-        $team_id_counter;
-        if (empty($_POST['register-as'])) {
-            $this->errors[] = "No Placement Selected";
-        
-        } elseif (strlen($_POST['team-name']) < 4) {
+        $user = Utils::getCurrentUser();
+        global $db;
+
+         $or = $_POST['registert-as'];       
+     
+        if( $or != 0)
+        {
+           
+            $data = array(
+
+                    'team_name' => $_POST['team-name']);
+            $id = $db -> insert("gullcode_teams",$data);
+
+            $team = $db->where("team_name", $_POST['team-name'])->getOne("gullcode_teams");
+             $data = array(
+                    'id'=> $user['id'],
+                    'team_id' => $team['team_id']
+                    );
+           $id = $db->insert('gullcode_users_on_teams',$data);
+        }
+
+         elseif (strlen($_POST['team-name']) < 4) {
             $this->errors[] = "Team Name has a minimum length of 4 characters";
         } elseif (strlen($_POST['team-name']) > 32) {
             $this->errors[] = "Email cannot be longer than 32 characters";
         }
-        else
-            global $db;
-            $data = array(
-                    'team_name' => $_POST['team-name']);
+        else{
+
+            $data = array('id' => $user['id'],
+                    'team_id' => 0 );
                     
-$id = $db->insert('gullcode_teams', $data);
+            $id = $db->insert('gullcode_users_on_teams', $data);
 }
+            
+             $data = array(
+
+                    't_size' => $_POST['t-size']);
+             $db->where("id", $user['id']);
+            $id = $db ->update('users',$data);
+      
+    }
 }
 
-?>
+
 ?>
