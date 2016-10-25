@@ -3,157 +3,167 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+require_once('classes/registration-gc-mc.php');
+    $gc = new gullcode();
+    $mc = new math_challenge();
 ?>
 
 <head>
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
-	  <link rel="stylesheet" href="css/forms.css"/>
+	  <link rel="stylesheet" href=""/>
 	  <link rel="stylesheet" href="css/gc-mc-registration.css">
 
 </head>
 
 <body class="gc-mc-background">
 <div class="container">
-<br><br><br><br><br><br>
-<div id="tabbox">
-<a href="#" id="gullcode" class="tab gullcode">Gull Code</a>
-<a href="#" id="math-challenge" class="tab math-challenge">Math Challenge</a>;
-</div>
-<div id="panel">
+<br><br><br><br><br>
 
-<div id="math_challenge_box">
-<center><h1><code>Math Challenge Sign up Form</code></h1></center>
- 	
+<!-- Begin Tabs navigation -->
+<ul class = "tab">
+  <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
+  <h1>Math Challenge</h1></a></li>
+  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
+  <h1>GullCode</h1></a></li>
+</ul>
 
-		<form action="">
-		<strong><p>Register as (check one):</p></strong>
-		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
-		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+<div id="About Me" class="tabcontent">
+         <center><strong> Pick Competition Above </strong> </center>
+      </div>
+<!--Math Challenge Tab Content-->
+<div id="Math-Challenge" class="tabcontent">
+ <center><strong><u>Sign up Form</u></strong></center>
+ 
+		<form method="post">
+		 	
+		<label class="radio" for="pick">Register as (check one):</label>
+		<input class="radio" type="radio" name="registert-as"  value="0">Free Agent<br>
+		<input class="radio" type="radio" name="registert-as"  value="1">Team <input type="text" name="team-name" placeholder="Team Name"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 		<br>
 			T-Shirt Size:
-<select>
-
-  <option value="small">small</option>
-  <option value="medium">medium</option>
-  <option value="large">large</option>
-  <option value="xlarge">xlarge</option>
+<select name="t-size">
+<optgroup label="Class">
+  <option value="0">Small</option>
+  <option value="1">Medium</option>
+  <option value="2">Large</option>
+  <option  value="3">x-large</option>
+  <option value="4">2x-large</option>
+  </optgroup>
 </select>
-       
+       </p>
 
 
-         <button> Submit </button>
-		</form>
-<br>
+         <input name="mc-register" type="submit" value="Register for Math Challenge" class="insert"/>
 
+<?php 
+$db->where ("team_id", 1);
+$mc = $db->getOne ("math_challenge_teams");
+echo $mc['team_name'];
 
-
-
-
-<!-- if the user is logged in and it shows he has a "0" for no team and a "1" if there is a value for team. -->
-<!-- if 0 then ask them to create a team or sign up from list below -->
-<!-- if 1 then say you already signed up for gullcode -->
-
-
-
-
-
-
-</div>
-<div id="gullcode_box">
-<center><h1><code>GullCode Sign up Form</code></h1></center>
-<!-- <?php $db->where ("email",$_SESSION["user_email"]); $user = $db->getOne ("users");?> <br> You have not signed up for Gull Code yet,
-<?php echo $user['name']; ?> -->
-
-
-
-		<form action="">
-		<strong><p>Register as (check one):</p></strong>
-		<input type="radio" name="register-as" value="Free-Agent">Free Agent<br>
-		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-		<br>
-			T-Shirt Size:
-<select>
-
-  <option value="small">small</option>
-  <option value="medium">medium</option>
-  <option value="large">large</option>
-  <option value="xlarge">xlarge</option>
-</select>
-       
-
-
-         <button> Submit </button>
-		</form>
-
-
-<table>
-
-<!-- 
-<?php
-$cols = Array ("name");
-$users = $db->get ("users", null, $cols);
 ?>
 
-<?php
-if ($db->count > 0)
-    foreach ($users as $user) ?> <tr><br> <?php { 
-     print_r ($user); 
-    }?> </tr>
- ?> -->
+		</form>
 
-</table>
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 </div>
+
+	
+
+<!-- GullCode Tab Content-->
+<div id="GullCode" class="tabcontent">
+<center><strong><u> Sign up Form </u></strong></center>
+  
+		<form method="post">
+		<b>Register as (check one):</b><br>
+		<label><input type="radio" name="register-as" value="Free-Agent">Free Agent</label><br>
+		<input type="radio" name="register-as" value="Team">Team <input type="text" name="team-name" placeholder="Team Name" required="Must Enter Team Name" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<br>
+			T-Shirt Size:
+<select>
+
+  <option value="small">small</option>
+  <option value="medium">medium</option>
+  <option value="large">large</option>
+  <option value="xlarge">xlarge</option>
+</select>
+       
+
+<input name="insert" type="submit" value="Register for GullCode" class="insert"/>
+          
+
+
+		</form>
+
 </div>
-</div>
-
-
-</div>
 
 
 
-<!-- below is the script for our tab to change between gullcode and math challenge  -->
-<script type="text/javascript" src="http://ajax.googleapis.com/
-ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function()
-{
+<script>
+document.getElementById("defaultOpen").click();
 
-$(".tab").click(function()
-{
-var X=$(this).attr('id');
-
-if(X=='math-challenge')
-{
-$("#gullcode").removeClass('select');
-$("#math-challenge").addClass('select');
-$("#gullcode_box").slideUp();
-$("#math_challenge_box").slideDown();
+function openTab(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
-else
-{
-$("#math-challenge").removeClass('select');
-$("#gullcode").addClass('select');
-$("#math_challenge_box").slideUp();
-$("#gullcode_box").slideDown();
-}
-
-});
-
-});
-
-jQuery(document).ready(function($) {
-   // STOCK OPTIONS
-	$('input.maxtickets_enable_cb').change(function(){
-		if ($(this).is(':checked'))
-    $(this).next('div.max_tickets').hide();
-else
-    $(this).next('div.max_tickets').show();
-	}).change();
-});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+                                        
 </body>
 </html>
