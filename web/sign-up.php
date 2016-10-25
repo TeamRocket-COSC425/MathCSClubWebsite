@@ -1,7 +1,7 @@
 <?php
   require_once('classes/Registration.php');
-  $login = new Registration();
-  if ($login->registered) {
+  $reg = new Registration();
+  if ($reg->registered) {
     header("Location: login");
     die();
   } else {
@@ -26,9 +26,9 @@
    <div class="loginWords">Math CS Club<br>Sign Up</div>
    <div class="loginErrors" style="color:red;">
      <?php
-      if ($login->errors) {
+      if ($reg->errors) {
         echo "<br>";
-        foreach ($login->errors as $err) {
+        foreach ($reg->errors as $err) {
           echo $err . "<br>";
         }
       }
