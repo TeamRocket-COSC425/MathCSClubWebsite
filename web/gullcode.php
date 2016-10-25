@@ -96,11 +96,27 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <?php 
 	if($login->isUserLoggedIn()) {
-		include("views/GC-MC-Register.html");
+		$user = Utils::getCurrentUser();
+
+        $members = $db->get("gullcode_users_on_teams");
+
+        foreach ($members as $member) {
+            if($member['id'] == $user['id']) {
+                $check = 1;
+            }
+
+        }
+        if($check == 1) {
+            echo("<p class ='center' style='color:red;'><u>You have already registered for gullcode. Check your profile for info</u></p>");
+        }
+        else{
+        	include("views/GC-MC-Register.html");
+        }	
 	} else {
 		include("views/SignUp.html");
 	}
 ?>
+
 
 </div>
 </div>

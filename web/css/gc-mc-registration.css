@@ -20,7 +20,7 @@ ul.tab {
     background-color: white;
     line-height: 20px;
     border-style: ridge;
-    border-color: #12bfc3;
+    border-color: black;
 
 }
 
@@ -73,7 +73,7 @@ ul.tab li a:hover {
 ul.tab li a:focus, .active {
     background-color: white;
     color:black;
-    border-color:gray;
+    border-color:black;
 }
 
 /* Style the tab content */
