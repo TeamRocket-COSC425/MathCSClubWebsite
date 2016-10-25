@@ -54,5 +54,30 @@ class Utils {
 
         return $class;
     }
+
+        public static function t_size($id) {
+        if ($id == 0)
+        {
+             $size = 'Small';
+        }
+        if ($id == 1)
+        {
+            $size = 'Medium';
+        }
+        if ($id == 2)
+        {
+            $size = 'Large';
+        }
+        if ($id == 3)
+        {
+            $size = 'X-Large';
+        }
+        if ($id == 4)
+        {
+            $size = '2X-Large';
+        }
+
+        return $size;
+    }
 }
 ?>

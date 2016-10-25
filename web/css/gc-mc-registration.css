@@ -1,60 +1,5 @@
 
-#tabbox
-{
-height:50px
 
-}
-#panel
-{
-background-color:#FFF;
-height:400px;
-
-}
-
-.tab
-{
-background: #dedede;
-display: block;
-height: 50px;
-line-height: 50px;
-text-align: center;
-max-width: 300px;
-float: right;
-font-weight: bold;
--webkit-border-top-left-radius: 4px;
--webkit-border-top-right-radius: 4px;
--moz-border-radius: 4px 4px 0px 0px;
-
-}
-
-a
-{
-color: #000;
-margin: 0;
-padding-left: 10px;
-padding-right: 10px;
-text-decoration: none;
-}
-.gullcode
-{
-margin-left:8px;
-}
-.select
-{
-background-color:#FFF;
-}
-
-#math_challenge_box
-{
-min-height:300px;
-padding:10px;
-}
-#gullcode_box
-{
-min-height:300px;
-padding:10px;
-display:none;
-}
 
 .gc-mc-background 
 {
@@ -63,4 +8,82 @@ display:none;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+}
+
+
+ul.tab {
+    list-style-type: none;
+    padding-left: 50;
+    width:500px;
+    overflow: hidden;
+    background-color: white;
+    line-height: 20px;
+    border-style: ridge;
+    border-color: #12bfc3;
+
+}
+
+/* Float the list items side by side */
+ul.tab li {
+	float: left;
+	margin-left:-10px;
+	margin-right:20px;
+}
+
+/* Style the links inside the list items */
+ul.tab li a {
+margin: 0 1em 0 0;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 10px 10px;
+    transition: 0.3s;
+    font-size: 17px;
+    color: #12bfc3;;
+   border-bottom: 0.5em solid #12bfc3;
+   text-decoration: none;
+}
+
+.container
+{
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.container:after,
+.container:before {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+    border-color: black;
+    color:black;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: white;
+    color:black;
+    border-color:gray;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    color:black;
+    border-style: ridge;
+    border-width:auto;
+    background: white;
+    border-color: black;
+    width:516px;
 }
