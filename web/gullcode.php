@@ -92,7 +92,7 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 	}
 ?>
 
-<br>
+<br >
 
 <?php 
 	if($login->isUserLoggedIn()) {
