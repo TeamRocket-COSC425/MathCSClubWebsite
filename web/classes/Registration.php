@@ -74,7 +74,8 @@ class Registration
                     'password' => $user_password_hash,
                     'name' => $_POST['user_firstname'] . ' ' . $_POST['user_lastname'],
                     'year' => $_POST['user_year'],
-                    'major' => $_POST['user_major']
+                    'major' => $_POST['user_major'],
+                    'bio' => "This user has not yet created a bio."
                 );
 
                 // write new user's data into database

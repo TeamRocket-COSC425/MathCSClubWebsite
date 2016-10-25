@@ -12,6 +12,24 @@
   width: 70%;
 }
 
+#right_column > div {
+  border-style: solid;
+  border-width: thin;
+  border-radius: 2px;
+  border-color: #aaa;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#right_column h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
 #user_info {
   overflow: auto;
+}
+
+#to_my_profile {
+  max-width: 300px;
 }
