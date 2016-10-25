@@ -53,14 +53,18 @@ if (isset($_POST['revert'])) {
 
     // Update the content table
     $db->where(EditableContent::COLUMN_ID, $id)->update(EditableContent::TABLE_CONTENT, $version);
-    
+
 } elseif (isset($_POST['edit_id'])) {
     $content = new EditableContent($_POST['edit_id']);
     $content->save($_POST['edit_content']);
 
     $_SESSION['edit'] = false;
 } else {
-    $_SESSION['edit'] = true;
+    if (!isset($_SESSION['edit'])) {
+      $_SESSION['edit'] = true;
+    } else {
+      $_SESSION['edit'] = !$_SESSION['edit'];
+    }
 }
 
 header("Location: " . $dest);
