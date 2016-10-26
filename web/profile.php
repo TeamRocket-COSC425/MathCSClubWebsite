@@ -6,6 +6,29 @@
     if (!$login->isUserLoggedIn()) {
       header("Location: home");
     }
+
+    $user = Utils::getCurrentUser();
+    $currentuser = $user;
+
+    $edit = isset($_GET['edit']);
+    if (isset($_GET['user'])) {
+      $user= $db->where('id', $_GET['user'])->getOne('users') ?: $user;
+    }
+
+    // POST handling
+    if (isset($_POST['submit'])) {
+        $data = array(
+            'email' => $_POST['email'],
+            'preferred_email' => $_POST['preferred_email'],
+            'major' => $_POST['major'],
+            'year' => $_POST['year'],
+            't_size' => $_POST['t_size'],
+            'bio' => $_POST['bio']
+        );
+
+        $db->where('id', $user['id'])->update($data);
+    }
+
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
@@ -13,7 +36,8 @@
 
 <head>
 	<title>User Profile</title>
-  <link rel="stylesheet" href="css/profile.css"/>
+    <link rel="stylesheet" href="css/forms.css"/>
+    <link rel="stylesheet" href="css/profile.css"/>
 </head>
 
 <body>
@@ -22,15 +46,7 @@
 
 <div id="content">
 <?php
-  $user = Utils::getCurrentUser();
-  $currentuser = $user;
-
-  $edit = isset($_GET['edit']);
-  if (isset($_GET['user'])) {
-    $user= $db->where('id', $_GET['user'])->getOne('users') ?: $user;
-  }
-
-  if ($user != $currentuser && !Utils::currentUserAdmin()) {
+  if ($edit && $user !== $currentuser && !Utils::currentUserAdmin()) {
 ?>
     <center>
       You cannot edit this page.<br/>
@@ -43,37 +59,78 @@
 
 <div id = "user_info">
 <div id="left_column">
-  <center>
   <?php
     $image = $user['image'];
     if (!$image) {
       $image = "images/loginicon.jpg";
     }
 
-    //if ($edit) {
-      // TODO
-    //} else {
-      echo "<img src=\"$image\" /><br>";
-      echo '<h3>'. $user['name'] .'</h3>';
-      $email = $user['email'];
-      echo 'Email: ' . $email;
-      if ($email !== $user['preferred_email']) {
-        echo '<br>Preferred: ' . $user['preferred_email'];
-      }
-      echo '<br>Major: ' . $user['major'];
-      echo '<br>Year: ' . Utils::year($user['year']);
-      echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
-    //}
+    if ($edit) {
+?>
+        <div class="form">
+            <form method="post" action="profile" id="profile">
+            </form>
+
+            <p class="message">Email:</p>
+            <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>
+
+            <p class="message">Preferred Email:</p>
+            <input form="profile" type="text" name="preferred_email" value="<?php echo $user['preferred_email']; ?>" />
+
+            <!-- TODO this is copied from sign-up.php -->
+            <p class="message">Major:</p>
+            <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
+              <optgroup label="Major">
+              <?php
+              $majors = $db->get('majors');
+              foreach($majors as $major) {
+                $name = $major['major'];
+                echo '<option value="'. $name .'">'. $name .'</option>';
+              }
+              ?>
+            </optgroup>
+            </select>
+
+            <br>
+            <p class="message">Year:</p>
+            <select id="profile_input_year" name="year" required>
+            <optgroup label="Class">
+                <option value="0">Freshman</option>
+                <option value="1">Sophmore</option>
+                <option value="2">Junior</option>
+                <option value="3">Senior</option>
+                <option value="4">Other</option>
+            </optgroup>
+            </select>
+
+            <p class="message">T-Shirt Size:</p>
+            <select id=""
+
+            <input form="profile" type="submit" name="submit" value="Save"/>
+        </div>
+<?php
+    } else {
+        echo "<img src=\"$image\" /><br>";
+        echo '<h3>'. $user['name'] .'</h3>';
+        $email = $user['email'];
+        echo 'Email: ' . $email;
+        if ($email !== $user['preferred_email']) {
+            echo '<br>Preferred: ' . $user['preferred_email'];
+        }
+        echo '<br>Major: ' . $user['major'];
+        echo '<br>Year: ' . Utils::year($user['year']);
+        echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
+
+        $url = strtok($_SERVER['REQUEST_URI'], '?') . '?edit';
+        if (isset($_GET['user'])) {
+            $url = $url . '&user=' . $_GET['user'];
+        }
   ?>
-  <br>
+        <br>
+        <a class="button" href="<?php echo $url; ?>">Edit Profile</a>
   <?php
-    $url = strtok($_SERVER['REQUEST_URI'], '?') . '?edit';
-    if (isset($_GET['user'])) {
-      $url = $url . '&user=' . $_GET['user'];
     }
   ?>
-  <a class="button" href="<?php echo $url; ?>">Edit Profile</a>
-  </center>
 </div>
 <div id="right_column">
   <div id="bio">

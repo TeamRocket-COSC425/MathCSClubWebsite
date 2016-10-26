@@ -16,7 +16,7 @@ input {
     font-size: 14px;
     box-sizing: border-box;
     width: 100%;
-    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     border: 0;
     border-top-left-radius: 3px;
@@ -89,7 +89,7 @@ div.login-transbox p {
 
 /* SIGN UP PAGE STYLING - DROP DOWNS */
 
-.login-form > select {
+select {
     font-size: 14px;
     width: 100%;
     margin: 0 0 10px;
@@ -100,28 +100,10 @@ div.login-transbox p {
     background: #f2f2f2;
 }
 
-.login-form > option {
+option {
     padding: 100px;
 }
 
-.select:after {
-    content: '▼';
-}
-
-.login-form > option {
+option {
     padding: 15px;
 }
-
-.login-form > li {
-    font-size: 14px;
-    width: 100%;
-    height: 35px;
-    margin: 0 0 15px;
-    padding: 15px;
-    color: #a9a9a9;
-    border: none;
-    outline: none;
-    background: #f2f2f2;
-    background-color: #fff;
-}
-
