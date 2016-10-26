@@ -12,7 +12,7 @@
 
     $edit = isset($_GET['edit']);
     if (isset($_GET['user'])) {
-      $user= $db->where('id', $_GET['user'])->getOne('users') ?: $user;
+      $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
 
     // POST handling
@@ -26,7 +26,12 @@
             'bio' => $_POST['bio']
         );
 
-        $db->where('id', $user['id'])->update($data);
+        $db->where('id', $user['id'])->update('users', $data);
+        $loc = "profile";
+        if ($user !== $currentuser) {
+            $loc = $loc . '?' . $user['id'];
+        }
+        header("Location: " . $loc);
     }
 
     include("includes/header.html");
@@ -79,32 +84,40 @@
 
             <!-- TODO this is copied from sign-up.php -->
             <p class="message">Major:</p>
-            <select id="reg_input_major" name="user_major" class="signUpDrop" required/>
+            <select form="profile" id="reg_input_major" name="major" class="signUpDrop" value="<?php echo $user['major'];?>" required/>
               <optgroup label="Major">
-              <?php
+<?php
               $majors = $db->get('majors');
               foreach($majors as $major) {
                 $name = $major['major'];
-                echo '<option value="'. $name .'">'. $name .'</option>';
+                echo '<option ' . ($user['major'] === $name ? 'selected ' : '') . 'value="'. $name .'">'. $name .'</option>';
               }
-              ?>
+?>
             </optgroup>
             </select>
 
             <br>
             <p class="message">Year:</p>
-            <select id="profile_input_year" name="year" required>
+            <select form="profile" id="profile_input_year" name="year" value="<?php echo $user['year'];?>" required>
             <optgroup label="Class">
-                <option value="0">Freshman</option>
-                <option value="1">Sophmore</option>
-                <option value="2">Junior</option>
-                <option value="3">Senior</option>
-                <option value="4">Other</option>
+<?php
+                for ($i = 0; $i <= 4; $i++) {
+                    echo '<option ' . ($user['year'] === $i ? 'selected ' : '') . "value=\"$i\">" . Utils::year($i) . '</option>';
+                }
+?>
             </optgroup>
             </select>
 
             <p class="message">T-Shirt Size:</p>
-            <select id=""
+            <select form="profile" id="profile_input_tsize" name="t_size" selected="<?php echo Utils::t_size($user['t_size']);?>" required>
+                <optgroup label="T-Shirt Size">
+<?php
+                    for ($i = 0; $i <= 4; $i++) {
+                        echo '<option ' . ($user['t_size'] === $i ? 'selected ' : '') . "value=\"$i\">" . Utils::t_size($i) . '</option>';
+                    }
+?>
+                </optgroup>
+            </select>
 
             <input form="profile" type="submit" name="submit" value="Save"/>
         </div>
@@ -137,8 +150,21 @@
     <h3> Bio </h3><hr/>
     <p>
       <?php
-        $parser = Parsedown::instance();
-        echo $parser->text($user['bio']);
+        if ($edit) {
+?>
+            <textarea form="profile" id="profile_input_bio" rows="0" cols="0" name="bio"><?php echo $user['bio']; ?></textarea>
+            <script src="jquery-3.1.0.min.js"></script>
+            <!-- death to package managers -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+            <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+            <script>
+                var simplemde = new SimpleMDE();
+            </script>
+<?php
+        } else {
+            $parser = Parsedown::instance();
+            echo $parser->text($user['bio']);
+        }
       ?>
     </p>
   </div>

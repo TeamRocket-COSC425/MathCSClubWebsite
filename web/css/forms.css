@@ -61,7 +61,7 @@ div.login-transbox p {
 .form .message {
     font-size: 12px;
     margin: 0;
-    color: #b3b3b3;
+    color: #777;
 }
 
 .form .message a {
@@ -94,7 +94,6 @@ select {
     width: 100%;
     margin: 0 0 10px;
     padding: 9px 10px 9px 10px; /* For some reason these are 2px taller */
-    color: #a9a9a9;
     border: none;
     outline: none;
     background: #f2f2f2;
