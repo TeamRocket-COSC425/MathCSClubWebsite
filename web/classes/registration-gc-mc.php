@@ -14,6 +14,23 @@ class math_challenge{
         }
     }
 
+public function teamcheck($id)
+{
+    global $db;
+    $teamid = $db->where('team_name',$id)->getOne('math_challenge_teams');
+    print_r($teamid);
+    if($teamid)
+    {
+       $members = $db->where('team_id', $teamid['team_id'])->get('math_challenge_users_on_teams');
+        if(sizeof($members) < 3)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
  private function registerNewMathChallenge()
     {
     	$user = Utils::getCurrentUser();
@@ -37,13 +54,13 @@ class math_challenge{
            $id = $db->insert('math_challenge_users_on_teams',$data);
         }
 
-            elseif (strlen($_POST['team-name']) < 4) {
+            elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
              echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>Math Challenge Team Name is too short</center>";}
          
-         elseif (strlen($_POST['team-name']) > 32) {
+         elseif ($or != 0 && strlen($_POST['team-name']) > 32) {
                echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:Math Challenge Team Name is too long</center>";}
 
-        elseif(!$this->teamcheck($_POST['team-name']))
+        elseif($or != 0 && !$this->teamcheck($_POST['team-name']))
         {
             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
