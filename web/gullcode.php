@@ -67,34 +67,36 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
      		}
      	}
   	}
-}	
-?>
-<?php 
-	if($login->isUserLoggedIn())
+}
+
+  $joined = $db->join("users u", "u_on_t.id = u.id", "LEFT")->join("gullcode_teams g", "u_on_t.team_id = g.team_id")->where("u_on_t.team_id", 0)->get("gullcode_users_on_teams u_on_t");
+  print_r($joined);
+
+  if($login->isUserLoggedIn())
 	{
 		$free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams");
 		$users = $db->get("users");
 		echo '<table id="teams">';
 
-		if($free_agents) {			
+		if($free_agents) {
 			echo '<th colspan="4">' . 'Free Agents' . "</th>";
 		}
 
-		foreach ($free_agents as $free_agent) {  
+		foreach ($free_agents as $free_agent) {
 			foreach($users as $user) {
 				if ($free_agent['id'] == $user['id']) {
 					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
 				}
 			}
-		}
+    }
 
-		echo "</table>"; 
+		echo "</table>";
 	}
 ?>
 
 <br >
 
-<?php 
+<?php
 	if($login->isUserLoggedIn()) {
 		$user = Utils::getCurrentUser();
 
