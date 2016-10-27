@@ -1,13 +1,14 @@
 .mentorpic {
-    border-radius: 50%;
-    max-width: 30%;
-    height: auto;
+    border-radius: 50% !important;
     display: block;
     margin: 0 auto;
+    width:  200px;
+    height: auto;
 }
 
 table #mentors {
-    max-width: 100%
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 table #mentors th {
@@ -16,7 +17,9 @@ table #mentors th {
 }
 
 table #mentors td {
-    border: 1px solid #333;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 0px;
 }
 
 .mentorinfo {
