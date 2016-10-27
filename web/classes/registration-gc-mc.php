@@ -21,7 +21,7 @@ class math_challenge{
 
          $or = $_POST['registert-as'];       
      
-        if( $or != 0)
+        if( $or != 0 && strlen($_POST['team-name']) > 4 && strlen($_POST['team-name']) < 32 && $this->teamcheck($_POST['team-name']))
         {
            
             $data = array(
@@ -37,11 +37,17 @@ class math_challenge{
            $id = $db->insert('math_challenge_users_on_teams',$data);
         }
 
-         elseif (strlen($_POST['team-name']) < 4) {
-            $this->errors[] = "Team Name has a minimum length of 4 characters";
-        } elseif (strlen($_POST['team-name']) > 32) {
-            $this->errors[] = "Email cannot be longer than 32 characters";
+            elseif (strlen($_POST['team-name']) < 4) {
+             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>Math Challenge Team Name is too short</center>";}
+         
+         elseif (strlen($_POST['team-name']) > 32) {
+               echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:Math Challenge Team Name is too long</center>";}
+
+        elseif(!$this->teamcheck($_POST['team-name']))
+        {
+            echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
+              
         else{
         	$data = array('id' => $user['id'],
                     'team_id' => 0 );
@@ -67,6 +73,26 @@ class gullcode{
         }
     }
 
+public function teamcheck($id)
+{
+    global $db;
+    $teamid = $db->where('team_name',$id)->getOne('gullcode_teams');
+    print_r($teamid);
+    if($teamid)
+    {
+       $members = $db->where('team_id', $teamid['team_id'])->get('gullcode_users_on_teams');
+        if(sizeof($members) < 3)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+
+
  private function registerNewGullCode()
     {
         $user = Utils::getCurrentUser();
@@ -74,7 +100,7 @@ class gullcode{
 
          $or = $_POST['registert-as'];       
      
-        if( $or != 0)
+        if( $or != 0 && strlen($_POST['team-name']) > 4 && strlen($_POST['team-name']) < 32 && $this->teamcheck($_POST['team-name']))
         {
            
             $data = array(
@@ -88,26 +114,35 @@ class gullcode{
                     'team_id' => $team['team_id']
                     );
            $id = $db->insert('gullcode_users_on_teams',$data);
+
         }
 
          elseif (strlen($_POST['team-name']) < 4) {
-            $this->errors[] = "Team Name has a minimum length of 4 characters";
-        } elseif (strlen($_POST['team-name']) > 32) {
-            $this->errors[] = "Email cannot be longer than 32 characters";
+             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>GullCode Team Name is too short</center>";}
+         
+         elseif (strlen($_POST['team-name']) > 32) {
+               echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:GullCode Team Name is too long</center>";}
+
+        elseif(!$this->teamcheck($_POST['team-name']))
+        {
+            echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
+                
         else{
 
             $data = array('id' => $user['id'],
                     'team_id' => 0 );
                     
             $id = $db->insert('gullcode_users_on_teams', $data);
-}
-            
+        }
+
+   
              $data = array(
 
                     't_size' => $_POST['t-size']);
              $db->where("id", $user['id']);
             $id = $db ->update('users',$data);
+
       
     }
 }

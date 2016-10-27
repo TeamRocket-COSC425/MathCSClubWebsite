@@ -14,8 +14,7 @@
 
 ul.tab {
     list-style-type: none;
-    padding-left: 50;
-    width:500px;
+       width:500px;
     overflow: hidden;
     background-color: white;
     line-height: 20px;
@@ -27,8 +26,7 @@ ul.tab {
 /* Float the list items side by side */
 ul.tab li {
 	float: left;
-	margin-left:-10px;
-	margin-right:20px;
+	margin-right:12px;
 }
 
 /* Style the links inside the list items */

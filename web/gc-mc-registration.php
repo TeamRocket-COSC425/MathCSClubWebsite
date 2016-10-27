@@ -18,9 +18,10 @@ require_once('classes/registration-gc-mc.php');
 <body class="gc-mc-background">
 <div class="container">
 <br><br><br><br><br>
-
+  
 <!-- Begin Tabs navigation -->
 <ul class = "tab">
+
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
   <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
   <h1>Math Challenge</h1></a></li>
@@ -29,7 +30,7 @@ require_once('classes/registration-gc-mc.php');
 </ul>
 
 <div id="About Me" class="tabcontent">
-         <center><strong> Pick Competition Above </strong> </center>
+         <center><strong> Select Competition Link Above </strong> </center>
       </div>
 <!--Math Challenge Tab Content-->
 <div id="Math-Challenge" class="tabcontent">

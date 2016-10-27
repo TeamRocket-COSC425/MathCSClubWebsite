@@ -99,7 +99,7 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 		$user = Utils::getCurrentUser();
 
         $members = $db->get("gullcode_users_on_teams");
-
+$check = 0 ;
         foreach ($members as $member) {
             if($member['id'] == $user['id']) {
                 $check = 1;
