@@ -5,11 +5,19 @@
     top: 0;
     height: 50px;
     background-color: #31a2ac;
-    z-index: 1;
+    z-index: 999;
 }
 
 #topnav #sessiondata {
     color: black;
+}
+
+#topnav #sessiondata a {
+  color: #0A318A;
+}
+
+#topnav #sessiondata a:visited {
+  color: #0A318A;
 }
 
 #sessiondata,

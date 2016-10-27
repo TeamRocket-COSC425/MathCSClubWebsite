@@ -44,41 +44,81 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 <hr style="background-color: #003366; height: 3px;">
 
 <?php
-	if($login)
-	
-?>
-<?php 
-	if($login->isUserLoggedIn())
+	if ($login->isUserLoggedIn()) {
+    $admin = Utils::currentUserAdmin();
+    if ($admin) {
+ 		$teams = $db->where("team_id")->get("gullcode_teams");
+ 	  	$team_members = $db->where("team_id")->get("gullcode_users_on_teams");
+      	$users = $db->get("users");
+
+     	foreach ($teams as $team) {
+     		if($teams) {
+     			echo "<table id=teams> <th colspan='5'>" . $team['team_name'] . "</th>";
+      			foreach ($team_members as $team_member) {
+      				if($team['team_id'] == $team_member['team_id']) {
+      					foreach ($users as $user) {
+      						if ($team_member['id'] == $user['id']) {
+      							echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td><td>" . Utils::t_size($user['t_size']) . "</td></tr>";
+      						}
+      					}
+      				}
+      			}
+      			echo "</table> <br>";
+     		}
+     	}
+  	}
+}
+
+  $joined = $db->join("users u", "u_on_t.id = u.id", "LEFT")->join("gullcode_teams g", "u_on_t.team_id = g.team_id")->where("u_on_t.team_id", 0)->get("gullcode_users_on_teams u_on_t");
+  print_r($joined);
+
+  if($login->isUserLoggedIn())
 	{
 		$free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams");
 		$users = $db->get("users");
 		echo '<table id="teams">';
 
-		if($free_agents) {			
+		if($free_agents) {
 			echo '<th colspan="4">' . 'Free Agents' . "</th>";
 		}
 
-		foreach ($free_agents as $free_agent) {  
+		foreach ($free_agents as $free_agent) {
 			foreach($users as $user) {
 				if ($free_agent['id'] == $user['id']) {
 					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
 				}
 			}
-		}
+    }
 
-		echo "</table>"; 
+		echo "</table>";
 	}
 ?>
 
-<br>
+<br >
 
-<?php 
+<?php
 	if($login->isUserLoggedIn()) {
-		include("views/GC-MC-Register.html");
+		$user = Utils::getCurrentUser();
+
+        $members = $db->get("gullcode_users_on_teams");
+		$check = 0 ;
+        foreach ($members as $member) {
+            if($member['id'] == $user['id']) {
+                $check = 1;
+            }
+
+        }
+        if($check == 1) {
+            echo("<p class ='center' style='color:red;'><u>You have already registered for gullcode. Check your profile for info</u></p>");
+        }
+        else{
+        	include("views/GC-MC-Register.html");
+        }	
 	} else {
 		include("views/SignUp.html");
 	}
 ?>
+
 
 </div>
 </div>
