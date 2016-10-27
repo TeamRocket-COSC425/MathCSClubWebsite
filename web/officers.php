@@ -56,15 +56,18 @@ Meet Your Officers
 
     ?>
 </div>
-    <!--<div class='advisor'>-->
-        <div id='advisor1'  class='advisor'>
-            <img src='images/officers/billy.jpg'>
-        </div>
 
-        <div id='advisor2'  class='advisor'>
-            <img src='images/officers/billy.jpg'>
-        </div>
-    <!--</div>-->
+    <?php
+        $advisors = $db->get('club_advisors');
+        foreach($advisors as $advisor) {
+            echo '<div id=\'' . $advisor["position"] . '\' class=\'advisor\'>';
+            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\'></div>';
+            echo '<div class=\'advisorInfo\'>';
+            echo '<H3>' . $advisor["name"] . '</H3>';
+            echo '<H4>' . $advisor["title"] . '</H4>';
+            echo '</div></div>';
+        }
+    ?>
 </div>
 </div>
 </div>

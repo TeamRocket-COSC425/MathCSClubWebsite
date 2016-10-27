@@ -65,6 +65,7 @@
     position: relative;
     margin: auto;
     width: 551px;
+    height: 320px;
     top: 15.5em;
     right: 16.1em;
     padding: 15px;
@@ -82,9 +83,12 @@
 }
 
 .advisor {
-    overflow: hidden;
     position: relative;
-    top: 4em;
+    /*width: 15em;*/
+}
+.advisorPic {
+    position: relative;
+    overflow: hidden;
     width: 10em;
     height: 10em;
     margin: -2em;
@@ -92,11 +96,18 @@
 }
 
 #advisor1 {
-    top: 5em;
-    right: 28em;
+    top: 0em;
+    right: 29em;
 }
 
 #advisor2 {
-    top: -3em;
-    right: -26em;
+    top: -13.2em;
+    right: -27em;
+}
+
+.advisorInfo {
+    top: 2em;
+    right: 9em;
+    position: relative;
+    text-align: center;
 }
