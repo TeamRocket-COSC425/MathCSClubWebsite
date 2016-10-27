@@ -80,3 +80,23 @@
 .bio {
     display: none;
 }
+
+.advisor {
+    overflow: hidden;
+    position: relative;
+    top: 4em;
+    width: 10em;
+    height: 10em;
+    margin: -2em;
+    border-radius: 50%;
+}
+
+#advisor1 {
+    top: 5em;
+    right: 28em;
+}
+
+#advisor2 {
+    top: -3em;
+    right: -26em;
+}

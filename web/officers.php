@@ -39,6 +39,7 @@ Meet Your Officers
     ?>
 
 <div id='officer-bio'>
+
     <div id='default'>
         <p>Click on an officer's picture to learn more about them</p>
     </div>
@@ -54,8 +55,16 @@ Meet Your Officers
         }
 
     ?>
-
 </div>
+    <!--<div class='advisor'>-->
+        <div id='advisor1'  class='advisor'>
+            <img src='images/officers/billy.jpg'>
+        </div>
+
+        <div id='advisor2'  class='advisor'>
+            <img src='images/officers/billy.jpg'>
+        </div>
+    <!--</div>-->
 </div>
 </div>
 </div>
