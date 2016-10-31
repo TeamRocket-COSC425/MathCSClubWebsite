@@ -47,7 +47,7 @@ if($login->isUserLoggedIn()) {
         }
         if($check == 1) {
             echo("<div id='Math-Challenge' class='tabcontent'>
-              <p class ='center' style='color:red;'><u>You have already registered for Math Challenge. Check your profile for info</u></p>
+              <p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for Math Challenge.<br>Check your profile for more info</b></p>
               </div>");
         }
         else{
@@ -102,7 +102,9 @@ if($login->isUserLoggedIn()) {
 
         }
         if($check == 1) {
-            echo("<div id='GullCode' class='tabcontent'><p class ='center' style='color:red;'><u>You have already registered for gullcode. Check your profile for info</u></p> </div>");
+             echo("<div id='GullCode' class='tabcontent'>
+              <p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for GullCode.<br>Check your profile for more info</b></p>
+              </div>");
         }
         else{
           echo('<div id="GullCode" class="tabcontent">
