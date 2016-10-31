@@ -59,7 +59,7 @@ public function teamcheck($id)
         }
 
             elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
-             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>Math Challenge Team Name is too short</center>";}
+             echo "<br><br><center><div  style='color:red; width:20%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>Math Challenge Team Name is too short</center>";}
          
          elseif ($or != 0 && strlen($_POST['team-name']) > 32) {
                echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:Math Challenge Team Name is too long</center>";}
