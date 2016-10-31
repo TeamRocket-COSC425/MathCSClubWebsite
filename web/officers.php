@@ -19,7 +19,9 @@ function toggleByID(IDName) {
     $("#default").hide();
     $(".bio").hide();
     $("#"+IDName).toggle();
-}</script>
+    $('html, body').animate({ scrollTop: $('#officer-bio').offset().top }, 'slow');
+}
+</script>
 
 <div id="main">
 
