@@ -208,7 +208,7 @@
 <?php
     } else {
         echo "<img src=\"$image\" />";
-        echo '<center><h3>'. $user['name'] .'</h3></center>';
+        echo '<center><h3>'. $user['name'] . ($admin ? ' (Admin)' : '') . '</h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
         if ($email !== $user['preferred_email']) {

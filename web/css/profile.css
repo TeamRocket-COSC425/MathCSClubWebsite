@@ -18,10 +18,11 @@
   width: 70%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     #left_column {
         float: none;
         max-width: 100%;
+        text-align: center;
     }
 
     #right_column {
