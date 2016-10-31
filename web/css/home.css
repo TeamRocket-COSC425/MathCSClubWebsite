@@ -1,3 +1,24 @@
+/*@media screen and (min-width:320px) and (max-width:640px) {
+   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide 
+}
+*/
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+
+
+#main {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+    #main #content {
+      width: 100% ;
+      font-size: 10px;
+  }
+
+}
+
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #eee;

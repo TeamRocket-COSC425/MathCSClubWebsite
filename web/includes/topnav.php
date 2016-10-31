@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/topnav.css"/>
-
+<div class="col-6">
 <?php
   require_once("classes/Login.php");
   require_once("classes/Utils.php");
@@ -22,3 +22,4 @@
   }
   echo '</div>';
 ?>
+</div>

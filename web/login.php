@@ -20,7 +20,6 @@
 <body class="login-background">
 <div class="container">
 
-</div>
 <div class="form">
   <br>
    <div class="loginWords">
@@ -72,6 +71,8 @@
   </form>
 
   </div>
+</div>
+</div>
 
   <script src="js/login.js"></script>
 
