@@ -29,7 +29,8 @@
 
 		// Make sure we have a new image at all
 		if ($_FILES['image']['size'] !== 0) {
-			$target_dir = 'uploads/';
+
+			$target_dir = 'images/';
 			// Grab file extension
 			$imageFileType = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 			// Generate a file name based on the md5 hash of the file content
@@ -46,22 +47,38 @@
 			// Make sure the file is an image
 			if (!in_array($imageFileType, $allowed_types)) {
 				$uploadOk = 0;
-				$upload_error_message = "Image type not allowed. Must be one of " . implode(', ', $allowed_types) . '.';
+				$upload_error_message = "Image type \"" . $imageFileType . "\" not allowed. Must be one of " . implode(', ', $allowed_types) . '.';
 			}
 			// If we are still good, begin upload process
 			if ($uploadOk == 1) {
 				if ($check) {
-					// If the file already exists, reuse it.
-					if (!file_exists($target_file)) {
-						// Otherwise, move the tmp file into the real file's location
-						if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-							//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-						} else {
-							$uploadOk = 0;
-							$upload_error_message = "Sorry, there was an error uploading your file.";
+
+					if (getenv('S3_BUCKET')) {
+						// S3 info available, upload to AWS
+						$s3 = Aws\S3\S3Client::factory();
+						$bucket = getenv('S3_BUCKET') ?: die('No "S3_BUCKET" config found in env!');
+
+						$upload = $s3->upload($bucket, $target_file, fopen($_FILES['image']['tmp_name'], 'rb'), 'public-read');
+						$db->where('id', $user['id'])->update('users', array('image' => $upload->get('ObjectURL')));
+					} else {
+						// Move into uploads folder, we are on local
+						$target_file = 'uploads/' . $target_file;
+
+						// If the file already exists, reuse it.
+						if (!file_exists($target_file)) {
+							// Otherwise, move the tmp file into the real file's location
+							if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+								//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+							} else {
+								$uploadOk = 0;
+								$upload_error_message = "Sorry, there was an error uploading your file.";
+							}
+						}
+
+						if ($uploadOk == 1) {
+							$db->where('id', $user['id'])->update('users', array('image' => $target_file));
 						}
 					}
-					$db->where('id', $user['id'])->update('users', array('image' => $target_file));
 				} else {
 					// Unknown error
 					$uploadOk = 0;
