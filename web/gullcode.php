@@ -6,6 +6,7 @@
 
 	require_once("classes/Login.php");
 	require_once("classes/Utils.php");
+  require_once("classes/EditableContent.php");
   	$login = new Login();
 ?>
 <head>
@@ -18,7 +19,7 @@
 <div id="main">
 
 <div id="content">
-
+<?php (new EditableContent("gullcode"))->getContent(); ?>
 <h1 class="center">
 <code>
 GullCode
@@ -68,9 +69,6 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
      	}
   	}
 }
-
-  $joined = $db->join("users u", "u_on_t.id = u.id", "LEFT")->join("gullcode_teams g", "u_on_t.team_id = g.team_id")->where("u_on_t.team_id", 0)->get("gullcode_users_on_teams u_on_t");
-  print_r($joined);
 
   if($login->isUserLoggedIn())
 	{

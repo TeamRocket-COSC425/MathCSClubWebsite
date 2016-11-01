@@ -107,7 +107,7 @@ class Login
             $this->errors[] = "Email field was empty.";
         } else {
 
-            $user = $db->where("email", $_POST["user_email"])->getOne("users");
+            $user = $db->where("email", $_POST["user_email"])->orWhere("preferred_email", $_POST["user_email"])->getOne("users");
 
             if ($user) {
                 // Generate token

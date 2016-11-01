@@ -53,7 +53,7 @@
   <form method="post" action="login" name="forgot-form" class="forgot-form">
     <p class="message">
         Forgot your password?<br><br>
-        Enter your account email here. A reset link will be sent to you.
+        Enter either your SU or Preferred email here. A reset link will be sent to you.
     </p><br>
     <input id="reset_input_email" name="user_email" type="text" placeholder="Email" required/>
     <input id="login_input_submit" type="submit" name="reset" value="Send" />
