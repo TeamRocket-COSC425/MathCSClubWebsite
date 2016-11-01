@@ -10,7 +10,7 @@ require_once('classes/registration-gc-mc.php');
 
 <head>
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
-	  <link rel="stylesheet" href=""/>
+	  <link rel="stylesheet" href="css/forms.css"/>
 	  <link rel="stylesheet" href="css/gc-mc-registration.css">
 
 </head>
@@ -51,28 +51,35 @@ if($login->isUserLoggedIn()) {
               </div>");
         }
         else{
-          echo('
+          ?>
 <div id="Math-Challenge" class="tabcontent">
- <center><strong><u>Sign up Form</u></strong></center>
+<center><strong><u>Sign up Form</u></strong></center>
  
-		<form method="post">
+	<form method="post">
 		 	
-		<label class="radio" for="pick">Register as (check one):</label><br>
-		<input class="radio" type="radio" name="registert-as"  value="0">Free Agent<br>
-		<input class="radio" type="radio" name="registert-as"  value="1">Team <input type="text" name="team-name" placeholder="Team Name"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+		<select id="registert-as" name="registert-as" required>
+	    	<option> Choose how to Sign up </option>
+		    <option value="0">Free Agent</option>
+		    <option value="1">Team</option>
+    	
+		</select>
+	
+		<div id="team">
+        	<input type="text" placeholder="Team Name" name="team-name" />
+    	</div>
+		
 		<br>
 			T-Shirt Size:
-<select name="t-size">
-<optgroup label="Class">
-  <option value="0">Small</option>
-  <option value="1">Medium</option>
-  <option value="2">Large</option>
-  <option  value="3">x-large</option>
-  <option value="4">2x-large</option>
-  </optgroup>
-</select>
-       </p>
-
+		<select name="t-size">
+			<optgroup label="Class">
+	  			<option value="0">Small</option>
+	  			<option value="1">Medium</option>
+	  			<option value="2">Large</option>
+	  			<option  value="3">x-large</option>
+	  			<option value="4">2x-large</option>
+  			</optgroup>
+		</select>
+       
 
          <input name="mc-register" type="submit" value="Register for Math Challenge" class="insert"/>
 
@@ -81,7 +88,7 @@ if($login->isUserLoggedIn()) {
 
 
 
-</div>');
+</div><?php
         }
       }
           ?>
@@ -107,30 +114,44 @@ if($login->isUserLoggedIn()) {
               </div>");
         }
         else{
-          echo('<div id="GullCode" class="tabcontent">
-          <center><strong><u> Sign up Form </u></strong></center>
-  
-		      <form method="post">
-		      <label class="radio" for="pick">Register as (check one):</label><br>
-		      <input type="radio" name="registert-as" value="0">Free Agent<br>
-		      <input type="radio" name="registert-as" value="1">Team <input type="text" name="team-name" placeholder="Team Name" >​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-		      <br>
-			     T-Shirt Size:
-          <select name="t-size">
-          <optgroup label="Class">
-          <option value="0">Small</option>
-          <option value="1">Medium</option>
-          <option value="2">Large</option>
-          <option  value="3">x-large</option>
-          <option value="4">2x-large</option>
-          </optgroup>
-          </select>
-          <br><br>
+             ?>
+<div id="GullCode" class="tabcontent">
+<center><strong><u>Sign up Form</u></strong></center>
+ 
+	<form method="post">
+		 	
+		<select id="registert-as" name="registert-as" required>
+	    	<option> Choose how to Sign up </option>
+		    <option value="0">Free Agent</option>
+		    <option value="1">Team</option>
+    	
+		</select>
+	
+		<div id="team">
+        	<input type="text" placeholder="Team Name" name="team-name" />
+    	</div>
+		
+		<br>
+			T-Shirt Size:
+		<select name="t-size">
+			<optgroup label="Class">
+	  			<option value="0">Small</option>
+	  			<option value="1">Medium</option>
+	  			<option value="2">Large</option>
+	  			<option  value="3">x-large</option>
+	  			<option value="4">2x-large</option>
+  			</optgroup>
+		</select>
+       
 
-          <input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
-          
-	       	</form>
-          </div>');
+         <input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
+
+
+		</form>
+
+
+
+</div><?php
         }
   }
 ?>
@@ -151,6 +172,25 @@ function openTab(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+}
+</script>
+
+<script>
+
+$(document).ready(function () {
+    toggleFields(); // call this first so we start out with the correct visibility depending on the selected form values
+    // this will call our toggleFields function every time the selection value of our other field changes
+    $("#registert-as").change(function () {
+        toggleFields();
+    });
+
+});
+// this toggles the visibility of other server
+function toggleFields() {
+    if ($("#registert-as").val() == "1")
+        $("#team").show();
+    else
+        $("#team").hide();
 }
 </script>
 
