@@ -71,22 +71,22 @@ if($login->isUserLoggedIn()) {
 	<p class="message">Highest Math Course Taken(Select One):</p>
 		<select name="mcourse">
 			<optgroup label="Choose Highest Math Course Taken">
-	  			<option value="5">MATH 155 Modern Statistics With Computer Analysis</option>
-	  			<option value="6">MATH 160 Introduction to Applied Calculus</option>
-	  			<option value="7">MATH 201 Calculus I</option>
-	  			<option value="1">MATH 202 Calculus II</option>
-	  			<option value="8">MATH 213/214 Statistical Thinking</option>
-	  			<option value="9">MATH 215 Intro to Financial Mathematics</option>
-	  			<option value="10">MATH 300 Intro to Abstract Mathematics</option>
-	  			<option value="11">MATH 306 Linear Algebra </option>
-	  			<option value="12">MATH 310 Calculus III</option>
-	  			<option value="13">MATH 311 Differential Equations</option>
-	  			<option value="14">MATH 402 Theory of Numbers</option>
-	  			<option value="15">MATH 406 Geometric Structures</option>
-	  			<option value="16">MATH 413 Mathematical Statistics I</option>
-	  			<option value="17">MATH 415 Actuarial and Financial Models</option>
-	  			<option value="18">MATH 441 Abstract Algebra I</option>
-	  			<option value="19">MATH 451 Analysis I</option>
+	  			<option value="MATH155">MATH 155 Modern Statistics With Computer Analysis</option>
+	  			<option value="MATH160">MATH 160 Introduction to Applied Calculus</option>
+	  			<option value="MATH201">MATH 201 Calculus I</option>
+	  			<option value="MATH202">MATH 202 Calculus II</option>
+	  			<option value="MATH213/214">MATH 213/214 Statistical Thinking</option>
+	  			<option value="MATH215">MATH 215 Intro to Financial Mathematics</option>
+	  			<option value="MATH300">MATH 300 Intro to Abstract Mathematics</option>
+	  			<option value="MATH306">MATH 306 Linear Algebra </option>
+	  			<option value="MATH310">MATH 310 Calculus III</option>
+	  			<option value="MATH311">MATH 311 Differential Equations</option>
+	  			<option value="MATH402">MATH 402 Theory of Numbers</option>
+	  			<option value="MATH406">MATH 406 Geometric Structures</option>
+	  			<option value="MATH413">MATH 413 Mathematical Statistics I</option>
+	  			<option value="MATH415">MATH 415 Actuarial and Financial Models</option>
+	  			<option value="MATH441">MATH 441 Abstract Algebra I</option>
+	  			<option value="MATH451">MATH 451 Analysis I</option>
   			</optgroup>
 		</select>
 <br>
@@ -97,7 +97,7 @@ if($login->isUserLoggedIn()) {
 	  			<option value="0">Small</option>
 	  			<option value="1">Medium</option>
 	  			<option value="2">Large</option>
-	  			<option  value="3">X-Large</option>
+	  			<option value="3">X-Large</option>
 	  			<option value="4">2X-Large</option>
   			</optgroup>
 		</select>
@@ -155,34 +155,34 @@ if($login->isUserLoggedIn()) {
 	 <p class="message">Highest Computer Science Course Taken(Select One):</p>
 		<select  name="ccourse">
 			<optgroup label="Choose Highest Computer Science Course Taken">
-	  			<option value="0">COSC 117 Programming Fundamentals</option>
-	  			<option value="1">COSC 120 Computer Science I</option>
-	  			<option value="2">COSC 220 Computer Science II</option>
-	  			<option value="3">COSC 320 Advanced Data Structures And Algorithim Analysis</option>
-	  			<option value="4">COSC 350 Systems Software</option>
-	  			<option value="5">COSC 420 High Performance Computing</option>
+	  			<option value="COSC117">COSC 117 Programming Fundamentals</option>
+	  			<option value="COSC120">COSC 120 Computer Science I</option>
+	  			<option value="COSC220">COSC 220 Computer Science II</option>
+	  			<option value="COSC320">COSC 320 Advanced Data Structures And Algorithim Analysis</option>
+	  			<option value="COSC350">COSC 350 Systems Software</option>
+	  			<option value="COSC420">COSC 420 High Performance Computing</option>
   			</optgroup>
 		</select>
 <br>
 	<p class="message">Highest Math Course Taken(Select One):</p>
 		<select name="mcourse">
 			<optgroup label="Choose Highest Math Course Taken">
-	  			<option value="5">MATH 155 Modern Statistics With Computer Analysis</option>
-	  			<option value="6">MATH 160 Introduction to Applied Calculus</option>
-	  			<option value="7">MATH 201 Calculus I</option>
-	  			<option value="1">MATH 202 Calculus II</option>
-	  			<option value="8">MATH 213/214 Statistical Thinking</option>
-	  			<option value="9">MATH 215 Intro to Financial Mathematics</option>
-	  			<option value="10">MATH 300 Intro to Abstract Mathematics</option>
-	  			<option value="11">MATH 306 Linear Algebra </option>
-	  			<option value="12">MATH 310 Calculus III</option>
-	  			<option value="13">MATH 311 Differential Equations</option>
-	  			<option value="14">MATH 402 Theory of Numbers</option>
-	  			<option value="15">MATH 406 Geometric Structures</option>
-	  			<option value="16">MATH 413 Mathematical Statistics I</option>
-	  			<option value="17">MATH 415 Actuarial and Financial Models</option>
-	  			<option value="18">MATH 441 Abstract Algebra I</option>
-	  			<option value="19">MATH 451 Analysis I</option>
+	  			<option value="MATH155">MATH 155 Modern Statistics With Computer Analysis</option>
+	  			<option value="MATH160">MATH 160 Introduction to Applied Calculus</option>
+	  			<option value="MATH201">MATH 201 Calculus I</option>
+	  			<option value="MATH202">MATH 202 Calculus II</option>
+	  			<option value="MATH213/214">MATH 213/214 Statistical Thinking</option>
+	  			<option value="MATH215">MATH 215 Intro to Financial Mathematics</option>
+	  			<option value="MATH300">MATH 300 Intro to Abstract Mathematics</option>
+	  			<option value="MATH306">MATH 306 Linear Algebra </option>
+	  			<option value="MATH310">MATH 310 Calculus III</option>
+	  			<option value="MATH311">MATH 311 Differential Equations</option>
+	  			<option value="MATH402">MATH 402 Theory of Numbers</option>
+	  			<option value="MATH406">MATH 406 Geometric Structures</option>
+	  			<option value="MATH413">MATH 413 Mathematical Statistics I</option>
+	  			<option value="MATH415">MATH 415 Actuarial and Financial Models</option>
+	  			<option value="MATH441">MATH 441 Abstract Algebra I</option>
+	  			<option value="MATH451">MATH 451 Analysis I</option>
   			</optgroup>
 		</select>
 <br>
@@ -193,7 +193,7 @@ if($login->isUserLoggedIn()) {
 	  			<option value="0">Small</option>
 	  			<option value="1">Medium</option>
 	  			<option value="2">Large</option>
-	  			<option  value="3">X-Large</option>
+	  			<option value="3">X-Large</option>
 	  			<option value="4">2X-Large</option>
   			</optgroup>
 		</select>

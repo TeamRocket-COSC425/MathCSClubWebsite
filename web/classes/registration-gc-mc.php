@@ -53,7 +53,8 @@ public function teamcheck($id)
             $team = $db->where("team_name", $_POST['team-name'])->getOne("math_challenge_teams");
              $data = array(
                     'id'=> $user['id'],
-                    'team_id' => $team['team_id']
+                    'team_id' => $team['team_id'],
+                    'course_math' => $_POST['mcourse']
                     );
            $id = $db->insert('math_challenge_users_on_teams',$data);
         }
@@ -71,7 +72,8 @@ public function teamcheck($id)
               
         else{
         	$data = array('id' => $user['id'],
-                    'team_id' => 0 );
+                    'team_id' => 0,
+                    'course_math'=> $_POST['mcourse'] );
                     
             $id = $db->insert('math_challenge_users_on_teams', $data);
 }
@@ -136,7 +138,9 @@ public function teamcheck($id)
             $team = $db->where("team_name", $_POST['team-name'])->getOne("gullcode_teams");
              $data = array(
                     'id'=> $user['id'],
-                    'team_id' => $team['team_id']
+                    'team_id' => $team['team_id'],
+                    'course_math' => $_POST['mcourse'],
+                    'course_compsci'=> $_POST['ccourse']
                     );
            $id = $db->insert('gullcode_users_on_teams',$data);
 
@@ -154,7 +158,9 @@ public function teamcheck($id)
                 
         else{
             $data = array('id' => $user['id'],
-                    'team_id' => 0 );
+                    'team_id' => 0,
+                    'course_math'=> $_POST['mcourse'],
+                    'course_compsci'=> $_POST['ccourse'] );
                     
             $id = $db->insert('gullcode_users_on_teams', $data);
         }
