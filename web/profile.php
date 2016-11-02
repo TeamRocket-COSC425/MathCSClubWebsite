@@ -1,3 +1,9 @@
+<head>
+	<title>User Profile</title>
+    <link rel="stylesheet" href="css/forms.css"/>
+    <link rel="stylesheet" href="css/profile.css"/>
+</head>
+
 <?php
     $title = "User Profile";
     require_once("classes/Utils.php");
@@ -15,35 +21,104 @@
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
 
+	$upload_error_message = "";
+	$uploadOk = 1;
+
     // POST handling
     if (isset($_POST['submit'])) {
-        $data = array(
-            'email' => $_POST['email'],
-            'preferred_email' => $_POST['preferred_email'],
-            'major' => $_POST['major'],
-            'year' => $_POST['year'],
-            't_size' => $_POST['t_size'],
-            'bio' => $_POST['bio']
-        );
 
-        $db->where('id', $user['id'])->update('users', $data);
-        $loc = "profile";
-        if ($user !== $currentuser) {
-            $loc = $loc . '?' . $user['id'];
-        }
-        header("Location: " . $loc);
+		// Make sure we have a new image at all
+		if ($_FILES['image']['size'] !== 0) {
+
+			$target_dir = 'images/';
+			// Grab file extension
+			$imageFileType = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+			// Generate a file name based on the md5 hash of the file content
+			$target_file = $target_dir . hash_file("md5", $_FILES['image']['tmp_name']) . '.' . $imageFileType;
+			$allowed_types = array('jpg', 'jpeg', 'png');
+
+			// Make sure the size is valid
+			$check = getimagesize($_FILES['image']['tmp_name']);
+			// Make sure the size is <=1MB
+			if ($_FILES['image']['size'] > (1 << 20)) {
+				$uploadOk = 0;
+				$upload_error_message = "Image is too large. Max size 1MB.";
+			}
+			// Make sure the file is an image
+			if (!in_array($imageFileType, $allowed_types)) {
+				$uploadOk = 0;
+				$upload_error_message = "Image type \"" . $imageFileType . "\" not allowed. Must be one of " . implode(', ', $allowed_types) . '.';
+			}
+			// If we are still good, begin upload process
+			if ($uploadOk == 1) {
+				if ($check) {
+
+					if (getenv('S3_BUCKET')) {
+						// S3 info available, upload to AWS
+						$s3 = Aws\S3\S3Client::factory();
+						$bucket = getenv('S3_BUCKET') ?: die('No "S3_BUCKET" config found in env!');
+
+						$upload = $s3->upload($bucket, $target_file, fopen($_FILES['image']['tmp_name'], 'rb'), 'public-read');
+						$db->where('id', $user['id'])->update('users', array('image' => $upload->get('ObjectURL')));
+					} else {
+						// Move into uploads folder, we are on local
+						$target_file = 'uploads/' . $target_file;
+
+						// If the file already exists, reuse it.
+						if (!file_exists($target_file)) {
+							// Otherwise, move the tmp file into the real file's location
+							if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+								//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+							} else {
+								$uploadOk = 0;
+								$upload_error_message = "Sorry, there was an error uploading your file.";
+							}
+						}
+
+						if ($uploadOk == 1) {
+							$db->where('id', $user['id'])->update('users', array('image' => $target_file));
+						}
+					}
+				} else {
+					// Unknown error
+					$uploadOk = 0;
+					$upload_error_message = "Could not upload image.";
+				}
+			}
+		}
+
+		// If file upload failed, no need to continue
+		if ($uploadOk === 1) {
+
+			// Build array of data to update table width
+			// Cannot directly use $_POST array due to injection potential
+	        $data = array(
+	            'email' => $_POST['email'],
+	            'preferred_email' => $_POST['preferred_email'],
+	            'major' => $_POST['major'],
+	            'year' => $_POST['year'],
+	            't_size' => $_POST['t_size'],
+	            'bio' => $_POST['bio']
+	        );
+
+	        $db->where('id', $user['id'])->update('users', $data);
+
+			// Rebuild URL without 'edit' param (maintains user param)
+	        $loc = "profile";
+	        if ($user !== $currentuser) {
+	            $loc = $loc . '?user=' . $user['id'];
+	        }
+
+			// Redirect
+	        header("Location: " . $loc);
+
+		}
     }
 
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
 ?>
-
-<head>
-	<title>User Profile</title>
-    <link rel="stylesheet" href="css/forms.css"/>
-    <link rel="stylesheet" href="css/profile.css"/>
-</head>
 
 <body>
 
@@ -73,8 +148,17 @@
     if ($edit) {
 ?>
         <div class="form">
-            <form method="post" action="profile" id="profile">
+            <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" id="profile" enctype="multipart/form-data">
             </form>
+
+			<div class="editErrors" style="color:red;">
+				<?php if ($uploadOk === 0) echo $upload_error_message; ?>
+			</div>
+            <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
+            <label class="profile_image_upload">
+                <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
+                <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
+            </label>
 
             <p class="message">Email:</p>
             <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>
@@ -119,12 +203,12 @@
                 </optgroup>
             </select>
 
-            <input form="profile" type="submit" name="submit" value="Save"/>
+            <input class="profile_button" form="profile" type="submit" name="submit" value="Save"/>
         </div>
 <?php
     } else {
-        echo "<img src=\"$image\" /><br>";
-        echo '<h3>'. $user['name'] .'</h3>';
+        echo "<img src=\"$image\" />";
+        echo '<center><h3>'. $user['name'] . ($admin ? ' (Admin)' : '') . '</h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
         if ($email !== $user['preferred_email']) {
@@ -140,7 +224,7 @@
         }
   ?>
         <br>
-        <a class="button" href="<?php echo $url; ?>">Edit Profile</a>
+        <a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
   <?php
     }
   ?>

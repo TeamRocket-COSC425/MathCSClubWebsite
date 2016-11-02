@@ -19,7 +19,9 @@ function toggleByID(IDName) {
     $("#default").hide();
     $(".bio").hide();
     $("#"+IDName).toggle();
-}</script>
+    $('html, body').animate({ scrollTop: $('#officer-bio').offset().top }, 'slow');
+}
+</script>
 
 <div id="main">
 
@@ -39,6 +41,7 @@ Meet Your Officers
     ?>
 
 <div id='officer-bio'>
+
     <div id='default'>
         <p>Click on an officer's picture to learn more about them</p>
     </div>
@@ -54,8 +57,19 @@ Meet Your Officers
         }
 
     ?>
-
 </div>
+
+    <?php
+        $advisors = $db->get('club_advisors');
+        foreach($advisors as $advisor) {
+            echo '<div id=\'' . $advisor["position"] . '\' class=\'advisor\'>';
+            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\'></div>';
+            echo '<div class=\'advisorInfo\'>';
+            echo '<H3>' . $advisor["name"] . '</H3>';
+            echo '<H4>' . $advisor["title"] . '</H4>';
+            echo '</div></div>';
+        }
+    ?>
 </div>
 </div>
 </div>

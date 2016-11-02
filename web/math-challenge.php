@@ -117,9 +117,9 @@
 <?php 
 	if($login->isUserLoggedIn()) {
 		$user = Utils::getCurrentUser();
-
         $members = $db->get("math_challenge_users_on_teams");
-$check=0;
+		$check=0;
+
         foreach ($members as $member) {
             if($member['id'] == $user['id']) {
                 $check = 1;
@@ -132,7 +132,8 @@ $check=0;
         else{
         	include("views/GC-MC-Register.html");
         }	
-	} else {
+	} 
+	else {
 		include("views/SignUp.html");
 	}
 ?>

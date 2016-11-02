@@ -108,13 +108,13 @@ class EditableContent {
         </center>
         <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="edit">
         </form>
-        <textarea id="edit_content_input" rows="40" cols="150" name="edit_content" form="edit"><?php self::printText(); ?></textarea>
+        <textarea class="edit_content_input" id="edit_id_<?php echo $this->id; ?>" rows="40" cols="150" name="edit_content" form="edit"><?php self::printText(); ?></textarea>
         <input type="hidden" name="edit_id" value="<?php echo $this->id; ?>" form="edit" />
         <input id="login_input_submit" type="submit" name="save" value="Save" form="edit" />
 
-        <input id="edit_show_revisions" type="submit" name="show_revisions" value="Show Revisions" />
+        <input class="edit_show_revisions" id="show_revisions_<?php echo $this->id; ?>" type="submit" name="show_revisions" value="Show Revisions" />
         <!-- declared display:none for jquery animation -->
-        <div style="display: none;" class="difflist">
+        <div style="display: none;" class="difflist" id="difflist_<?php echo $this->id; ?>">
             <?php self::printDiffs(); ?>
         </div>
 
@@ -123,11 +123,11 @@ class EditableContent {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <script>
-            var simplemde = new SimpleMDE();
+            var simplemde = new SimpleMDE({ element: $("#edit_id_<?php echo $this->id; ?>")[0] });
 
             $(document).ready(function(){
-                $("#edit_show_revisions").click(function(){
-                    $(".difflist").slideToggle();
+                $("#show_revisions_<?php echo $this->id; ?>").click(function(){
+                    $("#difflist_<?php echo $this->id; ?>").slideToggle();
                 });
             });
 
