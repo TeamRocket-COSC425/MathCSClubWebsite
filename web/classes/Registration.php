@@ -48,6 +48,10 @@ class Registration
             $this->errors[] = "Email cannot be longer than 64 characters";
         } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "Your email address is not in a valid email format";
+        } elseif(preg_match('/^\S+@(gulls\.)?salisbury\.edu$/i', $source_string) > 0) {
+            $this->errors[] = "Email must be from an SU domain.";
+        } elseif (empty($_POST['user_id'])) {
+            $this->errors[] = "No Student ID provided";
         } else {
 
             global $db;
@@ -69,6 +73,7 @@ class Registration
             } else {
 
                 $data = array(
+                    'id' => $_POST['user_id'],
                     'email' => $user_email,
                     'preferred_email' => $user_email, //temp
                     'password' => $user_password_hash,
