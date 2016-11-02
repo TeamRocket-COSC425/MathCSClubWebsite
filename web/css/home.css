@@ -84,7 +84,6 @@ input[type="submit"]:hover, a.button:hover {
     background: #129fa3;
 }
 
-
 /* ==== CodeMirror Styling === */
 
 .CodeMirror {
@@ -95,6 +94,10 @@ input[type="submit"]:hover, a.button:hover {
 
 .CodeMirror-fullscreen {
   z-index: 9999 !important;
+}
+
+.editor-preview-side {
+    z-index: 10000 !important;
 }
 
 .fullscreen {
