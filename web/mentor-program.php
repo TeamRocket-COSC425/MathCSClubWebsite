@@ -3,6 +3,9 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+    require_once("classes/Utils.php");
+    require_once("classes/Login.php");
+    $login = new Login();
 ?>
 
 <head>
@@ -32,23 +35,37 @@ The SU Math and Computer Science club mentor program is a way for underclassmen 
 <u>Meet the Mentors</u>
 </h2>
 
-<script>
-var text = document.forms[0].txt.value;
-text = text.replace(/\r?\n/g, '<br>');
-</script>
+
 
 <?php 
-	
 	$mentors = $db->where('mentor', 1)->get('users');
+	echo "<table id='mentors' align='center'><tr>";
+		$count=sizeof($mentors);
+		$ogcount=sizeof($mentors);
 
-	echo '<table id="mentors">';	
 		foreach ($mentors as $mentor) 
 		{  
-			echo "<th>" . $mentor['name'] . "</th>";
-			echo '<tr><td> <img src="' . $mentor["image"] . '"alt="' . 
-			$mentor["name"] . '"class="mentorpic" onclick="document.forms[0].elements["Mentor Info"].value = "' . $mentor["bio"] . '""> </td></tr>';
+			if ($count % "3" != "0" && $ogcount > "3")
+			{
+				echo '<td><table id="mentors" align="center">';
+				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
+				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' . 
+				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </td></tr></table></td>';
+				$count= $count - 1;
+			}
+			else
+			{
+				echo '<td><table id="mentors" align="center">';
+				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
+				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' . 
+				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </td></tr></table></td>';
+				if ($ogcount > "3"){
+					echo "</tr><tr>";
+				}	
+				$count= $count - 1;
+			}
 		}
-		echo "</table>";
+		echo "</tr></table>";
 ?>
 <br>
 
@@ -56,6 +73,30 @@ text = text.replace(/\r?\n/g, '<br>');
 <textarea class="mentorinfo" name="Mentor Info" placeholder="Select a Mentor" readonly>
 </textarea>
 </form>
+
+<?php
+	if($login->isUserLoggedIn())
+	{
+		$user = Utils::getCurrentUser();
+		if ($user['year']<"2")
+		{
+			include ("views/Mentee.html");
+		}
+		else if (is_null($user['bio']) && $user['year']>"1" && $user['mentor'] = 0)
+		{
+			echo("<p class ='center' style='color:red;'>You must have a bio to become a mentor</p>");
+		}
+		else if (is_null($user['image']) && $user['year']>"1" && $user['mentor'] = 0)
+		{
+			echo("<p class ='center' style='color:red;'>You must have an image to become a mentor</p>");
+		}
+		else if ($user['year']>"1" && $user['mentor'] = 0)
+		{
+			include ("views/Mentor.html");
+		}
+		
+	}
+?>
 
 
 </div>
