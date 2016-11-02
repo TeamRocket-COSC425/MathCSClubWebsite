@@ -5,16 +5,30 @@
 @media only screen and (max-width : 600px) {
     /*Anything under 600px width will have this applied*/
 
-
-#main {
-    margin-left: 50px;
-    margin-top: 50px;
-}
+    #main {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
 
     #main #content {
-      width: 100% ;
-      font-size: 10px;
-  }
+        width: 100% ;
+        font-size: 10px;
+    }
+
+    #main #content #resource-mobile{
+        font-size: 12px;
+        margin-left: -2%;
+        margin-top: -25%;
+    }
+    #main #content #resource-mobile > ul{
+        margin-left: 0%;
+        padding-left: 5%;
+    }
+/*
+     #main #content #grad-mobile{
+        margin-top: -25%;
+        font-size: 14px;
+    }*/
 
 }
 
@@ -31,6 +45,21 @@ a {
 
 a:visited {
   color: #689AAB;
+}
+
+.video-container iframe {
+    position: absolute;
+    top:0;
+    float: right;
+    width: 100%;
+    height: 100%;
+}
+.video-container fb-page {
+    position: absolute;
+    top:0;
+    float: left;
+    width: 100%;
+    height: 100%;
 }
 
 #main #content img {
@@ -90,7 +119,6 @@ input[type="submit"]:hover, a.button:hover {
     background: #129fa3;
 }
 
-
 /* ==== CodeMirror Styling === */
 
 .CodeMirror {
@@ -101,6 +129,10 @@ input[type="submit"]:hover, a.button:hover {
 
 .CodeMirror-fullscreen {
   z-index: 9999 !important;
+}
+
+.editor-preview-side {
+    z-index: 10000 !important;
 }
 
 .fullscreen {

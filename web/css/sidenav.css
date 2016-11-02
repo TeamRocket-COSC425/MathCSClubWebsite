@@ -23,15 +23,21 @@
 .sidenav #button {
     transform: translate(0px, 0px);
     margin-left: 250px;
-    padding: 0 6px;
-    font-size: 36.5px;
+    padding: 5px 0;
+    font-size: 40px;
     color: #777;
     cursor: pointer;
     text-align: center;
+    height: 50px;
+    box-sizing: border-box;
 }
 
 .sidenav--active #button {
     color: #999;
+}
+
+.sidenav #button > i {
+    display: block;
 }
 
 .sidenav > a {
