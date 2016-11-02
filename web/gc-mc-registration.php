@@ -67,17 +67,6 @@ if($login->isUserLoggedIn()) {
 	<div id="team">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
-	 <p class="message">Highest Computer Science Course Taken(Select One):</p>
-		<select  name="ccourse">
-			<optgroup label="Choose Highest Computer Science Course Taken">
-	  			<option value="0">COSC 117 Programming Fundamentals</option>
-	  			<option value="1">COSC 120 Computer Science I</option>
-	  			<option value="2">COSC 220 Computer Science II</option>
-	  			<option value="3">COSC 320 Advanced Data Structures And Algorithim Analysis</option>
-	  			<option value="4">COSC 350 Systems Software</option>
-	  			<option value="5">COSC 420 High Performance Computing</option>
-  			</optgroup>
-		</select>
 <br>
 	<p class="message">Highest Math Course Taken(Select One):</p>
 		<select name="mcourse">
