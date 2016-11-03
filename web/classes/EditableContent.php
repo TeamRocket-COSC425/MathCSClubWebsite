@@ -106,11 +106,11 @@ class EditableContent {
             Editing "<?php echo $this->id?>":
         </h3>
         </center>
-        <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="edit">
+        <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="edit_<?php echo $this->id; ?>">
         </form>
-        <textarea class="edit_content_input" id="edit_id_<?php echo $this->id; ?>" rows="40" cols="150" name="edit_content" form="edit"><?php self::printText(); ?></textarea>
-        <input type="hidden" name="edit_id" value="<?php echo $this->id; ?>" form="edit" />
-        <input id="login_input_submit" type="submit" name="save" value="Save" form="edit" />
+        <textarea class="edit_content_input" id="edit_id_<?php echo $this->id; ?>" rows="40" cols="150" name="edit_content" form="edit_<?php echo $this->id; ?>"><?php self::printText(); ?></textarea>
+        <input type="hidden" name="edit_id" value="<?php echo $this->id; ?>" form="edit_<?php echo $this->id; ?>" />
+        <input id="login_input_submit" type="submit" name="save" value="Save" form="edit_<?php echo $this->id; ?>" />
 
         <input class="edit_show_revisions" id="show_revisions_<?php echo $this->id; ?>" type="submit" name="show_revisions" value="Show Revisions" />
         <!-- declared display:none for jquery animation -->
