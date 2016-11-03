@@ -25,28 +25,16 @@
 GullCode
 </code>
 </h1>
-<?php (new EditableContent("gullcode"))->getContent(); ?>
-<!--<h1 class="center">
-<code>
-GullCode
-</code>
-</h1>
 
-<div id="cols">
-<img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic">
-<h2 class="center">
-Date: November 19th 2016 <br>
-Time: 8am - 2pm <br>
-Location: Nanticoke Room in GUC
-</h2>
-<img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic">
-</div>
-
-<hr style="background-color: #003366; height: 3px;">-->
+<table id="gullcodeContent">
+  <tr>
+    <td><img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic"></td>
+    <td><?php (new EditableContent("gullcodeTime"))->getContent(); ?>
+    <td><img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic"></td>
+  </tr>
+</table>
 
 <?php (new EditableContent("gullCodeDescription"))->getContent(); ?>
-
-<!--<hr style="background-color: #003366; height: 3px;">-->
 
 <?php
   if ($login->isUserLoggedIn()) {
