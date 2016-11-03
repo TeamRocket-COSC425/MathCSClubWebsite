@@ -91,9 +91,9 @@ ul.tab li a:focus, .active {
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
+  
     padding: 6px 12px;
-    color:black;
+    
     border-style: ridge;
     border-width:auto;
     background: white;
@@ -102,3 +102,9 @@ ul.tab li a:focus, .active {
 }
 
 
+.message {
+    font-size: 12px;
+    margin: 0;
+    color: #777;
+    text-align: center;
+}

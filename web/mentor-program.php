@@ -72,7 +72,29 @@ Mentor Program
 <textarea class="mentorinfo" name="Mentor Info" placeholder="Select a Mentor" readonly>
 </textarea>
 </form>
-
++<?php
++	if($login->isUserLoggedIn())
++	{
++		$user = Utils::getCurrentUser();
++		if ($user['year']<"2")
++		{
++			include ("views/Mentee.html");
++		}
++		else if (is_null($user['bio']) && $user['year']>"1" && $user['mentor'] = 0)
++		{
++			echo("<p class ='center' style='color:red;'>You must have a bio to become a mentor</p>");
++		}
++		else if (is_null($user['image']) && $user['year']>"1" && $user['mentor'] = 0)
++		{
++			echo("<p class ='center' style='color:red;'>You must have an image to become a mentor</p>");
++		}
++		else if ($user['year']>"1" && $user['mentor'] = 0)
++		{
++			include ("views/Mentor.html");
++		}
++		
++	}
++?>
 
 </div>
 </div>

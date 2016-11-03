@@ -1,6 +1,6 @@
 
 header {
-    background: url("../images/math-challenge/mc-background.jpg") no-repeat center center fixed;
+    background: url("../images/math-challenge/mc-backgrou1nd.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12,23 +12,31 @@ header {
     color: white;
 }
 
-.gradientBoxesWithOuterShadows {
-    height: 200px;
-    width: 400px;
-    padding: 20px;
-}
+
 h3
 {
     font-size: 20px;
-}
-#cols {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
 
 }
 
-.sessionButton {
+
+.containerz{
+height:100%;
+width:100%;
+text-align: justify;
+border-left: 2px dotted #12BFC3;
+border-right: 2px dotted #12BFC3;
+}
+.containerz div{
+display: inline-block;
+
+} 
+.column-left{ float: left; width:45%; }
+.column-right{ float: right; width:45%; }
+
+
+
+.sessionButtonGo {
     text-decoration: none;
     font-size: 16px;
     padding: 10px 20px;
@@ -37,6 +45,13 @@ h3
     margin-left: auto;
     margin-right: auto;
     max-width: 100px;
+    background-color: #CCC;
+    text-align:center;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 .sessionButton {

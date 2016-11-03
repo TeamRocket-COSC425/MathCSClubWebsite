@@ -41,7 +41,12 @@ class math_challenge{
             $id = $db -> insert("math_challenge_teams",$data);
 
             $team = $db->where("team_name", $_POST['team-name'])->getOne("math_challenge_teams");
-            $data = array('id'=> $user['id'],'team_id' => $team['team_id']);
+             $data = array(
+                    'id'=> $user['id'],
+                    'team_id' => $team['team_id'],
+                    'course_math' => $_POST['mcourse']
+                    );
+
            $id = $db->insert('math_challenge_users_on_teams',$data);
         }
         elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
@@ -54,7 +59,10 @@ class math_challenge{
             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
         else{
-        	$data = array('id' => $user['id'],'team_id' => 0 );
+        	$data = array('id' => $user['id'],
+                    'team_id' => 0,
+                    'course_math'=> $_POST['mcourse'] );
+                    
             $id = $db->insert('math_challenge_users_on_teams', $data);
         }
             
@@ -101,8 +109,14 @@ class gullcode{
             $id = $db -> insert("gullcode_teams",$data);
 
             $team = $db->where("team_name", $_POST['team-name'])->getOne("gullcode_teams");
-            $data = array('id'=> $user['id'],'team_id' => $team['team_id']);
-            $id = $db->insert('gullcode_users_on_teams',$data);
+             $data = array(
+                    'id'=> $user['id'],
+                    'team_id' => $team['team_id'],
+                    'course_math' => $_POST['mcourse'],
+                    'course_compsci'=> $_POST['ccourse']
+                    );
+           $id = $db->insert('gullcode_users_on_teams',$data);
+
         }
         elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
              echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>GullCode Team Name is too short</center>";
@@ -115,7 +129,10 @@ class gullcode{
             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
         else{
-            $data = array('id' => $user['id'],'team_id' => 0 );
+            $data = array('id' => $user['id'],
+                    'team_id' => 0,
+                    'course_math'=> $_POST['mcourse'],
+                    'course_compsci'=> $_POST['ccourse'] );
                     
             $id = $db->insert('gullcode_users_on_teams', $data);
         }

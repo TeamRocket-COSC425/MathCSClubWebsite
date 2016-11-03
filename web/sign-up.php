@@ -40,6 +40,7 @@
     <input id="reg_input_email" name="user_email" type="text" placeholder="Email" required/>
     <input id="reg_input_password_new" name="user_password_new" type="password" placeholder="Password" required/>
     <input id="reg_input_password_repeat" name="user_password_repeat" type="password" placeholder="Repeat Password" required/>
+    <input id="reg_input_id" name="user_id" type="text" placeholder="Student ID" required/>
     <input id="reg_input_firstname" name="user_firstname" type="text" placeholder="First Name" required/>
     <input id="reg_input_lastname" name="user_lastname" type="text" placeholder="Last Name" required/>
 
