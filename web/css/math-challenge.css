@@ -11,7 +11,6 @@ header {
     color: white;
 }
 
-
 h3
 {
     font-size: 20px;
@@ -25,6 +24,7 @@ text-align: justify;
 border-left: 2px dotted #12BFC3;
 border-right: 2px dotted #12BFC3;
 }
+
 .containerz div{
 display: inline-block;
 }
@@ -51,27 +51,7 @@ display: inline-block;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    /*background-color: #CCC;
-    text-align:center;
-    border-radius: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;*/
 }
-
-/*.sessionButton {
-    text-align: center;
-    color: #111;
-    background-color: #CCC;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-}*/
 
 .sessionRegistered
 {
