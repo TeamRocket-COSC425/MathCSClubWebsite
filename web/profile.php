@@ -101,6 +101,14 @@
 	            'bio' => $_POST['bio']
 	        );
 
+			if (Utils::currentUserAdmin()) {
+				$admindata = array(
+					'mentor' => isset($_POST['mentor']) ? 1 : 0,
+					'admin' => isset($_POST['admin']) ? 1 : 0
+				);
+				$data = array_merge($data, $admindata);
+			}
+
 	        $db->where('id', $user['id'])->update('users', $data);
 
 			// Rebuild URL without 'edit' param (maintains user param)
@@ -202,13 +210,21 @@
 ?>
                 </optgroup>
             </select>
-
+<?php
+			if (Utils::currentUserAdmin())
+			{
+?>
+				<input form="profile" type="checkbox" name="mentor", value=""> Mentor<br/>
+				<input form="profile" type="checkbox" name="admin",  value=""> Admin<br/>
+<?php
+			}
+?>
             <input class="profile_button" form="profile" type="submit" name="submit" value="Save"/>
         </div>
 <?php
     } else {
         echo "<img src=\"$image\" />";
-        echo '<center><h3>'. $user['name'] . ($admin ? ' (Admin)' : '') . '</h3></center>';
+        echo '<center><h3>'. $user['name'] . ($user['admin'] ? ' (Admin)' : '') . '</h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
         if ($email !== $user['preferred_email']) {
