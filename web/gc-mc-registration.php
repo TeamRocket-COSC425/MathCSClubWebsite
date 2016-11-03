@@ -17,7 +17,7 @@ require_once('classes/registration-gc-mc.php');
 
 <body class="gc-mc-background">
 <div class="container">
-<br><br><br><br><br>
+<br><br><br>
   
 <!-- Begin Tabs navigation -->
 <ul class = "tab">
@@ -53,30 +53,52 @@ if($login->isUserLoggedIn()) {
         else{
           ?>
 <div id="Math-Challenge" class="tabcontent">
-<center><strong><u>Sign up Form</u></strong></center>
+<left><strong><u>Sign up Form</u></strong></left>
  
 	<form method="post">
-		 	
+		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	<option> Choose how to Sign up </option>
+	    	
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
     	
 		</select>
 	
-		<div id="team">
-        	<input type="text" placeholder="Team Name" name="team-name" />
-    	</div>
-		
-		<br>
-			T-Shirt Size:
+	<div id="team">
+        <input type="text" placeholder="Team Name" name="team-name" />
+    </div>
+<br>
+	<p class="message">Highest Math Course Taken(Select One):</p>
+		<select name="mcourse">
+			<optgroup label="Choose Highest Math Course Taken">
+	  			<option value="MATH155">MATH 155 Modern Statistics With Computer Analysis</option>
+	  			<option value="MATH160">MATH 160 Introduction to Applied Calculus</option>
+	  			<option value="MATH201">MATH 201 Calculus I</option>
+	  			<option value="MATH202">MATH 202 Calculus II</option>
+	  			<option value="MATH213/214">MATH 213/214 Statistical Thinking</option>
+	  			<option value="MATH215">MATH 215 Intro to Financial Mathematics</option>
+	  			<option value="MATH300">MATH 300 Intro to Abstract Mathematics</option>
+	  			<option value="MATH306">MATH 306 Linear Algebra </option>
+	  			<option value="MATH310">MATH 310 Calculus III</option>
+	  			<option value="MATH311">MATH 311 Differential Equations</option>
+	  			<option value="MATH402">MATH 402 Theory of Numbers</option>
+	  			<option value="MATH406">MATH 406 Geometric Structures</option>
+	  			<option value="MATH413">MATH 413 Mathematical Statistics I</option>
+	  			<option value="MATH415">MATH 415 Actuarial and Financial Models</option>
+	  			<option value="MATH441">MATH 441 Abstract Algebra I</option>
+	  			<option value="MATH451">MATH 451 Analysis I</option>
+  			</optgroup>
+		</select>
+<br>
+
+	<p class="message">T-Shirt Size:</p>
 		<select name="t-size">
-			<optgroup label="Class">
+			<optgroup label="Size">
 	  			<option value="0">Small</option>
 	  			<option value="1">Medium</option>
 	  			<option value="2">Large</option>
-	  			<option  value="3">x-large</option>
-	  			<option value="4">2x-large</option>
+	  			<option value="3">X-Large</option>
+	  			<option value="4">2X-Large</option>
   			</optgroup>
 		</select>
        
@@ -116,33 +138,65 @@ if($login->isUserLoggedIn()) {
         else{
              ?>
 <div id="GullCode" class="tabcontent">
-<center><strong><u>Sign up Form</u></strong></center>
+<left><strong><u>Sign up Form</u></strong></left>
  
 	<form method="post">
-		 	
+		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	<option> Choose how to Sign up </option>
+	    	
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
     	
 		</select>
 	
-		<div id="team">
-        	<input type="text" placeholder="Team Name" name="team-name" />
-    	</div>
-		
-		<br>
-			T-Shirt Size:
+	<div id="team">
+        <input type="text" placeholder="Team Name" name="team-name" />
+    </div>
+	 <p class="message">Highest Computer Science Course Taken(Select One):</p>
+		<select  name="ccourse">
+			<optgroup label="Choose Highest Computer Science Course Taken">
+	  			<option value="COSC117">COSC 117 Programming Fundamentals</option>
+	  			<option value="COSC120">COSC 120 Computer Science I</option>
+	  			<option value="COSC220">COSC 220 Computer Science II</option>
+	  			<option value="COSC320">COSC 320 Advanced Data Structures And Algorithim Analysis</option>
+	  			<option value="COSC350">COSC 350 Systems Software</option>
+	  			<option value="COSC420">COSC 420 High Performance Computing</option>
+  			</optgroup>
+		</select>
+<br>
+	<p class="message">Highest Math Course Taken(Select One):</p>
+		<select name="mcourse">
+			<optgroup label="Choose Highest Math Course Taken">
+	  			<option value="MATH155">MATH 155 Modern Statistics With Computer Analysis</option>
+	  			<option value="MATH160">MATH 160 Introduction to Applied Calculus</option>
+	  			<option value="MATH201">MATH 201 Calculus I</option>
+	  			<option value="MATH202">MATH 202 Calculus II</option>
+	  			<option value="MATH213/214">MATH 213/214 Statistical Thinking</option>
+	  			<option value="MATH215">MATH 215 Intro to Financial Mathematics</option>
+	  			<option value="MATH300">MATH 300 Intro to Abstract Mathematics</option>
+	  			<option value="MATH306">MATH 306 Linear Algebra </option>
+	  			<option value="MATH310">MATH 310 Calculus III</option>
+	  			<option value="MATH311">MATH 311 Differential Equations</option>
+	  			<option value="MATH402">MATH 402 Theory of Numbers</option>
+	  			<option value="MATH406">MATH 406 Geometric Structures</option>
+	  			<option value="MATH413">MATH 413 Mathematical Statistics I</option>
+	  			<option value="MATH415">MATH 415 Actuarial and Financial Models</option>
+	  			<option value="MATH441">MATH 441 Abstract Algebra I</option>
+	  			<option value="MATH451">MATH 451 Analysis I</option>
+  			</optgroup>
+		</select>
+<br>
+
+	<p class="message">T-Shirt Size:</p>
 		<select name="t-size">
-			<optgroup label="Class">
+			<optgroup label="Size">
 	  			<option value="0">Small</option>
 	  			<option value="1">Medium</option>
 	  			<option value="2">Large</option>
-	  			<option  value="3">x-large</option>
-	  			<option value="4">2x-large</option>
+	  			<option value="3">X-Large</option>
+	  			<option value="4">2X-Large</option>
   			</optgroup>
 		</select>
-       
 
          <input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
 
@@ -187,6 +241,7 @@ $(document).ready(function () {
 });
 // this toggles the visibility of other server
 function toggleFields() {
+
     if ($("#registert-as").val() == "1")
         $("#team").show();
     else
