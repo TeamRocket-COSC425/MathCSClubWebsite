@@ -97,6 +97,7 @@
     font-size: 50px;
     display: inherit;
     cursor: pointer;
+    padding-left: 100%;
 }
 
 }
