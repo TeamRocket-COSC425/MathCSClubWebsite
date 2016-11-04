@@ -57,8 +57,6 @@ if (isset($_POST['revert'])) {
 } elseif (isset($_POST['edit_id'])) {
     $content = new EditableContent($_POST['edit_id']);
     $content->save($_POST['edit_content']);
-
-    $_SESSION['edit'] = false;
 } else {
     if (!isset($_SESSION['edit'])) {
       $_SESSION['edit'] = true;

@@ -4,6 +4,25 @@
     column-count: 3;
 }
 
+.gullcodepic {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+}
+
+/* GullCode Editable Content */
+table#gullcodeContent {
+    width: 100%;
+    border: none;
+}
+
+table#gullcodeContent td {
+    width: 33%;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/* GullCode Team Tables */
 table#teams {
     border: 3px solid Black;
     border-collapse: collapse;
@@ -32,7 +51,8 @@ table#teams tr:nth-child(even) {
     background-color:;
 }
 
-.sessionButton {
+/* Register for GullCode button */
+.GCsessionButton {
     text-decoration: none;
     font-size: 16px;
     padding: 10px 20px;
@@ -41,9 +61,6 @@ table#teams tr:nth-child(even) {
     margin-left: auto;
     margin-right: auto;
     max-width: 100px;
-}
-
-.sessionButton {
     text-align: center;
     color: #111;
     background-color: #CCC;
@@ -56,6 +73,6 @@ table#teams tr:nth-child(even) {
     border-bottom-left-radius: 3px;
 }
 
-.sessionButton:hover {
+.GCsessionButton:hover {
     background: #BBB;
 }

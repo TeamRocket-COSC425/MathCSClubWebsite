@@ -87,12 +87,6 @@ a:visited {
     vertical-align: center;
 }
 
-.gullcodepic {
-    border-radius: 8px;
-    max-width: 100%;
-    height: auto;
-}
-
 /* ==== Button Styling ==== */
 
 input[type="submit"], a.button {
