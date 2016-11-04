@@ -47,9 +47,55 @@
     background: #BBB;
 }
 
+#topnav #mobile-dropdown{
+    float: right;
+    display: none;
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
 /* For mobile phones: */
-[class*="col-"] {
-    width: 100%;
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+#topnav #mobile-toggle{
+    display:none;
+    clear:both;
+}
+
+
+  #sessiondata,
+#topnav .sessionButton {
+    text-decoration: none;
+    float: right;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0;
+    font-family: Arial;
+    width: calc(100% - 50px);
+    box-sizing: border-box;
+    color: white;
+    /* margin-top: -0.9px; */
+    /* border-top: 1px solid #aaa; */
+    background-color: #31a2ac;
+    border-radius: 0;
+    /* border-top-left-radius: 3px; */
+    /* border-top-right-radius: 3px; */
+    /* border-bottom-right-radius: 3px; */
+    /* border-bottom-left-radius: 3px; */
+}
+
+#topnav .sessionButton {
+    }
+
+#topnav .sessionButton:hover {
+
+}
+
+#topnav #mobile-dropdown{
+    font-size: 50px;
+    display: inherit;
+}
+
 }
 
 
