@@ -33,6 +33,8 @@
   $(document).ready(function(){
     $("#mobile-dropdown").click(function(){
       $("#mobile-toggle").slideToggle();
+      $(this).toggleClass("fa-caret-down");
+      $(this).toggleClass("fa-caret-up");
     });
     checkSize();
 
