@@ -65,7 +65,7 @@
 #topnav #mobile-toggle {
     display: none;
     clear: both;
-    border-bottom: 4px solid white;
+    border-bottom: 1px solid white;
     overflow: auto;
     background-color: #31a2ac;
 }
@@ -81,21 +81,22 @@
     width: calc(100% - 50px);
     box-sizing: border-box;
     color: white;
-    border-top: 4px solid white;
+    border-top: 1px solid white;
     background-color: #31a2ac;
     border-radius: 0;
 }
 
 #topnav .sessionButton {
-    }
+}
 
 #topnav .sessionButton:hover {
-
+    background-color: #12BFC3
 }
 
 #topnav #mobile-dropdown{
     font-size: 50px;
     display: inherit;
+    cursor: pointer;
 }
 
 }
