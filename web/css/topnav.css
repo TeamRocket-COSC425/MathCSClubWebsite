@@ -55,13 +55,20 @@
 }
 
 /* For mobile phones: */
+/*Anything under 600px width will have this applied*/
 @media only screen and (max-width : 600px) {
-    /*Anything under 600px width will have this applied*/
-#topnav #mobile-toggle{
-    display:none;
-    clear:both;
+
+#topnav #topnav-mobile {
+    box-shadow: 0px 0px 10px black;
 }
 
+#topnav #mobile-toggle {
+    display: none;
+    clear: both;
+    border-bottom: 4px solid white;
+    overflow: auto;
+    background-color: #31a2ac;
+}
 
   #sessiondata,
 #topnav .sessionButton {
@@ -74,14 +81,9 @@
     width: calc(100% - 50px);
     box-sizing: border-box;
     color: white;
-    /* margin-top: -0.9px; */
-    /* border-top: 1px solid #aaa; */
+    border-top: 4px solid white;
     background-color: #31a2ac;
     border-radius: 0;
-    /* border-top-left-radius: 3px; */
-    /* border-top-right-radius: 3px; */
-    /* border-bottom-right-radius: 3px; */
-    /* border-bottom-left-radius: 3px; */
 }
 
 #topnav .sessionButton {

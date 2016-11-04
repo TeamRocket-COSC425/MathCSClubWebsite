@@ -8,12 +8,10 @@
 
   echo '<div id="topnav">';
   echo '<div id="topnav-mobile">';
-if ($login->isUserLoggedIn()) {
-    $admin = Utils::currentUserAdmin();
 ?>
 
-    <i class="fa fa-caret-down" id="mobile-dropdown" aria-hidden="true"></i>
-<script>
+  <i class="fa fa-caret-down" id="mobile-dropdown" aria-hidden="true"></i>
+  <script>
   var swapped = false;
 
   function reverseButtons() {
@@ -24,27 +22,29 @@ if ($login->isUserLoggedIn()) {
 
   function checkSize() {
     if (!swapped && $("#mobile-toggle").css("clear") == "both") {
-      reverseButtons();  
+      reverseButtons();
       swapped = true;
     } else if (swapped && $("#mobile-toggle").css("clear") == "none") {
       reverseButtons();
       swapped = false;
     }
   }
-  
+
   $(document).ready(function(){
     $("#mobile-dropdown").click(function(){
       $("#mobile-toggle").slideToggle();
     });
     checkSize();
-    
+
     $(window).resize(checkSize);
   });
 </script>
 
+<div id="mobile-toggle">
 
 <?php
-echo '<div id="mobile-toggle">';
+if ($login->isUserLoggedIn()) {
+    $admin = Utils::currentUserAdmin();
     if ($admin) {
         include "views/Edit.html";
     }
