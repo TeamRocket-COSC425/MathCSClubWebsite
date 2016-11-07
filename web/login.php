@@ -18,6 +18,8 @@
 </head>
 
 <body class="login-background">
+<div id="main">
+<div id="content">
 <div class="container">
 
 </div>
