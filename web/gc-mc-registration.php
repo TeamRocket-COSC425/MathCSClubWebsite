@@ -4,6 +4,7 @@
   $login = new Login();
   if ($login->isUserLoggedIn()) {
   	$user = Utils::getCurrentUser();
+  	
     $gcmembers = $db->get("gullcode_users_on_teams");
     $mcmembers = $db->get("math_challenge_users_on_teams");
     foreach ($gcmembers as $gcmember) {

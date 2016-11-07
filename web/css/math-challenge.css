@@ -1,5 +1,7 @@
+
+
 header {
-    background: url("../images/math-challenge/mc-backgrou1nd.jpg") no-repeat center center fixed;
+    background: url("../images/math-challenge/mc-background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,12 +23,11 @@ h3
 height:100%;
 width:100%;
 text-align: justify;
-border-left: 2px dotted #12BFC3;
-border-right: 2px dotted #12BFC3;
+
 }
 
 .containerz div{
-display: inline-block;
+
 }
 
 .column-left{ float: left; width:45%; }
@@ -75,6 +76,7 @@ table#teams {
     border: 3px solid Black;
     border-collapse: collapse;
     width: 100%;
+
 }
 
 table#teams th {
@@ -82,6 +84,7 @@ table#teams th {
     color: #12BFC3;
     vertical-align: center;
     border: 3px solid Black;
+    position: relative;
 }
 
 table#teams td {
@@ -89,10 +92,12 @@ table#teams td {
     color: Black;
     vertical-align: center;
     border: 3px solid Black;
+ 
 }
 
 table#teams tr:nth-child(odd) {
     background-color: LightGray;
+
 }
 
 table#teams tr:nth-child(even) {
