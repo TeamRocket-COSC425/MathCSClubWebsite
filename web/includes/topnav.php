@@ -32,7 +32,7 @@
 
   $(document).ready(function(){
     $("#mobile-dropdown").click(function(){
-      $("#mobile-toggle").slideToggle();
+      $("#mobile-toggle").slideToggle(200);
       $(this).toggleClass("fa-caret-down");
       $(this).toggleClass("fa-caret-up");
     });
