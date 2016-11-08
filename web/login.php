@@ -2,7 +2,7 @@
   require_once("classes/Login.php");
   $login = new Login();
   if ($login->isUserLoggedIn()) {
-    header("Location: dashboard");
+    header("Location: profile");
     die();
   } else {
     $title = "SU Math/CS Club Log in";
