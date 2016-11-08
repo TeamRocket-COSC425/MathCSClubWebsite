@@ -30,6 +30,10 @@
         font-size: 14px;
     }*/
 
+    #video-container{
+        display:none;
+    }
+
 }
 
 
@@ -47,20 +51,10 @@ a:visited {
   color: #689AAB;
 }
 
-.video-container iframe {
-    position: absolute;
-    top:0;
+#video-container{
     float: right;
-    width: 100%;
-    height: 100%;
 }
-.video-container fb-page {
-    position: absolute;
-    top:0;
-    float: left;
-    width: 100%;
-    height: 100%;
-}
+
 
 #main #content img {
     max-width: 100%;
