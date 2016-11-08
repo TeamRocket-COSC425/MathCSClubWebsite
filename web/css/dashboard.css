@@ -1,3 +1,42 @@
+/* === User page === */
+
+/* Announcements */
+.announcement {
+    width: 100%;
+    display: inline-block;
+    margin: 0.5rem;
+    box-shadow: 1px 1px 4px black;
+}
+
+.announcement.note {
+    background: #60D9D9;
+}
+
+.announcement.important {
+    background: #FFD071;
+}
+
+.announcement h3 {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    color: white;
+}
+
+.announcement.important h3 {
+    background: #FFAA00;
+}
+
+.announcement.note h3 {
+    background: #00AFAF;
+}
+
+.announcement p {
+    padding: 0 2rem;
+}
+
+/* === Admin page === */
+
+/* User table */
 #usertable {
     border: 1px solid black;
     margin: auto;
