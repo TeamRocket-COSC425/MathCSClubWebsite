@@ -139,7 +139,7 @@ challenges” for the people who don’t know how to code. The Club can now conf
 	{
 		$free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams");
 		$users = $db->get("users");
-		echo '<table id="teams">';
+		echo '<table id="teams" class="table table-condensed">';
 
 		if($free_agents) {			
 			echo '<th colspan="4">' . 'Free Agents' . "</th>";
