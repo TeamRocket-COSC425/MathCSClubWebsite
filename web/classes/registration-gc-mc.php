@@ -132,7 +132,9 @@ class gullcode{
             $data = array('id' => $user['id'],
                     'team_id' => 0,
                     'course_math'=> $_POST['mcourse'],
-                    'course_compsci'=> $_POST['ccourse'] );
+                    'course_compsci'=> $_POST['ccourse'],
+                    'register_time' => $db->now());
+                    //self::register_time => $db->now();
                     
             $id = $db->insert('gullcode_users_on_teams', $data);
         }
