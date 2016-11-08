@@ -15,10 +15,12 @@
 
 <div id="main">
 <div id="content">
+  <div id="resource-mobile">
    <?php
       $content = new EditableContent('resources');
       $content->getContent();
     ?>
+  </div>
 </div>
 </div>
 
