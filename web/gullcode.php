@@ -44,54 +44,6 @@ Teams will be given a set of problems to be solved using either JAVA, C++, or Py
 
 <hr style="background-color: #003366; height: 3px;">
 
-<?php
-	if ($login->isUserLoggedIn()) {
-    $admin = Utils::currentUserAdmin();
-    if ($admin) {
- 		$teams = $db->where("team_id")->get("gullcode_teams");
- 	  	$team_members = $db->where("team_id")->get("gullcode_users_on_teams");
-      	$users = $db->get("users");
-
-     	foreach ($teams as $team) {
-     		if($teams) {
-     			echo "<table id=teams> <th colspan='5'>" . $team['team_name'] . "</th>";
-      			foreach ($team_members as $team_member) {
-      				if($team['team_id'] == $team_member['team_id']) {
-      					foreach ($users as $user) {
-      						if ($team_member['id'] == $user['id']) {
-      							echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td><td>" . Utils::t_size($user['t_size']) . "</td></tr>";
-      						}
-      					}
-      				}
-      			}
-      			echo "</table> <br>";
-     		}
-     	}
-  	}
-}
-
-  if($login->isUserLoggedIn())
-	{
-		$free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams");
-		$users = $db->get("users");
-		echo '<table id="teams">';
-
-		if($free_agents) {
-			echo '<th colspan="4">' . 'Free Agents' . "</th>";
-		}
-
-		foreach ($free_agents as $free_agent) {
-			foreach($users as $user) {
-				if ($free_agent['id'] == $user['id']) {
-					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
-				}
-			}
-    }
-
-		echo "</table>";
-	}
-?>
-
 <br >
 
 <?php
