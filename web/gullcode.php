@@ -3,11 +3,9 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-
-
-  require_once("classes/EditableContent.php");
-  require_once("classes/Login.php");
-  require_once("classes/Utils.php");
+    require_once("classes/EditableContent.php");
+    require_once("classes/Login.php");
+    require_once("classes/Utils.php");
     $login = new Login();
 ?>
 <head>
