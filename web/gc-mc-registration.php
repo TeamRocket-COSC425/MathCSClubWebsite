@@ -21,26 +21,27 @@
         $regcheck =  1;
       }
     }
-    if ($regcheck == 1) {
-      header("Location: gc-mc-notification");
-      die();
-    }
-    else{
-      $title = "SU Math/CS Club Registration";
-      include("includes/header.html");
-      include("includes/sidenav.html");
-      include("includes/topnav.php");
-    }  
   }
+  if ($regcheck == 1) {
+    header("Location: gc-mc-notification");
+    die();
+  }
+  else{
+    $title = "SU Math/CS Club Registration";
+    include("includes/header.html");
+    include("includes/sidenav.html");
+    include("includes/topnav.php");
+  }  
 ?>
 
 <head>
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
 	<link rel="stylesheet" href="css/forms.css"/>
 	<link rel="stylesheet" href="css/gc-mc-registration.css">
+  <script src="jquery-3.1.0.min.js"></script>
 </head>
 
-<body class="gc-mc-background">
+<body>
   <div class="container">
     <br><br><br>
   
@@ -266,7 +267,6 @@ function toggleFields() {
         $("#team").show();
     else
         $("#team").hide();
-    }
   }
 </script>
            
