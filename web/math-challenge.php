@@ -22,45 +22,90 @@
 
 <!--Top header line -->
 <header>
-<h1><code> MATH   &nbsp;   &nbsp; CHALLENGE</code></h1>
-</header>
+<h1><code><center> MATH   CHALLENGE</center></code></h1>
+</header><center style="text-align: center;font-size:14px">
+<i>“Without mathematics, there’s nothing you can do. Everything
+
+around you is mathematics. Everything around you is
+
+numbers.”</i> - Shakuntala Devi</center>
 <br>
-
-<div id="cols">
-<!-- About container  -->
- <div class="center" style="text-align:justify;">
- 	<center><b><h3><u> About</u></h3> </b></center>
- 	The Math Challenge is new to Salisbury University! Are you prepared to test yourself against the mightest of mathematicians? Whether you choose to take the individual challenge or fight side by side against other teams competing, we promise you will take from this a great deal of knowledge and fun! Signing up is easy, just follow information below. 
- </div>
-<!-- End About container -->
-<!--Images container -->
- <div class="center" >
-   	<img src = "images/activities/meetingsp2015.jpg" class="gullcodepic">
-	<img src ="images/math-challenge/mc-triangles.jpg" class ="gullcodepic">
-
-
-</div>
-<!--End Images container-->
-<!--Rules container -->
- <div class="center"style="text-align:justify;">
-    <center><b><h3><u>Rules</u></h3></b></center>
+<div class="Overview" style="text-align: justify;">
+ 	<center><b><h3>Overview</h3></b></center>
 	
+The Salisbury University Math and Computer Science Club wants to give
+
+undergraduates an exciting opportunity to show off their mathematics skills.
+
+Every fall semester the Club hosts a computer programming challenge called GullCode. Last year, over
+
+100 participants endeavored in a four-hour coding competition! 1st, 2nd, and 3rd place teams won
+
+prizes, and everyone received free t-shirts- there was lots of FREE food. Overall it was a truly a
+
+fantastic time!
+
+During the process of promoting GullCode many science majors asked if there were any “math
+
+challenges” for the people who don’t know how to code. The Club can now confidently say YES!
+
+ </div>
+<br><br>
+
+<div class="containerz">
+<!-- About container  -->
+ <div class="column-left">
+ 	<center><b><h3><u>Rules</u></h3></b></center>
+	<center>There will be two portions to the Math Challenge:
+	<br>
+	|Individual|&nbsp; &nbsp; &nbsp; &nbsp;|Group| </center>
+	<br>
 	<b>Individual</b><br>
 		<ul>
-			<li>Each individual will recieve a certain number of problems. </li>
-			<li>There is a time limit</li>
+			<li>Each individual will recieve the same sequence problems in a packet. </li>
+			<li>Time limit to complete packet is ~60 minutes.</li>
+			<li>Once time is up, the test will be collected and taken to the judges room.</li>
+			<li>1st place winner will be designated for Freshman and Sophomores </li>
+			<li>1st place winner designated for Juniors and Seniors.</li>
+			<li>After the individual portion is complete, the room will be prepared for the group portion.</li>
 		</ul>
 	<b>Group</b><br>
 		<ul>
-			<li>Teams of <b>3</b> will recieve a certain number of problems. </li>
-			<li>There is a time limite </li>
+			<li>Teams of <b>3</b> will be given a set of group problems. </li>
+			<li>Group progress will be indicated in real time on a visible score board.</li>
+			<li>Time limit to complete set of problems is ~120 minutes. </li>
+			<li> Once time is up, there will be a brief intermission before the closing ceremony.</li>
+			</ul>
+
+ </div>
+
+ <div class="column-right" >
+<center><b><h3><u>Questions</u></h3></b></center>
+<center>Salisbury professors will generate problems from the very classes that they teach and will ne the judges for the Math Challenge. From the list of courses below, at least one question will be given:</center>
+
+ 	<ul>
+			<li> Math 155 (Modern Statistics with Computer Analysis)</li>
+			<li> Math 160 (Intro to Applied Calculus)</li>
+			<li> Math 201 (Calculus I)</li>
+			<li> Math 202 (Calculus II)</li>
+			<li> Math 210 (Intro to Discrete Mathematics)</li>
+			<li> Math 213 (Statistical Thinking)</li>
+			<li> Math 215 (Intro to Financial Mathematics)</li>
+			<li> Math 300 (Intro to Abstract Mathematics)</li>
+			<li> Math 306 (Linear Algebra)</li>
+			<li>Math 310 (Calculus III)</li>
+ 			<li>Math 311 (Differential Equations I)</li>
+			<li>Math 402 (Theory of Numbers)</li>
+			<li>Math 406 (Geometric Structures)</li>
+			<li>Math 413 (Mathematical Statistics I)</li>
+			<li>Math 415 (Actuarial and Financial Models)</li>
+			<li>Math 441 (Abstract Algebra I)</li>
+			<li>Math 451 (Analysis I)</li>
+	</ul>
  </div>
 
  </div>
-  <div class="center">
- 	<center><b><h3><u>Prizes</u></h3></b></center>
- 	There will be a award for First Place, Second Place, Third Place, and Most Creative Problem Solving Team.
- </div>
+
 <!--End Rules container-->
 <br>
 <?php
@@ -94,7 +139,7 @@
 	{
 		$free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams");
 		$users = $db->get("users");
-		echo '<table id="teams">';
+		echo '<table id="teams" class="table table-condensed">';
 
 		if($free_agents) {			
 			echo '<th colspan="4">' . 'Free Agents' . "</th>";

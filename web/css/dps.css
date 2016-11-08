@@ -1,14 +1,15 @@
 header {
-    background: url("../images/dead-poets-society/dps-background.jpg") no-repeat center center fixed;
+    background: url("../images/dead-poets-society/dps-background1.jpg")    ;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 75px;
-    border: 3px solid white;
+    border: 3px solid black;
     text-align: center;
-    line-height: 30px;
-    color: white;
+    line-height: 20px;
+    color: black;
 }
 
 .gradientBoxesWithOuterShadows {
