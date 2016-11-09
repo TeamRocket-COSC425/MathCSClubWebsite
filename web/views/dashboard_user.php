@@ -8,7 +8,7 @@
 <?php
             $timestamp = strtotime($ann['time']);
             $date = date('l, F d Y', $timestamp);
-            echo '<h3>';
+            echo '<h3><strong>';
             switch ($ann['type']) {
                 case 'note':
                     echo '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>';
@@ -19,7 +19,7 @@
                 default:
                     break;
             }
-            echo '  ' . $date . ' - ' . $ann['title'] . '</h3>';
+            echo '  ' . $ann['title']  . '</strong> - ' . $date . '</h3>';
             echo '<p>' . $ann['content'] . '</p>';
         echo '</div>';
     }

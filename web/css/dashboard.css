@@ -2,9 +2,8 @@
 
 /* Announcements */
 .announcement {
-    width: 100%;
-    display: inline-block;
-    margin: 0.5rem;
+    display: block;
+    margin: 1rem;
     box-shadow: 1px 1px 4px black;
 }
 
@@ -20,10 +19,11 @@
     margin: 0;
     padding: 0.5rem 1rem;
     color: white;
+    font-weight: normal;
 }
 
 .announcement.important h3 {
-    background: #FFAA00;
+    background: #DF8F00;
 }
 
 .announcement.note h3 {
@@ -32,6 +32,7 @@
 
 .announcement p {
     padding: 0 2rem;
+    display: inline-block;
 }
 
 /* === Admin page === */
@@ -67,9 +68,9 @@
     border: 1px solid grey;
 }
 
-#usertable a.button {
+a.tablebutton {
     font-size: inherit;
-    padding: 1px 4px;
+    padding: 4px;
     text-align: center;
     margin: auto;
 }
@@ -125,11 +126,4 @@ table#freeAgents td {
     padding: 1px 5px;
     margin: 0;
     border: 1px solid grey;
-}
-
-#freeAgents a.button {
-    font-size: inherit;
-    padding: 1px 4px;
-    text-align: center;
-    margin: auto;
 }
