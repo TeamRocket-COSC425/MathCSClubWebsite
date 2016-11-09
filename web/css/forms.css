@@ -12,7 +12,7 @@
     background: #fff;
 }
 
-.form input[type=text] {
+.form input[type=text], .form input[type=password] {
     font-size: 14px;
     box-sizing: border-box;
     width: 100%;

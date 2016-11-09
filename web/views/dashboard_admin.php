@@ -13,9 +13,9 @@
     }
 ?>
     <form id="new_announcement" method="post" action="dashboard">
-        <input type="text" id="announcement_title" name="title" placeholder="Title" />
+        <input type="text" id="announcement_title" name="title" placeholder="Title" required/>
     </form>
-    <textarea form="new_announcement" name="content" placeholder="Content"></textarea>
+    <textarea form="new_announcement" name="content" placeholder="Content" ></textarea>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script> var mde = new SimpleMDE(); </script>
@@ -52,7 +52,7 @@
                 echo '<td>' . ($user['mentor'] ? "Yes" : "No") . '</td>';
                 echo '<td>' . ($user['admin'] ? "Yes" : "No") . '</td>';
 ?>                  <td>
-                    <a class="button" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
+                    <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                 </td>
 <?php
                 echo '</tr>';
@@ -122,7 +122,7 @@
                             echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td>";
 ?>
                                 <td>
-                                <a class="button" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
+                                <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
                                 </tr>
 <?php
@@ -162,7 +162,7 @@
         echo "<tr><td>" . $free_agent['name'] . "</td><td>" . $free_agent['email'] . "</td><td>" . $free_agent['major'] . "</td><td>" . Utils::year($free_agent['year']) . "</td><td>" . $free_agent['course_compsci'] . "</td><td>" . $free_agent['course_math'] . "</td>";
 
 ?>             <td>
-                <a class="button" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
             </td>
             </tr>
 <?php
@@ -197,7 +197,7 @@
             echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . Utils::t_size($user['t_size']) . "</td><td>" . $user['register_time'] . "</td>";
 
  ?>             <td>
-                    <a class="button" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                    <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
                 </td>
                 </tr>
 <?php
