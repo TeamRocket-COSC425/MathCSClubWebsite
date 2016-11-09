@@ -1,4 +1,5 @@
 <div id="announcements">
+    <h2>Announcements</h2>
 <?php
     $announcements = $db->orderBy('time', 'desc')->get('announcements', 5);
     foreach ($announcements as $ann) {
@@ -21,6 +22,12 @@
             echo '  ' . $date . ' - ' . $ann['title'] . '</h3>';
             echo '<p>' . $ann['content'] . '</p>';
         echo '</div>';
+    }
+
+    if (isset($_GET['user'])) {
+?>
+        <a class="button" href="dashboard">Back to Admin Dashboard</a>
+<?php
     }
 ?>
 </div>

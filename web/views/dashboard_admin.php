@@ -1,3 +1,32 @@
+<div id="announcements" class="form">
+    <h3>Add Announcement</h3>
+<?php
+    if (isset($_POST['add_announcement'])) {
+        $data = array(
+            'title' => $_POST['title'],
+            'content' => $_POST['content'],
+            'type' => $_POST['type']
+        );
+        $db->insert('announcements', $data);
+        header("Location: dashboard");
+        die();
+    }
+?>
+    <form id="new_announcement" method="post" action="dashboard">
+        <input type="text" id="announcement_title" name="title" placeholder="Title" />
+    </form>
+    <textarea form="new_announcement" name="content" placeholder="Content"></textarea>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script> var mde = new SimpleMDE(); </script>
+    <p class="message">Announcement Type:</p>
+    <select form="new_announcement" name="type">
+        <option value="note">Note</option>
+        <option value="important">Important</option>
+    </select>
+    <input form="new_announcement" type="submit" name="add_announcement" />
+    <a class="button" href="dashboard?user">View User Dashboard</a>
+</div>
 <div id="users">
     <h3>Users</h3>
     <table id="usertable" class="tablesorter">

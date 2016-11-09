@@ -36,6 +36,23 @@
 
 /* === Admin page === */
 
+/* Announcement Form */
+.form {
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+}
+
+.form input[type="text"], .form select {
+    background-color: white;
+}
+
+.form p, .CodeMirror, .editor-toolbar {
+    text-align: left;
+}
+
 /* User table */
 #usertable {
     border: 1px solid black;

@@ -12,7 +12,7 @@
     background: #fff;
 }
 
-input[type=text] {
+.form input[type=text] {
     font-size: 14px;
     box-sizing: border-box;
     width: 100%;
@@ -89,7 +89,7 @@ div.login-transbox p {
 
 /* SIGN UP PAGE STYLING - DROP DOWNS */
 
-select {
+.form select {
     font-size: 14px;
     width: 100%;
     margin: 0 0 10px;
@@ -99,10 +99,10 @@ select {
     background: #f2f2f2;
 }
 
-option {
+.form option {
     padding: 100px;
 }
 
-option {
+.form option {
     padding: 15px;
 }

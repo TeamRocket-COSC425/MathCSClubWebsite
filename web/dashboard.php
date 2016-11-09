@@ -7,6 +7,7 @@
 
 <head>
 	<title>Math CS Club - Dashboard</title>
+    <link rel="stylesheet" href="css/forms.css"/>
     <link rel="stylesheet" href="css/dashboard.css"/>
     <link rel="stylesheet" href="css/tablesort/theme/blue/style.css"/>
     <link rel="stylesheet" href="js/tablesort/addons/pager/jquery.tablesorter.pager.css"/>
@@ -20,7 +21,7 @@
 <div id="main">
 <div id="content">
 <?php
-    if (Utils::currentUserAdmin()) {
+    if (Utils::currentUserAdmin() && !isset($_GET['user'])) {
         include("views/dashboard_admin.php");
     } else {
         include("views/dashboard_user.php");
