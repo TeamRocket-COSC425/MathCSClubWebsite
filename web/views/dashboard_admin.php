@@ -43,7 +43,6 @@
         <tbody>
 <?php
             $users = $db->get('users');
-            for ($i = 0; $i < 5; $i++)
             foreach ($users as $user) {
                 echo '<tr>';
                 echo "<td>$user[name]</td>";
