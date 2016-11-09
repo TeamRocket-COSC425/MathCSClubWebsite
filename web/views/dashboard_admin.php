@@ -171,4 +171,39 @@
     echo "</tbody>";
     echo "</table>";
 ?>
+
+<?php
+        /* First 60 signed up */
+        echo "<H3>First 60 To Sign Up</H3>";
+        $db->join("users u", "g.id=u.id", "LEFT");
+        $db->orderBy ("register_time", "asc");
+        $users = $db->get("gullcode_users_on_teams g", 60);
+        echo '<table id="freeAgents" class="tablesorter">';
+
+?>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>T-Shirt Size</th>
+                <th>Time signed up</th>
+                <th>Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+
+<?php
+        foreach ($users as $user) {
+            echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . Utils::t_size($user['t_size']) . "</td><td>" . $user['register_time'] . "</td>";
+
+ ?>             <td>
+                    <a class="button" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                </td>
+                </tr>
+<?php
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+?>
 </div>
