@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .registrationcontrolbutton {
 	text-decoration: none;
     float: right;
@@ -16,3 +17,134 @@
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+=======
+/* === User page === */
+
+/* Announcements */
+.announcement {
+    display: block;
+    margin: 1rem;
+    box-shadow: 1px 1px 4px black;
+}
+
+.announcement.note {
+    background: #60D9D9;
+}
+
+.announcement.important {
+    background: #FFD071;
+}
+
+.announcement h3 {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: normal;
+}
+
+.announcement.important h3 {
+    background: #DF8F00;
+}
+
+.announcement.note h3 {
+    background: #00AFAF;
+}
+
+.announcement p {
+    padding: 0 2rem;
+    display: inline-block;
+}
+
+/* === Admin page === */
+
+/* Announcement Form */
+.form {
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+}
+
+.form input[type="text"], .form select {
+    background-color: white;
+}
+
+.form p, .CodeMirror, .editor-toolbar {
+    text-align: left;
+}
+
+/* User table */
+#usertable {
+    border: 1px solid black;
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#usertable th, #usertable td {
+    padding: 1px 5px;
+    margin: 0;
+    border: 1px solid grey;
+}
+
+a.tablebutton {
+    font-size: inherit;
+    padding: 4px;
+    text-align: center;
+    margin: auto;
+}
+
+.tablesorter-pager i {
+    vertical-align: middle;
+    margin-right: 2px;
+    cursor: pointer !important;
+}
+
+.tablesorter-pager i.disabled {
+    visibility: hidden;
+}
+
+/* GullCode Tables */
+table.teams {
+    border: 1px solid black;
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.teams th {
+    padding: 1px 5px;
+    margin: 0;
+    border: 1px solid grey;
+}
+
+table.teams td {
+    padding: 1px 5px;
+    margin: 0;
+    border: 1px solid grey;
+}
+
+
+/* Free Agent Table */
+table#freeAgents {
+    border: 1px solid black;
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#freeAgents th {
+    padding: 1px 5px;
+    margin: 0;
+    border: 1px solid grey;
+}
+
+table#freeAgents td {
+    padding: 1px 5px;
+    margin: 0;
+    border: 1px solid grey;
+}
+>>>>>>> admin_dashboard
