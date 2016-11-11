@@ -20,7 +20,7 @@
                     break;
             }
             echo '  ' . $ann['title']  . '</strong> - ' . $date . '</h3>';
-            echo '<p>' . $ann['content'] . '</p>';
+            echo Parsedown::instance()->text($ann['content']);
         echo '</div>';
     }
 
