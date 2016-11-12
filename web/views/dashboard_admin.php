@@ -1,4 +1,14 @@
-<div id="announcements" class="form">
+<script type="text/javascript">
+function scrollTo(id) {
+    $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
+}
+</script>
+<div id="navbuttons">
+    <h3>Navigation</h3>
+    <a class="button" href="#" onclick="scrollTo('users')">User List</a>
+    <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
+</div>
+<div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
 <?php
     if (isset($_POST['add_announcement'])) {
@@ -27,7 +37,7 @@
     <input form="new_announcement" type="submit" name="add_announcement" />
     <a class="button" href="dashboard?user">View User Dashboard</a>
 </div>
-<div id="users">
+<div class="adminpane" id="users">
     <h3>Users</h3>
     <table id="usertable" class="tablesorter">
         <thead>
@@ -89,7 +99,7 @@
 </div>
 
 
-<div id=gullcodeTables>
+<div class="adminpane" id="gullcodeTables">
     <H3>GullCode Teams</H3>
 <?php
     /* GULLCODE TEAMS */
@@ -136,7 +146,7 @@
     }
 
     /* GULLCODE FREE AGENTS */
-    echo "<H3>Free Agents</H3>";
+    echo "<h4>Free Agents</h4>";
     $db->join("users u", "g.id=u.id", "LEFT");
 
     $free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams g");
@@ -174,7 +184,7 @@
 
 <?php
         /* First 60 signed up */
-        echo "<H3>First 60 To Sign Up</H3>";
+        echo "<h4>First 60 To Sign Up</h4>";
         $db->join("users u", "g.id=u.id", "LEFT");
         $db->orderBy ("register_time", "asc");
         $users = $db->get("gullcode_users_on_teams g", 60);
