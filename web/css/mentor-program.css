@@ -4,6 +4,12 @@
     margin: 0 auto;
     width:  200px;
     height: auto;
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.mentorpic:hover {
+    border: 3px solid #12bfc3;
 }
 
 table #mentors {
@@ -23,9 +29,9 @@ table #mentors td {
 }
 
 .mentorinfo {
-    width: 50%; 
-    height:200px; 
-    font-size: 20px; 
+    width: 50%;
+    height:200px;
+    font-size: 20px;
     border-radius: 8px;
     border: 3px solid #333;
 }
