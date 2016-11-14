@@ -48,16 +48,16 @@ Mentor Program
 			{
 				echo '<td><table id="mentors" align="center">';
 				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </td></tr></table></td>';
+				echo '<tr><td><div id=\'mentorpic_container\'> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
+				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </div></td></tr></table></td>';
 				$count= $count - 1;
 			}
 			else
 			{
 				echo '<td><table id="mentors" align="center">';
 				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </td></tr></table></td>';
+				echo '<tr><td><div id=\'mentorpic_container\'> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
+				$mentor["name"] . '" onclick="document.forms[0].elements[\'Mentor Info\'].value = \'' . $mentor["name"] . '\n\n' . $mentor["major"] . '\n\n' . Utils::year($mentor["year"]) . '\n\n' . $mentor["bio"] . '\'"> </div></td></tr></table></td>';
 				if ($ogcount > "3"){
 					echo "</tr><tr>";
 				}
@@ -92,7 +92,7 @@ Mentor Program
 		{
 			include ("views/Mentor.html");
 		}
-		
+
 	}
 ?>
 

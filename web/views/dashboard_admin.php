@@ -48,6 +48,7 @@ function scrollTo(id) {
                 <th>Mentor</th>
                 <th>Admin</th>
                 <th>Profile</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +64,9 @@ function scrollTo(id) {
                 echo '<td>' . ($user['admin'] ? "Yes" : "No") . '</td>';
 ?>                  <td>
                     <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
+                </td>
+                <td>
+                    <a class="button tablebutton dangerbutton" href="profile?user=<?php echo $user['id']; ?>&delete">Delete</a>
                 </td>
 <?php
                 echo '</tr>';
