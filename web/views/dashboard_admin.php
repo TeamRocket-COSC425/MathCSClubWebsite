@@ -221,3 +221,121 @@ function scrollTo(id) {
         echo "</table>";
 ?>
 </div>
+
+<div class="adminpane" id="mathChallengeTables">
+    <H3>Math Challenge Teams</H3>
+<?php
+    /* MATH CHALLENGE TEAMS */
+    $teams = $db->where("team_id")->get("math_challenge_teams");
+    $team_members = $db->where("team_id")->get("math_challenge_users_on_teams");
+    $users = $db->get("users");
+
+    foreach ($teams as $team)
+    {
+        if($teams) {
+            echo '<H4>' . $team['team_name'] . '</H4>';
+            echo '<table id="freeAgents" class="tablesorter">';
+?>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                    <th>Year</th>
+                    <th>Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+
+<?php
+            foreach ($team_members as $team_member) {
+                if($team['team_id'] == $team_member['team_id']) {
+                    foreach ($users as $user) {
+                        if ($team_member['id'] == $user['id']) {
+                            echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td>";
+?>
+                                <td>
+                                <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
+                                </td>
+                                </tr>
+<?php
+                        }
+                    }
+                }
+            }
+            echo "</tbody>";
+            echo "</table> <br>";
+        }
+    }
+
+    /* MATH CHALLENGE FREE AGENTS */
+    echo "<h4>Free Agents</h4>";
+    $db->join("users u", "g.id=u.id", "LEFT");
+
+    $free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams g");
+    $users = $db->get("users");
+    echo '<table id="freeAgents" class="tablesorter">';
+
+?>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Major</th>
+            <th>Year</th>
+            <th>Highest Math</th>
+            <th>Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+
+<?php
+    foreach ($free_agents as $free_agent) {
+        echo "<tr><td>" . $free_agent['name'] . "</td><td>" . $free_agent['email'] . "</td><td>" . $free_agent['major'] . "</td><td>" . Utils::year($free_agent['year']) . "</td><td>" . $free_agent['course_math'] . "</td>";
+
+?>             <td>
+                <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+            </td>
+            </tr>
+<?php
+    }
+
+    echo "</tbody>";
+    echo "</table>";
+?>
+
+<?php
+        /* First 60 signed up */
+        echo "<h4>First 60 To Sign Up</h4>";
+        $db->join("users u", "g.id=u.id", "LEFT");
+        $db->orderBy ("register_time", "asc");
+        $users = $db->get("math_challenge_users_on_teams g", 60);
+        echo '<table id="freeAgents" class="tablesorter">';
+
+?>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>T-Shirt Size</th>
+                <th>Time signed up</th>
+                <th>Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+
+<?php
+        foreach ($users as $user) {
+            echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . Utils::t_size($user['t_size']) . "</td><td>" . $user['register_time'] . "</td>";
+
+ ?>             <td>
+                    <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                </td>
+                </tr>
+<?php
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+?>
+</div>
