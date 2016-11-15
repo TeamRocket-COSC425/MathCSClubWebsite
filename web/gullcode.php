@@ -18,11 +18,9 @@
 <div id="main">
 
 <div id="content" class = "center">
-<h1 class="center">
-<code>
-GullCode
-</code>
-</h1>
+<header>
+<h1><code><center> GullCode </center></code></h1>
+</header>
 
 <table id="gullcodeContent">
   <tr>
@@ -42,6 +40,12 @@ GullCode
       include("views/GC-MC-Register.html");
     }
   }
+
+
+  echo("<i>Have an account?</i>");
+  include("views/Login.html");
+  echo("<br> <i>Not Registered?</i>");
+  include("views/SignUp.html");
 ?>
 
 

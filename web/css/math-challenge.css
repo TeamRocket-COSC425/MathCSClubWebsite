@@ -11,6 +11,10 @@ header {
     text-align: center;
     line-height: 30px;
     color: white;
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 h3
