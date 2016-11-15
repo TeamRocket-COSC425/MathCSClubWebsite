@@ -1,41 +1,3 @@
-/*@media screen and (min-width:320px) and (max-width:640px) {
-   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide
-}
-*/
-@media only screen and (max-width : 600px) {
-    /*Anything under 600px width will have this applied*/
-
-    #main {
-        margin-left: 50px;
-        margin-top: 50px;
-    }
-
-    #main #content {
-        font-size: 10px;
-    }
-
-    #main #content #resource-mobile{
-        font-size: 12px;
-        margin-left: -2%;
-        margin-top: -25%;
-    }
-    #main #content #resource-mobile > ul{
-        margin-left: 0%;
-        padding-left: 5%;
-    }
-/*
-     #main #content #grad-mobile{
-        margin-top: -25%;
-        font-size: 14px;
-    }*/
-
-    #video-container{
-        display:none;
-    }
-
-}
-
-
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #eee;
@@ -240,4 +202,97 @@ input[type="submit"]:hover, a.button:hover {
 pre {
 	width: 100%;
 	overflow: auto;
+}
+
+
+.mathEmpTxt{
+    width: 50%;
+    float:left;
+}
+.mathEmpImg{
+    width: 45%;
+    height: auto;
+    float:right;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#main #content .mathEmpImg2 {
+    margin: 0 auto;
+}
+
+
+
+/*@media screen and (min-width:320px) and (max-width:640px) {
+   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide 
+}
+*/
+@media only screen and (max-width : 1200px) {
+    .mathEmpImg{
+        width: 100%;
+        float: none;
+    }
+
+    .mathEmpTxt{
+        width: 100%;
+        float: none;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+
+    #main {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+    #main #content{ /*for the homepage!*/
+        width: 100% ;
+        font-size: 10px;
+        margin-left: -10px;
+    } 
+
+    #dps{
+        font-size: 16px;
+    }
+
+    #main #content #grad-mobile{
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    #resource-mobile{
+        font-size: 15px;
+        margin-left: 1px;
+        margin-top: -5%;
+    }
+
+    #resource-mobile > ul{
+        margin-left: 10px;
+        padding-left: 5%;
+    }
+
+    #mentor-mobile{
+        font-size: 15px;
+    }
+
+    #video-container{
+        display:none;
+    }
+
+    .mathEmpImg{
+        width: 100%;
+        float: none;
+    }
+
+    .mathEmpTxt{
+        width: 100%;
+        float: none;
+    }
+
+    #calendar-mobile{
+        font-size: 15px;
+    }
+
 }

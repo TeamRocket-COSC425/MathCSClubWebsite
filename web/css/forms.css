@@ -14,6 +14,7 @@
 
 input {
     font-size: 14px;
+    box-sizing: border-box;
     width: 100%;
     height: 2.75rem;
     margin-bottom: 10px;
@@ -106,4 +107,18 @@ option {
 
 option {
     padding: 15px;
+}
+
+
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+
+    .form{
+        margin-top: 25px;
+    }
+
+  .loginWords{
+        font-size: 31px;
+        margin-bottom: 20px;
+    }
 }

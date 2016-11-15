@@ -75,4 +75,55 @@ background: url("../images/message-icons/error.gif") no-repeat ;
 
 .GCsessionButton:hover {
     background: #BBB;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+table#teams {
+    border: 3px solid Black;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+table#teams th {
+    background-color: Black;
+    color: #12BFC3;
+    vertical-align: center;
+    border: 3px solid Black;
+    position: relative;
+}
+
+table#teams td {
+    text-align: left;
+    color: Black;
+    vertical-align: center;
+    border: 3px solid Black;
+ 
+}
+
+table#teams tr:nth-child(odd) {
+    background-color: LightGray;
+
+}
+
+table#teams tr:nth-child(even) {
+    background-color:;
+}
+
+
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+
+    .column-left > ul {
+        margin-left: -20px;
+    }
+
+    .column-right > ul {
+        margin-left: -20px;
+    }
+
+}
+
+>>>>>>> Stashed changes
