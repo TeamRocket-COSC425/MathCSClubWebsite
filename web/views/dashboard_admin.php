@@ -125,8 +125,7 @@ function scrollTo(id) {
 
 
 <div class="adminpane" id="gullcodeTables">
-    <h1>GullCode</h1>
-    
+    <h1>GullCode</h1>  
     <div>
 <?php
     $gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
@@ -149,7 +148,8 @@ function scrollTo(id) {
     <input name="emptyGcRegistration" type="submit" value="Delete Gullcode Registration list"/>
     </form>
     </div>
-    <H3>GullCode Teams</H3>
+    <br>
+    <h4>GullCode Teams</h4>
 <?php
     /* GULLCODE TEAMS */
     $teams = $db->where("team_id")->get("gullcode_teams");
@@ -292,7 +292,8 @@ function scrollTo(id) {
     <input name="emptyMcRegistration" type="submit" value="Delete Math Challenge Registration list"/>
     </form>
     </div>
-    <H3>Math Challenge Teams</H3>
+    <br>
+    <h4>Math Challenge Teams</h4>
 <?php
     /* MATH CHALLENGE TEAMS */
     $teams = $db->where("team_id")->get("math_challenge_teams");
