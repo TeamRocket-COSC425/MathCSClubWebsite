@@ -70,6 +70,7 @@ numbers.”</i> - Shakuntala Devi</center>
         }	
 	} 
 	else {
+		echo("<br><br><br>");
 		include("views/SignUp.html");
 	}
 ?>

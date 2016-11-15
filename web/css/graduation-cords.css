@@ -1,6 +1,5 @@
 header {
-    background: url("../images/dead-poets-society/dps-background1.jpg")    ;
-    background-size: cover;
+    background: url("../images/cords.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -8,17 +7,11 @@ header {
     height: 75px;
     border: 3px solid white;
     text-align: center;
-    line-height: 20px;
+    line-height: 30px;
     color: white;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
-}
-
-.gradientBoxesWithOuterShadows {
-    height: 200px;
-    width: 400px;
-    padding: 20px;
 }

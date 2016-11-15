@@ -18,9 +18,9 @@
 
 <div id="content">
 
-<h1 class="center">
-Mentor Program
-</h1>
+<header>
+<h1><code><center> Mentor Program </center></code></h1>
+</header>
 
 <hr style="background-color: #003366; height: 3px;">
 
