@@ -1,6 +1,12 @@
 <?php
   require_once("classes/Login.php");
   require_once("classes/Utils.php");
+  include("includes/header.html");
+  include("includes/sidenav.html");
+  include("includes/topnav.php");
+  require_once('classes/registration-gc-mc.php');
+  $gc = new gullcode();
+  $mc = new math_challenge();
   $login = new Login();
   if ($login->isUserLoggedIn()) {
   	$user = Utils::getCurrentUser();
@@ -22,12 +28,6 @@
   } 
   else {
     $title = "SU Math/CS Club Registration";
-    include("includes/header.html");
-    include("includes/sidenav.html");
-    include("includes/topnav.php");
-    require_once('classes/registration-gc-mc.php');
-    $gc = new gullcode();
-    $mc = new math_challenge();
   }
 ?>
 
@@ -57,18 +57,9 @@
 <!--Math Challenge Tab Content-->
 <?php 
   if($login->isUserLoggedIn()) {
-    $user = Utils::getCurrentUser();
-
-    $members = $db->get("math_challenge_users_on_teams");
-    $check = 0 ;
-    foreach ($members as $member) {
-      if($member['id'] == $user['id']) {
-        $check = 1;
-      }
-    }
-
-    if($check == 1) {
-      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for Math Challenge.<br>Check your profile for more info</b></p></div>");
+     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
+    if($control["switch"] == 0){
+      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
     }
     else{
 ?>
@@ -133,18 +124,9 @@
 <!-- GullCode Tab Content-->
 <?php 
   if($login->isUserLoggedIn()) {
-    $user = Utils::getCurrentUser();
-
-    $members = $db->get("gullcode_users_on_teams");
-    $check = 0;
-    foreach ($members as $member) {
-      if($member['id'] == $user['id']) {
-        $check = 1;
-      }
-    }
-    
-    if($check == 1) {
-      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for GullCode.<br>Check your profile for more info</b></p></div>");
+     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
+    if($control["switch"] == 0){
+      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
     }
     else{
 ?>
