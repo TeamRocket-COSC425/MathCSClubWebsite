@@ -3,6 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+    require_once("classes/Utils.php");
 ?>
 
 <head>

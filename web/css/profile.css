@@ -81,6 +81,7 @@ input[type="file"] {
     cursor: pointer;
     position: inherit;
     margin-top: -3rem;
+    float: right;
 }
 
 .profile_image_upload:hover {

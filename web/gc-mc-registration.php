@@ -9,24 +9,30 @@
   $mc = new math_challenge();
   $login = new Login();
   if ($login->isUserLoggedIn()) {
+    require_once('classes/registration-gc-mc.php');
+    $gc = new gullcode();
+    $mc = new math_challenge();
   	$user = Utils::getCurrentUser();
-  	
+
     $gcmembers = $db->get("gullcode_users_on_teams");
     $mcmembers = $db->get("math_challenge_users_on_teams");
+    $regcheck = 0;
     foreach ($gcmembers as $gcmember) {
       if($gcmember['id'] == $user['id']) {
-        header("Location: gc-mc-notification");
-        die();
+        $regcheck = 1;
       }
     }
     foreach ($mcmembers as $mcmember) {
       if($mcmember['id'] == $user['id']) {
-        header("Location: gc-mc-notification");
-        die();
+        $regcheck =  1;
       }
     }
-  } 
-  else {
+  }
+  if ($regcheck == 1) {
+    header("Location: gc-mc-notification");
+    die();
+  }
+  else{
     $title = "SU Math/CS Club Registration";
   }
 ?>
@@ -35,12 +41,13 @@
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
 	<link rel="stylesheet" href="css/forms.css"/>
 	<link rel="stylesheet" href="css/gc-mc-registration.css">
+  <script src="jquery-3.1.0.min.js"></script>
 </head>
 
-<body class="gc-mc-background">
+<body>
   <div class="container">
     <br><br><br>
-  
+
 <!-- Begin Tabs navigation -->
 <ul class = "tab">
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
@@ -55,7 +62,7 @@
 </div>
 
 <!--Math Challenge Tab Content-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
      $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 0){
@@ -66,16 +73,16 @@
 
 <div id="Math-Challenge" class="tabcontent">
 <left><strong><u>Sign up Form</u></strong></left>
- 
+
 	<form method="post">
 		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	
+
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
-    	
+
 		</select>
-	
+
 	<div id="team">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
@@ -113,16 +120,17 @@
 	  			<option value="4">2x-large</option>
   		</optgroup>
 		</select>
-       
+
     <input name="mc-register" type="submit" value="Register for Math Challenge" class="insert"/>
 	</form>
-</div>	
+</div>
 <?php
 	}
 	}
+}
 ?>
 <!-- GullCode Tab Content-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
      $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 0){
@@ -133,15 +141,15 @@
 
 <div id="GullCode" class="tabcontent">
 <left><strong><u>Sign up Form</u></strong></left>
- 
+
 	<form method="post">
 		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	
+
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
 		</select>
-	
+
 	<div id="team">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
@@ -190,11 +198,12 @@
 	  			<option value="4">2x-large</option>
  			</optgroup>
 		</select>
-       
+
     <input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
 	</form>
 </div>
 <?php
+  }
 	}
 }
 ?>
@@ -231,8 +240,7 @@ function toggleFields() {
         $("#team").show();
     else
         $("#team").hide();
-    }
   }
 </script>
-           
-</body>                  
+
+</body>

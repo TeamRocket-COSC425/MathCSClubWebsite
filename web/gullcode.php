@@ -3,11 +3,9 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-
-
-  require_once("classes/EditableContent.php");
-  require_once("classes/Login.php");
-  require_once("classes/Utils.php");
+    require_once("classes/EditableContent.php");
+    require_once("classes/Login.php");
+    require_once("classes/Utils.php");
     $login = new Login();
 ?>
 <head>
@@ -20,11 +18,9 @@
 <div id="main">
 
 <div id="content" class = "center">
-<h1 class="center">
-<code>
-GullCode
-</code>
-</h1>
+<header>
+<h1><code><center> GullCode </center></code></h1>
+</header>
 
 <table id="gullcodeContent">
   <tr>
@@ -38,7 +34,7 @@ GullCode
 
 <?php
   if($login->isUserLoggedIn()) {
-    
+
     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 1) {
       include("views/GC-MC-Register.html");
