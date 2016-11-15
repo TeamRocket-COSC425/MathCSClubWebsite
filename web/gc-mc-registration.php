@@ -3,41 +3,45 @@
   require_once("classes/Utils.php");
   $login = new Login();
   if ($login->isUserLoggedIn()) {
+    require_once('classes/registration-gc-mc.php');
+    $gc = new gullcode();
+    $mc = new math_challenge();
   	$user = Utils::getCurrentUser();
   	
     $gcmembers = $db->get("gullcode_users_on_teams");
     $mcmembers = $db->get("math_challenge_users_on_teams");
+    $regcheck = 0;
     foreach ($gcmembers as $gcmember) {
       if($gcmember['id'] == $user['id']) {
-        header("Location: gc-mc-notification");
-        die();
+        $regcheck = 1;
       }
     }
     foreach ($mcmembers as $mcmember) {
       if($mcmember['id'] == $user['id']) {
-        header("Location: gc-mc-notification");
-        die();
+        $regcheck =  1;
       }
     }
-  } 
-  else {
+  }
+  if ($regcheck == 1) {
+    header("Location: gc-mc-notification");
+    die();
+  }
+  else{
     $title = "SU Math/CS Club Registration";
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once('classes/registration-gc-mc.php');
-    $gc = new gullcode();
-    $mc = new math_challenge();
-  }
+  }  
 ?>
 
 <head>
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
 	<link rel="stylesheet" href="css/forms.css"/>
 	<link rel="stylesheet" href="css/gc-mc-registration.css">
+  <script src="jquery-3.1.0.min.js"></script>
 </head>
 
-<body class="gc-mc-background">
+<body>
   <div class="container">
     <br><br><br>
   
@@ -57,6 +61,12 @@
 <!--Math Challenge Tab Content-->
 <?php 
   if($login->isUserLoggedIn()) {
+    $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
+
+    if($control["switch"] == 0){
+      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
+    }
+    else{
     $user = Utils::getCurrentUser();
 
     $members = $db->get("math_challenge_users_on_teams");
@@ -129,10 +139,17 @@
 <?php
 	}
 	}
+}
 ?>
 <!-- GullCode Tab Content-->
 <?php 
   if($login->isUserLoggedIn()) {
+    $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
+
+    if($control["switch"] == 0){
+      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
+    }
+    else{
     $user = Utils::getCurrentUser();
 
     $members = $db->get("gullcode_users_on_teams");
@@ -213,6 +230,7 @@
 	</form>
 </div>
 <?php
+  } 
 	}
 }
 ?>
@@ -249,7 +267,6 @@ function toggleFields() {
         $("#team").show();
     else
         $("#team").hide();
-    }
   }
 </script>
            

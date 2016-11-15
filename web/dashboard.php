@@ -3,6 +3,26 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+    require_once("classes/Utils.php");
+    require_once("classes/AdminFunctions.php");
+    if (isset($_POST['openGcRegistration'])){
+    	Admins::updateRegistraion("openGc");
+    }
+    if (isset($_POST['openMcRegistration'])){
+    	Admins::updateRegistraion("openMc");
+    }
+    if (isset($_POST['closeGcRegistration'])){
+    	Admins::updateRegistraion("closeGc");
+    }
+    if (isset($_POST['closeMcRegistration'])){
+    	Admins::updateRegistraion("closeMc");
+    }
+    if (isset($_POST['emptyGcRegistration'])){
+        Admins::clearCompetition("GullCode");
+    }
+    if (isset($_POST['emptyMcRegistration'])){
+        Admins::clearCompetition("MathChallenge");
+    }
 ?>
 
 <head>

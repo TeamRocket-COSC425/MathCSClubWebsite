@@ -1,3 +1,20 @@
+header {
+    background: url("../images/gullcode/gullcode-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 75px;
+    border: 3px solid white;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
 #cols {
     -webkit-column-count: 3;
     -moz-column-count: 3;
