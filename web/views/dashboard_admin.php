@@ -149,7 +149,7 @@ function scrollTo(id) {
     </form>
     </div>
     <br>
-    <h4>GullCode Teams</h4>
+    
 <?php
     /* GULLCODE TEAMS */
     $teams = $db->where("team_id")->get("gullcode_teams");
@@ -159,6 +159,7 @@ function scrollTo(id) {
     foreach ($teams as $team)
     {
         if($teams) {
+            echo '<h4>GullCode Teams</h4>';
             echo '<H4>' . $team['team_name'] . '</H4>';
             echo '<table id="freeAgents" class="tablesorter">';
 ?>
@@ -195,13 +196,14 @@ function scrollTo(id) {
     }
 
     /* GULLCODE FREE AGENTS */
-    echo "<h4>Free Agents</h4>";
+    
     $db->join("users u", "g.id=u.id", "LEFT");
 
     $free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams g");
     $users = $db->get("users");
+    if($free_agents){
+    echo "<h4>Free Agents</h4>";
     echo '<table id="freeAgents" class="tablesorter">';
-
 ?>
     <thead>
         <tr>
@@ -229,14 +231,17 @@ function scrollTo(id) {
 
     echo "</tbody>";
     echo "</table>";
+    }   
 ?>
 
 <?php
         /* First 60 signed up */
-        echo "<h4>First 60 To Sign Up</h4>";
+        
         $db->join("users u", "g.id=u.id", "LEFT");
         $db->orderBy ("register_time", "asc");
         $users = $db->get("gullcode_users_on_teams g", 60);
+        if($users){
+        echo "<h4>First 60 To Sign Up</h4>";
         echo '<table id="freeAgents" class="tablesorter">';
 
 ?>
@@ -256,7 +261,7 @@ function scrollTo(id) {
             echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . Utils::t_size($user['t_size']) . "</td><td>" . $user['register_time'] . "</td>";
 
  ?>             <td>
-                    <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                    <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                 </td>
                 </tr>
 <?php
@@ -264,6 +269,7 @@ function scrollTo(id) {
 
         echo "</tbody>";
         echo "</table>";
+        }
 ?>
 </div>
 
@@ -293,7 +299,7 @@ function scrollTo(id) {
     </form>
     </div>
     <br>
-    <h4>Math Challenge Teams</h4>
+    
 <?php
     /* MATH CHALLENGE TEAMS */
     $teams = $db->where("team_id")->get("math_challenge_teams");
@@ -303,6 +309,7 @@ function scrollTo(id) {
     foreach ($teams as $team)
     {
         if($teams) {
+            echo '<h4>Math Challenge Teams</h4>';
             echo '<H4>' . $team['team_name'] . '</H4>';
             echo '<table id="freeAgents" class="tablesorter">';
 ?>
@@ -339,11 +346,13 @@ function scrollTo(id) {
     }
 
     /* MATH CHALLENGE FREE AGENTS */
-    echo "<h4>Free Agents</h4>";
+    
     $db->join("users u", "g.id=u.id", "LEFT");
 
     $free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams g");
     $users = $db->get("users");
+    if($free_agents){
+    echo "<h4>Free Agents</h4>";
     echo '<table id="freeAgents" class="tablesorter">';
 
 ?>
@@ -372,14 +381,17 @@ function scrollTo(id) {
 
     echo "</tbody>";
     echo "</table>";
+    }
 ?>
 
 <?php
         /* First 60 signed up */
-        echo "<h4>First 60 To Sign Up</h4>";
+        
         $db->join("users u", "g.id=u.id", "LEFT");
         $db->orderBy ("register_time", "asc");
         $users = $db->get("math_challenge_users_on_teams g", 60);
+        if($users){
+        echo "<h4>First 60 To Sign Up</h4>";
         echo '<table id="freeAgents" class="tablesorter">';
 
 ?>
@@ -399,7 +411,7 @@ function scrollTo(id) {
             echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . Utils::t_size($user['t_size']) . "</td><td>" . $user['register_time'] . "</td>";
 
  ?>             <td>
-                    <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
+                    <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                 </td>
                 </tr>
 <?php
@@ -407,5 +419,6 @@ function scrollTo(id) {
 
         echo "</tbody>";
         echo "</table>";
+        }
 ?>
 </div>
