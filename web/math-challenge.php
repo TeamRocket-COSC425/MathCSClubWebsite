@@ -33,11 +33,11 @@ numbers.”</i> - Shakuntala Devi</center>
 <br>
 <div class="Overview" style="text-align: justify;">
  	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
-<br><br>
-</div>
 
+</div>
+<br><br>
 <div class="containerz">
-<!-- About container  -->
+
  <div class="column-left" style="text-align:left;">
  	<?php (new EditableContent("math-challenge-rules"))->getContent();?>
  </div>
@@ -45,11 +45,10 @@ numbers.”</i> - Shakuntala Devi</center>
  <div class="column-right" >
 	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
  </div>
+
+
+
  </div>
-
-<!--End Rules container-->
-<br>
-
 <?php 
 	if($login->isUserLoggedIn()) {
 		$user = Utils::getCurrentUser();
@@ -70,14 +69,16 @@ numbers.”</i> - Shakuntala Devi</center>
         }	
 	} 
 	else {
-		echo("<br><br><br>");
 		include("views/SignUp.html");
 	}
 ?>
 
 </div>
+
+
 <!--End content container-->
 </div>
+
 <!--End main container-->
 </body>
 
