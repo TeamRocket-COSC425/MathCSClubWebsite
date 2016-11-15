@@ -1,13 +1,19 @@
 <?php
   require_once("classes/Login.php");
   require_once("classes/Utils.php");
+  include("includes/header.html");
+  include("includes/sidenav.html");
+  include("includes/topnav.php");
+  require_once('classes/registration-gc-mc.php');
+  $gc = new gullcode();
+  $mc = new math_challenge();
   $login = new Login();
   if ($login->isUserLoggedIn()) {
     require_once('classes/registration-gc-mc.php');
     $gc = new gullcode();
     $mc = new math_challenge();
   	$user = Utils::getCurrentUser();
-  	
+
     $gcmembers = $db->get("gullcode_users_on_teams");
     $mcmembers = $db->get("math_challenge_users_on_teams");
     $regcheck = 0;
@@ -28,10 +34,7 @@
   }
   else{
     $title = "SU Math/CS Club Registration";
-    include("includes/header.html");
-    include("includes/sidenav.html");
-    include("includes/topnav.php");
-  }  
+  }
 ?>
 
 <head>
@@ -44,7 +47,7 @@
 <body>
   <div class="container">
     <br><br><br>
-  
+
 <!-- Begin Tabs navigation -->
 <ul class = "tab">
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
@@ -59,42 +62,27 @@
 </div>
 
 <!--Math Challenge Tab Content-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
-    $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
-
+     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 0){
       echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
-    }
-    else{
-    $user = Utils::getCurrentUser();
-
-    $members = $db->get("math_challenge_users_on_teams");
-    $check = 0 ;
-    foreach ($members as $member) {
-      if($member['id'] == $user['id']) {
-        $check = 1;
-      }
-    }
-
-    if($check == 1) {
-      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for Math Challenge.<br>Check your profile for more info</b></p></div>");
     }
     else{
 ?>
 
 <div id="Math-Challenge" class="tabcontent">
 <left><strong><u>Sign up Form</u></strong></left>
- 
+
 	<form method="post">
 		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	
+
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
-    	
+
 		</select>
-	
+
 	<div id="team">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
@@ -132,51 +120,36 @@
 	  			<option value="4">2x-large</option>
   		</optgroup>
 		</select>
-       
+
     <input name="mc-register" type="submit" value="Register for Math Challenge" class="insert"/>
 	</form>
-</div>	
+</div>
 <?php
 	}
 	}
 }
 ?>
 <!-- GullCode Tab Content-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
-    $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
-
+     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 0){
       echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
-    }
-    else{
-    $user = Utils::getCurrentUser();
-
-    $members = $db->get("gullcode_users_on_teams");
-    $check = 0;
-    foreach ($members as $member) {
-      if($member['id'] == $user['id']) {
-        $check = 1;
-      }
-    }
-    
-    if($check == 1) {
-      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for GullCode.<br>Check your profile for more info</b></p></div>");
     }
     else{
 ?>
 
 <div id="GullCode" class="tabcontent">
 <left><strong><u>Sign up Form</u></strong></left>
- 
+
 	<form method="post">
 		<p class="message">Register As:</p>
 		<select id="registert-as" name="registert-as" required>
-	    	
+
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
 		</select>
-	
+
 	<div id="team">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
@@ -225,12 +198,12 @@
 	  			<option value="4">2x-large</option>
  			</optgroup>
 		</select>
-       
+
     <input name="gc-register" type="submit" value="Register for GullCode" class="insert"/>
 	</form>
 </div>
 <?php
-  } 
+  }
 	}
 }
 ?>
@@ -269,5 +242,5 @@ function toggleFields() {
         $("#team").hide();
   }
 </script>
-           
-</body>                  
+
+</body>

@@ -17,6 +17,7 @@
     $currentuser = $user;
 
     $edit = isset($_GET['edit']);
+	$delete = isset($_GET['delete']);
     if (isset($_GET['user'])) {
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
@@ -101,6 +102,14 @@
 	            'bio' => $_POST['bio']
 	        );
 
+			if (Utils::currentUserAdmin()) {
+				$admindata = array(
+					'mentor' => isset($_POST['mentor']) ? 1 : 0,
+					'admin' => isset($_POST['admin']) ? 1 : 0
+				);
+				$data = array_merge($data, $admindata);
+			}
+
 	        $db->where('id', $user['id'])->update('users', $data);
 
 			// Rebuild URL without 'edit' param (maintains user param)
@@ -126,7 +135,8 @@
 
 <div id="content">
 <?php
-  if ($edit && $user !== $currentuser && !Utils::currentUserAdmin()) {
+
+  if (($edit || $delete) && $user !== $currentuser && !Utils::currentUserAdmin()) {
 ?>
     <center>
       You cannot edit this page.<br/>
@@ -136,6 +146,39 @@
     die();
   }
 ?>
+  <script>
+	$(document).ready(function(){
+		$("#delete_go_back").click(function(){
+			window.history.back();
+		});
+	});
+  </script>
+  <center>
+<?php
+ if ($delete) {
+	if ($user === $currentuser) {
+?>
+		<h3>You cannot delete your own profile!</h3>
+		<a id="delete_go_back" class="button" href="#">Go Back</a>
+<?php
+	} elseif (isset($_POST['confirm_delete'])) {
+		$db->where('id', $user['id'])->delete('users');
+?>		Profile "<?php echo $user['email']; ?>" has been deleted
+		<a class="button" href="dashboard">To Dashboard</a>
+<?php
+	} else {
+?>  	<h4>Are you sure you want to delete the profile for "<?php echo $user['email']; ?>"?</h4>
+		<p style="color:red;">This cannot be undone</p>
+		<form method="post" id="delete_profile">
+		</form>
+		<input form="delete_profile" class="dangerbutton" type="submit" name="confirm_delete" id="delete_profile" value="Yes" />
+		<a id="delete_go_back" class="button" href="#">Go Back</a>
+<?php
+	}
+	die();
+  }
+?>
+  </center>
 
 <div id = "user_info">
 <div id="left_column">
@@ -209,13 +252,21 @@
 ?>
                 </optgroup>
             </select>
-
+<?php
+			if (Utils::currentUserAdmin())
+			{
+?>
+				<input form="profile" type="checkbox" name="mentor", value=""> Mentor<br/>
+				<input form="profile" type="checkbox" name="admin",  value=""> Admin<br/>
+<?php
+			}
+?>
             <input class="profile_button" form="profile" type="submit" name="submit" value="Save"/>
         </div>
 <?php
     } else {
         echo "<img src=\"$image\" />";
-        echo '<center><h3>'. $user['name'] . ($admin ? ' (Admin)' : '') . '</h3></center>';
+        echo '<center><h3>'. $user['name'] . ($user['admin'] ? ' (Admin)' : '') . '</h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
         if ($email !== $user['preferred_email']) {
@@ -229,10 +280,16 @@
         if (isset($_GET['user'])) {
             $url = $url . '&user=' . $_GET['user'];
         }
-  ?>
+?>
         <br>
-        <a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
-  <?php
+<?php
+		if ($user === $currentuser || Utils::currentUserAdmin()) {
+?>
+			<div id="profile_buttons">
+				<a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
+			</div>
+<?php
+		}
     }
   ?>
 </div>

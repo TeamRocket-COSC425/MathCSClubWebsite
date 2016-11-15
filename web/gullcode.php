@@ -34,18 +34,12 @@
 
 <?php
   if($login->isUserLoggedIn()) {
-    
+
     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 1) {
       include("views/GC-MC-Register.html");
     }
   }
-
-
-  echo("<i>Have an account?</i>");
-  include("views/Login.html");
-  echo("<br> <i>Not Registered?</i>");
-  include("views/SignUp.html");
 ?>
 
 
