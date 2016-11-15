@@ -40,12 +40,6 @@
       include("views/GC-MC-Register.html");
     }
   }
-
-
-  echo("<i>Have an account?</i>");
-  include("views/Login.html");
-  echo("<br> <i>Not Registered?</i>");
-  include("views/SignUp.html");
 ?>
 
 
