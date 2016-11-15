@@ -28,6 +28,7 @@ function scrollTo(id) {
     <h3>Navigation</h3>
     <a class="button" href="#" onclick="scrollTo('users')">User List</a>
     <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
+    <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -125,7 +126,7 @@ function scrollTo(id) {
 
 
 <div class="adminpane" id="gullcodeTables">
-    <h1>GullCode</h1>  
+    <h3>GullCode</h3>
     <div>
 <?php
     $gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
@@ -141,7 +142,7 @@ function scrollTo(id) {
     <form method="post">
     <input name="closeGcRegistration" type="submit" value="Close Gullcode Registration"/>
     </form>
- <?php      
+ <?php
     }
 ?>
     <form method="post">
@@ -149,7 +150,7 @@ function scrollTo(id) {
     </form>
     </div>
     <br>
-    
+
 <?php
     /* GULLCODE TEAMS */
     $teams = $db->where("team_id")->get("gullcode_teams");
@@ -196,7 +197,7 @@ function scrollTo(id) {
     }
 
     /* GULLCODE FREE AGENTS */
-    
+
     $db->join("users u", "g.id=u.id", "LEFT");
 
     $free_agents = $db->where("team_id", 0)->get("gullcode_users_on_teams g");
@@ -231,12 +232,12 @@ function scrollTo(id) {
 
     echo "</tbody>";
     echo "</table>";
-    }   
+    }
 ?>
 
 <?php
         /* First 60 signed up */
-        
+
         $db->join("users u", "g.id=u.id", "LEFT");
         $db->orderBy ("register_time", "asc");
         $users = $db->get("gullcode_users_on_teams g", 60);
@@ -274,8 +275,8 @@ function scrollTo(id) {
 </div>
 
 <div class="adminpane" id="mathChallengeTables">
-    <h1>Math Challenge</h1>
-    
+    <h3>Math Challenge</h3>
+
     <div>
     <?php
     $mcControl = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
@@ -284,7 +285,7 @@ function scrollTo(id) {
     <form method="post">
     <input name="openMcRegistration" type="submit" value="Open Math Challenge Registration"/>
     </form>
- <?php      
+ <?php
     }
     else {
  ?>
@@ -299,7 +300,7 @@ function scrollTo(id) {
     </form>
     </div>
     <br>
-    
+
 <?php
     /* MATH CHALLENGE TEAMS */
     $teams = $db->where("team_id")->get("math_challenge_teams");
@@ -346,7 +347,7 @@ function scrollTo(id) {
     }
 
     /* MATH CHALLENGE FREE AGENTS */
-    
+
     $db->join("users u", "g.id=u.id", "LEFT");
 
     $free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams g");
@@ -386,7 +387,7 @@ function scrollTo(id) {
 
 <?php
         /* First 60 signed up */
-        
+
         $db->join("users u", "g.id=u.id", "LEFT");
         $db->orderBy ("register_time", "asc");
         $users = $db->get("math_challenge_users_on_teams g", 60);
