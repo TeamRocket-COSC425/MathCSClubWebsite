@@ -46,6 +46,7 @@ numbers.”</i> - Shakuntala Devi</center>
 	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
  </div>
 
+<<<<<<< HEAD
 
 
  </div>
@@ -71,6 +72,17 @@ numbers.”</i> - Shakuntala Devi</center>
 	else {
 		include("views/SignUp.html");
 	}
+=======
+<!--End Rules container-->
+<br>
+<?php 
+	if($login->isUserLoggedIn()) {
+    $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
+    if($control["switch"] == 1) {
+      include("views/GC-MC-Register.html");
+    }
+  }
+>>>>>>> refs/remotes/origin/master
 ?>
 
 </div>

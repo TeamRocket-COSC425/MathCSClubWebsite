@@ -57,7 +57,7 @@
     margin-bottom: 10px;
 }
 
-.profile_button {
+#profile_buttons {
     margin-bottom: 10px;
 }
 
@@ -66,6 +66,7 @@
 .form {
     margin: 0;
     z-index: 0;
+    text-align: left;
 }
 
 input[type="file"] {
