@@ -18,6 +18,8 @@
 </head>
 
 <body class="login-background">
+<div id="main">
+<div id="content">
 <div class="container">
 
 </div>
@@ -86,6 +88,7 @@
   <script src="js/index.js"></script>
 
 
-
+</div>
+</div>
 </body>
 </html>

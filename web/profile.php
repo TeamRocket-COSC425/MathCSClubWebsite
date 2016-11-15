@@ -152,7 +152,14 @@
             </form>
 
 			<div class="editErrors" style="color:red;">
-				<?php if ($uploadOk === 0) echo $upload_error_message; ?>
+				<?php if ($uploadOk === 0) 
+          {
+            $errors='<img src="images/message-icons/error.jpg"/>'; 
+            echo "<table><span>";
+            echo "<tr>$errors $upload_error_message</tr>";
+            echo "</table></span>";
+          }
+        ?>
 			</div>
             <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
             <label class="profile_image_upload">
