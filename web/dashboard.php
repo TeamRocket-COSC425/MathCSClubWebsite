@@ -27,60 +27,26 @@
 
 <head>
 	<title>Math CS Club - Dashboard</title>
-	<link rel="stylesheet" href="css/dashboard.css"/>
+    <link rel="stylesheet" href="css/forms.css"/>
+    <link rel="stylesheet" href="css/dashboard.css"/>
+    <link rel="stylesheet" href="css/tablesort/theme/blue/style.css"/>
+    <link rel="stylesheet" href="js/tablesort/addons/pager/jquery.tablesorter.pager.css"/>
+    <script type="text/javascript" src="js/tablesort/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="js/tablesort/jquery.tablesorter.widgets.js"></script>
+    <script type="text/javascript" src="js/tablesort/addons/pager/jquery.tablesorter.pager.js"></script>
 </head>
 
 <body>
 
 <div id="main">
-
 <div id="content">
-
-<h1>
-Dashboard
-</h1>
-<div class="registrationcontrolbutton">
 <?php
-	$gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
-	if($gcControl["switch"] == 0) {
-?>
-	<form method="post">
-	<input name="openGcRegistration" type="submit" value="Open Gullcode Registration"/>
-	</form>
-<?php
-  	}
-    else {
- ?>
- 	<form method="post">
-	<input name="closeGcRegistration" type="submit" value="Close Gullcode Registration"/>
-	</form>
- <?php   	
+    if (Utils::currentUserAdmin() && !isset($_GET['user'])) {
+        include("views/dashboard_admin.php");
+    } else {
+        include("views/dashboard_user.php");
     }
 ?>
-    <form method="post">
-    <input name="emptyGcRegistration" type="submit" value="Delete Gullcode Registration list"/>
-    </form>
-<?php
-    $mcControl = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
-    if($mcControl["switch"] == 0) {
- ?>
- 	<form method="post">
-	<input name="openMcRegistration" type="submit" value="Open Math Challenge Registration"/>
-	</form>
- <?php   	
-    }
-    else {
- ?>
- 	<form method="post">
-	<input name="closeMcRegistration" type="submit" value="Close Math Challenge Registration"/>
-	</form>
-<?php
-    }
-?>
-    <form method="post">
-    <input name="emptyMcRegistration" type="submit" value="Delete Math Challenge Registration list"/>
-    </form>
-</div>
 </div>
 </div>
 
