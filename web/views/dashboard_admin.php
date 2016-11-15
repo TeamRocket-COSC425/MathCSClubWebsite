@@ -146,7 +146,7 @@ function scrollTo(id) {
     }
 ?>
     <form method="post">
-    <input name="emptyGcRegistration" type="submit" value="Delete Gullcode Registration list"/>
+    <input class="dangerbutton" name="emptyGcRegistration" type="submit" value="Delete Gullcode Registration list"/>
     </form>
     </div>
     <br>
@@ -296,7 +296,7 @@ function scrollTo(id) {
     }
 ?>
     <form method="post">
-    <input name="emptyMcRegistration" type="submit" value="Delete Math Challenge Registration list"/>
+    <input class="dangerbutton" name="emptyMcRegistration" type="submit" value="Delete Math Challenge Registration list"/>
     </form>
     </div>
     <br>
