@@ -71,35 +71,3 @@ background: url("../images/message-icons/error.gif") no-repeat ;
 .GCsessionButton:hover {
     background: #BBB;
 }
-
-table#teams {
-    border: 3px solid Black;
-    border-collapse: collapse;
-    width: 100%;
-
-}
-
-table#teams th {
-    background-color: Black;
-    color: #12BFC3;
-    vertical-align: center;
-    border: 3px solid Black;
-    position: relative;
-}
-
-table#teams td {
-    text-align: left;
-    color: Black;
-    vertical-align: center;
-    border: 3px solid Black;
- 
-}
-
-table#teams tr:nth-child(odd) {
-    background-color: LightGray;
-
-}
-
-table#teams tr:nth-child(even) {
-    background-color:;
-}

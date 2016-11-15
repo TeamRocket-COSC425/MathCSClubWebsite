@@ -34,6 +34,7 @@ numbers.”</i> - Shakuntala Devi</center>
 <div class="Overview" style="text-align: justify;">
  	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
 <br><br>
+</div>
 
 <div class="containerz">
 <!-- About container  -->
@@ -44,60 +45,9 @@ numbers.”</i> - Shakuntala Devi</center>
  <div class="column-right" >
 	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
  </div>
-
  </div>
 
 <!--End Rules container-->
-<br>
-<?php
-	if ($login->isUserLoggedIn()) {
-    $admin = Utils::currentUserAdmin();
-    if ($admin) {
- 		$teams = $db->where("team_id")->get("math_challenge_teams");
- 	  	$team_members = $db->where("team_id")->get("math_challenge_users_on_teams");
-      	$users = $db->get("users");
-
-     	foreach ($teams as $team) {
-     		if($teams) {
-     			echo "<table id=teams> <th colspan='5'>" . $team['team_name'] . "</th>";
-      			foreach ($team_members as $team_member) {
-      				if($team['team_id'] == $team_member['team_id']) {
-      					foreach ($users as $user) {
-      						if ($team_member['id'] == $user['id']) {
-      							echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td><td>" . Utils::t_size($user['t_size']) . "</td></tr>";
-      						}
-      					}
-      				}
-      			}
-      			echo "</table> <br>";
-     		}
-     	}
-  	}
-}	
-?>
-<?php 
-	if($login->isUserLoggedIn())
-	{
-		$free_agents = $db->where("team_id", 0)->get("math_challenge_users_on_teams");
-		$users = $db->get("users");
-		echo '<table id="teams" class="table table-condensed">';
-
-		if($free_agents) {			
-			echo '<th colspan="4">' . 'Free Agents' . "</th>";
-		}
-
-		foreach ($free_agents as $free_agent) {  
-			foreach($users as $user) {
-				if ($free_agent['id'] == $user['id']) {
-					echo "<tr><td>" . $user['name'] . "</td><td>" . $user['email'] . "</td><td>" . $user['major'] . "</td><td>" . Utils::year($user['year']) . "</td></tr>";
-				}
-			}
-		}
-
-		echo "</table>"; 
-	}
-?>
- 
 <br>
 
 <?php 
