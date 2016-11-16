@@ -35,7 +35,7 @@ numbers.”</i> - Shakuntala Devi</center>
  	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
 
 </div>
-<br><br>
+
 <div class="containerz">
 
  <div class="column-left" style="text-align:left;">
@@ -46,33 +46,11 @@ numbers.”</i> - Shakuntala Devi</center>
 	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
  </div>
 
-<<<<<<< HEAD
+
 
 
  </div>
-<?php 
-	if($login->isUserLoggedIn()) {
-		$user = Utils::getCurrentUser();
-        $members = $db->get("math_challenge_users_on_teams");
-		$check=0;
 
-        foreach ($members as $member) {
-            if($member['id'] == $user['id']) {
-                $check = 1;
-            }
-
-        }
-        if($check == 1) {
-            echo("<p class ='center' style='color:red;'><u>You have already registered for math challenge. Check your profile for info</u></p>");
-        }
-        else{
-        	include("views/GC-MC-Register.html");
-        }	
-	} 
-	else {
-		include("views/SignUp.html");
-	}
-=======
 <!--End Rules container-->
 <br>
 <?php 
@@ -82,7 +60,6 @@ numbers.”</i> - Shakuntala Devi</center>
       include("views/GC-MC-Register.html");
     }
   }
->>>>>>> refs/remotes/origin/master
 ?>
 
 </div>
