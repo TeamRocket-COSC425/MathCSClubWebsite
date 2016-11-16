@@ -75,9 +75,6 @@ background: url("../images/message-icons/error.gif") no-repeat ;
 
 .GCsessionButton:hover {
     background: #BBB;
-<<<<<<< Updated upstream
-}
-=======
 }
 
 table#teams {
@@ -125,5 +122,3 @@ table#teams tr:nth-child(even) {
     }
 
 }
-
->>>>>>> Stashed changes
