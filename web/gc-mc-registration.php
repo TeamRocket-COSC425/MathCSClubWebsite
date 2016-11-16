@@ -66,7 +66,7 @@
   if($login->isUserLoggedIn()) {
      $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 0){
-      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
+      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.png' width='50'style='float: left; margin: -.25em -1.5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
     }
     else{
 ?>
@@ -127,14 +127,14 @@
 <?php
 	}
 	}
-}
+
 ?>
 <!-- GullCode Tab Content-->
 <?php
   if($login->isUserLoggedIn()) {
      $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 0){
-      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
+      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.png' width='50'style='float: left; margin: -.25em -1.5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
     }
     else{
 ?>
@@ -205,7 +205,7 @@
 <?php
   }
 	}
-}
+
 ?>
 </div>
 <script>
