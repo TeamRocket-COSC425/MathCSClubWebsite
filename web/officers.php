@@ -26,10 +26,9 @@ function toggleByID(IDName) {
 <div id="main">
 
 <div id="content">
-
-<h1>
-Meet Your Officers
-</h1>
+<header>
+<h1><code><center> Meet Your Officers </center></code></h1>
+</header>
 
 <div class='circle-container'>
 	<div class='groupPic'><img src="images/officers/fall16septemberOfficers.jpg"></div>

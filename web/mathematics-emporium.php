@@ -8,6 +8,7 @@
 
 <head>
 	<title>Math CS Club - Mathematics Emporium</title>
+	<link rel="stylesheet" href="css/math-emporium.css"/>
 </head>
 
 <body>
@@ -15,7 +16,10 @@
 <div id="main">
 
 <div id="content">
- 
+<header>
+<h1><code><center> Mathematics Emporium </center></code></h1>
+</header>
+
  <div style="-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;">
 
 	<div class="center"> 
