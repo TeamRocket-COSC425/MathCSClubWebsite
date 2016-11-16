@@ -52,9 +52,8 @@ numbers.”</i> - Shakuntala Devi</center>
  </div>
 
 <!--End Rules container-->
-<br>
 <?php 
-	if($login->isUserLoggedIn()) {
+  if($login->isUserLoggedIn()) {
     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 1) {
       include("views/GC-MC-Register.html");
@@ -66,9 +65,11 @@ numbers.”</i> - Shakuntala Devi</center>
 
 
 <!--End content container-->
+
 </div>
 
 <!--End main container-->
+
 </body>
 
 </html>
