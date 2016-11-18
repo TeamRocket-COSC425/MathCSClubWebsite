@@ -42,20 +42,25 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="main">
+    <div id="content">
     <br><br><br>
   
 <!-- Begin Tabs navigation -->
-<ul class = "tab">
+<div class = "tab">
+  <div class="tabItems">
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
+  <div class="mcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
   <h1>Math Challenge</h1></a></li>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
+</div>
+  <div class="gcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
   <h1>GullCode</h1></a></li>
-</ul>
+</div>
+</div>
+</div>
 
 <div id="About Me" class="tabcontent">
-  <center><strong> Select Competition Link Above </strong> </center>
+ Select Competition Link Above 
 </div>
 
 <!--Math Challenge Tab Content-->
@@ -64,7 +69,7 @@
     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
 
     if($control["switch"] == 0){
-      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
+      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.jpg' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for Math Challenge is currently closed.<br></b></p></div>");
     }
     else{
     $user = Utils::getCurrentUser();
@@ -78,7 +83,7 @@
     }
 
     if($check == 1) {
-      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for Math Challenge.<br>Check your profile for more info</b></p></div>");
+      echo("<div id='Math-Challenge' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.jpg' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for Math Challenge.<br>Check your profile for more info</b></p></div>");
     }
     else{
 ?>
@@ -147,7 +152,7 @@
     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
 
     if($control["switch"] == 0){
-      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
+      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.jpg' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b><br>Registration for GullCode is currently closed.<br></b></p></div>");
     }
     else{
     $user = Utils::getCurrentUser();
@@ -161,7 +166,7 @@
     }
     
     if($check == 1) {
-      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.gif' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for GullCode.<br>Check your profile for more info</b></p></div>");
+      echo("<div id='GullCode' class='tabcontent'><p class='center' style='color:red'><img src='images/message-icons/error.jpg' width='50'style='float: left; margin: -.25em .5em 2em 2em '><span><b>You have already registered for GullCode.<br>Check your profile for more info</b></p></div>");
     }
     else{
 ?>
@@ -234,7 +239,6 @@
 	}
 }
 ?>
-</div>
 <script>
   document.getElementById("defaultOpen").click();
   function openTab(evt, cityName) {
@@ -269,5 +273,7 @@ function toggleFields() {
         $("#team").hide();
   }
 </script>
-           
+        
+</div>
+</div>           
 </body>                  
