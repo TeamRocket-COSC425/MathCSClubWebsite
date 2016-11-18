@@ -256,8 +256,8 @@
 			if (Utils::currentUserAdmin())
 			{
 ?>
-				<input form="profile" type="checkbox" name="mentor", value=""> Mentor<br/>
-				<input form="profile" type="checkbox" name="admin",  value=""> Admin<br/>
+				<input form="profile" type="checkbox" name="mentor" value="" <?php if ($user['mentor']) echo 'checked'; ?>> Mentor<br/>
+				<input form="profile" type="checkbox" name="admin"  value="" <?php if ($user['admin'])  echo 'checked'; ?>> Admin<br/>
 <?php
 			}
 ?>
