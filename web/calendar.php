@@ -8,6 +8,8 @@
 
 <head>
 	<title>Math CS Club - Calendar</title>
+	<link rel="stylesheet" href="css/calendar.css"/>
+
 </head>
 
 <body>
@@ -15,6 +17,10 @@
 <div id="main">
 
 <div id="content">
+
+<header>
+<h1><code><center> Calendar </center></code></h1>
+</header>
 <?php (new EditableContent("calendar"))->getContent(); ?>
 
 		<!-- Embeds Salisbury Universities Math and CS Calendar-->

@@ -1,13 +1,10 @@
 header {
-    background: url("../images/officers/office.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-image: url("../images/officers/office.jpg") ;
     background-size: cover;
     height: 75px;
     border: 3px solid white;
     text-align: center;
-    line-height: 30px;
+    line-height: 25px;
     color: white;
     text-shadow:
     -1px -1px 0 #000,
