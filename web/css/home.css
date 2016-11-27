@@ -46,6 +46,7 @@ a:visited {
 
 input[type="submit"], a.button {
     font-size: 14px;
+    line-height: 1;
     width: 100%;
     padding: 9px;
     margin-top: 10px;
@@ -66,6 +67,14 @@ input[type="submit"], a.button {
 
 input[type="submit"]:hover, a.button:hover {
     background: #129fa3;
+}
+
+input[type="submit"].dangerbutton, a.dangerbutton {
+    background-color: #BD2D2D;
+}
+
+input[type="submit"].dangerbutton:hover, a.dangerbutton:hover {
+    background-color: #8B1010;
 }
 
 /* ==== CodeMirror Styling === */

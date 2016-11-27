@@ -15,16 +15,26 @@ header {
     -1px 1px 0 #000,
     1px 1px 0 #000;  
 }
-#cols {
+
+.col3 {
     -webkit-column-count: 3;
-    -moz-column-count: 3;
+    -moz-column-count: 3; 
     column-count: 3;
+
+    -webkit-column-width: 300px;
+    -moz-column-width: 300px;
+    column-width: 300px;
+}
+
+.block {
+    display:inline-block;
 }
 
 .gullcodepic {
     border-radius: 8px;
     width: 100%;
     height: auto;
+    display:inline-block;
 }
 
 /* GullCode Editable Content */

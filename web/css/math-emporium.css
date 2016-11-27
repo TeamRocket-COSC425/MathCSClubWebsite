@@ -1,9 +1,7 @@
 header {
-    background-image: url("../images/cords.jpg") ;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-image: url("../images/math-emporium/mp.jpg") ;
     background-size: cover;
+    margin-bottom:20px;
     height: 75px;
     border: 3px solid white;
     text-align: center;

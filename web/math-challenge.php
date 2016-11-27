@@ -33,11 +33,11 @@ numbers.”</i> - Shakuntala Devi</center>
 <br>
 <div class="Overview" style="text-align: justify;">
  	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
-<br><br>
+
 </div>
 
 <div class="containerz">
-<!-- About container  -->
+
  <div class="column-left" style="text-align:left;">
  	<?php (new EditableContent("math-challenge-rules"))->getContent();?>
  </div>
@@ -45,40 +45,31 @@ numbers.”</i> - Shakuntala Devi</center>
  <div class="column-right" >
 	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
  </div>
+
+
+
+
  </div>
 
 <!--End Rules container-->
-<br>
-
 <?php 
-	if($login->isUserLoggedIn()) {
-		$user = Utils::getCurrentUser();
-        $members = $db->get("math_challenge_users_on_teams");
-		$check=0;
-
-        foreach ($members as $member) {
-            if($member['id'] == $user['id']) {
-                $check = 1;
-            }
-
-        }
-        if($check == 1) {
-            echo("<p class ='center' style='color:red;'><u>You have already registered for math challenge. Check your profile for info</u></p>");
-        }
-        else{
-        	include("views/GC-MC-Register.html");
-        }	
-	} 
-	else {
-		echo("<br><br><br>");
-		include("views/SignUp.html");
-	}
+  if($login->isUserLoggedIn()) {
+    $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
+    if($control["switch"] == 1) {
+      include("views/GC-MC-Register.html");
+    }
+  }
 ?>
 
 </div>
+
+
 <!--End content container-->
+
 </div>
+
 <!--End main container-->
+
 </body>
 
 </html>

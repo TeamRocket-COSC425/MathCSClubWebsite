@@ -2,49 +2,59 @@
 $title = "SU Math/CS Club Contact Us";
 require_once("vendor/autoload.php");
     //get form data
-  if(isset($_POST['contact_name'])){
-    $contact_name = $_POST['contact_name'];
-    $contact_email = $_POST['contact_email'];
-    $contact_subject = $_POST['contact_subject'];
-    $contact_message = $_POST['contact_message'];
+if(isset($_POST['contact_name'])){
+  $contact_name = $_POST['contact_name'];
+  $contact_email = $_POST['contact_email'];
+  $contact_subject = $_POST['contact_subject'];
+  $contact_message = $_POST['contact_message'];
 
+  function validateEmail($email){
+    $result=false;
 
-    //verify email is an email
-  if (!filter_var($_POST['contact_email'], FILTER_VALIDATE_EMAIL)){
-    echo '<script>alert("The e-mail address you provided is not valid.");</script>';
-
-  }
-    //verify fields have entries
-  elseif (empty($contact_name)){
-    echo '<script type="text/javascript">alert("Please include your name.");</script>';
-  } elseif (empty($contact_email)){
-    echo '<script type="text/javascript">alert("Please include your email.");</script>';
-  } else if(empty($contact_subject)){
-    echo "Please include a subject for your message.";
-  } else if(empty($contact_message)){
-    echo "Please include your message message.";
-  }
-
-  else{
-    $mail = new PHPMailer;
-
-    $mail->isSMTP();
-    // $mail->SMTPDebug = 3;
-    $mail->Debugoutput = 'html';
-
-    if (getenv('MAILTRAP_API_TOKEN')) {
-      $mail->Host = 'mailtrap.io';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'e3386170e7a765';
-      $mail->Password = 'd8ab29b5c13eb0';
-      $mail->Port = 2525;
-    } else {
-      $mail->Host = 'localhost';
-      $mail->Port = 25;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+      echo '<script>alert("The e-mail address you provided is not valid."); return false;</script>';
+      return $result;
     }
 
-    $mail->setFrom($contact_email);
-    $mail->addAddress('sumathcsclub@gmail.com');
+    else{
+      $result = true;
+      return $result;
+    }
+  }
+
+    //verify email is an email
+  if(validateEmail($_POST['contact_email']) == true){
+    //verify fields have entries
+    if (empty($contact_name)){
+      echo '<script type="text/javascript">alert("Please include your name.");</script>';
+    } elseif (empty($contact_email)){
+      echo '<script type="text/javascript">alert("Please include your email.");</script>';
+    } else if(empty($contact_subject)){
+      echo "Please include a subject for your message.";
+    } else if(empty($contact_message)){
+      echo "Please include your message.";
+    }
+
+    else{
+      $mail = new PHPMailer;
+
+      $mail->isSMTP();
+    // $mail->SMTPDebug = 3;
+      $mail->Debugoutput = 'html';
+
+      if (getenv('MAILTRAP_API_TOKEN')) {
+        $mail->Host = 'mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'e3386170e7a765';
+        $mail->Password = 'd8ab29b5c13eb0';
+        $mail->Port = 2525;
+      } else {
+        $mail->Host = 'localhost';
+        $mail->Port = 25;
+      }
+
+      $mail->setFrom($contact_email);
+      $mail->addAddress('sumathcsclub@gmail.com');
     $mail->addCC($contact_email); //to cc the user 
     $mail->Subject = $contact_subject;
     $mail->Body = $contact_message;
@@ -55,6 +65,7 @@ require_once("vendor/autoload.php");
       exit();
     }
   } 
+}
 }
 include("includes/header.html");
 include("includes/sidenav.html");

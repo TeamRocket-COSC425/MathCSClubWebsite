@@ -18,34 +18,37 @@
 <div id="main">
 
 <div id="content" class = "center">
+
 <header>
 <h1><code><center> GullCode </center></code></h1>
 </header>
 
-<table id="gullcodeContent">
-  <tr>
-    <td><img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic"></td>
-    <td><?php (new EditableContent("gullcodeTime"))->getContent(); ?>
-    <td><img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic"></td>
-  </tr>
-</table>
+<br>
+
+<div class="col3">
+  <div>
+  <img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic">
+  </div>
+  <div class="block">
+  <?php (new EditableContent("gullcodeTime"))->getContent(); ?>
+  </div>
+  <div>
+  <img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic">
+</div>
+</div>
+
+<hr>
 
 <?php (new EditableContent("gullCodeDescription"))->getContent(); ?>
 
 <?php
   if($login->isUserLoggedIn()) {
-    
+
     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 1) {
       include("views/GC-MC-Register.html");
     }
   }
-
-
-  echo("<i>Have an account?</i>");
-  include("views/Login.html");
-  echo("<br> <i>Not Registered?</i>");
-  include("views/SignUp.html");
 ?>
 
 
