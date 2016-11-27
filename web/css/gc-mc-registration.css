@@ -24,35 +24,45 @@ input
     background: #f2f2f2;
 }
 
-ul.tab {
+.tab {
     list-style-type: none;
-       width:500px;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 10px;
     overflow: hidden;
     background-color: white;
     line-height: 20px;
     border-style: ridge;
     border-color: black;
-
 }
 
 /* Float the list items side by side */
-ul.tab li {
-	float: left;
-	margin-right:12px;
+.mcTab {
+    float:left;
+    margin-left: 34px;
+    margin-right: 20px;
 }
 
-/* Style the links inside the list items */
-ul.tab li a {
-margin: 0 1em 0 0;
-    display: inline-block;
+.gcTab {
+    float: right;
+    margin-left: 8px;
+    margin-right: 40px;
+    }
+
+.tabItems{
+    width: 100%;
+}
+
+.tab h1{
     color: black;
     text-align: center;
     padding: 10px 10px;
     transition: 0.3s;
-    font-size: 17px;
-    color: #12bfc3;;
-   border-bottom: 0.5em solid #12bfc3;
-   text-decoration: none;
+    font-size: 31px;
+    color: #12bfc3;
+    border-bottom: 0.5em solid #12bfc3;
+    line-height: 1em;
+    text-decoration: none;
 }
 
 .container
@@ -88,20 +98,63 @@ ul.tab li a:focus, .active {
 
 /* Style the tab content */
 .tabcontent {
-  
     padding: 6px 12px;
-    
     border-style: ridge;
-    border-width:auto;
     background: white;
     border-color: black;
-    width:516px;
+    max-width: 476px;
+    margin: auto;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 8px;
 }
 
 
 .message {
-    font-size: 12px;
+    font-size: 13px;
     margin: 0;
     color: #777;
     text-align: center;
+}
+
+
+
+@media only screen and (max-width : 600px) {
+    ul.tab{
+        line-height: 4em;
+    }
+    
+    .mcTab {
+        float: none;
+        text-align: center;
+        margin-left:12px;
+        margin-right: 0;
+    }
+
+    .gcTab {
+        float: none;
+        text-align: center;
+        margin-left:12px;
+        margin-right: 0;
+    }
+
+    .tabItems{
+        width: 100%;
+        margin: 0 auto; 
+        margin-left: -5px;
+    }
+
+    .tab h1{
+        color: black;
+        text-align: center;
+        padding: 10px 10px;
+        transition: 0.3s;
+        font-size: 31px;
+        color: #12bfc3;
+        border-bottom: 0.5em solid #12bfc3;
+        line-height: 1em;
+        text-decoration: none;
+    }
+
 }
