@@ -24,9 +24,11 @@
     if (!swapped && $("#mobile-toggle").css("clear") == "both") {
       reverseButtons();
       swapped = true;
+      $("#mobile-toggle").css('display', 'none');
     } else if (swapped && $("#mobile-toggle").css("clear") == "none") {
       reverseButtons();
       swapped = false;
+      $("#mobile-toggle").css('display', 'inherit');
     }
   }
 
