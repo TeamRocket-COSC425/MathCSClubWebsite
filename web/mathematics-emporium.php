@@ -16,17 +16,14 @@
 <div id="main">
 
 <div id="content">
-<<<<<<< HEAD
  
+<div class="mathEmpBanner">
+<h1><center> Mathematics Emporium </center></h1>
+</div>
+
+
  <div class="mathEmpTxt">
-=======
-<header>
-<h1><code><center> Mathematics Emporium </center></code></h1>
-</header>
 
- <div style="-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;">
-
->>>>>>> master
 	<div class="center"> 
 	<?php (new EditableContent("mathematics-emporium"))->getContent(); ?>
 	</div>
