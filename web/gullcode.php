@@ -18,9 +18,12 @@
 <div id="main">
 
 <div id="content" class = "center">
+
 <header>
 <h1><code><center> GullCode </center></code></h1>
 </header>
+
+<br>
 
 <div class="col3">
   <div>

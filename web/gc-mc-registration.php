@@ -45,20 +45,25 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="main">
+    <div id="content">
     <br><br><br>
 
 <!-- Begin Tabs navigation -->
-<ul class = "tab">
+<div class = "tab">
+  <div class="tabItems">
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
+  <div class="mcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
   <h1>Math Challenge</h1></a></li>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
+</div>
+  <div class="gcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
   <h1>GullCode</h1></a></li>
-</ul>
+</div>
+</div>
+</div>
 
 <div id="About Me" class="tabcontent">
-  <center><strong> Select Competition Link Above </strong> </center>
+ Select Competition Link Above 
 </div>
 
 <!--Math Challenge Tab Content-->
@@ -207,7 +212,6 @@
 	}
 
 ?>
-</div>
 <script>
   document.getElementById("defaultOpen").click();
   function openTab(evt, cityName) {

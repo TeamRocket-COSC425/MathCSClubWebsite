@@ -12,20 +12,10 @@ a:visited {
   color: #689AAB;
 }
 
-.video-container iframe {
-    position: absolute;
-    top:0;
+#video-container{
     float: right;
-    width: 100%;
-    height: 100%;
 }
-.video-container fb-page {
-    position: absolute;
-    top:0;
-    float: left;
-    width: 100%;
-    height: 100%;
-}
+
 
 #main #content img {
     max-width: 100%;
@@ -221,4 +211,114 @@ input[type="submit"].dangerbutton:hover, a.dangerbutton:hover {
 pre {
 	width: 100%;
 	overflow: auto;
+}
+
+
+.mathEmpTxt{
+    width: 50%;
+    float:left;
+}
+.mathEmpImg{
+    width: 45%;
+    height: auto;
+    float:right;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#main #content .mathEmpImg2 {
+    margin: 0 auto;
+}
+
+.mathEmpBanner {
+    background-image: url("../images/math-emporium/mp.jpg") ;
+    background-size: cover;
+    margin-bottom:20px;
+    height: 75px;
+    border: 3px solid white;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+
+
+
+/*@media screen and (min-width:320px) and (max-width:640px) {
+   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide 
+}
+*/
+@media only screen and (max-width : 1200px) {
+    .mathEmpImg{
+        width: 100%;
+        float: none;
+    }
+
+    .mathEmpTxt{
+        width: 100%;
+        float: none;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    /*Anything under 600px width will have this applied*/
+
+    #main {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+
+    #main #content{ /*for the homepage!*/
+        width: 100% ;
+        font-size: 10px;
+        margin-left: -10px;
+    } 
+
+    #dps{
+        font-size: 16px;
+    }
+
+    #main #content #grad-mobile{
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    #resource-mobile{
+        font-size: 15px;
+        margin-left: 1px;
+        margin-top: -5%;
+    }
+
+    #resource-mobile > ul{
+        margin-left: 10px;
+        padding-left: 5%;
+    }
+
+    #mentor-mobile{
+        font-size: 15px;
+    }
+
+    #video-container{
+        display:none;
+    }
+
+    .mathEmpImg{
+        width: 100%;
+        float: none;
+    }
+
+    .mathEmpTxt{
+        width: 100%;
+        float: none;
+    }
+
+    #calendar-mobile{
+        font-size: 15px;
+    }
+
 }

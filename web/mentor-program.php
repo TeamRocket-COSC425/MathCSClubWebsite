@@ -18,9 +18,10 @@
 
 <div id="content">
 
-<header>
-<h1><code><center> Mentor Program </center></code></h1>
-</header>
+<div id="mentor-mobile">
+<h1 class="center">
+Mentor Program
+</h1>
 
 <hr style="background-color: #003366; height: 3px;">
 
@@ -96,6 +97,7 @@
 	}
 ?>
 
+</div>
 </div>
 </div>
 

@@ -16,22 +16,30 @@
 <div id="main">
 
 <div id="content">
-<header>
-<h1><code><center> Mathematics Emporium </center></code></h1>
-</header>
+ 
+<div class="mathEmpBanner">
+<h1><center> Mathematics Emporium </center></h1>
+</div>
 
- <div style="-webkit-column-count: 2; -moz-column-count: 2; column-count: 2;">
+
+ <div class="mathEmpTxt">
 
 	<div class="center"> 
 	<?php (new EditableContent("mathematics-emporium"))->getContent(); ?>
 	</div>
-
-<img src="images/floor2AC.png" alt="AC Mapp" style="width: 100%; height: auto; border-radius: 8px;">
 </div>
+
+<div class="mathEmpImg">
+<img src="images/floor2AC.png" alt="AC Mapp">
+</div>
+
+
+<hr style="background-color: #003366; width: 100%; height: 3px;">
 <br>
-<hr style="background-color: #003366; height: 3px;">
-<br>
-<img src="images/Fall2016Tutor.PNG" alt="Tutor Schedule" style="width: 80%; height: auto; border-radius: 8px; display: block; margin: 0 auto">
+
+<center>
+<img src="images/Fall2016Tutor.PNG" alt="Tutor Schedule">
+</center>
 
 </div>
 </div>

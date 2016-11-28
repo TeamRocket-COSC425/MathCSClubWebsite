@@ -21,6 +21,7 @@
       $content = new EditableContent('resources');
       $content->getContent();
     ?>
+  </div>
 </div>
 </div>
 

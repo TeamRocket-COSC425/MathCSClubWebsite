@@ -17,6 +17,8 @@
 
 <div id="content">
 
+<div id="dps">
+
 <header>
 <h1><code> Dead Poets Society</code></h1>
 </header>
@@ -25,6 +27,7 @@
 
 <?php (new EditableContent("dead-poets-society"))->getContent(); ?>
 
+</div>
 </div>
 </div>
 </div>
