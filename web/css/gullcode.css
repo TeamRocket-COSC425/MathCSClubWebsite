@@ -37,47 +37,6 @@ header {
     display:inline-block;
 }
 
-/* GullCode Editable Content */
-table#gullcodeContent {
-    width: 100%;
-    border: none;
-}
-
-table#gullcodeContent td {
-    width: 33%;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-/* GullCode Team Tables */
-table#teams {
-    border: 3px solid Black;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-table#teams th {
-    background-color: Black;
-    color: #12BFC3;
-    vertical-align: center;
-    border: 3px solid Black;
-}
-
-table#teams td {
-    text-align: left;
-    color: Black;
-    vertical-align: center;
-    border: 3px solid Black;
-}
-
-table#teams tr:nth-child(odd) {
-    background-color: LightGray;
-}
-
-table#teams tr:nth-child(even) {
-    background-color:;
-}
-
 /* Register for GullCode button */
 .GCsessionButton {
     text-decoration: none;
@@ -102,4 +61,48 @@ table#teams tr:nth-child(even) {
 
 .GCsessionButton:hover {
     background: #BBB;
+}
+
+@media only screen and (max-width:1200px) {
+    .col3 {
+    -webkit-column-count: 1;
+    -moz-column-count: 1; 
+    column-count: 1;
+
+    -webkit-column-width: 300px;
+    -moz-column-width: 300px;
+    column-width: 300px;
+    }
+
+    .GCsessionButton {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-family: Arial;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100px;
+    text-align: center;
+    color: #111;
+    background-color: #CCC;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    }
+
+    .block {
+    display:inline-block;
+    }
+
+    .gullcodepic {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display:inline-block;
+    }
 }

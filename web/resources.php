@@ -9,14 +9,15 @@
 
 <head>
 	<title>Math CS Club - Extra Resources</title>
+   <link rel="stylesheet" href="css/resources.css"/>
 </head>
 
 <body>
 
 <div id="main">
 <div id="content">
-  <div id="resource-mobile">
-   <?php
+   
+      <?php
       $content = new EditableContent('resources');
       $content->getContent();
     ?>
