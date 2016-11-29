@@ -2,6 +2,8 @@
 
 include_once('vendor/autoload.php');
 include_once('classes/Utils.php');
+include_once('classes/EditableImage.php');
+include_once('classes/EditableText.php');
 
 class EditableContent {
 
@@ -12,13 +14,25 @@ class EditableContent {
     const COLUMN_CONTENT = 'content';
     const COLUMN_TIMESTAMP = 'timestamp';
 
-    private $parser;
+    public static function create($id) {
+        global $db;
+        $entry = $db->where(self::COLUMN_ID, $id)->getOne(self::TABLE_CONTENT);
+        switch($entry['type']) {
+            case 'text':
+                return new EditableText($id);
+            case 'image':
+                return new EditableImage($id);
+            default:
+                return null;
+        }
+    }
 
-    private $id;
+    public $errors = array();
+
+    protected $id;
 
     function __construct($id) {
-        $this->id       = $id;
-        $this->parser   = Parsedown::instance();
+        $this->id = $id;
     }
 
     public function text() {
@@ -28,7 +42,7 @@ class EditableContent {
       if (!$content) {
         $content = array(
           self::COLUMN_ID => $this->id,
-          self::COLUMN_CONTENT => self::getDefaultContent(),
+          self::COLUMN_CONTENT => $this->getDefaultContent(),
           self::COLUMN_TIMESTAMP => $db->now()
         );
         $db->insert(self::TABLE_CONTENT, $content);
@@ -40,10 +54,11 @@ class EditableContent {
     public function save($content) {
         global $db;
         $oldcontent = $db->where(self::COLUMN_ID, $this->id)->getOne(self::TABLE_CONTENT);
+        unset($oldcontent['type']);
 
         // If no changes are made, don't add any info to tables
         if ($oldcontent[self::COLUMN_CONTENT] === $content) {
-            return;
+            return 1;
         }
 
         // Sanity check, make sure there was something in the content table
@@ -60,91 +75,28 @@ class EditableContent {
 
         // Insert new data into content table
         $db->where(self::COLUMN_ID, $this->id)->update(self::TABLE_CONTENT, $newdata);
+
+        return 1;
     }
 
     public function printText() {
-        echo self::text();
+        echo $this->text();
     }
 
     public function printHTML() {
-        echo $this->parser->text(self::text());
-    }
-
-    private function printDiffs() {
-        $text = self::text();
-        $content = explode("\n", $text);
-
-        global $db;
-        $history = $db->where(self::COLUMN_ID, $this->id)->orderBy(self::COLUMN_TIMESTAMP, 'desc')->get(self::TABLE_HISTORY);
-
-        $renderer = new Diff_Renderer_Html_Inline;
-
-        foreach ($history as $row) {
-            $oldtext = $row[self::COLUMN_CONTENT];
-            $oldcontent = explode("\n", $oldtext);
-
-            $diff = new Diff($oldcontent, $content, []);
-            echo '<div class="diff"><div class="difftable">' . $diff->Render($renderer) . '</div>';
-
-            ?>
-            <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="revert">
-                <input id="edit_revert" type="submit" name="revert" value="Revert to This Version" />
-                <input id="edit_revert_to" type="hidden" name="revert_to" value="<?php echo $row[self::COLUMN_TIMESTAMP] ?>"/>
-            </form>
-            </div>
-            <?php
-
-            $content = $oldcontent;
-            $text = $oldtext;
-        }
+        echo $this->text();
     }
 
     public function printEditBox() {
-?>
-        <center>
-        <h3>
-            Editing "<?php echo $this->id?>":
-        </h3>
-        </center>
-        <form method="post" action="edit?page=<?php echo $_SERVER['REQUEST_URI']; ?>" id="edit_<?php echo $this->id; ?>">
-        </form>
-        <textarea class="edit_content_input" id="edit_id_<?php echo $this->id; ?>" rows="40" cols="150" name="edit_content" form="edit_<?php echo $this->id; ?>"><?php self::printText(); ?></textarea>
-        <input type="hidden" name="edit_id" value="<?php echo $this->id; ?>" form="edit_<?php echo $this->id; ?>" />
-        <input id="login_input_submit" type="submit" name="save" value="Save" form="edit_<?php echo $this->id; ?>" />
 
-        <input class="edit_show_revisions" id="show_revisions_<?php echo $this->id; ?>" type="submit" name="show_revisions" value="Show Revisions" />
-        <!-- declared display:none for jquery animation -->
-        <div style="display: none;" class="difflist" id="difflist_<?php echo $this->id; ?>">
-            <?php self::printDiffs(); ?>
-        </div>
-
-        <script src="jquery-3.1.0.min.js"></script>
-        <!-- death to package managers -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-        <script>
-            var simplemde = new SimpleMDE({ element: $("#edit_id_<?php echo $this->id; ?>")[0] });
-
-            $(document).ready(function(){
-                $("#show_revisions_<?php echo $this->id; ?>").click(function(){
-                    $("#difflist_<?php echo $this->id; ?>").slideToggle();
-                });
-            });
-
-        </script>
-<?php
     }
 
     public function getContent() {
         if (Utils::editModeEnabled()) {
-            self::printEditBox();
+            $this->printEditBox();
         } else {
-            self::printHTML();
+            $this->printHTML();
         }
-    }
-
-    public function getDefaultContent() {
-      return file_get_contents('res/template.md');
     }
 }
 

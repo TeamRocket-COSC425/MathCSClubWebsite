@@ -55,8 +55,13 @@ if (isset($_POST['revert'])) {
     $db->where(EditableContent::COLUMN_ID, $id)->update(EditableContent::TABLE_CONTENT, $version);
 
 } elseif (isset($_POST['edit_id'])) {
-    $content = new EditableContent($_POST['edit_id']);
-    $content->save($_POST['edit_content']);
+    $content = EditableContent::create($_POST['edit_id']);
+    if (!$content->save($_POST['edit_content'])) {
+        foreach ($content->errors as $error) {
+            echo $erorr . '<br>';
+        }
+        die();
+    }
 } else {
     if (!isset($_SESSION['edit'])) {
       $_SESSION['edit'] = true;

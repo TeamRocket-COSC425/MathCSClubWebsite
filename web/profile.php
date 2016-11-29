@@ -5,6 +5,8 @@
 </head>
 
 <?php
+    require_once('classes/EditableImage.php');
+
     $title = "User Profile";
     require_once("classes/Utils.php");
     require_once("classes/Login.php");
@@ -17,9 +19,42 @@
     $currentuser = $user;
 
     $edit = isset($_GET['edit']);
-	$delete = isset($_GET['delete']);
+    $delete = isset($_GET['delete']);
     if (isset($_GET['user'])) {
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
+    }
+
+    class EditableProfileImage extends EditableImage {
+
+        public function __construct($id) {
+            parent::__construct($id);
+            $this->form_id = "profile";
+            $this->simple = true;
+        }
+
+        protected function validate_image($image) {
+            $uploadOk = parent::validate_image($image);
+            if ($uploadOk == 0) {
+                return 0;
+            }
+            // Make sure the image is square
+            list($width, $height) = getimagesize($image['tmp_name']);
+            // Make sure the image is square
+            if ($width != $height) {
+            	$errors[] = "Image must be square.";
+                return 0;
+            }
+            return 1;
+        }
+
+        public function getContent() {
+            return $this->printEditBox();
+        }
+
+        public function text() {
+            global $user;
+            return $user['image'];
+        }
     }
 
 	$upload_error_message = "";
@@ -27,66 +62,6 @@
 
     // POST handling
     if (isset($_POST['submit'])) {
-
-		// Make sure we have a new image at all
-		if ($_FILES['image']['size'] !== 0) {
-
-			$target_dir = 'images/';
-			// Grab file extension
-			$imageFileType = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-			// Generate a file name based on the md5 hash of the file content
-			$target_file = $target_dir . hash_file("md5", $_FILES['image']['tmp_name']) . '.' . $imageFileType;
-			$allowed_types = array('jpg', 'jpeg', 'png');
-
-			// Make sure the size is valid
-			list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
-			// Make sure the size is <=1MB
-			if ($_FILES['image']['size'] > (1 << 20)) {
-				$uploadOk = 0;
-				$upload_error_message = "Image is too large. Max size 1MB.";
-			}
-			// Make sure the file is an image
-			if (!in_array($imageFileType, $allowed_types)) {
-				$uploadOk = 0;
-				$upload_error_message = "Image type \"" . $imageFileType . "\" not allowed. Must be one of " . implode(', ', $allowed_types) . '.';
-			}
-			// Make sure the image is square
-			if ($width != $height) {
-				$uploadOk = 0;
-				$upload_error_message = "Image must be square.";
-			}
-			// If we are still good, begin upload process
-			if ($uploadOk == 1) {
-				if (getenv('S3_BUCKET')) {
-					// S3 info available, upload to AWS
-					$s3 = Aws\S3\S3Client::factory();
-					$bucket = getenv('S3_BUCKET') ?: die('No "S3_BUCKET" config found in env!');
-
-					if (!$s3->doesObjectExist($bucket, $target_file)) {
-						$upload = $s3->upload($bucket, $target_file, fopen($_FILES['image']['tmp_name'], 'rb'), 'public-read');
-					}
-					$db->where('id', $user['id'])->update('users', array('image' => $upload->get('ObjectURL')));
-				} else {
-					// Move into uploads folder, we are on local
-					$target_file = 'uploads/' . $target_file;
-
-					// If the file already exists, reuse it.
-					if (!file_exists($target_file)) {
-						// Otherwise, move the tmp file into the real file's location
-						if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-							//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-						} else {
-							$uploadOk = 0;
-							$upload_error_message = "Sorry, there was an error uploading your file.";
-						}
-					}
-
-					if ($uploadOk == 1) {
-						$db->where('id', $user['id'])->update('users', array('image' => $target_file));
-					}
-				}
-			}
-		}
 
 		// If file upload failed, no need to continue
 		if ($uploadOk === 1) {
@@ -204,11 +179,7 @@
           }
         ?>
 			</div>
-            <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
-            <label class="profile_image_upload">
-                <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
-                <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
-            </label>
+            <?php (new EditableProfileImage("profile"))->getContent(); ?>
 
             <p class="message">Email:</p>
             <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>

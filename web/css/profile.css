@@ -68,22 +68,3 @@
     z-index: 0;
     text-align: left;
 }
-
-input[type="file"] {
-    display: none;
-}
-
-.profile_image_upload {
-    background: #12bfc3;
-    border-radius: 60px;
-    display: inline-block;
-    padding: 6px 8px;
-    cursor: pointer;
-    position: inherit;
-    margin-top: -3rem;
-    float: right;
-}
-
-.profile_image_upload:hover {
-    background: #129fa3;
-}
