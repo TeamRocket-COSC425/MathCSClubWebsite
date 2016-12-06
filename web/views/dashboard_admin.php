@@ -160,11 +160,11 @@ function scrollTo(id) {
     $team_members = $db->where("team_id")->get("gullcode_users_on_teams");
     $users = $db->get("users");
    
-echo '<h4>GullCode Teams</h4>';
+
     foreach ($teams as $team)
     {
         if($teams) {
-            
+            echo '<h4>GullCode Teams</h4>';
             echo '<H4>' . $team['team_name'] . '</H4>';
             echo '<table id="freeAgents" class="tablesorter">';
 ?>
