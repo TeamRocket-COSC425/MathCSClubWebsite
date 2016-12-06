@@ -49,10 +49,10 @@ class math_challenge{
 
            $id = $db->insert('math_challenge_users_on_teams',$data);
         }
-        elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
+        elseif ($or != 0 && strlen($_POST['team-name']) <= 4) {
              echo "<br><br><center><div  style='color:red; width:20%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'><b>Error:</b><br>Math Challenge Team Name is too short</center>";
         }
-        elseif ($or != 0 && strlen($_POST['team-name']) > 32) {
+        elseif ($or != 0 && strlen($_POST['team-name']) >= 32) {
             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:Math Challenge Team Name is too long</center>";
         }
         elseif($or != 0 && !$this->teamcheck($_POST['team-name'])){
@@ -119,10 +119,10 @@ class gullcode{
            $id = $db->insert('gullcode_users_on_teams',$data);
 
         }
-        elseif ($or != 0 && strlen($_POST['team-name']) < 4) {
+        elseif ($or != 0 && strlen($_POST['team-name']) <= 4) {
              echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:<br>GullCode Team Name is too short</center>";
         }
-        elseif ($or != 0 && strlen($_POST['team-name']) > 32) {
+        elseif ($or != 0 && strlen($_POST['team-name']) >= 32) {
                echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:GullCode Team Name is too long</center>";
         }
         elseif($or != 0 && !$this->teamcheck($_POST['team-name']))
