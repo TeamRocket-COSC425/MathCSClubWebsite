@@ -40,7 +40,7 @@
     display: block;
 }
 
-.sidenav > a {
+.sidenav .sideLink {
     padding: 8px 0 8px 16px;
     font-size: 18px;
     display: block;
