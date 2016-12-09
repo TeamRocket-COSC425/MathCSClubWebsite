@@ -110,7 +110,7 @@ header {
 /* CLUB ADVISOR STYLING */
 .advisor {
     position: relative;
-    top: 7em;
+    bottom: 16em;
 }
 .advisorPic {
     overflow: hidden;
