@@ -41,17 +41,7 @@ function toggleByID(IDName) {
 </div>
 
 <div id='info'>
-<?php
-        $advisors = $db->get('club_advisors');
-        foreach($advisors as $advisor) {
-            echo '<div id=\'' . $advisor["position"] . '\' class=\'advisor\'>';
-            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\'></div>';
-            echo '<div class=\'advisorInfo\'>';
-            echo '<H3>' . $advisor["name"] . '</H3>';
-            echo '<H4>' . $advisor["title"] . '</H4>';
-            echo '</div></div>';
-        }
-?>
+
 <div id='officer-bio'>
 
     <div id='default'>
@@ -69,6 +59,21 @@ function toggleByID(IDName) {
         }
 
     ?>
+</div>
+
+<!-- CLUB ADVISORS -->
+<div id='advisors'>
+<?php
+        $advisors = $db->get('club_advisors');
+        foreach($advisors as $advisor) {
+            echo '<div id=\'' . $advisor["position"] . '\' class=\'advisor\'>';
+            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\'></div>';
+            echo '<div class=\'advisorInfo\'>';
+            echo '<H3>' . $advisor["name"] . '</H3>';
+            echo '<H4>' . $advisor["title"] . '</H4>';
+            echo '</div></div>';
+        }
+?>
 </div>
 </div>
 </div>
