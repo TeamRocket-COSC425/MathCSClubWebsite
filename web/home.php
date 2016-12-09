@@ -36,7 +36,7 @@
  <a href="https://www.facebook.com/sumathcoscclub">SU Math &amp; COSC Club</a></blockquote></div>
 <div id="video-container">
   <br>
-<h2>Here's an example of one of the events we host, geopong!<h2>
+<h2>Here's an example of one of the events we host, GeoPong!<h2>
  <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frandy.cone%2Fvideos%2F10154655043466350%2F&show_text=0&width=560"
  width="650" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
  </div>

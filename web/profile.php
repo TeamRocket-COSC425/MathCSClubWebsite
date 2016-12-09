@@ -91,6 +91,13 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
+    require_once("classes/UserFunctions.php");
+    if(isset($_POST["dropGullCode"])) {
+    	Users::dropCompetition("GullCode");
+    }
+    if(isset($_POST["dropMathChallenge"])) {
+    	Users::dropCompetition("MathChallenge");
+    }
 ?>
 
 <body>
@@ -289,6 +296,12 @@
           $team = $db->where('team_id', $userteam['team_id'])->getOne('gullcode_teams');
           if ($team) {
             echo "You are on team \"$team[team_name]\"";
+            $gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
+   			if($gcControl["switch"] == 1) {
+				echo "<form method='post'>
+   				<input class='dangerbutton' name='dropGullCode' type='submit' value='Drop from \"" . $team['team_name'] . "\"'/>
+    			</form>";
+    		}
           } else {
             echo "Error, no team found!";
           }
@@ -307,6 +320,12 @@
           $team = $db->where('team_id', $userteam['team_id'])->getOne('math_challenge_teams');
           if ($team) {
             echo "You are on team \"$team[team_name]\"";
+            $mcControl = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
+   			if($mcControl["switch"] == 1) {
+				echo "<form method='post'>
+   				<input class='dangerbutton' name='dropMathChallenge' type='submit' value='Drop from \"" . $team['team_name'] . "\"'/>
+    			</form>";
+    		}
           } else {
             echo "Error, no team found!";
           }

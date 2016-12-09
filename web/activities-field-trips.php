@@ -64,7 +64,7 @@ Activites &amp; Field Trips
 
 </div>
 
-<button class="accordion">Geopong</button>
+<button class="accordion">GeoPong</button>
 
 
 <div class="panel">

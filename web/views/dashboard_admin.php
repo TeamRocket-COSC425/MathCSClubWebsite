@@ -20,6 +20,9 @@ require_once("classes/AdminFunctions.php");
     }
 ?>
 <script type="text/javascript">
+
+
+
 function scrollTo(id) {
     $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
 }
@@ -156,11 +159,14 @@ function scrollTo(id) {
     $teams = $db->where("team_id")->get("gullcode_teams");
     $team_members = $db->where("team_id")->get("gullcode_users_on_teams");
     $users = $db->get("users");
-
+   
+    if($teams)
+    {
+        echo '<h4>GullCode Teams</h4>';
+    }
     foreach ($teams as $team)
     {
         if($teams) {
-            echo '<h4>GullCode Teams</h4>';
             echo '<H4>' . $team['team_name'] . '</H4>';
             echo '<table id="freeAgents" class="tablesorter">';
 ?>
@@ -171,6 +177,7 @@ function scrollTo(id) {
                     <th>Major</th>
                     <th>Year</th>
                     <th>Profile</th>
+                    <th>Remove Teammate</th>
                 </tr>
             </thead>
             <tbody>
@@ -185,6 +192,9 @@ function scrollTo(id) {
                                 <td>
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
+                                <td>
+                                <a class="button tablebutton dangerbutton" href="delete_teammate.php?user=<?php echo $user['id']; ?>&delete "> Remove from  <?php echo( $team['team_name']) ?> </a>
+                </td>
                                 </tr>
 <?php
                         }
@@ -197,6 +207,7 @@ function scrollTo(id) {
     }
 
     /* GULLCODE FREE AGENTS */
+
 
     $db->join("users u", "g.id=u.id", "LEFT");
 
@@ -307,10 +318,14 @@ function scrollTo(id) {
     $team_members = $db->where("team_id")->get("math_challenge_users_on_teams");
     $users = $db->get("users");
 
+    if($teams)
+    {
+        echo '<h4>Math Challenge Teams</h4>';
+    }
+    
     foreach ($teams as $team)
     {
         if($teams) {
-            echo '<h4>Math Challenge Teams</h4>';
             echo '<H4>' . $team['team_name'] . '</H4>';
             echo '<table id="freeAgents" class="tablesorter">';
 ?>
