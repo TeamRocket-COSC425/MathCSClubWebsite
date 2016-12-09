@@ -24,41 +24,30 @@
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
 
-    class EditableProfileImage extends EditableImage {
-
-        public function __construct($id) {
-            parent::__construct($id);
-            $this->form_id = "profile";
-            $this->simple = true;
-        }
-
-        protected function validate_image($image) {
-            $uploadOk = parent::validate_image($image);
-            if ($uploadOk == 0) {
-                return 0;
-            }
+    $image_validator = function($image) {
+        $default_validator = Utils::getDefaultImageValidator();
+        if ($default_validator($image)) {
             // Make sure the image is square
             list($width, $height) = getimagesize($image['tmp_name']);
             // Make sure the image is square
             if ($width != $height) {
             	$errors[] = "Image must be square.";
-                return 0;
+            } else {
+                return 1;
             }
-            return 1;
         }
+        return 0;
+    };
 
-        public function getContent() {
-            return $this->printEditBox();
-        }
-
-        public function text() {
-            global $user;
-            return $user['image'];
-        }
+    $uploadOk = 1;
+    $image_loc = Utils::handleImageUpload('image', $image_validator);
+    if ($image_loc == 'image') {
+        $uploadOk = 0;
+    } else {
+        $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
     }
 
 	$upload_error_message = "";
-	$uploadOk = 1;
 
     // POST handling
     if (isset($_POST['submit'])) {
@@ -179,7 +168,11 @@
           }
         ?>
 			</div>
-            <?php (new EditableProfileImage("profile"))->getContent(); ?>
+            <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
+            <label class="profile_image_upload">
+                <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
+                <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
+            </label>
 
             <p class="message">Email:</p>
             <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>
