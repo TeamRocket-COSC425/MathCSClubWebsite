@@ -6,6 +6,7 @@
     height: 50px;
     background-color: #31a2ac;
     z-index: 999;
+    box-shadow: 0px 0px 10px black;
 }
 
 #topnav #sessiondata {
@@ -55,12 +56,8 @@
 }
 
 /* For mobile phones: */
-/*Anything under 600px width will have this applied*/
+/* Anything under 600px width will have this applied */
 @media only screen and (max-width : 600px) {
-
-#topnav #topnav-mobile {
-    box-shadow: 0px 0px 10px black;
-}
 
 #topnav #mobile-toggle {
     display: none;
