@@ -16,8 +16,11 @@ class EditableImage extends EditableContent
 
     public function save($content)
     {
-        $content = Utils::handleImageUpload('image', Utils::getDefaultImageValidator());
-        return parent::save($content);
+        $image = Utils::handleImageUpload('image', Utils::getDefaultImageValidator());
+        if ($image == 'image') {
+            return 1;
+        }
+        return parent::save($image);
     }
 
     public function printText()
