@@ -27,13 +27,13 @@
 
 <div class="col3">
   <div>
-  <img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic">
+  <?php (new EditableImage('gullcodepic_1'))->getContent(); ?>
   </div>
   <div class="block">
   <?php (new EditableText("gullcodeTime"))->getContent(); ?>
   </div>
   <div>
-  <img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic">
+  <?php (new EditableImage('gullcodepic_2'))->getContent(); ?>
 </div>
 </div>
 
