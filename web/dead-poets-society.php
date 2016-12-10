@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -25,7 +25,7 @@
 
 <div class="center">
 
-<?php (new EditableContent("dead-poets-society"))->getContent(); ?>
+<?php (new EditableText("dead-poets-society"))->getContent(); ?>
 
 </div>
 </div>

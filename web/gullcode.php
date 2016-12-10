@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
     require_once("classes/Login.php");
     require_once("classes/Utils.php");
     $login = new Login();
@@ -30,7 +30,7 @@
   <img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic">
   </div>
   <div class="block">
-  <?php (new EditableContent("gullcodeTime"))->getContent(); ?>
+  <?php (new EditableText("gullcodeTime"))->getContent(); ?>
   </div>
   <div>
   <img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic">
@@ -39,7 +39,7 @@
 
 <hr>
 
-<?php (new EditableContent("gullCodeDescription"))->getContent(); ?>
+<?php (new EditableText("gullCodeDescription"))->getContent(); ?>
 
 <?php
   if($login->isUserLoggedIn()) {

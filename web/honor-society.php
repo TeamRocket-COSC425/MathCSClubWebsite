@@ -7,7 +7,7 @@ include("includes/topnav.php");
 require_once("classes/Login.php");
 require_once("classes/Utils.php");
 $login = new Login();
-require_once("classes/EditableContent.php");
+require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -26,7 +26,7 @@ require_once("classes/EditableContent.php");
       </header><center style="text-align: center;font-size:14px">
 
       <div class="Overview" style="text-align: justify;">
-        <?php (new EditableContent("honor-society"))->getContent();?>
+        <?php (new EditableText("honor-society"))->getContent();?>
 
       </div>
 

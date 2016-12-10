@@ -5,8 +5,6 @@
 </head>
 
 <?php
-    require_once('classes/EditableImage.php');
-
     $title = "User Profile";
     require_once("classes/Utils.php");
     require_once("classes/Login.php");

@@ -1,6 +1,6 @@
 <?php
     $title = "SU Math/CS Club Mentor Program";
-    require_once('classes/EditableContent.php');
+    require_once('classes/EditableText.php');
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
@@ -26,7 +26,7 @@
 <hr style="background-color: #003366; height: 3px;">
 
 <p class="center">
-    <?php (new EditableContent("mentor-program"))->getContent(); ?>
+    <?php (new EditableText("mentor-program"))->getContent(); ?>
 </p>
 
 <hr style="background-color: #003366; height: 3px;">

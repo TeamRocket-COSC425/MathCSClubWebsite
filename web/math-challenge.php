@@ -7,7 +7,7 @@
     require_once("classes/Login.php");
     require_once("classes/Utils.php");
   	$login = new Login();
-  	require_once("classes/EditableContent.php");
+  	require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -34,18 +34,18 @@ around you is mathematics. Everything around you is
 numbers.”</i> - Shakuntala Devi</center>
 <br>
 <div class="Overview" style="text-align: justify;">
- 	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
+ 	<?php (new EditableText("math-challenge-overview"))->getContent();?>
 
 </div>
 
 <div class="containerz">
 
  <div class="column-left" style="text-align:left;">
- 	<?php (new EditableContent("math-challenge-rules"))->getContent();?>
+ 	<?php (new EditableText("math-challenge-rules"))->getContent();?>
  </div>
 
  <div class="column-right" >
-	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
+	<?php (new EditableText("math-challenge-questions"))->getContent();?>
  </div>
 
 

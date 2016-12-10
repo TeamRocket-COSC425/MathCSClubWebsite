@@ -1,5 +1,5 @@
 <?php
-    require_once('classes/EditableContent.php');
+    require_once('classes/EditableText.php');
 
     $title = "SU Math/CS Club Activities & Field Trips";
     include("includes/header.html");
@@ -16,9 +16,9 @@
 
 <div id="main">
 <div id="content">
-   
+
       <?php
-      $content = new EditableContent('resources');
+      $content = new EditableText('resources');
       $content->getContent();
     ?>
   </div>
