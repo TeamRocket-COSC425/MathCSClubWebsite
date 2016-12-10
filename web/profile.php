@@ -37,15 +37,10 @@
         return 0;
     };
 
-    $uploadOk = 1;
     $image_loc = Utils::handleImageUpload('image', $image_validator);
-    if ($image_loc == 'image') {
-        $uploadOk = 0;
-    } else {
+    if ($image_loc != 'image') {
         $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
     }
-
-	$upload_error_message = "";
 
     // POST handling
     if (isset($_POST['submit'])) {
@@ -163,21 +158,15 @@
             <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" id="profile" enctype="multipart/form-data">
             </form>
 
-			<div class="editErrors" style="color:red;">
-				<?php if ($uploadOk === 0)
-          {
-            $errors='<img src="images/message-icons/error.jpg"/>';
-            echo "<table><span>";
-            echo "<tr>$errors $upload_error_message</tr>";
-            echo "</table></span>";
-          }
-        ?>
-			</div>
-            <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
-            <label class="profile_image_upload">
-                <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
-                <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
-            </label>
+            <div id="image_upload_wrapper">
+            <div id="image_upload_form">
+    			<img id="profile_image" src="<?= isset($user['image']) ? 'images/loginicon.jpg' : $user['image']; ?>"/><br>
+                <label class="image_upload">
+                    <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
+                    <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
+                </label>
+            </div>
+            </div>
 
             <p class="message">Email:</p>
             <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>
