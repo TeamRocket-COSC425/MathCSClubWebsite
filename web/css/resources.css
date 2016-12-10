@@ -10,6 +10,7 @@ ul
 	border:0;
 	padding:0;
 	margin:0;
+    margin-bottom: 10px;
 }
 
 li
@@ -28,5 +29,4 @@ li
 li:hover
 {
 	border:1px solid #888;
-	z-index:9999;
 }
