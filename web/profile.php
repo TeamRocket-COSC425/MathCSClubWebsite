@@ -232,8 +232,9 @@
         }
         echo '<br>Major: ' . $user['major'];
         echo '<br>Year: ' . Utils::year($user['year']);
-        echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
-
+        if ($user['t_size']) {
+            echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
+        }
         $url = strtok($_SERVER['REQUEST_URI'], '?') . '?edit';
         if (isset($_GET['user'])) {
             $url = $url . '&user=' . $_GET['user'];

@@ -120,13 +120,13 @@ class Utils {
     private static $year_names = ['Freshman', 'Sophomore', 'Juinor', 'Senior'];
 
     public static function year($id) {
-        return $id < 0 ? 'Invalid Year' : $id > count(self::$year_names) ? 'Super Senior' : self::$year_names[$id];
+        return $id < 0 ? 'Invalid Year' : $id >= count(self::$year_names) ? 'Super Senior' : self::$year_names[$id];
     }
 
     private static $tshirt_sizes = ['Small', 'Medium', 'Large', 'X-Large', '2X-Large', '3X-Large'];
 
     public static function t_size($id) {
-        return $id < 0 || $id > count(self::$tshirt_sizes) ? 'Invalid Size' : self::$tshirt_sizes[$id];
+        return $id < 0 || $id >= count(self::$tshirt_sizes) ? 'Invalid Size' : self::$tshirt_sizes[$id];
     }
 }
 ?>
