@@ -117,50 +117,16 @@ class Utils {
         return $content;
     }
 
-    public static function year($id) {
-        if ($id == 0)
-        {
-             $class = 'Freshman';
-        }
-        if ($id == 1)
-        {
-            $class = 'Sophomore';
-        }
-        if ($id == 2)
-        {
-            $class = 'Junior';
-        }
-        if ($id == 3)
-        {
-            $class = 'Senior';
-        }
+    private static $year_names = ['Freshman', 'Sophomore', 'Juinor', 'Senior'];
 
-        return $class;
+    public static function year($id) {
+        return $id < 0 ? 'Invalid Year' : $id > count(self::$year_names) ? 'Super Senior' : self::$year_names[$id];
     }
 
-        public static function t_size($id) {
-        if ($id == 0)
-        {
-             $size = 'Small';
-        }
-        if ($id == 1)
-        {
-            $size = 'Medium';
-        }
-        if ($id == 2)
-        {
-            $size = 'Large';
-        }
-        if ($id == 3)
-        {
-            $size = 'X-Large';
-        }
-        if ($id == 4)
-        {
-            $size = '2X-Large';
-        }
+    private static $tshirt_sizes = ['Small', 'Medium', 'Large', 'X-Large', '2X-Large', '3X-Large'];
 
-        return $size;
+    public static function t_size($id) {
+        return $id < 0 || $id > count(self::$tshirt_sizes) ? 'Invalid Size' : self::$tshirt_sizes[$id];
     }
 }
 ?>

@@ -1,7 +1,9 @@
 <?php
 	require_once('includes/database.php');
 	require_once("classes/Utils.php");
+
 	class Users {
+
 		public static function dropCompetition($comp)
 		{
 			global $db;
