@@ -40,6 +40,7 @@
     $image_loc = Utils::handleImageUpload('image', $image_validator);
     if ($image_loc != 'image') {
         $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
+        $user['image'] = $image_loc;
     }
 
     // POST handling
