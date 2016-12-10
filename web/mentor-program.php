@@ -16,7 +16,7 @@
 
 <div id="main">
 
-<div id="content">
+<div id="content" class="center">
 
 <div id="mentor-mobile">
 <h1 class="center">
@@ -38,7 +38,7 @@ Mentor Program
 
 
 <?php
-	$mentors = $db->where('mentor', 1)->get('users');
+	/*$mentors = $db->where('mentor', 1)->get('users');
 	echo "<table id='mentors' align='center'><tr>";
 		$count=sizeof($mentors);
 		$ogcount=sizeof($mentors);
@@ -65,7 +65,37 @@ Mentor Program
 				$count= $count - 1;
 			}
 		}
-		echo "</tr></table>";
+		echo "</tr></table>";*/
+
+		$mentors = $db->where('mentor', 1)->get('users');
+		$count=sizeof($mentors);
+		$ogcount=sizeof($mentors);
+
+		echo '<div class ="col3">';
+		foreach ($mentors as $mentor)
+		{
+			if ($count % "3" != "0" && $ogcount > "3")
+			{
+				echo '<div class="block">
+  						<h2>' . $mentor["name"] . '</h2>
+  						<img src="' . $mentor["image"] . '" class="mentorpic">
+  					 </div>';
+  				$count = $count - 1;
+  			}
+  			else
+  			{
+  				echo '<div class="block">
+  						<h2>' . $mentor["name"] . '</h2>
+  						<img src="' . $mentor["image"] . '" class="mentorpic">
+  					 </div>';
+  				if ($ogcount > "3"){
+					echo '</div>
+							<div class="col3"';
+				}
+  				$count = $count - 1;
+  			}
+  		}
+
 ?>
 <br>
 
