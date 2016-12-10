@@ -17,111 +17,64 @@
     $currentuser = $user;
 
     $edit = isset($_GET['edit']);
-	$delete = isset($_GET['delete']);
+    $delete = isset($_GET['delete']);
     if (isset($_GET['user'])) {
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
 
-	$upload_error_message = "";
-	$uploadOk = 1;
+    $image_validator = function($image) {
+        $default_validator = Utils::getDefaultImageValidator();
+        if ($default_validator($image)) {
+            // Make sure the image is square
+            list($width, $height) = getimagesize($image['tmp_name']);
+            // Make sure the image is square
+            if ($width != $height) {
+            	$errors[] = "Image must be square.";
+            } else {
+                return 1;
+            }
+        }
+        return 0;
+    };
+
+    $image_loc = Utils::handleImageUpload('image', $image_validator);
+    if ($image_loc != 'image') {
+        $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
+        $user['image'] = $image_loc;
+    }
 
     // POST handling
     if (isset($_POST['submit'])) {
 
-		// Make sure we have a new image at all
-		if ($_FILES['image']['size'] !== 0) {
+		// Build array of data to update table width
+		// Cannot directly use $_POST array due to injection potential
+        $data = array(
+            'email' => $_POST['email'],
+            'preferred_email' => $_POST['preferred_email'],
+            'major' => $_POST['major'],
+            'year' => $_POST['year'],
+            't_size' => $_POST['t_size'],
+            'bio' => $_POST['bio']
+        );
 
-			$target_dir = 'images/';
-			// Grab file extension
-			$imageFileType = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-			// Generate a file name based on the md5 hash of the file content
-			$target_file = $target_dir . hash_file("md5", $_FILES['image']['tmp_name']) . '.' . $imageFileType;
-			$allowed_types = array('jpg', 'jpeg', 'png');
-
-			// Make sure the size is valid
-			list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
-			// Make sure the size is <=1MB
-			if ($_FILES['image']['size'] > (1 << 20)) {
-				$uploadOk = 0;
-				$upload_error_message = "Image is too large. Max size 1MB.";
-			}
-			// Make sure the file is an image
-			if (!in_array($imageFileType, $allowed_types)) {
-				$uploadOk = 0;
-				$upload_error_message = "Image type \"" . $imageFileType . "\" not allowed. Must be one of " . implode(', ', $allowed_types) . '.';
-			}
-			// Make sure the image is square
-			if ($width != $height) {
-				$uploadOk = 0;
-				$upload_error_message = "Image must be square.";
-			}
-			// If we are still good, begin upload process
-			if ($uploadOk == 1) {
-				if (getenv('S3_BUCKET')) {
-					// S3 info available, upload to AWS
-					$s3 = Aws\S3\S3Client::factory();
-					$bucket = getenv('S3_BUCKET') ?: die('No "S3_BUCKET" config found in env!');
-
-					if (!$s3->doesObjectExist($bucket, $target_file)) {
-						$upload = $s3->upload($bucket, $target_file, fopen($_FILES['image']['tmp_name'], 'rb'), 'public-read');
-					}
-					$db->where('id', $user['id'])->update('users', array('image' => $upload->get('ObjectURL')));
-				} else {
-					// Move into uploads folder, we are on local
-					$target_file = 'uploads/' . $target_file;
-
-					// If the file already exists, reuse it.
-					if (!file_exists($target_file)) {
-						// Otherwise, move the tmp file into the real file's location
-						if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-							//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-						} else {
-							$uploadOk = 0;
-							$upload_error_message = "Sorry, there was an error uploading your file.";
-						}
-					}
-
-					if ($uploadOk == 1) {
-						$db->where('id', $user['id'])->update('users', array('image' => $target_file));
-					}
-				}
-			}
+		if (Utils::currentUserAdmin()) {
+			$admindata = array(
+				'mentor' => isset($_POST['mentor']) ? 1 : 0,
+				'admin' => isset($_POST['admin']) ? 1 : 0
+			);
+			$data = array_merge($data, $admindata);
 		}
 
-		// If file upload failed, no need to continue
-		if ($uploadOk === 1) {
+        $db->where('id', $user['id'])->update('users', $data);
 
-			// Build array of data to update table width
-			// Cannot directly use $_POST array due to injection potential
-	        $data = array(
-	            'email' => $_POST['email'],
-	            'preferred_email' => $_POST['preferred_email'],
-	            'major' => $_POST['major'],
-	            'year' => $_POST['year'],
-	            't_size' => $_POST['t_size'],
-	            'bio' => $_POST['bio']
-	        );
+		// Rebuild URL without 'edit' param (maintains user param)
+        $loc = "profile";
+        if ($user !== $currentuser) {
+            $loc = $loc . '?user=' . $user['id'];
+        }
 
-			if (Utils::currentUserAdmin()) {
-				$admindata = array(
-					'mentor' => isset($_POST['mentor']) ? 1 : 0,
-					'admin' => isset($_POST['admin']) ? 1 : 0
-				);
-				$data = array_merge($data, $admindata);
-			}
-
-	        $db->where('id', $user['id'])->update('users', $data);
-
-			// Rebuild URL without 'edit' param (maintains user param)
-	        $loc = "profile";
-	        if ($user !== $currentuser) {
-	            $loc = $loc . '?user=' . $user['id'];
-	        }
-
-			// Redirect
-	        header("Location: " . $loc);
-
-		}
+		// Redirect
+        header("Location: " . $loc);
     }
 
     include("includes/header.html");
@@ -201,21 +154,15 @@
             <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" id="profile" enctype="multipart/form-data">
             </form>
 
-			<div class="editErrors" style="color:red;">
-				<?php if ($uploadOk === 0)
-          {
-            $errors='<img src="images/message-icons/error.jpg"/>';
-            echo "<table><span>";
-            echo "<tr>$errors $upload_error_message</tr>";
-            echo "</table></span>";
-          }
-        ?>
-			</div>
-            <img id="profile_image" src="<?php echo $user['image']; ?>"/><br>
-            <label class="profile_image_upload">
-                <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
-                <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
-            </label>
+            <div id="image_upload_wrapper">
+            <div id="image_upload_form">
+    			<img id="profile_image" src="<?= $user['image'] ?: 'images/loginicon.jpg'; ?>"/><br>
+                <label class="image_upload">
+                    <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
+                    <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
+                </label>
+            </div>
+            </div>
 
             <p class="message">Email:</p>
             <input form="profile" type="text" name="email" value="<?php echo $user['email']; ?>" required/>
@@ -281,8 +228,9 @@
         }
         echo '<br>Major: ' . $user['major'];
         echo '<br>Year: ' . Utils::year($user['year']);
-        echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
-
+        if ($user['t_size']) {
+            echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
+        }
         $url = strtok($_SERVER['REQUEST_URI'], '?') . '?edit';
         if (isset($_GET['user'])) {
             $url = $url . '&user=' . $_GET['user'];

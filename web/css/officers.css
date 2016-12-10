@@ -1,22 +1,6 @@
-header {
-    background-image: url("../images/officers/office.jpg") ;
-    background-size: cover;
-    height: 75px;
-    border: 3px solid white;
-    text-align: center;
-    line-height: 25px;
-    color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;  
+header.banner {
+    background-image: url("../images/officers/office.jpg");
 }
-
-
-
-
-
 
 /* STYLING FOR OFFICERS CIRCLE */
 .circle-container {
@@ -110,7 +94,7 @@ header {
 /* CLUB ADVISOR STYLING */
 .advisor {
     position: relative;
-    top: 7em;
+    bottom: 16em;
 }
 .advisorPic {
     overflow: hidden;
@@ -140,4 +124,13 @@ header {
 
 .advisorInfo h4 {
     margin-top: 7px;
+}
+
+@media only screen and (max-width : 1100px) {
+    #advisors {
+        position: relative;
+        top: 22em;
+        margin-left: 5em;
+        margin-right: 5em;
+    }
 }

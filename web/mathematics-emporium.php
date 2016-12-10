@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -16,16 +16,16 @@
 <div id="main">
 
 <div id="content">
- 
-<div class="mathEmpBanner">
-<h1><center> Mathematics Emporium </center></h1>
-</div>
+
+<header class="banner">
+    <h1>Mathematics Emporium</h1>
+</header>
 
 
  <div class="mathEmpTxt">
 
-	<div class="center"> 
-	<?php (new EditableContent("mathematics-emporium"))->getContent(); ?>
+	<div class="center">
+	<?php (new EditableText("mathematics-emporium"))->getContent(); ?>
 	</div>
 </div>
 

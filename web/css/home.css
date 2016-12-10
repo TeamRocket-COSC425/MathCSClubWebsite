@@ -16,7 +16,6 @@ a:visited {
     float: right;
 }
 
-
 #main #content img {
     max-width: 100%;
     height: auto;
@@ -40,6 +39,26 @@ a:visited {
 .center {
     text-align: center;
     vertical-align: center;
+}
+
+/* ==== Banner image styling ==== */
+
+header.banner {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 75px;
+    border: 3px solid white;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    text-align: center;
 }
 
 /* ==== Button Styling ==== */
@@ -121,6 +140,36 @@ input[type="submit"].dangerbutton:hover, a.dangerbutton:hover {
 #edit_show_revisions {
   margin-bottom: 10px;
 }
+
+/* ==== Image Edit Styling === */
+
+input[type="file"] {
+    display: none;
+}
+
+.image_upload {
+    background: #12bfc3;
+    border-radius: 60px;
+    display: inline-block;
+    padding: 6px 8px;
+    cursor: pointer;
+    position: relative;
+    top: -3.5rem;
+}
+
+.image_upload:hover {
+    background: #129fa3;
+}
+
+#image_upload_wrapper {
+    text-align: center;
+    margin-bottom: -3rem;
+}
+
+#image_upload_form {
+    display: inline-block;
+}
+
 
 /* ==== Diff Styling === */
 
@@ -243,14 +292,11 @@ pre {
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
-    1px 1px 0 #000;  
+    1px 1px 0 #000;
 }
 
-
-
-
 /*@media screen and (min-width:320px) and (max-width:640px) {
-   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide 
+   for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide
 }
 */
 @media only screen and (max-width : 1200px) {
@@ -277,7 +323,7 @@ pre {
         width: 100% ;
         font-size: 10px;
         margin-left: -10px;
-    } 
+    }
 
     #dps{
         font-size: 16px;

@@ -7,7 +7,7 @@
     require_once("classes/Login.php");
     require_once("classes/Utils.php");
   	$login = new Login();
-  	require_once("classes/EditableContent.php");
+  	require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -22,9 +22,11 @@
 <div id="content">
 
 <!--Top header line -->
-<header>
-<h1><code><center> MATH   CHALLENGE</center></code></h1>
-</header><center style="text-align: center;font-size:14px">
+<header class="banner">
+    <h1>Math Challenge</h1>
+</header>
+
+<center style="text-align: center;font-size:14px">
 <i>“Without mathematics, there’s nothing you can do. Everything
 
 around you is mathematics. Everything around you is
@@ -32,18 +34,18 @@ around you is mathematics. Everything around you is
 numbers.”</i> - Shakuntala Devi</center>
 <br>
 <div class="Overview" style="text-align: justify;">
- 	<?php (new EditableContent("math-challenge-overview"))->getContent();?>
+ 	<?php (new EditableText("math-challenge-overview"))->getContent();?>
 
 </div>
 
 <div class="containerz">
 
  <div class="column-left" style="text-align:left;">
- 	<?php (new EditableContent("math-challenge-rules"))->getContent();?>
+ 	<?php (new EditableText("math-challenge-rules"))->getContent();?>
  </div>
 
  <div class="column-right" >
-	<?php (new EditableContent("math-challenge-questions"))->getContent();?>
+	<?php (new EditableText("math-challenge-questions"))->getContent();?>
  </div>
 
 
@@ -52,7 +54,7 @@ numbers.”</i> - Shakuntala Devi</center>
  </div>
 
 <!--End Rules container-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 1) {

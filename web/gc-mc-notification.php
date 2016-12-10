@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -18,7 +18,7 @@
 
 <div class="center">
 
-<?php (new EditableContent("notification"))->getContent(); ?>
+<?php (new EditableText("notification"))->getContent(); ?>
 
 </div>
 </div>

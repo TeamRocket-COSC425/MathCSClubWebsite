@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
     require_once("classes/Login.php");
     require_once("classes/Utils.php");
     $login = new Login();
@@ -19,27 +19,27 @@
 
 <div id="content" class = "center">
 
-<header>
-<h1><code><center> GullCode </center></code></h1>
+<header class="banner">
+    <h1>GullCode</h1>
 </header>
 
 <br>
 
 <div class="col3">
   <div>
-  <img src="images/gullcode/gullcode_sp2014.jpg" class="gullcodepic">
+  <?php (new EditableImage('gullcodepic_1'))->getContent(); ?>
   </div>
   <div class="block">
-  <?php (new EditableContent("gullcodeTime"))->getContent(); ?>
+  <?php (new EditableText("gullcodeTime"))->getContent(); ?>
   </div>
   <div>
-  <img src="images/gullcode/gullcode_fa2015.jpg" class="gullcodepic">
+  <?php (new EditableImage('gullcodepic_2'))->getContent(); ?>
 </div>
 </div>
 
 <hr>
 
-<?php (new EditableContent("gullCodeDescription"))->getContent(); ?>
+<?php (new EditableText("gullCodeDescription"))->getContent(); ?>
 
 <?php
   if($login->isUserLoggedIn()) {

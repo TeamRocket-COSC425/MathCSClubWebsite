@@ -3,7 +3,7 @@
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
 ?>
 
 <head>
@@ -19,13 +19,13 @@
 
 <div id="dps">
 
-<header>
-<h1><code> Dead Poets Society</code></h1>
+<header class="banner">
+    <h1>Dead Poets Society</h1>
 </header>
 
 <div class="center">
 
-<?php (new EditableContent("dead-poets-society"))->getContent(); ?>
+<?php (new EditableText("dead-poets-society"))->getContent(); ?>
 
 </div>
 </div>

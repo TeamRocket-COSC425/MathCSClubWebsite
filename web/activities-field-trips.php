@@ -1,6 +1,6 @@
 <?php
     $title = "SU Math/CS Club Activities & Field Trips";
-    require_once("classes/EditableContent.php");
+    require_once("classes/EditableText.php");
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
@@ -9,7 +9,7 @@
 <head>
 	<title>Math CS Club - Activities &amp; Field Trips</title>
 	<link rel="stylesheet" href="css/activities.css"/>
-	
+
 </head>
 
 
@@ -33,7 +33,7 @@ Activites &amp; Field Trips
 </h1>
 
 <?php
-  (new EditableContent("activity-semester"))->getContent();
+  (new EditableText("activity-semester"))->getContent();
 ?>
 
 <!--EVENTS NEED TO BE DYNAMICALLY ALLOCATED IN THE DB SO PRES CAN ADD MORE AND STUFF-->
@@ -41,7 +41,7 @@ Activites &amp; Field Trips
 <div class="panel">
 
 <?php
-(new EditableContent("Event1"))->getContent();
+(new EditableText("Event1"))->getContent();
 ?>
 
 </div>
@@ -49,7 +49,7 @@ Activites &amp; Field Trips
 <button class="accordion">Orioles Game</button>
 <div class="panel">
 
-<?php (new EditableContent("Event2"))->getContent();
+<?php (new EditableText("Event2"))->getContent();
 ?>
 
 </div>
@@ -59,7 +59,7 @@ Activites &amp; Field Trips
 <button class="accordion">Pumpkin Carving</button>
 <div class="panel">
 
-<?php (new EditableContent("Event3"))->getContent();
+<?php (new EditableText("Event3"))->getContent();
 ?>
 
 </div>
@@ -68,7 +68,7 @@ Activites &amp; Field Trips
 
 
 <div class="panel">
- <?php (new EditableContent("Event4"))->getContent();
+ <?php (new EditableText("Event4"))->getContent();
 ?>
 </div>
 

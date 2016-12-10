@@ -1,20 +1,20 @@
-<div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav mCustomScrollbar" data-mcs-theme="minimal">
   <div id="button" onclick="toggleNav()">
     <i class="fa fa-bars" aria-hidden="true"></i>
   </div>
-  <a href="home">Home</a>
-  <a href="mentor-program">Mentor Program</a>
-  <a href="gullcode">GullCode</a>
-  <a href="math-challenge">Math Challenge</a>
-  <a href="dead-poets-society">Dead Poets Society</a>
-  <a href="mathematics-emporium">Mathematics Emporium</a>
-  <a href="calendar">Calendar</a>
-  <a href="officers">Officers</a>
-  <a href="activities-field-trips">Activities &amp; Field Trips</a>
-  <a href="graduation-cords">Graduation Cords</a>
-  <a href="honor-society">Pi Mu Epsilon</a>
-  <a href="resources">Resources</a>
-  <a href="contact-us">Contact Us</a>
+  <a class="sideLink" href="home">Home</a>
+  <a class="sideLink" href="mentor-program">Mentor Program</a>
+  <a class="sideLink" href="gullcode">GullCode</a>
+  <a class="sideLink" href="math-challenge">Math Challenge</a>
+  <a class="sideLink" href="dead-poets-society">Dead Poets Society</a>
+  <a class="sideLink" href="mathematics-emporium">Mathematics Emporium</a>
+  <a class="sideLink" href="calendar">Calendar</a>
+  <a class="sideLink" href="officers">Officers</a>
+  <a class="sideLink" href="activities-field-trips">Activities &amp; Field Trips</a>
+  <a class="sideLink" href="honor-society">Pi Mu Epsilon</a>
+  <a class="sideLink" href="graduation-cords">Graduation Cords</a>
+  <a class="sideLink" href="resources">Resources</a>
+  <a class="sideLink" href="contact-us">Contact Us</a>
 
 <!-- Buttons @ bottom of navbar with links to club links -->
   <div id="navlinks">
@@ -30,5 +30,11 @@
 <script>
 function toggleNav() {
     $(".sidenav").toggleClass("sidenav--active");
+    if ($( "#mySidenav" ).hasClass( "sidenav--active" )) {
+      $("#mySidenav").mCustomScrollbar("update");
+    }
+    else {
+      $("#mySidenav").mCustomScrollbar("disable",true);
+    }
 }
 </script>
