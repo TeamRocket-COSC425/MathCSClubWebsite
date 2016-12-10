@@ -72,4 +72,8 @@ class EditableImage extends EditableContent
     {
         return 'images/no-image.jpg';
     }
+
+    protected function getType() {
+        return 'image';
+    }
 }

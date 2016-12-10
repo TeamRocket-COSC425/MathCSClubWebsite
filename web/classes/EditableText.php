@@ -85,6 +85,10 @@ class EditableText extends EditableContent {
     public function getDefaultContent() {
       return file_get_contents('res/template.md');
     }
+
+    protected function getType() {
+        return 'text';
+    }
 }
 
 ?>

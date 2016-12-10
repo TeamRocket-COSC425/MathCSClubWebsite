@@ -19,8 +19,6 @@ if (!Utils::currentUserAdmin()) {
     $error = "You are not authorized to be here!";
 }
 
-var_dump(Utils::getCurrentUser());
-
 if (!$error) {
     $dest;
     if (isset($_GET['page'])) {

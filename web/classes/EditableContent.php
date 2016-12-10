@@ -10,14 +10,15 @@ class EditableContent {
     const TABLE_CONTENT = 'page_content';
     const TABLE_HISTORY = 'page_content_history';
 
-    const COLUMN_ID = 'id';
-    const COLUMN_CONTENT = 'content';
-    const COLUMN_TIMESTAMP = 'timestamp';
+    const COLUMN_ID =           'id';
+    const COLUMN_CONTENT =      'content';
+    const COLUMN_TIMESTAMP =    'timestamp';
+    const COLUMN_TYPE =         'type';
 
     public static function create($id) {
         global $db;
         $entry = $db->where(self::COLUMN_ID, $id)->getOne(self::TABLE_CONTENT);
-        switch($entry['type']) {
+        switch($entry[self::COLUMN_TYPE]) {
             case 'text':
                 return new EditableText($id);
             case 'image':
@@ -43,7 +44,8 @@ class EditableContent {
         $content = array(
           self::COLUMN_ID => $this->id,
           self::COLUMN_CONTENT => $this->getDefaultContent(),
-          self::COLUMN_TIMESTAMP => $db->now()
+          self::COLUMN_TIMESTAMP => $db->now(),
+          self::COLUMN_TYPE => $this->getType()
         );
         $db->insert(self::TABLE_CONTENT, $content);
       }
@@ -70,7 +72,7 @@ class EditableContent {
         // Define new content data, with a fresh timestamp
         $newdata = array(
             self::COLUMN_CONTENT => $content,
-            self::COLUMN_TIMESTAMP => $db->now()
+            self::COLUMN_TIMESTAMP => $db->now(),
         );
 
         // Insert new data into content table
@@ -97,6 +99,10 @@ class EditableContent {
         } else {
             $this->printHTML();
         }
+    }
+
+    protected function getType() {
+        return 'none';
     }
 }
 
