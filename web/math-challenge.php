@@ -22,9 +22,11 @@
 <div id="content">
 
 <!--Top header line -->
-<header>
-<h1><code><center> MATH   CHALLENGE</center></code></h1>
-</header><center style="text-align: center;font-size:14px">
+<header class="banner">
+    <h1>Math Challenge</h1>
+</header>
+
+<center style="text-align: center;font-size:14px">
 <i>“Without mathematics, there’s nothing you can do. Everything
 
 around you is mathematics. Everything around you is
@@ -52,7 +54,7 @@ numbers.”</i> - Shakuntala Devi</center>
  </div>
 
 <!--End Rules container-->
-<?php 
+<?php
   if($login->isUserLoggedIn()) {
     $control = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($control["switch"] == 1) {

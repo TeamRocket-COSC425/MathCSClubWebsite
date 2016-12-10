@@ -1,24 +1,10 @@
-header {
-    background: url("../images/gullcode/gullcode-bg.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 75px;
-    border: 3px solid white;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;  
+header.banner {
+    background-image: url("../images/gullcode/gullcode-bg.jpg");
 }
 
 .col3 {
     -webkit-column-count: 3;
-    -moz-column-count: 3; 
+    -moz-column-count: 3;
     column-count: 3;
 
     -webkit-column-width: 300px;
@@ -66,7 +52,7 @@ header {
 @media only screen and (max-width:1200px) {
     .col3 {
     -webkit-column-count: 1;
-    -moz-column-count: 1; 
+    -moz-column-count: 1;
     column-count: 1;
 
     -webkit-column-width: 300px;

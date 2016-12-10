@@ -14,8 +14,8 @@ include("includes/topnav.php");
 <body>
 <div id="main">
 	<div id="content">
-		<header>
-			<h1><code><center> Graduation Cords </center></code></h1>
+		<header class="banner">
+			<h1>Graduation Cords</h1>
 		</header>
 		<div id="grad-mobile">
 			<?php (new EditableContent("graduation-cords"))->getContent(); ?>

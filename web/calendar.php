@@ -9,13 +9,15 @@ include("includes/topnav.php");
 <head>
 	<title>Math CS Club - Calendar</title>
 	<link rel="stylesheet" href="css/calendar.css"/>
-
 </head>
 
 <body>
-
 	<div id="main">
 		<div id="content">
+			<header class="banner">
+				<h1>Calendar</h1>
+			</header>
+
 			<div id="calendar-mobile">
 				<?php (new EditableContent("calendar"))->getContent(); ?>
 			</div>

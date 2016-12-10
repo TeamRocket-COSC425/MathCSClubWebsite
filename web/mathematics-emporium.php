@@ -16,15 +16,15 @@
 <div id="main">
 
 <div id="content">
- 
-<div class="mathEmpBanner">
-<h1><center> Mathematics Emporium </center></h1>
-</div>
+
+<header class="banner">
+    <h1>Mathematics Emporium</h1>
+</header>
 
 
  <div class="mathEmpTxt">
 
-	<div class="center"> 
+	<div class="center">
 	<?php (new EditableContent("mathematics-emporium"))->getContent(); ?>
 	</div>
 </div>

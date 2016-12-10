@@ -1,11 +1,10 @@
-body 
+body
 {
     background: url('../images/gullcode/gullcode-bws.JPG') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
 }
 
 input
@@ -124,7 +123,7 @@ ul.tab li a:focus, .active {
     ul.tab{
         line-height: 4em;
     }
-    
+
     .mcTab {
         float: none;
         text-align: center;
@@ -141,7 +140,7 @@ ul.tab li a:focus, .active {
 
     .tabItems{
         width: 100%;
-        margin: 0 auto; 
+        margin: 0 auto;
         margin-left: -5px;
     }
 

@@ -19,8 +19,8 @@
 
 <div id="content" class = "center">
 
-<header>
-<h1><code><center> GullCode </center></code></h1>
+<header class="banner">
+    <h1>GullCode</h1>
 </header>
 
 <br>

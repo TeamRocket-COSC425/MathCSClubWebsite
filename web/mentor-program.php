@@ -19,9 +19,9 @@
 <div id="content">
 
 <div id="mentor-mobile">
-<h1 class="center">
-Mentor Program
-</h1>
+<header class="banner">
+    <h1>Mentor Program</h1>
+</header>
 
 <hr style="background-color: #003366; height: 3px;">
 

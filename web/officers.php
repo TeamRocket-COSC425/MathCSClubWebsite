@@ -26,8 +26,8 @@ function toggleByID(IDName) {
 <div id="main">
 
 <div id="content">
-<header>
-<h1><code><center> Meet Your Officers </center></code></h1>
+<header class="banner">
+    <h1>Meet Your Officers</h1>
 </header>
 
 <div class='circle-container'>
@@ -35,7 +35,7 @@ function toggleByID(IDName) {
     <?php
       	$positions = $db->get('officers');
       	foreach($positions as $pos) {
-            echo '<div class="officer" id="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" onclick="toggleByID(\''. $pos["position"] .'-bio\');"></div>';                    
+            echo '<div class="officer" id="'. $pos["position"] .'"> <img src="' . $pos["image"] . '" onclick="toggleByID(\''. $pos["position"] .'-bio\');"></div>';
     	  }
     ?>
 </div>

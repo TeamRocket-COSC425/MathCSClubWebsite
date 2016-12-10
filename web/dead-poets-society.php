@@ -19,8 +19,8 @@
 
 <div id="dps">
 
-<header>
-<h1><code> Dead Poets Society</code></h1>
+<header class="banner">
+    <h1>Dead Poets Society</h1>
 </header>
 
 <div class="center">
