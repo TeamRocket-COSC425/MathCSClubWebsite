@@ -31,71 +31,29 @@
 
 <hr style="background-color: #003366; height: 3px;">
 
-<h2 class="center">
-<u>Meet the Mentors</u>
+<h2>
+    Meet the Mentors
 </h2>
+<h4>
+    Select a picture below to view their profile:
+</h4>
 
 
 
 <?php
-	/*$mentors = $db->where('mentor', 1)->get('users');
-	echo "<table id='mentors' align='center'><tr>";
-		$count=sizeof($mentors);
-		$ogcount=sizeof($mentors);
+	$mentors = $db->where('mentor', 1)->get('users');
 
-		foreach ($mentors as $mentor)
-		{
-			if ($count % "3" != "0" && $ogcount > "3")
-			{
-				echo '<td><table id="mentors" align="center">';
-				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="window.location=\'profile.php?user='. $mentor["id"] . '\'"> </td></tr></table></td>';
-				$count= $count - 1;
-			}
-			else
-			{
-				echo '<td><table id="mentors" align="center">';
-				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="window.location=\'profile.php?user='. $mentor["id"] . '\'"> </td></tr></table></td>';
-				if ($ogcount > "3"){
-					echo "</tr><tr>";
-				}
-				$count= $count - 1;
-			}
+	echo '<div class="mentors">';
+	foreach ($mentors as $mentor)
+	{
+        echo "<div class=\"block\">
+                <h3>$mentor[name]</h3>
+                <a href=\"profile?user=$mentor[id]\">
+                    <img src=\"$mentor[image]\" class=\"mentorpic\">
+                </a>
+             </div>";
 		}
-		echo "</tr></table>";*/
-
-		$mentors = $db->where('mentor', 1)->get('users');
-		$count=sizeof($mentors);
-		$ogcount=sizeof($mentors);
-
-		echo '<div class ="col3">';
-		foreach ($mentors as $mentor)
-		{
-			if ($count % "3" != "0" && $ogcount > "3")
-			{
-				echo '<div class="block">
-  						<h2>' . $mentor["name"] . '</h2>
-  						<img src="' . $mentor["image"] . '" class="mentorpic">
-  					 </div>';
-  				$count = $count - 1;
-  			}
-  			else
-  			{
-  				echo '<div class="block">
-  						<h2>' . $mentor["name"] . '</h2>
-  						<img src="' . $mentor["image"] . '" class="mentorpic">
-  					 </div>';
-  				if ($ogcount > "3"){
-					echo '</div>
-							<div class="col3"';
-				}
-  				$count = $count - 1;
-  			}
-  		}
-
+    echo '</div>';
 ?>
 <br>
 
