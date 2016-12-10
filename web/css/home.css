@@ -12,6 +12,10 @@ a:visited {
   color: #689AAB;
 }
 
+h1 {
+    font-size: 2rem;
+}
+
 #home-widgets {
     text-align: center;
 }
