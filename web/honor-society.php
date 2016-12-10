@@ -21,15 +21,13 @@ require_once("classes/EditableText.php");
 
     <div id="content">
 
-      <header>
-        <h1><code><center> Pi Mu Epsilon</center></code></h1>
-      </header><center style="text-align: center;font-size:14px">
+      <header class="banner">
+        <h1>Pi Mu Epsilon</h1>
+      </header>
 
-      <div class="Overview" style="text-align: justify;">
+      <div class="Overview">
         <?php (new EditableText("honor-society"))->getContent();?>
-
       </div>
-
 
     </div>
   </div>
