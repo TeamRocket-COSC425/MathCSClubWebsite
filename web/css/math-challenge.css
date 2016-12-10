@@ -8,11 +8,7 @@ h3
 
 }
 
-.containerz{
-
-}
-
-.containerz div{
+.containerz > div{
 width:100%;
 height:100%;
 text-align: justify;
@@ -89,8 +85,6 @@ table#teams tr:nth-child(odd) {
 table#teams tr:nth-child(even) {
     background-color:;
 }
-<<<<<<< HEAD
-
 
 @media only screen and (max-width : 600px) {
     /*Anything under 600px width will have this applied*/
