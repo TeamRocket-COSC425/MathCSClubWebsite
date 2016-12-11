@@ -1,12 +1,6 @@
 <?php
   require_once("classes/Login.php");
   require_once("classes/Utils.php");
-  include("includes/header.html");
-  include("includes/sidenav.html");
-  include("includes/topnav.php");
-  require_once('classes/registration-gc-mc.php');
-  $gc = new gullcode();
-  $mc = new math_challenge();
   $login = new Login();
   if ($login->isUserLoggedIn()) {
     require_once('classes/registration-gc-mc.php');
@@ -35,13 +29,16 @@
   else{
     $title = "SU Math/CS Club Registration";
   }
+
+  include("includes/header.html");
+  include("includes/sidenav.html");
+  include("includes/topnav.php");
 ?>
 
 <head>
 	<title>Math CS Club - GullCode/Math Challenge Registration</title>
 	<link rel="stylesheet" href="css/forms.css"/>
 	<link rel="stylesheet" href="css/gc-mc-registration.css">
-  <script src="jquery-3.1.0.min.js"></script>
 </head>
 
 <body>
@@ -63,7 +60,7 @@
 </div>
 
 <div id="About Me" class="tabcontent">
- Select Competition Link Above 
+ Select Competition Link Above
 </div>
 
 <!--Math Challenge Tab Content-->
@@ -76,19 +73,19 @@
     else{
 ?>
 
-<div id="Math-Challenge" class="tabcontent">
-<left><strong><u>Sign up Form</u></strong></left>
+<div id="Math-Challenge" class="form tabcontent">
+<h3>Sign up Form</h3>
 
 	<form method="post">
 		<p class="message">Register As:</p>
-		<select id="registert-as" name="registert-as" required>
+		<select class="register-as" id="register-mc-as" name="registert-as" required>
 
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
 
 		</select>
 
-	<div id="team">
+	<div class="team" id="team-mc">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
 <br>
@@ -144,18 +141,18 @@
     else{
 ?>
 
-<div id="GullCode" class="tabcontent">
-<left><strong><u>Sign up Form</u></strong></left>
+<div id="GullCode" class="form tabcontent">
+<h3>Sign up Form</h3>
 
 	<form method="post">
 		<p class="message">Register As:</p>
-		<select id="registert-as" name="registert-as" required>
+		<select  class="register-as" id="register-gc-as" name="registert-as" required>
 
 		    <option value="0">Free Agent</option>
 		    <option value="1">Team</option>
 		</select>
 
-	<div id="team">
+	<div class="team" id="team-gc">
         <input type="text" placeholder="Team Name" name="team-name" />
     </div>
 	 <p class="message">Highest Computer Science Course Taken(Select One):</p>
@@ -230,21 +227,26 @@
 </script>
 
 <script>
-  $(document).ready(function () {
-    toggleFields(); // call this first so we start out with the correct visibility depending on the selected form values
-    // this will call our toggleFields function every time the selection value of our other field changes
-    $("#registert-as").change(function () {
-     toggleFields();
-    });
-});
-// this toggles the visibility of other server
-function toggleFields() {
+    // this toggles the visibility of other server
+    function toggleFields() {
+        if ($("#register-mc-as").val() == "1") {
+            $("#team-mc").show();
+        } else {
+            $("#team-mc").hide();
+        }
 
-    if ($("#registert-as").val() == "1")
-        $("#team").show();
-    else
-        $("#team").hide();
-  }
+        if ($("#register-gc-as").val() == "1") {
+            $("#team-gc").show();
+        } else {
+            $("#team-gc").hide();
+        }
+    }
+
+    $(function () {
+        toggleFields(); // call this first so we start out with the correct visibility depending on the selected form values
+        // this will call our toggleFields function every time the selection value of our other field changes
+        $(document).on("change", ".register-as", toggleFields);
+    });
 </script>
 
 </body>
