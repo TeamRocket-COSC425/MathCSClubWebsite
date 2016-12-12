@@ -1,5 +1,13 @@
 header.banner {
-    background-image: url("../images/gullcode/gullcode-bg.jpg");
+    background: url("../images/gullcode/gullcode-bg.jpg") ;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
 }
 
 .col3 {
