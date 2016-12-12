@@ -62,12 +62,10 @@
 	<br>
     <p class="message">Year:</p>
 	<select id="reg_input_year" name="user_year" required>
-    <optgroup label="Class">
-	    <option value="0">Freshman</option>
-	    <option value="1">Sophmore</option>
-	    <option value="2">Junior</option>
-	    <option value="3">Senior</option>
-	    <option value="4">Other</option>
+        <optgroup label="Class">
+<?php   for ($i = 0; $i < 5; $i++) { ?>
+	       <option value="<?= $i ?>"><?= Utils::year($i) ?></option>
+<?php   }  ?>
     </optgroup>
 	</select>
 

@@ -16,7 +16,7 @@
 
 <div id="main">
 
-<div id="content">
+<div id="content" class="center">
 
 <div id="mentor-mobile">
 <header class="banner">
@@ -31,41 +31,29 @@
 
 <hr style="background-color: #003366; height: 3px;">
 
-<h2 class="center">
-<u>Meet the Mentors</u>
+<h2>
+    Meet the Mentors
 </h2>
+<h4>
+    Select a picture below to view their profile:
+</h4>
 
 
 
 <?php
 	$mentors = $db->where('mentor', 1)->get('users');
-	echo "<table id='mentors' align='center'><tr>";
-		$count=sizeof($mentors);
-		$ogcount=sizeof($mentors);
 
-		foreach ($mentors as $mentor)
-		{
-			if ($count % "3" != "0" && $ogcount > "3")
-			{
-				echo '<td><table id="mentors" align="center">';
-				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="window.location=\'profile.php?user='. $mentor["id"] . '\'"> </td></tr></table></td>';
-				$count= $count - 1;
-			}
-			else
-			{
-				echo '<td><table id="mentors" align="center">';
-				echo "<th colspan='1'>" . $mentor['name'] . "</th>";
-				echo '<tr><td> <img src="' . $mentor["image"] . '" class=\'mentorpic\' alt="' .
-				$mentor["name"] . '" onclick="window.location=\'profile.php?user='. $mentor["id"] . '\'"> </td></tr></table></td>';
-				if ($ogcount > "3"){
-					echo "</tr><tr>";
-				}
-				$count= $count - 1;
-			}
+	echo '<div class="mentors">';
+	foreach ($mentors as $mentor)
+	{
+        echo "<div class=\"block\">
+                <h3>$mentor[name]</h3>
+                <a href=\"profile?user=$mentor[id]\">
+                    <img src=\"$mentor[image]\" class=\"mentorpic\">
+                </a>
+             </div>";
 		}
-		echo "</tr></table>";
+    echo '</div>';
 ?>
 <br>
 

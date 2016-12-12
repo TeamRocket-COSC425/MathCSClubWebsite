@@ -7,3 +7,7 @@ header.banner {
     width: 400px;
     padding: 20px;
 }
+
+ol, ul {
+    text-align: left;
+}

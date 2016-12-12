@@ -40,45 +40,41 @@
     $image_loc = Utils::handleImageUpload('image', $image_validator);
     if ($image_loc != 'image') {
         $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
+        $user['image'] = $image_loc;
     }
 
     // POST handling
     if (isset($_POST['submit'])) {
 
-		// If file upload failed, no need to continue
-		if ($uploadOk === 1) {
+		// Build array of data to update table width
+		// Cannot directly use $_POST array due to injection potential
+        $data = array(
+            'email' => $_POST['email'],
+            'preferred_email' => $_POST['preferred_email'],
+            'major' => $_POST['major'],
+            'year' => $_POST['year'],
+            't_size' => $_POST['t_size'],
+            'bio' => $_POST['bio']
+        );
 
-			// Build array of data to update table width
-			// Cannot directly use $_POST array due to injection potential
-	        $data = array(
-	            'email' => $_POST['email'],
-	            'preferred_email' => $_POST['preferred_email'],
-	            'major' => $_POST['major'],
-	            'year' => $_POST['year'],
-	            't_size' => $_POST['t_size'],
-	            'bio' => $_POST['bio']
-	        );
-
-			if (Utils::currentUserAdmin()) {
-				$admindata = array(
-					'mentor' => isset($_POST['mentor']) ? 1 : 0,
-					'admin' => isset($_POST['admin']) ? 1 : 0
-				);
-				$data = array_merge($data, $admindata);
-			}
-
-	        $db->where('id', $user['id'])->update('users', $data);
-
-			// Rebuild URL without 'edit' param (maintains user param)
-	        $loc = "profile";
-	        if ($user !== $currentuser) {
-	            $loc = $loc . '?user=' . $user['id'];
-	        }
-
-			// Redirect
-	        header("Location: " . $loc);
-
+		if (Utils::currentUserAdmin()) {
+			$admindata = array(
+				'mentor' => isset($_POST['mentor']) ? 1 : 0,
+				'admin' => isset($_POST['admin']) ? 1 : 0
+			);
+			$data = array_merge($data, $admindata);
 		}
+
+        $db->where('id', $user['id'])->update('users', $data);
+
+		// Rebuild URL without 'edit' param (maintains user param)
+        $loc = "profile";
+        if ($user !== $currentuser) {
+            $loc = $loc . '?user=' . $user['id'];
+        }
+
+		// Redirect
+        header("Location: " . $loc);
     }
 
     include("includes/header.html");
@@ -160,7 +156,7 @@
 
             <div id="image_upload_wrapper">
             <div id="image_upload_form">
-    			<img id="profile_image" src="<?= isset($user['image']) ? 'images/loginicon.jpg' : $user['image']; ?>"/><br>
+    			<img id="profile_image" src="<?= $user['image'] ?: 'images/loginicon.jpg'; ?>"/><br>
                 <label class="image_upload">
                     <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
                     <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
@@ -232,8 +228,9 @@
         }
         echo '<br>Major: ' . $user['major'];
         echo '<br>Year: ' . Utils::year($user['year']);
-        echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
-
+        if ($user['t_size']) {
+            echo '<br>T-Shirt Size: ' . Utils::t_size($user['t_size']);
+        }
         $url = strtok($_SERVER['REQUEST_URI'], '?') . '?edit';
         if (isset($_GET['user'])) {
             $url = $url . '&user=' . $_GET['user'];

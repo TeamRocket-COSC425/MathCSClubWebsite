@@ -12,8 +12,25 @@ a:visited {
   color: #689AAB;
 }
 
-#video-container{
+h1 {
+    font-size: 2rem;
+}
+
+#home-widgets {
+    text-align: center;
+}
+
+#video-container {
     float: right;
+    border-left: 1px solid #aaa;
+    box-sizing: border-box;
+    width: 630px;
+    height: 500px;
+}
+
+#video-container h2 {
+    font-size: 1.4em;
+    margin-top: 0;
 }
 
 #main #content img {

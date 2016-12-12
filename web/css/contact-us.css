@@ -1,13 +1,13 @@
 /* Primary form styling*/
-.group            { 
-  position:relative; 
-  margin-bottom:45px; 
+.group            {
+  position:relative;
+  margin-bottom:45px;
   width: 100%;
 }
 
 .group2 {
- position:relative; 
- margin-bottom:45px; 
+ position:relative;
+ margin-bottom:45px;
  margin-left: 200px;
  width: 100%;
 }
@@ -16,6 +16,7 @@
   background: #fff;
   max-width: 500px;
   margin: auto;
+  margin-top: 30px;
 }
 
 .messageArea{
@@ -49,23 +50,23 @@ input {
 }
 
 /*prevents from box being around text entry spot*/
-input:focus         
-{ 
-  outline:none; 
-} 
+input:focus
+{
+  outline:none;
+}
 
 /* Moves placeholder above text entry box */
 label                {
 
-  color:#999; 
+  color:#999;
   font-size:18px;
   font-weight:normal;
   position:absolute;
   pointer-events:none;
   left:5%;
   top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 
 }
@@ -78,28 +79,28 @@ input:focus ~ label, input:valid ~ label        {
 }
 
 /* Makes botom bars bold and color */
-.bar { 
-  position:relative; 
-  display:block; 
-  width:95%; 
+.bar {
+  position:relative;
+  display:block;
+  width:95%;
 }
 
 .bar:before, .bar:after     {
   content:'';
-  height:2px; 
+  height:2px;
   width:0;
-  bottom:1px; 
+  bottom:1px;
   position:absolute;
-  background:#31a2ac; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
+  background:#31a2ac;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 }
 .bar:before {
   left:50%;
 }
 .bar:after {
-  right:50%; 
+  right:50%;
 }
 
 /* active state */
@@ -110,9 +111,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 /* HIGHLIGHTER OVER FORM ANIMATION*/
 .highlight {
   position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
+  height:60%;
+  width:100px;
+  top:25%;
   left:0;
   pointer-events:none;
   opacity:0.5;
@@ -140,7 +141,7 @@ input:focus ~ .highlight {
 }
 
 
-/* Submit button styling */ 
+/* Submit button styling */
 .btn-start-order {
   background: 0 0 #ffffff;
   border: 1px solid #2f323a;
@@ -173,7 +174,7 @@ input:focus ~ .highlight {
   font-size: 18px;
   background: none;
   color: #000;
-  outline:none; 
+  outline:none;
   overflow: auto;
   resize: none;
 }/*text area box size*/
