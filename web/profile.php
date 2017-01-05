@@ -8,6 +8,7 @@
     $title = "User Profile";
     require_once("classes/Utils.php");
     require_once("classes/Login.php");
+    require_once("classes/ConfirmBuilder.php");
     $login = new Login;
     if (!$login->isUserLoggedIn()) {
       header("Location: home");
@@ -121,20 +122,17 @@
 		<h3>You cannot delete your own profile!</h3>
 		<a id="delete_go_back" class="button" href="#">Go Back</a>
 <?php
-	} elseif (isset($_POST['confirm_delete'])) {
+	} elseif (isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
 		$db->where('id', $user['id'])->delete('users');
 ?>		Profile "<?php echo $user['email']; ?>" has been deleted
 		<a class="button" href="dashboard">To Dashboard</a>
 <?php
 	} else {
-?>  	<h4>Are you sure you want to delete the profile for "<?php echo $user['email']; ?>"?</h4>
-		<p style="color:red;">This cannot be undone</p>
-		<form method="post" id="delete_profile">
-		</form>
-		<input form="delete_profile" class="dangerbutton" type="submit" name="confirm_delete" id="delete_profile" value="Yes" />
-		<a id="delete_go_back" class="button" href="#">Go Back</a>
+?>
+        <h3>Error, delete not confirmed. Please try again.</h3>
+        <a id="delete_go_back" class="button" href="#">Go Back</a>
 <?php
-	}
+    }
 	die();
   }
 ?>
