@@ -4,17 +4,18 @@
     <link rel="stylesheet" href="css/profile.css"/>
 </head>
 
-<?php 
+<?php
 
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-	
+
  	$title = "Remove Teammate";
 
- 	//Login 
+ 	//Login
     require_once("classes/Utils.php");
     require_once("classes/Login.php");
+    require_once("classes/ConfirmBuilder.php");
     $login = new Login;
     if (!$login->isUserLoggedIn()) {
       header("Location: home");
@@ -49,20 +50,14 @@
 <?php
 
  if ($delete) {
- 	if(isset($_POST['confirm_delete'])) { //confirms removal if button on this page is clicked
+ 	if(isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
 		$db->where('id', $user['id'])->delete('gullcode_users_on_teams'); //remove the user from gullcode team
-?>		"<?php echo $user['name']; ?>" has been removed. 
-
-		<a class="button" href="dashboard">To Dashboard</a> 
-<?php
-	} else {
-?>  	<h4>Are you sure you want to remove <?php echo($user['name'])?>	from this team? </h4>
-		<p style="color:red;"><img src='images/message-icons/error.png' width='50'> This cannot be undone</p>
-		<form method="post" id="delete_profile">
-		</form> 
-		<!-- confirms removal for isset($_POST['confirm_delete']) -->
-		<input form="delete_profile" class="dangerbutton" type="submit" name="confirm_delete" id="delete_profile" value="Yes" /> 
-		<a id="delete_go_back" class="button" href="#">Go Back</a>
+        if (count($db->where('team_id', $userteam['team_id'])->get('gullcode_users_on_teams')) == 0) {
+            $db->where('team_id', $userteam['team_id'])->delete('gullcode_teams');
+        }
+?>
+        "<?= $user['name'] ?>" has been removed.
+		<a class="button" href="dashboard">To Dashboard</a>
 <?php
 	}
 	die();

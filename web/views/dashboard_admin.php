@@ -1,4 +1,5 @@
 <?php
+require_once("classes/ConfirmBuilder.php");
 require_once("classes/AdminFunctions.php");
     if (isset($_POST['openGcRegistration'])){
         Admins::updateRegistraion("openGc");
@@ -168,7 +169,12 @@ function scrollTo(id) {
                     <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                 </td>
                 <td>
-                    <a class="button tablebutton dangerbutton" href="profile?user=<?php echo $user['id']; ?>&delete">Delete</a>
+<?php
+                    $confirm = (new ConfirmBuilder($user['id']))
+                                ->confirmText("Are you sure you want to delete the profile for $user[email]?")
+                                ->targetLoc("profile?user=$user[id]&delete");
+?>
+                    <a class="button tablebutton dangerbutton" href="<?= $confirm->getLink() ?>">Delete</a>
                 </td>
 <?php
                 echo '</tr>';
@@ -236,7 +242,7 @@ function scrollTo(id) {
     $teams = $db->where("team_id")->get("gullcode_teams");
     $team_members = $db->where("team_id")->get("gullcode_users_on_teams");
     $users = $db->get("users");
-   
+
     if($teams)
     {
         echo '<h4>GullCode Teams</h4>';
@@ -270,7 +276,12 @@ function scrollTo(id) {
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
                                 <td>
-                                <a class="button tablebutton dangerbutton" href="delete_teammate.php?user=<?php echo $user['id']; ?>&delete "> Remove from  <?php echo( $team['team_name']) ?> </a>
+<?php
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to remove user $user[name] from the team $team[team_name]?")
+                                            ->targetLoc("delete_teammate?user=$user[id]&delete");
+?>
+                                <a class="button tablebutton dangerbutton" href="<?= $confirm->getLink() ?>">Remove from  <?php echo( $team['team_name']) ?> </a>
                 </td>
                                 </tr>
 <?php
@@ -399,7 +410,7 @@ function scrollTo(id) {
     {
         echo '<h4>Math Challenge Teams</h4>';
     }
-    
+
     foreach ($teams as $team)
     {
         if($teams) {
