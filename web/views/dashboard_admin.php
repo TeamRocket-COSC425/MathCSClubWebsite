@@ -62,6 +62,83 @@ function scrollTo(id) {
     <input form="new_announcement" type="submit" name="add_announcement" />
     <a class="button" href="dashboard?user">View User Dashboard</a>
 </div>
+
+<div class="adminpane form" id="fallactivity">
+    <h3>Manage Fall Activities</h3>
+<?php
+    if (isset($_POST['add_fall_activity'])) {
+        $data = array(
+            'activity' => $_POST['activity']
+        );
+        $db->insert('fall_activities', $data);
+        header('Location: dashboard');
+        die();
+    }
+?>
+    
+    <form id="new_fall_activity" method="post" action="dashboard">
+        <p class="message">Add New Activity:</p>
+        <input type="text" id="activity" name="activity" placeholder="Activity" required/>
+    </form>
+    <input  form="new_fall_activity" type="submit" name="add_fall_activity"/>
+    <table id="falltable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Activity Name</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tboby>
+        <?php
+            $fallactivities = $db->get('fall_activities');
+            foreach($fallactivities as $fla) {
+                echo '<tr>';
+                echo '<td>' . $fla["activity"] . '</td>';
+                echo '<tr>';
+            }
+        ?>
+        </tboby>
+        </table>
+</div>
+
+<div class="adminpane form" id="springactivity">
+    <h3>Manage Spring Activities</h3>
+<?php
+    if (isset($_POST['add_spring_activity'])) {
+        $data = array(
+            'activity' => $_POST['activity']
+        );
+        $db->insert('spring_activities', $data);
+        header('Location: dashboard');
+        die();
+    }
+?>
+    
+    <form id="new_spring_activity" method="post" action="dashboard">
+        <p class="message">Add New Activity:</p>
+        <input type="text" id="activity" name="activity" placeholder="Activity" required/>
+    </form>
+    <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
+    <table id="springtable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Activity Name</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tboby>
+        <?php
+            $springactivities = $db->get('spring_activities');
+            foreach($springactivities as $spa) {
+                echo '<tr>';
+                echo '<td>' . $spa["activity"] . '</td>';
+                echo '<tr>';
+            }
+        ?>
+        </tboby>
+        </table>
+</div>
+
 <div class="adminpane" id="users">
     <h3>Users</h3>
     <table id="usertable" class="tablesorter">
