@@ -72,8 +72,6 @@ function scrollTo(id) {
             'activity' => $_POST['activity']
         );
         $db->insert('fall_activities', $data);
-        header('Location: dashboard');
-        die();
     }
 ?>
     
@@ -82,6 +80,11 @@ function scrollTo(id) {
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
     <input  form="new_fall_activity" type="submit" name="add_fall_activity"/>
+
+    <?php
+            $fallactivities = $db->get('fall_activities');
+            if ($fallactivities){
+    ?>
     <table id="falltable" class="tablesorter">
         <thead>
             <tr>
@@ -91,7 +94,6 @@ function scrollTo(id) {
         </thead>
         <tboby>
         <?php
-            $fallactivities = $db->get('fall_activities');
             foreach($fallactivities as $fla) {
                 echo '<tr>';
                 echo '<td>' . $fla["activity"] . '</td>';
@@ -100,6 +102,9 @@ function scrollTo(id) {
         ?>
         </tboby>
         </table>
+        <?php
+            }
+        ?>
 </div>
 
 <div class="adminpane form" id="springactivity">
@@ -110,8 +115,6 @@ function scrollTo(id) {
             'activity' => $_POST['activity']
         );
         $db->insert('spring_activities', $data);
-        header('Location: dashboard');
-        die();
     }
 ?>
     
@@ -120,6 +123,11 @@ function scrollTo(id) {
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
+
+    <?php
+            $springactivities = $db->get('spring_activities');
+            if ($springactivities){
+    ?>
     <table id="springtable" class="tablesorter">
         <thead>
             <tr>
@@ -129,7 +137,6 @@ function scrollTo(id) {
         </thead>
         <tboby>
         <?php
-            $springactivities = $db->get('spring_activities');
             foreach($springactivities as $spa) {
                 echo '<tr>';
                 echo '<td>' . $spa["activity"] . '</td>';
@@ -138,6 +145,9 @@ function scrollTo(id) {
         ?>
         </tboby>
         </table>
+        <?php
+            }
+        ?>
 </div>
 
 <div class="adminpane" id="users">

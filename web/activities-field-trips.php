@@ -40,7 +40,7 @@ Activites &amp; Field Trips
     {
         echo "<button class='accordion'>" . $fall_activity['activity'] . "</button>";
         echo "<div class='panel'>";
-        (new EditableText("'" . $fall_activity['activity'] . "'"))->getContent();
+        (new EditableText("" . $fall_activity['activity'] . ""))->getContent();
         echo "</div>";
 
     }
@@ -57,7 +57,7 @@ Activites &amp; Field Trips
     {
         echo "<button class='accordion'>" . $spring_activity['activity'] . "</button>";
         echo "<div class='panel'>";
-        (new EditableText("'" . $spring_activity['activity'] . "'"))->getContent();
+        (new EditableText("" . $spring_activity['activity'] . ""))->getContent();
         echo "</div>";
     }
 ?>
