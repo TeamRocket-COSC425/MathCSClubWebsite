@@ -31,7 +31,7 @@ function toggleByID(IDName) {
 </header>
 
 <div class='circle-container'>
-	<div class='groupPic'><img src="images/officers/fall16septemberOfficers.jpg"></div>
+	<div class='groupPic'><img src="images/officers/officers3.jpg"></div>
     <?php
       	$positions = $db->get('officers');
       	foreach($positions as $pos) {
