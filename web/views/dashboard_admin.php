@@ -536,3 +536,35 @@ function scrollTo(id) {
         }
 ?>
 </div>
+
+<div class="adminpane form" id="EndofYearPicnic">
+    <h3>RSVPs for the End of Year Picnic</h3>
+
+    <?php
+            $RSVPs = $db->get('picnic_rsvp');
+            if ($RSVPs){
+    ?>
+    <table id="RSVPs" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Item</th>
+            </tr>
+        </thead>
+        <tboby>
+        <?php
+            foreach($RSVPs as $RSVP) {
+                echo '<tr>';
+                echo '<td>' . $RSVP["id"] . '</td>';
+                echo '<td>' . $RSVP["name"] . '</td>';
+                echo '<td>' . $RSVP["item"] . '</td>';
+                echo '<tr>';
+            }
+        ?>
+        </tboby>
+        </table>
+        <?php
+            }
+        ?>
+</div>
