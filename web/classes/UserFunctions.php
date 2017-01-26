@@ -29,4 +29,10 @@
 				$db->where("id", $user["id"])->delete("math_challenge_users_on_teams");
 			}
 		}
+		public static function unRSVP()
+		{
+			global $db;
+			$user = Utils::getCurrentUser();
+			$db->where('id', $user['id'])->delete('picnic_rsvp');
+		}
 	}
