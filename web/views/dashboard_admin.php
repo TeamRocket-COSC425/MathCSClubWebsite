@@ -73,6 +73,10 @@ function scrollTo(id) {
         );
         $db->insert('fall_activities', $data);
     }
+    if(isset($_POST["delete_fall_activity"])){
+        $act = $_POST['delete_activity'];
+        $db->where('activity', $act)->delete('fall_activities');
+    }
 ?>
     
     <form id="new_fall_activity" method="post" action="dashboard">
@@ -89,7 +93,6 @@ function scrollTo(id) {
         <thead>
             <tr>
                 <th>Activity Name</th>
-                <th>Delete</th>
             </tr>
         </thead>
         <tboby>
@@ -102,6 +105,13 @@ function scrollTo(id) {
         ?>
         </tboby>
         </table>
+
+        <form id="delete_fall_activity" method="post" action="dashboard">
+            <p class="message">Delete Activity:</p>
+            <input type="text" id="delete_activity" name="delete_activity" placeholder="Activity" required/>
+        </form>
+        <input  class="dangerbutton" form="delete_fall_activity" type="submit" name="delete_fall_activity"/>
+
         <?php
             }
         ?>
@@ -115,6 +125,10 @@ function scrollTo(id) {
             'activity' => $_POST['activity']
         );
         $db->insert('spring_activities', $data);
+    }
+    if(isset($_POST["delete_spring_activity"])){
+        $act = $_POST['delete_activity'];
+        $db->where('activity', $act)->delete('spring_activities');
     }
 ?>
     
@@ -132,19 +146,26 @@ function scrollTo(id) {
         <thead>
             <tr>
                 <th>Activity Name</th>
-                <th>Delete</th>
             </tr>
         </thead>
         <tboby>
         <?php
             foreach($springactivities as $spa) {
+
                 echo '<tr>';
                 echo '<td>' . $spa["activity"] . '</td>';
-                echo '<tr>';
+                echo '</tr>';
             }
         ?>
         </tboby>
-        </table>
+        </table>     
+
+        <form id="delete_spring_activity" method="post" action="dashboard">
+            <p class="message">Delete Activity:</p>
+            <input type="text" id="delete_activity" name="delete_activity" placeholder="Activity" required/>
+        </form>
+        <input  class="dangerbutton" form="delete_spring_activity" type="submit" name="delete_spring_activity"/>
+
         <?php
             }
         ?>
