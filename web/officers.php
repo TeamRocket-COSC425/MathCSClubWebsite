@@ -60,7 +60,7 @@ function toggleByID(IDName) {
         }
 
         //club advisor bios
-        $advisorBios = $db->get('officers');
+        $advisorBios = $db->get('club_advisors');
         foreach($advisorBios as $advisorBio) {
             echo '<div id=\'' . $advisorBio["position"] .'-bio\' class=\'bio\'>';
             echo '<H2>' . $advisorBio["name"] . '</H2>';
@@ -76,7 +76,7 @@ function toggleByID(IDName) {
         $advisors = $db->get('club_advisors');
         foreach($advisors as $advisor) {
             echo '<div id=\'' . $advisor["position"] . '\' class=\'advisor\'>';
-            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\'></div>';
+            echo '<div class=\'advisorPic\'><img src=\'' . $advisor["image"] . '\' " onclick="toggleByID(\''. $advisor["position"] .'-bio\');"></div>';
             echo '<div class=\'advisorInfo\'>';
             echo '<H3>' . $advisor["name"] . '</H3>';
             echo '<H4>' . $advisor["title"] . '</H4>';
