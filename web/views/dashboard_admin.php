@@ -30,9 +30,12 @@ function scrollTo(id) {
 </script>
 <div id="navbuttons">
     <h3>Navigation</h3>
+    <a class="button" href="#" onclick="scrollTo('fallactivity')">Fall Activities</a>
+    <a class="button" href="#" onclick="scrollTo('springactivity')">Spring Activities</a>
     <a class="button" href="#" onclick="scrollTo('users')">User List</a>
     <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
     <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
+    <a class="button" href="#" onclick="scrollTo('EndofYearPicnic')">End of Year Picnic</a>
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -76,6 +79,7 @@ function scrollTo(id) {
     if(isset($_POST["delete_fall_activity"])){
         $act = $_POST['delete_activity'];
         $db->where('activity', $act)->delete('fall_activities');
+        $db->where('id', $act)->delete('page_content');
     }
 ?>
     
@@ -129,6 +133,7 @@ function scrollTo(id) {
     if(isset($_POST["delete_spring_activity"])){
         $act = $_POST['delete_activity'];
         $db->where('activity', $act)->delete('spring_activities');
+        $db->where('id', $act)->delete('page_content');
     }
 ?>
     
