@@ -58,22 +58,22 @@ class Registration
 
             global $db;
 
-                $user_email = strip_tags($_POST['user_email'], ENT_QUOTES);
-                $user_password = $_POST['user_password_new'];
-                $user_id = $_POST['user_id'];
+            $user_email = strip_tags($_POST['user_email'], ENT_QUOTES);
+            $user_password = $_POST['user_password_new'];
+            $user_id = $_POST['user_id'];
 
-                // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
-                // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
-                // PHP 5.3/5.4, by the password hashing compatibility library
-                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
+            // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
+            // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
+            // PHP 5.3/5.4, by the password hashing compatibility library
+            $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT);
 
-                // Check for existing account
-                $db->where('email', $user_email);
-                $existing = $db->get('users');
+            // Check for existing account
+            $db->where('email', $user_email);
+            $existing = $db->get('users');
 
-                // Check for existing userID
-                $db->where('id', $user_id);
-                $IDexisting = $db->get('users');
+            // Check for existing userID
+            $db->where('id', $user_id);
+            $IDexisting = $db->get('users');
 
             if (count($existing) > 0) {
                 $this->errors = array("Sorry, that username / email address is already taken.", print_r($existing[0]));

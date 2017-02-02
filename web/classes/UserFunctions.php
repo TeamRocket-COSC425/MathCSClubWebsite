@@ -4,10 +4,12 @@
 
 	class Users {
 
-		public static function dropCompetition($comp)
+		public static function dropCompetition($comp, $user = null)
 		{
 			global $db;
-			$user = Utils::getCurrentUser();
+            if (!$user) {
+			    $user = Utils::getCurrentUser();
+            }
 			if ($comp == "GullCode") {
 				$teamid = $db->where("id", $user["id"])->getone("gullcode_users_on_teams");
 				if($teamid["team_id"] != 0) {
@@ -29,10 +31,12 @@
 				$db->where("id", $user["id"])->delete("math_challenge_users_on_teams");
 			}
 		}
-		public static function unRSVP()
+		public static function unRSVP($user = null)
 		{
 			global $db;
-			$user = Utils::getCurrentUser();
+            if (!$user) {
+			    $user = Utils::getCurrentUser();
+            }
 			$db->where('id', $user['id'])->delete('picnic_rsvp');
 		}
 	}

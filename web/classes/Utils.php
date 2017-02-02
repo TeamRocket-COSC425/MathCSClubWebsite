@@ -33,6 +33,10 @@ class Utils {
         return self::currentUserAdmin() && isset($_SESSION['edit']) && $_SESSION['edit'];
     }
 
+    public static function sessionCheck($key, $check) {
+        return isset($_SESSION[$key]) && $_SESSION[$key] == $check;
+    }
+
     public static function getDefaultImageValidator() {
         return function($image) {
             $uploadOk = 1;

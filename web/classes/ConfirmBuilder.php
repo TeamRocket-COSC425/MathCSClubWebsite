@@ -28,6 +28,12 @@ class ConfirmBuilder {
         return (new ConfirmBuilder($_SESSION[self::KEY_UID]))->confirmText($_SESSION[self::KEY_TEXT])->targetLoc($_SESSION[self::KEY_TARGET]);
     }
 
+    public static function flush() {
+        unset($_SESSION[self::KEY_UID]);
+        unset($_SESSION[self::KEY_TEXT]);
+        unset($_SESSION[self::KEY_TARGET]);
+    }
+
     public function getLink() {
         $_SESSION[self::KEY_TEXT] = $this->confirm_text;
         $_SESSION[self::KEY_TARGET] = $this->target_loc;

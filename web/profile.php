@@ -82,14 +82,20 @@
     include("includes/sidenav.html");
     include("includes/topnav.php");
     require_once("classes/UserFunctions.php");
-    if(isset($_POST["dropGullCode"])) {
-    	Users::dropCompetition("GullCode");
-    }
-    if(isset($_POST["dropMathChallenge"])) {
-    	Users::dropCompetition("MathChallenge");
-    }
-    if (isset($_POST['unRSVP'])) {
-        Users::unRSVP();
+
+    if(isset($_GET["drop"]) && Utils::sessionCheck(ConfirmBuilder::KEY_UID, $user['id'])) {
+        switch ($_GET['drop']) {
+            case 'gullcode':
+                Users::dropCompetition("GullCode", $user);
+                break;
+            case 'mathchallenge':
+                Users::dropCompetition("MathChallenge", $user);
+                break;
+            case 'rsvp':
+                Users::unRSVP($user);
+                break;
+        }
+        ConfirmBuilder::flush();
     }
 ?>
 
@@ -125,7 +131,7 @@
 		<h3>You cannot delete your own profile!</h3>
 		<a id="delete_go_back" class="button" href="#">Go Back</a>
 <?php
-	} elseif (isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
+	} elseif (Utils::sessionCheck(ConfirmBuilder::KEY_UID, $user['id'])) {
 		$db->where('id', $user['id'])->delete('users');
 ?>		Profile "<?php echo $user['email']; ?>" has been deleted
 		<a class="button" href="dashboard">To Dashboard</a>
@@ -283,9 +289,11 @@
             echo "On team \"$team[team_name]\"";
             $gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
    			if($gcControl["switch"] == 1) {
-				echo "<form method='post'>
-   				<input class='dangerbutton' name='dropGullCode' type='submit' value='Drop from \"" . $team['team_name'] . "\"'/>
-    			</form>";
+                $confirm = (new ConfirmBuilder($user['id']))
+                            ->confirmText("Are you sure you want to leave the team \"$team[team_id]\"?")
+                            ->targetLoc("profile?user=$user[id]&drop=gullcode");
+?>              <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Drop from "<?= $team['team_name'] ?>"</a>
+<?php
     		}
           } else {
             echo "Error, no team found!";
@@ -307,9 +315,11 @@
             echo "On team \"$team[team_name]\"";
             $mcControl = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
    			if($mcControl["switch"] == 1) {
-				echo "<form method='post'>
-   				<input class='dangerbutton' name='dropMathChallenge' type='submit' value='Drop from \"" . $team['team_name'] . "\"'/>
-    			</form>";
+                $confirm = (new ConfirmBuilder($user['id']))
+                            ->confirmText("Are you sure you want to leave the team \"$team[team_id]\"?")
+                            ->targetLoc("profile?user=$user[id]&drop=mathchallenge");
+?>              <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Drop from "<?= $team['team_name'] ?>"</a>
+<?php
     		}
           } else {
             echo "Error, no team found!";
@@ -320,7 +330,7 @@
       ?>
       </center>
     </div>
-    
+
     <?php
     if ($user === $currentuser || Utils::currentUserAdmin()) {
         echo '<div id="EndofYearPicnic">';
@@ -351,13 +361,14 @@
               </form>
               <input  form="RSVP" type="submit" name="RSVP"/>';
     }
-    else 
+    else
     {
         echo '<h2>Thank you for RSVPing for the end of year picnic</h2>';
-        echo '<form method="post">
-                <p class="message">If you would like to unRSVP, click below</p>
-                <input class="dangerbutton" name="unRSVP" type="submit"/>
-              </form>';
+        $confirm = (new ConfirmBuilder($user['id']))
+                    ->confirmText("Are you sure you want to undo RSVP?")
+                    ->targetLoc("profile?user=$user[id]&drop=rsvp");
+?>      <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Undo RSVP</a>
+<?php
     }
     echo '</div>';
 }
