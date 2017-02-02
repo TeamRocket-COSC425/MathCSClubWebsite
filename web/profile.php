@@ -320,8 +320,10 @@
       ?>
       </center>
     </div>
+    
     <?php
-    $user = Utils::getCurrentUser();
+    if ($user === $currentuser || Utils::currentUserAdmin()) {
+        echo '<div id="EndofYearPicnic">';
     if (isset($_POST['RSVP'])) {
         $data = array(
             'id' => $user['id'],
@@ -357,7 +359,8 @@
                 <input class="dangerbutton" name="unRSVP" type="submit"/>
               </form>';
     }
-
+    echo '</div>';
+}
 ?>
 </div>
 </div>
