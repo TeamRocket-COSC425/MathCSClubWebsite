@@ -48,16 +48,19 @@ class Registration
             $this->errors[] = "Email cannot be longer than 64 characters";
         } elseif (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "Your email address is not in a valid email format";
-        } elseif(preg_match('/^\S+@(gulls\.)?salisbury\.edu$/i', $source_string) > 0) {
+        } elseif( preg_match('/^\S+@(gulls\.)?salisbury\.edu$/i', $_POST['user_email']) !== 1) {
             $this->errors[] = "Email must be from an SU domain.";
         } elseif (empty($_POST['user_id'])) {
             $this->errors[] = "No Student ID provided";
+        } elseif (strlen($_POST['user_id']) != 7) {
+            $this->errors[] = "Student ID must have a length of 7 characters";
         } else {
 
             global $db;
 
                 $user_email = strip_tags($_POST['user_email'], ENT_QUOTES);
                 $user_password = $_POST['user_password_new'];
+                $user_id = $_POST['user_id'];
 
                 // crypt the user's password with PHP 5.5's password_hash() function, results in a 60 character
                 // hash string. the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using
@@ -68,8 +71,15 @@ class Registration
                 $db->where('email', $user_email);
                 $existing = $db->get('users');
 
+                // Check for existing userID
+                $db->where('id', $user_id);
+                $IDexisting = $db->get('users');
+
             if (count($existing) > 0) {
                 $this->errors = array("Sorry, that username / email address is already taken.", print_r($existing[0]));
+            }
+            elseif (count($IDexisting) > 0) {
+                $this->errors[] = "Student ID is already being used";
             } else {
 
                 $data = array(
