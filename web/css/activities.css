@@ -1,3 +1,7 @@
+header.banner {
+    background-image: url("../images/activities/activities-banner.jpg");
+}
+
 img {
 	width: 100%;
 	height:auto;
