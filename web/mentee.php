@@ -7,27 +7,55 @@
     header("Location: home");
  }
 
- $user = Utils::getCurrentUser();
- $currentuser = $user;
+ include("includes/header.html");
+ include("includes/sidenav.html");
+ include("includes/topnav.php");
 
-                 $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
+ ?>
+ <head>
+   <title>Math CS Club - Mentor Select</title>
+   <link rel="stylesheet" href="css/contact-us.css"/>
+ </head>
 
-                $msg = "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.";
+ <div id="main">
+     <div id="content">
+        <p><h2>
+<?php
 
-                $mail = Utils::createMail();
+        $user = Utils::getCurrentUser();
+        $currentuser = $user;
 
-                $mail->setFrom("noreply@gulls.salisbury.edu", "SU Math/CS Club");
-                $mail->addAddress($user['preferred_email']);
-                $mail->Subject = "Mentor Request";
-                $mail->Body = $msg;
+        $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
 
-                if (!$mail->send()) {
-                    echo "Message could not be sent. Error: " . $mail->ErrorInfo;
-                } else {
-                    echo "Message has been sent.";
-                    die();
-                }
+        $msg = "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.";
 
-                //mail($user['preferred_email'], "Test", "test");
+        $mail = Utils::createMail();
 
+        $mail->setFrom("noreply@gulls.salisbury.edu", "SU Math/CS Club");
+        $mail->addAddress($user['preferred_email']);
+        $mail->Subject = "Mentor Request";
+        $mail->Body = $msg;
 ?>
+        <div class="messageArea">
+            <img src="images/sent.png" alt="sentimg" class="thankYouImg"/><br>
+            <div class="thankMessage">
+<?php
+                if (!$mail->send()) {
+?>
+                    <h1>"Message could not be sent.</h1>
+                    <p>Error: <?= $mail->ErrorInfo ?></p>
+<?php
+                } else {
+?>
+                    <h1>Your message has been sent!</h1>
+                    <p>
+                        The mentor you selected has received an email with your information.
+                        They should contact you soon.
+                    </p>
+<?php
+                }
+?>
+            </div>
+        </div>
+    </div>
+</div>

@@ -38,11 +38,11 @@ class Utils {
         return isset($_SESSION[$key]) && $_SESSION[$key] == $check;
     }
 
-    public static function createMail() {
+    public static function createMail($debug = false) {
         $mail = new PHPMailer;
 
         $mail->isSMTP();
-        $mail->SMTPDebug = 3;
+        $mail->SMTPDebug = $debug ? 3 : 0;
         $mail->Debugoutput = 'html';
 
         if (getenv('MAILTRAP_API_TOKEN')) {
