@@ -29,7 +29,7 @@ button.accordion.active, button.accordion:hover {
 }
 
 div.panel {
-    padding: 0 18px;
+    padding: 18px 18px;
     background-color: white;
     max-height: 0;
     overflow: hidden;
@@ -39,7 +39,7 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 600px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+    max-height: 900px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
 }
 
 button.accordion:after {

@@ -38,7 +38,7 @@
 <br>
 
 <center>
-<img src="images/Fall2016Tutor.PNG" alt="Tutor Schedule">
+<img src="images/math-emporium/Spring2017tutor.jpg" alt="Tutor Schedule">
 </center>
 
 </div>
