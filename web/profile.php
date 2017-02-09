@@ -249,12 +249,20 @@
 ?>
 			<div id="profile_buttons">
 				<a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
-			</div>
+			</div>   
+                  
 <?php
 		}
+?> 
+         <div id="profile_buttons">
+                <a class="button profile_button" href="mentee.php?user=<?= $user['id'] ?>">Select Mentor</a>
+        </div>  
+ <?php       
     }
   ?>
 </div>
+       
+        
 <div id="right_column">
   <div id="bio">
     <h3> Bio </h3><hr/>

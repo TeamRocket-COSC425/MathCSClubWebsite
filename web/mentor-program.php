@@ -52,7 +52,7 @@
                     <img src=\"$mentor[image]\" class=\"mentorpic\">
                 </a>
              </div>";
-		}
+	}
     echo '</div>';
 ?>
 <br>
