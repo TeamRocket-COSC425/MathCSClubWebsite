@@ -70,7 +70,7 @@ class EditableText extends EditableContent {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <script>
-            var simplemde = new SimpleMDE({ element: $("#edit_id_<?php echo $this->id; ?>")[0] });
+            var simplemde = new SimpleMDE({ element: $("[id='edit_id_<?php echo $this->id; ?>']")[0] });
 
             $(document).ready(function(){
                 $("#show_revisions_<?php echo $this->id; ?>").click(function(){
