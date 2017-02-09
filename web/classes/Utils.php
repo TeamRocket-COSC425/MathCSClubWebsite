@@ -1,5 +1,6 @@
 <?php
 
+require_once 'vendor/autoload.php';
 require_once('includes/database.php');
 
 class Utils {
@@ -35,6 +36,27 @@ class Utils {
 
     public static function sessionCheck($key, $check) {
         return isset($_SESSION[$key]) && $_SESSION[$key] == $check;
+    }
+
+    public static function createMail() {
+        $mail = new PHPMailer;
+
+        $mail->isSMTP();
+        $mail->SMTPDebug = 3;
+        $mail->Debugoutput = 'html';
+
+        if (getenv('MAILTRAP_API_TOKEN')) {
+            $mail->Host = 'mailtrap.io';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'e3386170e7a765';
+            $mail->Password = 'd8ab29b5c13eb0';
+            $mail->Port = 2525;
+        } else {
+            $mail->Host = 'localhost';
+            $mail->Port = 25;
+        }
+
+        return $mail;
     }
 
     public static function getDefaultImageValidator() {

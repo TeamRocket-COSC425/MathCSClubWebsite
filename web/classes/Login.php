@@ -132,22 +132,7 @@ class Login
                 $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?" . http_build_query($params);
                 $msg = str_replace('login', 'password_reset', $msg);
 
-                $mail = new PHPMailer;
-
-                $mail->isSMTP();
-                $mail->SMTPDebug = 3;
-                $mail->Debugoutput = 'html';
-
-                if (getenv('MAILTRAP_API_TOKEN')) {
-                    $mail->Host = 'mailtrap.io';
-                    $mail->SMTPAuth = true;
-                    $mail->Username = 'e3386170e7a765';
-                    $mail->Password = 'd8ab29b5c13eb0';
-                    $mail->Port = 2525;
-                } else {
-                    $mail->Host = 'localhost';
-                    $mail->Port = 25;
-                }
+                $mail = Utils::createMail();
 
                 $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
                 $mail->addAddress($user['preferred_email']);
