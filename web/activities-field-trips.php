@@ -18,16 +18,15 @@
 
 <div id="content">
 
+<header class="banner">
+            <h1>Activities &amp; Field Trips</h1>
+</header>
 
     <img src="images/meeting/fall16september.jpg" alt="meetingpicture" class="mySlides"/>
     <img src="images/activities/meetingsp2015.jpg" alt="multicultural day" class="mySlides"/>
-	<img src="images/activities/image3.jpg" alt="Wiffle ball" class="mySlides"/>
-  	<img src="images/activities/oriolessp2016.png" alt="activities fair" class="mySlides"/>
-  	<img src="images/activities/IMG_1895.jpg" alt="chicken dinner" class="mySlides"/>
-
-<h1 class="center">
-Activites &amp; Field Trips
-</h1>
+    <img src="images/activities/image3.jpg" alt="Wiffle ball" class="mySlides"/>
+    <img src="images/activities/oriolessp2016.png" alt="activities fair" class="mySlides"/>
+    <img src="images/activities/IMG_1895.jpg" alt="chicken dinner" class="mySlides"/>
 
 <?php
     (new EditableText("fall-semester"))->getContent();

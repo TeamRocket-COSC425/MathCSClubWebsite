@@ -30,6 +30,9 @@ require_once("classes/EditableText.php");
       </div>
 
     </div>
+
+    <center><img src="images/Pi-Mu/pi-mu-logo.gif"/></center>
+
   </div>
 
 </body>
