@@ -49,7 +49,7 @@ if(isset($_POST['contact_name'])){
 
       $mail->setFrom($contact_email);
       $mail->addAddress('sumathcsclub@gmail.com');
-      $mail->addCC($contact_email); //to cc the user 
+      $mail->addCC($contact_email); //to cc the user
       $mail->Subject = $contact_subject;
       $mail->Body = $contact_message;
 
@@ -57,7 +57,7 @@ if(isset($_POST['contact_name'])){
       // Assure this code only runs once takes you to thankyou page
       header('Location: contactThanks');
       exit();
-    } 
+    }
 }
 }
 include("includes/header.html");
@@ -90,28 +90,28 @@ include("includes/topnav.php");
 
         <form method="POST">
 
-          <div class="group">      
-            <input type="text" name="contact_name" required>
+          <div class="group">
+            <input type="text" name="contact_name" value="" required>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Your Name</label>
           </div>
 
-          <div class="group">      
-            <input type="text" name="contact_email" required>
+          <div class="group">
+            <input type="email" name="contact_email" onkeyup="this.setAttribute('value', this.value);" value="" required>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Your Email</label>
           </div>
 
-          <div class="group">      
-            <input type="text" name="contact_subject" required>
+          <div class="group">
+            <input type="text" name="contact_subject" value="" required>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Subject</label>
           </div>
 
-          <div class="group">      
+          <div class="group">
             <textarea type="textarea" name="contact_message" required></textarea>
             <span class="bar"></span>
             <label>Message...</label>
@@ -123,7 +123,7 @@ include("includes/topnav.php");
 
       </div>
     </div>
-  </div> 
+  </div>
 
 </body>
 </html>
