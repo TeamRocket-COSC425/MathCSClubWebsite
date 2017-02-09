@@ -29,73 +29,34 @@
     <img src="images/activities/IMG_1895.jpg" alt="chicken dinner" class="mySlides"/>
 
 <?php
-  (new EditableText("fall-semester"))->getContent();
+    (new EditableText("fall-semester"))->getContent();
 ?>
 
+<br><br>
+
 <?php
-    $fall_activities = $db->get("fall_activities");
-
-    foreach ($fall_activities as $fall_activity) 
-    {
-        echo "<button class='accordion'>" . $fall_activity['activity'] . "</button>";
-        echo "<div class='panel'>";
-        (new EditableText("" . $fall_activity['activity'] . ""))->getContent();
-        echo "</div>";
-
+    $fall_activities = $db->get('fall_activities');
+    if ($fall_activities) {
+        foreach ($fall_activities as $fall_activity) {
+        ?>
+            <button class="accordion"> <?php echo $fall_activity['activity']; ?> </button>
+            <div class="panel">
+            <?php
+                (new EditableText($fall_activity['activity']))->getContent();
+            ?>
+            </div>
+        <?php
+            echo "<br>";
+        }
     }
 ?>
 
 <?php
-  (new EditableText("spring-semester"))->getContent();
+    (new EditableText("spring-semester"))->getContent();
 ?>
 
-<?php
-    $spring_activities = $db->get("spring_activities");
+<br><br>
 
-    foreach ($spring_activities as $spring_activity) 
-    {
-        echo "<button class='accordion'>" . $spring_activity['activity'] . "</button>";
-        echo "<div class='panel'>";
-        (new EditableText("" . $spring_activity['activity'] . ""))->getContent();
-        echo "</div>";
-    }
-?>
-
-<!--EVENTS NEED TO BE DYNAMICALLY ALLOCATED IN THE DB SO PRES CAN ADD MORE AND STUFF-->
-<?php /*
-<button class="accordion">Slaughter House Farm</button>
-<div class="panel">
-
-<?php
-(new EditableText("Event1"))->getContent();
-?>
-
-</div>
-
-<button class="accordion">Orioles Game</button>
-<div class="panel">
-
-<?php (new EditableText("Event2"))->getContent();
-?>
-
-</div>
-
-<button class="accordion">Pumpkin Carving</button>
-<div class="panel">
-
-<?php (new EditableText("Event3"))->getContent();
-?>
-
-</div>
-
-<button class="accordion">GeoPong</button>
-<div class="panel">
- <?php (new EditableText("Event4"))->getContent();
-?>
-</div>
-*/?>
-
-</p>
 </div>
 </div>
 
