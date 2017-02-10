@@ -23,6 +23,10 @@
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
 
+    if ($user == $currentuser && isset($_GET['user'])) {
+        header("Location: " . preg_replace("/\?user=[0-9]+/", "", $_SERVER['REQUEST_URI']));
+    }
+
     $image_validator = function($image) {
         $default_validator = Utils::getDefaultImageValidator();
         if ($default_validator($image)) {
@@ -68,19 +72,10 @@
 
         $db->where('id', $user['id'])->update('users', $data);
 
-		// Rebuild URL without 'edit' param (maintains user param)
-        $loc = "profile";
-        if ($user !== $currentuser) {
-            $loc = $loc . '?user=' . $user['id'];
-        }
-
 		// Redirect
-        header("Location: " . $loc);
+        header("Location: profile?user=$user[id]");
     }
 
-    include("includes/header.html");
-    include("includes/sidenav.html");
-    include("includes/topnav.php");
     require_once("classes/UserFunctions.php");
 
     if(isset($_GET["drop"]) && Utils::sessionCheck(ConfirmBuilder::KEY_UID, $user['id'])) {
@@ -94,9 +89,18 @@
             case 'rsvp':
                 Users::unRSVP($user);
                 break;
+            case 'mentor':
+                $db->where('id_mentee', $user['id'])->delete('mentor_mentee');
+                break;
         }
         ConfirmBuilder::flush();
+
+        header("Location: profile?user=$user[id]");
     }
+
+    include("includes/header.html");
+    include("includes/sidenav.html");
+    include("includes/topnav.php");
 ?>
 
 <body>
@@ -249,20 +253,27 @@
 ?>
 			<div id="profile_buttons">
 				<a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
-			</div>   
-                  
+			</div>
+
 <?php
 		}
-?> 
-         <div id="profile_buttons">
-                <a class="button profile_button" href="mentee.php?user=<?= $user['id'] ?>">Select Mentor</a>
-        </div>  
- <?php       
+        /*
+         * Make sure (A) this is not the current user's profile,
+         * (B) this profile is a mentor, and (C), the current user
+         * does not already have a mentor.
+         */
+        if ($user != $currentuser && $user['mentor'] && !$db->where('id_mentee', $currentuser['id'])->getOne('mentor_mentee'))  {
+?>
+            <div id="profile_buttons">
+                    <a class="button profile_button" href="mentee.php?user=<?= $user['id'] ?>">Select As Mentor</a>
+            </div>
+ <?php
+        }
     }
   ?>
 </div>
-       
-        
+
+
 <div id="right_column">
   <div id="bio">
     <h3> Bio </h3><hr/>
@@ -286,6 +297,31 @@
       ?>
     </p>
   </div>
+<?php
+    $mentor = $db->where('id_mentee', $user['id'])->getOne('mentor_mentee');
+    if ($mentor) {
+        $mentor_user = $db->where('id', $mentor['id_mentor'])->getOne('users');
+?>
+        <div id = "mentor_program">
+            <h3> Mentor Program </h3><hr/>
+            <center>
+                <p>Your selected mentor is <?= $mentor_user['name'] ?>.</p>
+                <p>Confirmed: <?= $mentor['confirmed'] ? 'Yes' : 'No' ?></p>
+<?php
+                $confirm = (new ConfirmBuilder($user['id']))
+                            ->confirmText(
+                                $mentor['confirmed'] ?
+                                    "Are you sure you want to remove yourself as a mentee for $mentor_user[name]?" :
+                                    "Are you sure you want to cancel your mentor request?"
+                            )
+                            ->targetLoc("profile?user=$user[id]&drop=mentor");
+?>
+                <a class="button dangerbutton" href="<?= $confirm->getLink() ?>"><?= $mentor['confirmed'] ? "Drop Mentor" : "Cancel Request" ?></a>
+            </center>
+        </div>
+<?php
+    }
+?>
     <div id = "gullcode">
       <h3> Gullcode </h3><hr/>
       <center>
