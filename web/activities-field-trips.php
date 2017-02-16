@@ -19,7 +19,7 @@
 <div id="content">
 
 <header class="banner">
-            <h1>Activities &amp; Field Trips</h1>
+    <h1>Activities &amp; Field Trips</h1>
 </header>
 
     <img src="images/meeting/fall16september.jpg" alt="meetingpicture" class="mySlides"/>
@@ -32,7 +32,6 @@
     (new EditableText("fall-semester"))->getContent();
 ?>
 
-<br><br>
 
 <?php
     $fall_activities = $db->get('fall_activities');
@@ -55,7 +54,6 @@
     (new EditableText("spring-semester"))->getContent();
 ?>
 
-<br><br>
 
 <?php
     $spring_activities = $db->get('spring_activities');
