@@ -1,0 +1,7 @@
+#confirm_buttons button:first-of-type {
+    margin-right: 10px;
+}
+
+#confirm_buttons button {
+    width: calc(50% - 5px);
+}
