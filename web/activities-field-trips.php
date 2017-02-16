@@ -57,6 +57,23 @@
 
 <br><br>
 
+<?php
+    $spring_activities = $db->get('spring_activities');
+    if ($spring_activities) {
+        foreach ($spring_activities as $spring_activity) {
+        ?>
+            <button class="accordion"> <?php echo $spring_activity['activity']; ?> </button>
+            <div class="panel">
+            <?php
+                (new EditableText($spring_activity['activity']))->getContent();
+            ?>
+            </div>
+        <?php
+            echo "<br>";
+        }
+    }
+?>
+
 </div>
 </div>
 
