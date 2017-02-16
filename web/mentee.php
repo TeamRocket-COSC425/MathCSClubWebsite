@@ -55,12 +55,14 @@
          header("Location: dashboard");
          die();
      }
-     if (isset($_POST['mentor_confirm']) && $_POST['mentor_confirm'] == "true") {
-         if ($_POST['mentor_confirm'])
-         $db->where('id_mentee', $_GET['confirm'])->update('mentor_mentee', ['confirmed' => 1]);
-         header("Location: profile");
-     } else {
-         $db->where('id_mentee', $_GET['confirm'])->delete('mentor_mentee');
+     if (isset($_POST['mentor_confirm'])) {
+         if ($_POST['mentor_confirm'] == "true") {
+             if ($_POST['mentor_confirm'])
+             $db->where('id_mentee', $_GET['confirm'])->update('mentor_mentee', ['confirmed' => 1]);
+             header("Location: profile");
+         } else {
+             $db->where('id_mentee', $_GET['confirm'])->delete('mentor_mentee');
+         }
      }
  }
 
@@ -88,7 +90,6 @@
             		<button form="dataform" type="submit" class="button dangerbutton" name="mentor_confirm" value="true"/>Yes</button><!--
                  --><button form="dataform" type="submit" class="button dangerbutton" name="mentor_confirm" value="false"/>No (deletes request)</button>
                 </div>
-        		<a id="delete_go_back" class="button" href="#">Go Back</a>
                 </center>
 <?php
             } else {
