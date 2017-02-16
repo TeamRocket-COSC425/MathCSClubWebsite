@@ -76,7 +76,9 @@ label                {
 }
 
 /* active state, removes placeholder up preventing it from overlapping input */
-input:focus ~ label, input:valid ~ label        {
+input:focus ~ label,
+input:valid ~ label,
+input:not([value=""]) ~ label {
   top:-20px;
   font-size:14px;
   color:#31a2ac;
