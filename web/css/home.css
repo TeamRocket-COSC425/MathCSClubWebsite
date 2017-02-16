@@ -274,6 +274,40 @@ input[type="file"] {
 	background: #e99;
 }
 
+/* User table */
+.sortedtable {
+    border: 1px solid black;
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.sortedtable th, .sortedtable td {
+    padding: 1px 5px !important;
+    margin: 0 !important;
+    border: 1px solid grey !important;
+    vertical-align: middle !important;
+}
+
+a.tablebutton {
+    font-size: inherit;
+    padding: 4px;
+    text-align: center;
+    margin: auto;
+}
+
+.tablesorter-pager i {
+    vertical-align: middle;
+    margin-right: 2px;
+    cursor: pointer !important;
+}
+
+.tablesorter-pager i.disabled {
+    visibility: hidden;
+}
+
+/* The rest */
+
 pre {
 	width: 100%;
 	overflow: auto;

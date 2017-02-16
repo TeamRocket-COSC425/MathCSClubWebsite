@@ -45,6 +45,20 @@
   margin-bottom: 0.75rem;
 }
 
+#right_column ul {
+    border: 1px solid grey;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#right_column li {
+    padding: 2px 5px;
+}
+
+#right_column li:nth-child(even) {
+    background-color: #ddd;
+}
+
 #user_info {
   overflow: auto;
 }

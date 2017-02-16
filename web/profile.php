@@ -90,7 +90,11 @@
                 Users::unRSVP($user);
                 break;
             case 'mentor':
-                $db->where('id_mentee', $user['id'])->delete('mentor_mentee');
+                if ($user['mentor']) {
+                    $db->where('id_mentee', $_GET['mentee'])->delete('mentor_mentee');
+                } else {
+                    $db->where('id_mentee', $user['id'])->delete('mentor_mentee');
+                }
                 break;
         }
         ConfirmBuilder::flush();
@@ -102,6 +106,22 @@
     include("includes/sidenav.html");
     include("includes/topnav.php");
 ?>
+
+<head>
+    <link rel="stylesheet" href="css/tablesort/theme/blue/style.css"/>
+    <link rel="stylesheet" href="js/tablesort/addons/pager/jquery.tablesorter.pager.css"/>
+    <script type="text/javascript" src="js/tablesort/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="js/tablesort/jquery.tablesorter.widgets.js"></script>
+    <script type="text/javascript" src="js/tablesort/addons/pager/jquery.tablesorter.pager.js"></script>
+    <script>
+        // Apply table sorting
+        $(function() {
+            $("#menteetable")
+                .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+                .tablesorterPager({container: $("#pager"), cssPageDisplay: '.pagedisplay', fixedHeight: false});
+        });
+    </script>
+</head>
 
 <body>
 
@@ -299,26 +319,80 @@
     </p>
   </div>
 <?php
-    $mentor = $db->where('id_mentee', $user['id'])->getOne('mentor_mentee');
+    $mentor = $db->where('id_mentee', $user['id'])->getOne('mentor_mentee') ?: $db->where('id_mentor', $user['id'])->get('mentor_mentee');
     if ($mentor) {
-        $mentor_user = $db->where('id', $mentor['id_mentor'])->getOne('users');
 ?>
         <div id = "mentor_program">
             <h3> Mentor Program </h3><hr/>
-            <center>
-                <p>Your selected mentor is <?= $mentor_user['name'] ?>.</p>
-                <p>Confirmed: <?= $mentor['confirmed'] ? 'Yes' : 'No' ?></p>
 <?php
-                $confirm = (new ConfirmBuilder($user['id']))
-                            ->confirmText(
-                                $mentor['confirmed'] ?
-                                    "Are you sure you want to remove yourself as a mentee for $mentor_user[name]?" :
-                                    "Are you sure you want to cancel your mentor request?"
-                            )
-                            ->targetLoc("profile?user=$user[id]&drop=mentor");
+                if (isset($mentor['id_mentee']) && $mentor['id_mentee'] == $user['id']) {
+                    $mentor_user = $db->where('id', $mentor['id_mentor'])->getOne('users');
 ?>
-                <a class="button dangerbutton" href="<?= $confirm->getLink() ?>"><?= $mentor['confirmed'] ? "Drop Mentor" : "Cancel Request" ?></a>
-            </center>
+                    <p>Your selected mentor is <?= $mentor_user['name'] ?>.</p>
+                    <p>Confirmed: <?= $mentor['confirmed'] ? 'Yes' : 'No' ?></p>
+<?php
+                    $confirm = (new ConfirmBuilder($user['id']))
+                                ->confirmText(
+                                    $mentor['confirmed'] ?
+                                        "Are you sure you want to remove yourself as a mentee for $mentor_user[name]?" :
+                                        "Are you sure you want to cancel your mentor request?"
+                                )
+                                ->targetLoc("profile?user=$user[id]&drop=mentor");
+?>
+                    <a class="button dangerbutton" href="<?= $confirm->getLink() ?>"><?= $mentor['confirmed'] ? "Drop Mentor" : "Cancel Request" ?></a>
+<?php
+                } else {
+?>
+                    <p>You are a mentor!</p>
+                    <p>Your mentees:</p>
+                    <table id="menteetable" class="sortedtable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Student ID</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+<?php
+                        foreach ($mentor as $entry) {
+                            for ($i = 0; $i < 5; $i++) {
+                            $mentee = $db->where('id', $entry['id_mentee'])->getOne('users');
+                            echo '<tr>';
+                            echo "<td>$mentee[name]</td>";
+                            echo "<td>$mentee[id]</td>";
+
+                            $confirm = (new ConfirmBuilder($user['id']))
+                                        ->confirmText("Are you sure you want to drop $mentee[name] as your mentee?")
+                                        ->targetLoc("profile?user=$user[id]&drop=mentor&mentee=$mentee[id]");
+
+                            echo "<td><a class=\"button tablebutton dangerbutton\" href=\"" . $confirm->getLink() . "\">Remove</a></td>";
+                            echo '</td>';
+                        }
+                        echo '</tbody>';
+                    }
+?>
+                </table>
+                <!-- pager -->
+                <div id="pager">
+                  <form>
+                    <i class="fa fa-step-backward first" aria-hidden="true"></i>
+                    <i class="fa fa-backward prev" aria-hidden="true"></i>
+                    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+                    <i class="fa fa-forward next" aria-hidden="true"></i>
+                    <i class="fa fa-step-forward last" aria-hidden="true"></i>
+                    <select class="pagesize">
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option value="40">40</option>
+                      <option value="all">All Rows</option>
+                    </select>
+                  </form>
+                </div>
+<?php
+                }
+?>
         </div>
 <?php
     }

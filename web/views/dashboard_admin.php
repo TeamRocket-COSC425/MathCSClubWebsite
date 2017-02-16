@@ -82,7 +82,7 @@ function scrollTo(id) {
         $db->where('id', $act)->delete('page_content');
     }
 ?>
-    
+
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
@@ -93,7 +93,7 @@ function scrollTo(id) {
             $fallactivities = $db->get('fall_activities');
             if ($fallactivities){
     ?>
-    <table id="falltable" class="tablesorter">
+    <table id="falltable" class="sortedtable">
         <thead>
             <tr>
                 <th>Activity Name</th>
@@ -136,7 +136,7 @@ function scrollTo(id) {
         $db->where('id', $act)->delete('page_content');
     }
 ?>
-    
+
     <form id="new_spring_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
@@ -147,7 +147,7 @@ function scrollTo(id) {
             $springactivities = $db->get('spring_activities');
             if ($springactivities){
     ?>
-    <table id="springtable" class="tablesorter">
+    <table id="springtable" class="sortedtable">
         <thead>
             <tr>
                 <th>Activity Name</th>
@@ -163,7 +163,7 @@ function scrollTo(id) {
             }
         ?>
         </tboby>
-        </table>     
+        </table>
 
         <form id="delete_spring_activity" method="post" action="dashboard">
             <p class="message">Delete Activity:</p>
@@ -178,7 +178,7 @@ function scrollTo(id) {
 
 <div class="adminpane" id="users">
     <h3>Users</h3>
-    <table id="usertable" class="tablesorter">
+    <table id="usertable" class="sortedtable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -287,7 +287,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table id="freeAgents" class="tablesorter">';
+            echo '<table class="sortedtable">';
 ?>
             <thead>
                 <tr>
@@ -339,7 +339,7 @@ function scrollTo(id) {
     $users = $db->get("users");
     if($free_agents){
     echo "<h4>Free Agents</h4>";
-    echo '<table id="freeAgents" class="tablesorter">';
+    echo '<table id="freeAgents" class="sortedtable">';
 ?>
     <thead>
         <tr>
@@ -378,7 +378,7 @@ function scrollTo(id) {
         $users = $db->get("gullcode_users_on_teams g", 60);
         if($users){
         echo "<h4>First 60 To Sign Up</h4>";
-        echo '<table id="freeAgents" class="tablesorter">';
+        echo '<table id="freeAgents" class="sortedtable">';
 
 ?>
         <thead>
@@ -451,7 +451,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table id="freeAgents" class="tablesorter">';
+            echo '<table id="freeAgents" class="sortedtable">';
 ?>
             <thead>
                 <tr>
@@ -493,7 +493,7 @@ function scrollTo(id) {
     $users = $db->get("users");
     if($free_agents){
     echo "<h4>Free Agents</h4>";
-    echo '<table id="freeAgents" class="tablesorter">';
+    echo '<table id="freeAgents" class="sortedtable">';
 
 ?>
     <thead>
@@ -532,7 +532,7 @@ function scrollTo(id) {
         $users = $db->get("math_challenge_users_on_teams g", 60);
         if($users){
         echo "<h4>First 60 To Sign Up</h4>";
-        echo '<table id="freeAgents" class="tablesorter">';
+        echo '<table id="freeAgents" class="sortedtable">';
 
 ?>
         <thead>
@@ -570,7 +570,7 @@ function scrollTo(id) {
             $RSVPs = $db->get('picnic_rsvp');
             if ($RSVPs){
     ?>
-    <table id="RSVPs" class="tablesorter">
+    <table id="RSVPs" class="sortedtable">
         <thead>
             <tr>
                 <th>Id</th>
