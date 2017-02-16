@@ -356,7 +356,6 @@
                         <tbody>
 <?php
                         foreach ($mentor as $entry) {
-                            for ($i = 0; $i < 5; $i++) {
                             $mentee = $db->where('id', $entry['id_mentee'])->getOne('users');
                             echo '<tr>';
                             echo "<td>$mentee[name]</td>";
@@ -370,26 +369,25 @@
                             echo '</td>';
                         }
                         echo '</tbody>';
-                    }
 ?>
-                </table>
-                <!-- pager -->
-                <div id="pager">
-                  <form>
-                    <i class="fa fa-step-backward first" aria-hidden="true"></i>
-                    <i class="fa fa-backward prev" aria-hidden="true"></i>
-                    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
-                    <i class="fa fa-forward next" aria-hidden="true"></i>
-                    <i class="fa fa-step-forward last" aria-hidden="true"></i>
-                    <select class="pagesize">
-                      <option value="10">10</option>
-                      <option value="20">20</option>
-                      <option value="30">30</option>
-                      <option value="40">40</option>
-                      <option value="all">All Rows</option>
-                    </select>
-                  </form>
-                </div>
+                    </table>
+                    <!-- pager -->
+                    <div id="pager">
+                      <form>
+                        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+                        <i class="fa fa-backward prev" aria-hidden="true"></i>
+                        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+                        <i class="fa fa-forward next" aria-hidden="true"></i>
+                        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+                        <select class="pagesize">
+                          <option value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="30">30</option>
+                          <option value="40">40</option>
+                          <option value="all">All Rows</option>
+                        </select>
+                      </form>
+                    </div>
 <?php
                 }
 ?>
