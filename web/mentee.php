@@ -55,7 +55,7 @@
          header("Location: dashboard");
          die();
      }
-     if (isset($_POST['mentor_confirm']) == "true") {
+     if (isset($_POST['mentor_confirm']) && $_POST['mentor_confirm'] == "true") {
          if ($_POST['mentor_confirm'])
          $db->where('id_mentee', $_GET['confirm'])->update('mentor_mentee', ['confirmed' => 1]);
          header("Location: profile");
