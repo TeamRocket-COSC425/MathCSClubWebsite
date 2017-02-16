@@ -9,9 +9,10 @@
 
  $errors = null;
 
- if (isset($_GET['user'])) {
+ $currentuser = Utils::getCurrentUser();
+ $user = $currentuser;
 
-     $currentuser = Utils::getCurrentUser();
+ if (isset($_GET['user'])) {
      $user = $db->where('id', $_GET['user'])->getOne('users');
 
      if (!$user) {
