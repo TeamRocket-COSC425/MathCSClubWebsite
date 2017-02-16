@@ -259,10 +259,11 @@
 		}
         /*
          * Make sure (A) this is not the current user's profile,
-         * (B) this profile is a mentor, and (C), the current user
-         * does not already have a mentor.
+         * (B) this profile is a mentor, (C) the current user is
+		 * *not* a mentor, and (C), the current user does not already
+		 * have a mentor.
          */
-        if ($user != $currentuser && $user['mentor'] && !$db->where('id_mentee', $currentuser['id'])->getOne('mentor_mentee'))  {
+        if ($user != $currentuser && $user['mentor'] && !$currentuser['mentor'] && !$db->where('id_mentee', $currentuser['id'])->getOne('mentor_mentee'))  {
 ?>
             <div id="profile_buttons">
                     <a class="button profile_button" href="mentee.php?user=<?= $user['id'] ?>">Select As Mentor</a>

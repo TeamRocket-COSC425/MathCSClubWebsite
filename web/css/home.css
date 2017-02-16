@@ -80,7 +80,7 @@ header.banner {
 
 /* ==== Button Styling ==== */
 
-input[type="submit"], a.button {
+input[type="submit"], a.button, button {
     font-size: 14px;
     line-height: 1;
     width: 100%;
@@ -101,15 +101,15 @@ input[type="submit"], a.button {
     box-sizing: border-box;
 }
 
-input[type="submit"]:hover, a.button:hover {
+input[type="submit"]:hover, a.button:hover, button:hover{
     background: #129fa3;
 }
 
-input[type="submit"].dangerbutton, a.dangerbutton {
+input[type="submit"].dangerbutton, a.dangerbutton, button.dangerbutton {
     background-color: #BD2D2D;
 }
 
-input[type="submit"].dangerbutton:hover, a.dangerbutton:hover {
+input[type="submit"].dangerbutton:hover, a.dangerbutton:hover, button.dangerbutton:hover {
     background-color: #8B1010;
 }
 

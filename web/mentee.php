@@ -22,7 +22,10 @@
          if ($existing) {
              $errors = "You have already selected a mentor!";
          } else {
-             $msg = "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.";
+
+             $params = ['confirm' => $currentuser['id']];
+             $msg =  "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.\n\n
+                     To confirm their request, please follow this link: http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]?" . http_build_query($params);
 
              $mail = Utils::createMail();
 
@@ -44,6 +47,20 @@
              }
          }
      }
+ } elseif (isset($_GET['confirm'])) {
+     $entry = $db->where('id_mentee', $_GET['confirm'])->getOne('mentor_mentee');
+     // Make sure this is the mentor
+     if ($entry['id_mentor'] != $currentuser['id']) {
+         header("Location: dashboard");
+         die();
+     }
+     if (isset($_POST['mentor_confirm']) == "true") {
+         if ($_POST['mentor_confirm'])
+         $db->where('id_mentee', $_GET['confirm'])->update('mentor_mentee', ['confirmed' => 1]);
+         header("Location: profile");
+     } else {
+         $db->where('id_mentee', $_GET['confirm'])->delete('mentor_mentee');
+     }
  }
 
  include("includes/header.html");
@@ -54,35 +71,57 @@
  <head>
    <title>Math CS Club - Mentor Select</title>
    <link rel="stylesheet" href="css/contact-us.css"/>
+   <link rel="stylesheet" href="css/mentee.css"/>
  </head>
 
  <div id="main">
      <div id="content">
-        <p><h2>
-        <div class="messageArea">
 <?php
-            if (!$errors) {
-                ?><img src="images/sent.png" alt="sentimg" class="thankYouImg"/><br><?php
-            }
+            if (isset($_GET['confirm'])) {
 ?>
-            <div class="thankMessage">
+                <center>
+                <h4><?= "Are you sure you want to confirm " . $db->where('id', $_GET['confirm'])->getOne('users')['name'] ." as your mentee? "?></h4>
+                <form id="dataform" method="post" action="<?= $_SERVER['REQUEST_URI'] ?>"></form>
+        		<p style="color:red;">This cannot be undone</p>
+                <div id="confirm_buttons">
+            		<button form="dataform" type="submit" class="button dangerbutton" name="mentor_confirm" value="true"/>Yes</button><!--
+                 --><button form="dataform" type="submit" class="button dangerbutton" name="mentor_confirm" value="false"/>No (deletes request)</button>
+                </div>
+        		<a id="delete_go_back" class="button" href="#">Go Back</a>
+                </center>
 <?php
-                if ($errors) {
+            } else {
 ?>
-                    <h1>Message could not be sent.</h1>
-                    <p><h3 class="errormsg">Error: <?= $errors ?></h3></p>
+                <p><h2>
+                <div class="messageArea">
 <?php
-                } else {
+                if (!$errors) {
+                    ?><img src="images/sent.png" alt="sentimg" class="thankYouImg"/><br><?php
+                }
 ?>
-                    <h1>Your message has been sent!</h1>
-                    <p>
-                        The mentor you selected has received an email with your information.
-                        They should contact you soon.
-                    </p>
+                <div class="thankMessage">
+<?php
+                    if ($errors) {
+?>
+                        <h1>Message could not be sent.</h1>
+                        <p><h3 class="errormsg">Error: <?= $errors ?></h3></p>
+<?php
+                    } else {
+?>
+                        <h1>Your message has been sent!</h1>
+                        <p>
+                            The mentor you selected has received an email with your information.
+                            They should contact you soon.
+                        </p>
 <?php
                 }
 ?>
-            </div>
+                </div>
+                </div>
+                </h2></p>
+<?php
+            }
+?>
         </div>
     </div>
 </div>
