@@ -1,0 +1,43 @@
+{
+  "name": "MathCSClubWebsite",
+  "description": "The official website for the Salisbury University Math/Computer Science Club",
+  "scripts": {
+  },
+  "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "CLEARDB_DATABASE_URL": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    },
+    "MAILTRAP_API_TOKEN": {
+      "required": true
+    },
+    "MAILTRAP_PASSWORD": {
+      "required": true
+    },
+    "MAILTRAP_USERNAME": {
+      "required": true
+    },
+    "S3_BUCKET": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "cleardb",
+    "mailtrap"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
