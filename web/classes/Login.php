@@ -1,6 +1,7 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require 'vendor/autoload.php';
+require_once 'classes/Utils.php';
 require_once __DIR__."/../includes/database.php";
 
 /**
@@ -132,15 +133,9 @@ class Login
                 $msg = "Your password reset link is:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?" . http_build_query($params);
                 $msg = str_replace('login', 'password_reset', $msg);
 
-                $mail = Utils::createMail();
-
-                $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
-                $mail->addAddress($user['preferred_email']);
-                $mail->Subject = "SU Math/CS Club Password Reset";
-                $mail->Body = $msg;
-
-                if (!$mail->send()) {
-                    $this->errors[] = "Message could not be sent. Error: " . $mail->ErrorInfo;
+                $err = Utils::sendMail("noreply@sumathcsclub.com", $user['preferred_email'], "SU Math/CS Club Password Reset", $msg, [], "SU Math/CS Club");
+                if ($err) {
+                    $this->errors[] = "Message could not be sent. Error: " . $err;
                 } else {
                     $this->messages[] = "Message has been sent.";
 
@@ -149,7 +144,6 @@ class Login
                     die();
                 }
 
-                //mail($user['preferred_email'], "Test", "test");
             } else {
                 $this->errors[] = "No user by that email.";
             }

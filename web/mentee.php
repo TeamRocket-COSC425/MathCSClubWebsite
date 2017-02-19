@@ -28,16 +28,9 @@
              $msg =  "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.\n\n\
                      To confirm their request, please follow this link: http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]?" . http_build_query($params);
 
-             $mail = Utils::createMail();
+             $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $user['preferred_email'], "Mentor Request", $msg, [], "SU Math/CS Club");
 
-             $mail->setFrom("noreply@gulls.salisbury.edu", "SU Math/CS Club");
-             $mail->addAddress($user['preferred_email']);
-             $mail->Subject = "Mentor Request";
-             $mail->Body = $msg;
-
-             if (!$mail->send()) {
-                 $errors = $mail->ErrorInfo;
-             } else {
+             if (!$errors) {
                  $data = [
                      'id_mentor' => $user['id'],
                      'id_mentee' => $currentuser['id'],
