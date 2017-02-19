@@ -65,8 +65,8 @@ class Utils {
             if (getenv('MAILTRAP_API_TOKEN')) {
                 $mail->Host = 'mailtrap.io';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'e3386170e7a765';
-                $mail->Password = 'd8ab29b5c13eb0';
+                $mail->Username = getenv('MAILTRAP_USERNAME');
+                $mail->Password = getenv('MAILTRAP_PASSWORD');
                 $mail->Port = 2525;
             } else {
                 $mail->Host = 'localhost';
