@@ -1,3 +1,14 @@
 header.banner {
     background-image: url("../images/cords.jpg");
 }
+
+#bottomContent {
+	float: left;
+	max-width: 50%;
+	margin-top: 3%;
+}
+
+#gullcodePic {
+	float: right;
+	max-width: 50%;
+}

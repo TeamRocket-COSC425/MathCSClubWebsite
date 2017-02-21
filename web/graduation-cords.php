@@ -18,7 +18,18 @@ include("includes/topnav.php");
 			<h1>Graduation Cords</h1>
 		</header>
 		<div id="grad-mobile">
-			<?php (new EditableText("graduation-cords"))->getContent(); ?>
+		<div id="gradContent">
+			<div id="topContent">
+				<?php (new EditableText("graduation-cords"))->getContent(); ?>
+				<br>
+			</div>
+			<div id="bottomContent">
+				<?php (new EditableText("graduation-cords-content"))->getContent(); ?>
+			</div>
+			<div id="gullcodePic">
+			  <?php (new EditableImage('graduation-cords-pic1'))->getContent(); ?>
+			</div>
+		</div>
 		</div>
 	</div>
 </div>
