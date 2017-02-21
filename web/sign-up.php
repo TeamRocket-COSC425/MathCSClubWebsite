@@ -36,7 +36,7 @@
       }
     ?>
     </div>
-    <br><br>
+    <br>
 
   <form method="post" action="sign-up" class="login-form">
     <input id="reg_input_email" name="user_email" type="text" placeholder="Email" required/>
@@ -69,9 +69,7 @@
     </optgroup>
 	</select>
 
-   <p class="message">Profile photo:</p>
-   <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload">
-   <br><br>
+ <br>
 
    <input id="login_input_submit" type="submit" name="register" value="Register" />
 
