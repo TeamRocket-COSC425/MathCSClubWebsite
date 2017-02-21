@@ -38,25 +38,48 @@ class Utils {
         return isset($_SESSION[$key]) && $_SESSION[$key] == $check;
     }
 
-    public static function createMail($debug = false) {
-        $mail = new PHPMailer;
+    public static function sendMail($from_email, $to_email, $subject, $msg, $cc = [], $from_name = null, $to_name = null, $debug = false) {
 
-        $mail->isSMTP();
-        $mail->SMTPDebug = $debug ? 3 : 0;
-        $mail->Debugoutput = 'html';
+        if (getenv('SUMATHCS_PRODUCTION')) {
+            $from = new SendGrid\Email($from_name, $from_email);
+            $to = new SendGrid\Email($to_name, $to_email);
+            $content = new SendGrid\Content("text/plain", $msg);
+            $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
-        if (getenv('MAILTRAP_API_TOKEN')) {
-            $mail->Host = 'mailtrap.io';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'e3386170e7a765';
-            $mail->Password = 'd8ab29b5c13eb0';
-            $mail->Port = 2525;
+            $apiKey = getenv('SENDGRID_API_KEY');
+            $sg = new \SendGrid($apiKey);
+
+            $response = $sg->client->mail()->send()->post($mail);
+            if ($response->statusCode() % 100 == 2) {
+                return null;
+            } else {
+                return $response->statusCode() . ": " . $response->body() . "$apiKey";
+            }
         } else {
-            $mail->Host = 'localhost';
-            $mail->Port = 25;
-        }
+            $mail = new PHPMailer;
 
-        return $mail;
+            $mail->isSMTP();
+            $mail->SMTPDebug = $debug ? 3 : 0;
+            $mail->Debugoutput = 'html';
+
+            if (getenv('MAILTRAP_API_TOKEN')) {
+                $mail->Host = 'mailtrap.io';
+                $mail->SMTPAuth = true;
+                $mail->Username = getenv('MAILTRAP_USERNAME');
+                $mail->Password = getenv('MAILTRAP_PASSWORD');
+                $mail->Port = 2525;
+            } else {
+                $mail->Host = 'localhost';
+                $mail->Port = 25;
+            }
+
+            $mail->setFrom($from_email, $from_name);
+            $mail->addAddress($to_email, $to_name);
+            $mail->Subject = $subject;
+            $mail->Body = $msg;
+
+            return $mail->send() ? $mail->ErrorInfo : null;
+        }
     }
 
     public static function getDefaultImageValidator() {
