@@ -30,7 +30,7 @@
 
              $mail = Utils::createMail();
 
-             $mail->setFrom("noreply@gulls.salisbury.edu", "SU Math/CS Club");
+             $mail->setFrom("noreply@sumathcsclub.com", "SU Math/CS Club");
              $mail->addAddress($user['preferred_email']);
              $mail->Subject = "Mentor Request";
              $mail->Body = $msg;
