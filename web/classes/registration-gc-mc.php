@@ -33,10 +33,10 @@ class math_challenge{
     	$user = Utils::getCurrentUser();
         global $db;
 
-         $or = $_POST['registert-as'];       
-     
+         $or = $_POST['registert-as'];
+
         if( $or != 0 && strlen($_POST['team-name']) > 4 && strlen($_POST['team-name']) < 32 && $this->teamcheck($_POST['team-name'])){
-           
+
             $data = array('team_name' => $_POST['team-name']);
             $id = $db -> insert("math_challenge_teams",$data);
 
@@ -44,7 +44,8 @@ class math_challenge{
              $data = array(
                     'id'=> $user['id'],
                     'team_id' => $team['team_id'],
-                    'course_math' => $_POST['mcourse']
+                    'course_math' => $_POST['mcourse'],
+                    'register_time' => $db->now()
                     );
 
            $id = $db->insert('math_challenge_users_on_teams',$data);
@@ -62,10 +63,10 @@ class math_challenge{
         	$data = array('id' => $user['id'],
                     'team_id' => 0,
                     'course_math'=> $_POST['mcourse'] );
-                    
+
             $id = $db->insert('math_challenge_users_on_teams', $data);
         }
-            
+
         $data = array('t_size' => $_POST['t-size']);
         $db->where("id", $user['id']);
         $id = $db ->update('users',$data);
@@ -101,10 +102,10 @@ class gullcode{
         $user = Utils::getCurrentUser();
         global $db;
 
-        $or = $_POST['registert-as'];       
-     
+        $or = $_POST['registert-as'];
+
         if( $or != 0 && strlen($_POST['team-name']) > 4 && strlen($_POST['team-name']) < 32 && $this->teamcheck($_POST['team-name'])){
-           
+
             $data = array('team_name' => $_POST['team-name']);
             $id = $db -> insert("gullcode_teams",$data);
 
@@ -136,7 +137,7 @@ class gullcode{
                     'course_compsci'=> $_POST['ccourse'],
                     'register_time' => $db->now());
                     //self::register_time => $db->now();
-                    
+
             $id = $db->insert('gullcode_users_on_teams', $data);
         }
 
