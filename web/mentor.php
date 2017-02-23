@@ -12,28 +12,18 @@
  $currentuser = Utils::getCurrentUser();
  $user = $currentuser;
 
- if (isset($_GET['user'])) {
-     $user = $db->where('id', $_GET['user'])->getOne('users');
+ if (isset($_GET['send'])) {
 
-     if (!$user) {
-         $errors = "No such user exists.";
-     } else {
-
-         $existing = $db->where('id_mentee', $currentuser['id'])->getOne('mentor_mentee');
-         if ($existing) {
-             $errors = "You have already selected a mentor!";
-         } else {
-
-             $admin = $admin->where('admin', 1)->get('users');
-             $msg =  "$currentuser[name] has requested to be a mentor, email them at $currentuser[preferred_email] to verify that they are now a mentor.";
+             $admins = $db->where('admin', 1)->get('users');
+             $msg =  "$currentuser[name] has requested to be a mentor. Edit $currentuser[name]'s profile to make them a mentor.";
 
              foreach ($admins as $admin)
              {
-                     $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $user['preferred_email'], "Request to be Mentor", $msg, [], "SU Math/CS Club");
+                     $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $admin['preferred_email'], "Request to be Mentor", $msg, [], "SU Math/CS Club");
              }
-         }
-     }
- } 
+            header("Location: mentor.php");
+
+  } 
 
  include("includes/header.html");
  include("includes/sidenav.html");
