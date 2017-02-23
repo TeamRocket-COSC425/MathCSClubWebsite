@@ -19,6 +19,11 @@
          $errors = "No such user exists.";
      } else {
 
+         $existing = $db->where('id_mentee', $currentuser['id'])->getOne('mentor_mentee');
+         if ($existing) {
+             $errors = "You have already selected a mentor!";
+         } else {
+
              $admin = $admin->where('admin', 1)->get('users');
              $msg =  "$currentuser[name] has requested to be a mentor, email them at $currentuser[preferred_email] to verify that they are now a mentor.";
 
@@ -26,7 +31,7 @@
              {
                      $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $user['preferred_email'], "Request to be Mentor", $msg, [], "SU Math/CS Club");
              }
-         
+         }
      }
  } 
 
