@@ -224,8 +224,9 @@ function scrollTo(id) {
                     $confirm = (new ConfirmBuilder($user['id']))
                                 ->confirmText("Are you sure you want to delete the profile for $user[email]?")
                                 ->targetLoc("profile?user=$user[id]&delete");
+
+                    $confirm->getContent("Delete", ['tablebutton']);
 ?>
-                    <a class="button tablebutton dangerbutton" href="<?= $confirm->getLink() ?>">Delete</a>
                 </td>
 <?php
                 echo '</tr>';

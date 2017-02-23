@@ -289,7 +289,7 @@ input[type="file"] {
     vertical-align: middle !important;
 }
 
-a.tablebutton {
+a.tablebutton, input.tablebutton, button.tablebutton {
     font-size: inherit;
     padding: 4px;
     text-align: center;
@@ -354,7 +354,7 @@ pre {
     h1 {
     font-size: 1.7rem;
     }
-    
+
     .mathEmpImg{
         width: 100%;
         float: none;

@@ -24,20 +24,18 @@ class ConfirmBuilder {
         return $this;
     }
 
-    public static function fromSession() {
-        return (new ConfirmBuilder($_SESSION[self::KEY_UID]))->confirmText($_SESSION[self::KEY_TEXT])->targetLoc($_SESSION[self::KEY_TARGET]);
+    public static function fromPost() {
+        return (new ConfirmBuilder($_POST[self::KEY_UID]))->confirmText($_POST[self::KEY_TEXT])->targetLoc($_POST[self::KEY_TARGET]);
     }
 
-    public static function flush() {
-        unset($_SESSION[self::KEY_UID]);
-        unset($_SESSION[self::KEY_TEXT]);
-        unset($_SESSION[self::KEY_TARGET]);
-    }
-
-    public function getLink() {
-        $_SESSION[self::KEY_TEXT] = $this->confirm_text;
-        $_SESSION[self::KEY_TARGET] = $this->target_loc;
-        $_SESSION[self::KEY_UID] = $this->uid;
-        return "confirm";
+    public function getContent($button_text, $button_styles = []) {
+?>
+        <form id="<?= $this->uid ?>" method="post" action="confirm">
+            <input type="hidden" name="<?= self::KEY_UID; ?>" value="<?= $this->uid ?>"/>
+            <input type="hidden" name="<?= self::KEY_TARGET; ?>" value="<?= $this->target_loc; ?>"/>
+            <input type="hidden" name="<?= self::KEY_TEXT; ?>" value="<?= $this->confirm_text; ?>"/>
+            <input type="submit" class="button dangerbutton <?= join(' ', $button_styles); ?>" name="confirm_submit" value="<?= $button_text; ?>"/>
+        </form>
+<?php
     }
 }

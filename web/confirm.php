@@ -22,7 +22,8 @@ require_once("classes/ConfirmBuilder.php");
 <div id="main">
     <div id="content" class="center">
 <?php
-        $confirm = ConfirmBuilder::fromSession();
+        $confirm = ConfirmBuilder::fromPost();
+        $_SESSION[ConfirmBuilder::KEY_UID] = $confirm->uid;
 ?>
 	    <h4><?= $confirm->confirm_text ?></h4>
 		<p style="color:red;">This cannot be undone</p>
