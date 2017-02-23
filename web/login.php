@@ -30,7 +30,7 @@
    <div class="loginErrrors" style="color:red;">
      <?php
       if ($login->errors) {
-        echo "<br>";
+       echo "<i class='fa fa-times-circle'></i> "; 
         foreach ($login->errors as $err) {
           echo $err . "<br>";
         }

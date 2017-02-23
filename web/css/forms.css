@@ -53,6 +53,7 @@ div.login-transbox p {
 .loginWords {
     font-size: 36px;
     color: #12bfc3;
+margin-top:-40px;
 }
 
 .loginSubmit {
