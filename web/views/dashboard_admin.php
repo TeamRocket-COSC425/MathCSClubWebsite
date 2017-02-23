@@ -110,6 +110,14 @@ function scrollTo(id) {
         </tboby>
         </table>
 
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#falltable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+    });
+    </script>
+
         <form id="delete_fall_activity" method="post" action="dashboard">
             <p class="message">Delete Activity:</p>
             <input type="text" id="delete_activity" name="delete_activity" placeholder="Activity" required/>
@@ -164,6 +172,14 @@ function scrollTo(id) {
         ?>
         </tboby>
         </table>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#springtable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+    });
+    </script>
 
         <form id="delete_spring_activity" method="post" action="dashboard">
             <p class="message">Delete Activity:</p>
@@ -286,7 +302,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table class="sortedtable">';
+            echo '<table id="gullcodetable" class="sortedtable">';
 ?>
             <thead>
                 <tr>
@@ -326,6 +342,17 @@ function scrollTo(id) {
             }
             echo "</tbody>";
             echo "</table> <br>";
+
+            ?>
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#gullcodetable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+    });
+    </script>
+
+    <?php
         }
     }
 
@@ -338,7 +365,7 @@ function scrollTo(id) {
     $users = $db->get("users");
     if($free_agents){
     echo "<h4>Free Agents</h4>";
-    echo '<table id="freeAgents" class="sortedtable">';
+    echo '<table id="gcfreeAgentstable" class="sortedtable">';
 ?>
     <thead>
         <tr>
@@ -366,6 +393,35 @@ function scrollTo(id) {
 
     echo "</tbody>";
     echo "</table>";
+
+    ?>
+    <div id="pager4">
+      <form>
+        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+        <i class="fa fa-backward prev" aria-hidden="true"></i>
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+        <i class="fa fa-forward next" aria-hidden="true"></i>
+        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+        <select class="pagesize">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="all">All Rows</option>
+        </select>
+      </form>
+    </div>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#gcFreeAgentstable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+            .tablesorterPager({container: $("#pager4"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
+    });
+    </script>
+
+    <?php
     }
 ?>
 
@@ -377,7 +433,7 @@ function scrollTo(id) {
         $users = $db->get("gullcode_users_on_teams g", 60);
         if($users){
         echo "<h4>First 60 To Sign Up</h4>";
-        echo '<table id="freeAgents" class="sortedtable">';
+        echo '<table id="gc60peopletable" class="sortedtable">';
 
 ?>
         <thead>
@@ -404,6 +460,35 @@ function scrollTo(id) {
 
         echo "</tbody>";
         echo "</table>";
+        ?>
+
+        <div id="pager5">
+      <form>
+        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+        <i class="fa fa-backward prev" aria-hidden="true"></i>
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+        <i class="fa fa-forward next" aria-hidden="true"></i>
+        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+        <select class="pagesize">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="all">All Rows</option>
+        </select>
+      </form>
+    </div>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#gc60peopletable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+            .tablesorterPager({container: $("#pager5"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
+    });
+    </script>
+
+    <?php
         }
 ?>
 </div>
@@ -450,7 +535,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table id="freeAgents" class="sortedtable">';
+            echo '<table id="mathchallengetable" class="sortedtable">';
 ?>
             <thead>
                 <tr>
@@ -481,6 +566,17 @@ function scrollTo(id) {
             }
             echo "</tbody>";
             echo "</table> <br>";
+            ?>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#mathchallengetable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+    });
+    </script>
+
+            <?php
         }
     }
 
@@ -492,7 +588,7 @@ function scrollTo(id) {
     $users = $db->get("users");
     if($free_agents){
     echo "<h4>Free Agents</h4>";
-    echo '<table id="freeAgents" class="sortedtable">';
+    echo '<table id="mcfreeAgentstable" class="sortedtable">';
 
 ?>
     <thead>
@@ -520,6 +616,35 @@ function scrollTo(id) {
 
     echo "</tbody>";
     echo "</table>";
+    ?>
+
+    <div id="pager7">
+      <form>
+        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+        <i class="fa fa-backward prev" aria-hidden="true"></i>
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+        <i class="fa fa-forward next" aria-hidden="true"></i>
+        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+        <select class="pagesize">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="all">All Rows</option>
+        </select>
+      </form>
+    </div>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#mcfreeAgentstable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+            .tablesorterPager({container: $("#pager7"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
+    });
+    </script>
+
+    <?php
     }
 ?>
 
@@ -531,7 +656,7 @@ function scrollTo(id) {
         $users = $db->get("math_challenge_users_on_teams g", 60);
         if($users){
         echo "<h4>First 60 To Sign Up</h4>";
-        echo '<table id="freeAgents" class="sortedtable">';
+        echo '<table id="mc60peopletable" class="sortedtable">';
 
 ?>
         <thead>
@@ -558,11 +683,40 @@ function scrollTo(id) {
 
         echo "</tbody>";
         echo "</table>";
+        ?>
+
+            <div id="pager8">
+      <form>
+        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+        <i class="fa fa-backward prev" aria-hidden="true"></i>
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+        <i class="fa fa-forward next" aria-hidden="true"></i>
+        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+        <select class="pagesize">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="all">All Rows</option>
+        </select>
+      </form>
+    </div>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#mc60peopletable")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+            .tablesorterPager({container: $("#pager8"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
+    });
+    </script>
+
+        <?php
         }
 ?>
 </div>
 
-<div class="adminpane form" id="EndofYearPicnic">
+<div class="adminpane" id="EndofYearPicnic">
     <h3>RSVPs for the End of Year Picnic</h3>
 
     <?php
@@ -589,6 +743,31 @@ function scrollTo(id) {
         ?>
         </tboby>
         </table>
+        <div id="pager9">
+      <form>
+        <i class="fa fa-step-backward first" aria-hidden="true"></i>
+        <i class="fa fa-backward prev" aria-hidden="true"></i>
+        <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+        <i class="fa fa-forward next" aria-hidden="true"></i>
+        <i class="fa fa-step-forward last" aria-hidden="true"></i>
+        <select class="pagesize">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="all">All Rows</option>
+        </select>
+      </form>
+    </div>
+
+    <script>
+    // Apply table sorting
+    $(function() {
+        $("#RSVPs")
+            .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
+            .tablesorterPager({container: $("#pager9"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
+    });
+    </script>
         <?php
             }
         ?>

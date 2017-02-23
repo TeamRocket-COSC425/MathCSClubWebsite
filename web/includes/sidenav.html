@@ -28,6 +28,17 @@
 </div>
 
 <script>
+
+$(function() {
+    var hammertime = new Hammer($("#mySidenav")[0]);
+    hammertime.on('swipeleft', function(ev) {
+	    $(".sidenav").removeClass("sidenav--active");
+    });
+    hammertime.on('siperight', function(ev) {
+        $(".sidenav").addClass("sidenav--active");
+    });
+});
+
 function toggleNav() {
     $(".sidenav").toggleClass("sidenav--active");
     if ($( "#mySidenav" ).hasClass( "sidenav--active" )) {
