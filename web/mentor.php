@@ -17,10 +17,10 @@
              $admins = $db->where('admin', 1)->get('users');
              $msg =  "$currentuser[name] has requested to be a mentor. Edit $currentuser[name]'s profile to make them a mentor.";
 
-             foreach ($admins as $admin)
-             {
-                     $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $admin['preferred_email'], "Request to be Mentor", $msg, [], "SU Math/CS Club");
-             }
+             $emails = array_map(function ($k) { return $k['preferred_email']; }, $admins);
+
+            $errors = Utils::sendMail("noreply@gulls.salisbury.edu", $emails[0], "Request to be Mentor", $msg, $emails, "SU Math/CS Club");
+            
             header("Location: mentor.php");
 
   } 
