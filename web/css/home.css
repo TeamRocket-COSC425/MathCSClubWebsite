@@ -351,6 +351,10 @@ pre {
 }
 */
 @media only screen and (max-width : 1200px) {
+    h1 {
+    font-size: 1.7rem;
+    }
+    
     .mathEmpImg{
         width: 100%;
         float: none;
