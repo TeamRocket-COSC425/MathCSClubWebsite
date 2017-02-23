@@ -62,11 +62,8 @@
 	if($login->isUserLoggedIn())
 	{
 		$user = Utils::getCurrentUser();
-		if ($user['year']<2)
-		{
-			include ("views/Mentee.html");
-		}
-		else if (empty($user['image']) && empty($user['bio']) && $user['year']>1 && $user['mentor'] == 0)
+		
+		if (empty($user['image']) && empty($user['bio']) && $user['year']>1 && $user['mentor'] == 0)
 		{
 			echo("<p class ='center' style='color:red;'>You must have a bio and image to become a mentor</p>");
 		}else if (empty($user['bio']) && $user['year']>1 && $user['mentor'] == 0)
