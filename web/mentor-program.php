@@ -76,7 +76,7 @@
 		}
 		else if (!empty($user['bio']) && !empty($user['image']) && $user['year']>1 && $user['mentor'] == 0)
 		{
-			include ("views/mentor.php");
+			include ("views/Mentor.html");
 		}
 
 	}
