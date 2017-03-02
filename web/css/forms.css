@@ -110,6 +110,10 @@ margin-top:-40px;
     padding: 15px;
 }
 
+.full
+{
+    width:100%;
+}
 
 @media only screen and (max-width : 600px) {
     /*Anything under 600px width will have this applied*/
