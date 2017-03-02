@@ -471,7 +471,7 @@
         echo '<h2>RSVP for the end of year picnic?</h2>';
         echo '<form id="RSVP" method="post">
                 <p class="message">If you want to bring a dish to the picnic, enter it below:</p>
-                <input type="text" id="item" class="Full" name="item" placeholder="item"/>
+                <input type="text" id="item" class="full" name="item" placeholder="item"/>
               </form>
               <input  form="RSVP" type="submit" name="RSVP"/>';
     }
