@@ -332,9 +332,10 @@ function scrollTo(id) {
                                 $confirm = (new ConfirmBuilder($user['id']))
                                             ->confirmText("Are you sure you want to remove user $user[name] from the team $team[team_name]?")
                                             ->targetLoc("delete_teammate?user=$user[id]&delete");
+
+                                $confirm->getContent("Remove from $team[team_name]", ['tablebutton']);
 ?>
-                                <a class="button tablebutton dangerbutton" href="<?= $confirm->getLink() ?>">Remove from  <?php echo( $team['team_name']) ?> </a>
-                </td>
+                                </td>
                                 </tr>
 <?php
                         }

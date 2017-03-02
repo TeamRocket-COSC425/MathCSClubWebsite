@@ -338,9 +338,7 @@
                                         "Are you sure you want to cancel your mentor request?"
                                 )
                                 ->targetLoc("profile?user=$user[id]&drop=mentor");
-?>
-                    <a class="button dangerbutton" href="<?= $confirm->getLink() ?>"><?= $mentor['confirmed'] ? "Drop Mentor" : "Cancel Request" ?></a>
-<?php
+                    $confirm->getContent($mentor['confirmed'] ? "Drop Mentor" : "Cancel Request");
                 } else {
 ?>
                     <p>You are a mentor!</p>
@@ -365,7 +363,8 @@
                                         ->confirmText("Are you sure you want to drop $mentee[name] as your mentee?")
                                         ->targetLoc("profile?user=$user[id]&drop=mentor&mentee=$mentee[id]");
 
-                            echo "<td><a class=\"button tablebutton dangerbutton\" href=\"" . $confirm->getLink() . "\">Remove</a></td>";
+                            echo '<td>';
+                            $confirm->getContent('Remove', ['tablebutton']);
                             echo '</td>';
                         }
                         echo '</tbody>';
@@ -409,8 +408,7 @@
                 $confirm = (new ConfirmBuilder($user['id']))
                             ->confirmText("Are you sure you want to leave the team \"$team[team_id]\"?")
                             ->targetLoc("profile?user=$user[id]&drop=gullcode");
-?>              <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Drop from "<?= $team['team_name'] ?>"</a>
-<?php
+                $confirm->getContent("Drop from $team[team_name]");
     		}
           } else {
             echo "Error, no team found!";
@@ -435,8 +433,7 @@
                 $confirm = (new ConfirmBuilder($user['id']))
                             ->confirmText("Are you sure you want to leave the team \"$team[team_id]\"?")
                             ->targetLoc("profile?user=$user[id]&drop=mathchallenge");
-?>              <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Drop from "<?= $team['team_name'] ?>"</a>
-<?php
+                $confirm->getContent("Drop from $team[team_name]");
     		}
           } else {
             echo "Error, no team found!";
@@ -484,8 +481,7 @@
         $confirm = (new ConfirmBuilder($user['id']))
                     ->confirmText("Are you sure you want to undo RSVP?")
                     ->targetLoc("profile?user=$user[id]&drop=rsvp");
-?>      <a class="button dangerbutton" href="<?= $confirm->getLink() ?>">Undo RSVP</a>
-<?php
+        $confirm->getContent("Undo RSVP");
     }
     echo '</div>';
 }

@@ -28,16 +28,45 @@
 </div>
 
 <script>
+var pressStart, pressEnd;
+var pressCanceled = false;
 
-$(function() {
-    var hammertime = new Hammer($("#mySidenav")[0]);
-    hammertime.on('swipeleft', function(ev) {
-	    $(".sidenav").removeClass("sidenav--active");
-    });
-    hammertime.on('siperight', function(ev) {
-        $(".sidenav").addClass("sidenav--active");
-    });
-});
+// $(function() {
+//     $("#mySidenav").on('touchstart', process_touchstart);
+//     $("#mySidenav").on('scrollstart', function() {
+//         pressStart = [ ev.pageX, ev.pageY ];
+//     })
+//     $("#mySidenav").on('touchmove', process_touchmove);
+//     $("#mySidenav").on('touchend', process_touchend);
+// });
+
+function process_touchstart(ev) {
+    pressStart = [ ev.touches[0].pageX, ev.touches[0].pageY ];
+}
+
+function process_touchmove(ev) {
+    if (pressCanceled) return;
+
+    pressEnd = [ ev.touches[0].pageX, ev.touches[0].pageY ];
+    if (Math.abs(pressStart[1] - pressEnd[1]) > 15) {
+        pressCanceled = true;
+        pressStart = null;
+        pressEnd = null;
+    }
+}
+
+function process_touchend(ev) {
+    if (pressCanceled) return;
+
+    if (pressStart[0] < pressEnd[0]) {
+        $("#mySidenav").removeClass("sidenav--active");
+    } else {
+        $("#mySidenav").addClass("sidenav--active");
+    }
+    pressStart = null;
+    pressEnd = null;
+    pressCanceled = false;
+}
 
 function toggleNav() {
     $(".sidenav").toggleClass("sidenav--active");
