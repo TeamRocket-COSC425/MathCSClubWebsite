@@ -2,6 +2,7 @@
 
 require_once __DIR__."/../includes/database.php";
 require_once __DIR__. "/Utils.php";
+require_once __DIR__. "/Login.php";
 
 /**
  * Class registration
@@ -125,6 +126,7 @@ class Registration
         $user = $db->where('id', $_GET['user'])->getOne('users');
         if ($user['reset_token'] == $_GET['confirm_token']) {
             $db->where('id', $user['id'])->update('users', ['reset_token' => null, 'confirmed' => 1]);
+            (new Login())->updateSession($user['email'], $user['id']);
             $this->confirmed = true;
         }
     }

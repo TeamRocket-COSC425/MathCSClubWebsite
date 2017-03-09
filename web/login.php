@@ -27,30 +27,29 @@
    <div class="loginWords">
      Math CS Club<br>Login
    </div>
-   <div class="loginErrrors" style="color:red;">
+   <p class="loginErrrors" style="color:red;">
      <?php
       if ($login->errors) {
-       echo "<i class='fa fa-times-circle'></i> "; 
+       echo "<i class='fa fa-times-circle'></i> ";
         foreach ($login->errors as $err) {
           echo $err . "<br>";
         }
       }
     ?>
-  </div>
-  <div class="loginMessages">
+  </p>
+  <p class="loginMessages">
       <?php
         if (isset($_GET['reset'])) {
-            echo '<br>A reset link has been emailed to you.';
+            echo 'A reset link has been emailed to you.';
         } elseif(isset($_GET['updated'])) {
-            echo '<br>Your password was updated.';
+            echo 'Your password was updated.';
         } elseif ($login->messages) {
-            echo '<br>';
             foreach ($login->messages as $msg) {
               echo $msg . "<br>";
             }
         }
       ?>
-  </div>
+  </p>
   <form method="post" action="login" name="forgot-form" class="forgot-form">
     <p class="message">
         Forgot your password?<br><br>

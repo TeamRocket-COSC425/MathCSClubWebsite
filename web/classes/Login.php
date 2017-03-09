@@ -62,29 +62,36 @@ class Login
             $this->errors[] = "Password field was empty.";
         } else {
 
-                // Get user with same email
-                $cols = array("email", "password");
-                $result = $db->where("email", $_POST['user_email'])->getOne("users", null, $cols);
+            // Get user with same email
+            $cols = array("email", "password", "confirmed");
+            $result = $db->where("email", $_POST['user_email'])->getOne("users", null, $cols);
+
+            if ($result['confirmed']) {
 
                 // if this user exists
-            if ($result) {
+                if ($result) {
 
-                // using PHP 5.5's password_verify() function to check if the provided password fits
-                // the hash of that user's password
-                if (password_verify($_POST['user_password'], $result['password'])) {
-
-                    // write user data into PHP SESSION (a file on your server)
-                    $_SESSION['user_email'] = $result['email'];
-                    $_SESSION['user_id']    = $result['id'];
-                    $_SESSION['user_login_status'] = 1;
-
+                    // using PHP 5.5's password_verify() function to check if the provided password fits
+                    // the hash of that user's password
+                    if (password_verify($_POST['user_password'], $result['password'])) {
+                        updateSession($result['email'], $result['id']);
+                    } else {
+                        $this->errors[] = "Wrong password. Try again.";
+                    }
                 } else {
-                    $this->errors[] = "Wrong password. Try again.";
+                    $this->errors[] = "This user does not exist.";
                 }
             } else {
-                $this->errors[] = "This user does not exist.";
+                $this->errors[] = "Please confirm your email before logging in.";
             }
         }
+    }
+
+    public function updateSession($email, $id)
+    {
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_id']    = $id;
+        $_SESSION['user_login_status'] = 1;
     }
 
     /**

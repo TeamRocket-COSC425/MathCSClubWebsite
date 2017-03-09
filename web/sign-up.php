@@ -2,7 +2,7 @@
   require_once('classes/Registration.php');
   $reg = new Registration();
   if ($reg->confirmed) {
-    header("Location: login");
+    header("Location: home");
     die();
   } else {
     $title = "SU Math/CS Club Sign Up";
@@ -26,16 +26,24 @@
 <div class="form">
   <br>
    <div class="loginWords">Math CS Club<br>Sign Up</div>
-   <div class="loginErrors" style="color:red;">
+   <p class="loginErrors" style="color:red;">
      <?php
       if ($reg->errors) {
-        echo "<br>";
         foreach ($reg->errors as $err) {
           echo $err . "<br>";
         }
       }
     ?>
-    </div>
+    </p>
+    <p class="loginMessages">
+<?php
+        if ($reg->messages) {
+            foreach ($reg->messages as $msg) {
+                echo $msg . "<br>";
+            }
+        }
+?>
+    </p>
     <br>
 
   <form method="post" action="sign-up" class="login-form">
