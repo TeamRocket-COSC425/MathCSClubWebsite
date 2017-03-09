@@ -1,7 +1,7 @@
 <?php
   require_once('classes/Registration.php');
   $reg = new Registration();
-  if ($reg->registered) {
+  if ($reg->confirmed) {
     header("Location: login");
     die();
   } else {

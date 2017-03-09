@@ -5,6 +5,7 @@
  $login = new Login;
  if (!$login->isUserLoggedIn()) {
     header("Location: home");
+    die();
  }
 
  $errors = null;
@@ -25,8 +26,8 @@
          } else {
 
              $params = ['confirm' => $currentuser['id']];
-             $msg =  "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.\n\n\
-                     To confirm their request, please follow this link: http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]?" . http_build_query($params);
+             $msg =  "$currentuser[name] has chosen you as mentor, email them at $currentuser[preferred_email] if you would like them as a mentee.\n\n".
+                     "To confirm their request, please follow this link: http://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]?" . http_build_query($params);
 
              $errors = Utils::sendMail("noreply@sumathcsclub.com", $user['preferred_email'], "Mentor Request", $msg, [], "SU Math/CS Club");
 

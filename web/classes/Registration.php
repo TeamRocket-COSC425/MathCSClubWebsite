@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__."/../includes/database.php";
+require_once __DIR__. "/Utils.php";
 
 /**
  * Class registration
@@ -18,6 +19,7 @@ class Registration
     public $messages = array();
 
     public $registered = false;
+    public $confirmed = false;
 
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
@@ -27,6 +29,8 @@ class Registration
     {
         if (isset($_POST["register"])) {
             $this->registerNewUser();
+        } elseif (isset($_GET['user']) && isset($_GET['confirm_token'])) {
+            $this->confirmUser();
         }
     }
 
@@ -90,7 +94,8 @@ class Registration
                     'name' => $_POST['user_firstname'] . ' ' . $_POST['user_lastname'],
                     'year' => $_POST['user_year'],
                     'major' => $_POST['user_major'],
-                    'bio' => "This user has not yet created a bio."
+                    'bio' => "This user has not yet created a bio.",
+                    'reset_token' => bin2hex(openssl_random_pseudo_bytes(16))
                 );
 
                 // write new user's data into database
@@ -98,12 +103,29 @@ class Registration
 
                 // if user has been added successfully
                 if ($id) {
-                    $this->messages[] = "Your account has been created successfully. You can now log in.";
-                    $this->registered = true;
+                    $params = ['user' => $data['id'], 'confirm_token' => $data['reset_token']];
+                    $msg = "Welcome to the Salisbury University Math & Computer Science Club! To confirm your account, please click the link below:\n\nhttp://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]?" . http_build_query($params);
+                    $err = Utils::sendMail("noreply@sumathcsclub.com", $user_email, "SU Math/CS Club Account Confirm", $msg, [], "SU Math/CS Club");
+                    if ($err) {
+                        $this->errors[] = $err;
+                        $db->where('id', $data['id'])->delete('users');
+                    } else {
+                        $this->messages[] = "You have been sent a confirmation email. Please click the link to confirm your account.";
+                        $this->registered = true;
+                    }
                 } else {
                     $this->errors[] = $db->getLastError();
                 }
             }
+        }
+    }
+
+    public function confirmUser() {
+        global $db;
+        $user = $db->where('id', $_GET['user'])->getOne('users');
+        if ($user['reset_token'] == $_GET['confirm_token']) {
+            $db->where('id', $user['id'])->update('users', ['reset_token' => null, 'confirmed' => 1]);
+            $this->confirmed = true;
         }
     }
 }
