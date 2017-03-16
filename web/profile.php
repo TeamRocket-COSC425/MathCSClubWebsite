@@ -145,6 +145,8 @@
 		$("#delete_go_back").click(function(){
 			window.history.back();
 		});
+
+
 	});
   </script>
   <center>
@@ -250,7 +252,6 @@
         </div>
 <?php
     } else {
-        echo "<img src=\"$image\" />";
         echo '<center><h3>'. $user['name'] . ($user['admin'] ? ' (Admin)' : '') . '</h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
