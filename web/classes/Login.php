@@ -74,7 +74,7 @@ class Login
                     // using PHP 5.5's password_verify() function to check if the provided password fits
                     // the hash of that user's password
                     if (password_verify($_POST['user_password'], $result['password'])) {
-                        updateSession($result['email'], $result['id']);
+                        $this->updateSession($result['email'], $result['id']);
                     } else {
                         $this->errors[] = "Wrong password. Try again.";
                     }

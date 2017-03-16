@@ -99,15 +99,15 @@ function scrollTo(id) {
                 <th>Activity Name</th>
             </tr>
         </thead>
-        <tboby>
+        <tbody>
         <?php
             foreach($fallactivities as $fla) {
                 echo '<tr>';
                 echo '<td>' . $fla["activity"] . '</td>';
-                echo '<tr>';
+                echo '</tr>';
             }
         ?>
-        </tboby>
+        </tbody>
         </table>
 
     <script>
@@ -161,7 +161,7 @@ function scrollTo(id) {
                 <th>Activity Name</th>
             </tr>
         </thead>
-        <tboby>
+        <tbody>
         <?php
             foreach($springactivities as $spa) {
 
@@ -170,7 +170,7 @@ function scrollTo(id) {
                 echo '</tr>';
             }
         ?>
-        </tboby>
+        </tbody>
         </table>
 
     <script>
@@ -733,17 +733,17 @@ function scrollTo(id) {
                 <th>Item</th>
             </tr>
         </thead>
-        <tboby>
+        <tbody>
         <?php
             foreach($RSVPs as $RSVP) {
                 echo '<tr>';
                 echo '<td>' . $RSVP["id"] . '</td>';
                 echo '<td>' . $RSVP["name"] . '</td>';
                 echo '<td>' . $RSVP["item"] . '</td>';
-                echo '<tr>';
+                echo '</tr>';
             }
         ?>
-        </tboby>
+        </tbody>
         </table>
         <div id="pager9">
       <form>
