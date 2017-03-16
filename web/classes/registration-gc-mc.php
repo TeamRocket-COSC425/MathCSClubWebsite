@@ -60,9 +60,12 @@ class math_challenge{
             echo "<br><br><center><div  style='color:red; width:10%; background-color:white; border-color:black;border-style: ridge;border-width:auto;  padding: 6px 12px;'>Error:The team, ". $_POST['team-name'] .", is full, please join/make another team.</center>";
         }
         else{
-        	$data = array('id' => $user['id'],
+        	$data = array(
+                    'id' => $user['id'],
                     'team_id' => 0,
-                    'course_math'=> $_POST['mcourse'] );
+                    'course_math'=> $_POST['mcourse'],
+                    'register_time' => $db->now()
+                    );
 
             $id = $db->insert('math_challenge_users_on_teams', $data);
         }
