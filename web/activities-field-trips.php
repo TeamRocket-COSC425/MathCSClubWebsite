@@ -41,7 +41,7 @@
             <button class="accordion"> <?php echo $fall_activity['activity']; ?> </button>
             <div class="panel">
             <?php
-                (new EditableText($fall_activity['activity']))->getContent();
+                (new EditableText("Fall-".$fall_activity['activity']))->getContent();
             ?>
             </div>
         <?php
@@ -63,7 +63,7 @@
             <button class="accordion"> <?php echo $spring_activity['activity']; ?> </button>
             <div class="panel">
             <?php
-                (new EditableText($spring_activity['activity']))->getContent();
+                (new EditableText("Spring-".$spring_activity['activity']))->getContent();
             ?>
             </div>
         <?php
