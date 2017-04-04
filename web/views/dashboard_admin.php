@@ -22,8 +22,6 @@ require_once("classes/AdminFunctions.php");
 ?>
 <script type="text/javascript">
 
-
-
 function scrollTo(id) {
     $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
 }
@@ -39,18 +37,6 @@ function scrollTo(id) {
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
-<?php
-    if (isset($_POST['add_announcement'])) {
-        $data = array(
-            'title' => $_POST['title'],
-            'content' => $_POST['content'],
-            'type' => $_POST['type']
-        );
-        $db->insert('announcements', $data);
-        header("Location: dashboard");
-        die();
-    }
-?>
     <form id="new_announcement" method="post" action="dashboard">
         <input type="text" id="announcement_title" name="title" placeholder="Title" required/>
     </form>
@@ -92,7 +78,7 @@ function scrollTo(id) {
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
-        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor" 
+        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor"
             placeholder="Activity Description" ></textarea>
         <script> var mde = new SimpleMDE({ element: $("#fall_activity_editor")[0]}); </script>
     </form>
@@ -163,7 +149,7 @@ function scrollTo(id) {
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
-    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor" 
+    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor"
         placeholder="Activity Description" ></textarea>
     <script> var mde = new SimpleMDE({ element: $("#spring_activity_editor")[0]}); </script>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
