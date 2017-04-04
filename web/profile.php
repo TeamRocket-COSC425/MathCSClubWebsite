@@ -1,10 +1,9 @@
 <head>
 	<title>User Profile</title>
     <link rel="stylesheet" href="css/forms.css"/>
-    <link rel="stylesheet" href="css/profile.css"/>
 </head>
- 
-<?php 
+
+<?php
     $title = "User Profile";
 
     require_once("classes/Utils.php");
@@ -45,15 +44,28 @@
         return 0;
     };
 
-    // stores the upload image into 
-    $image_loc = Utils::handleImageUpload('image', $image_validator);
-    if ($image_loc != 'image') {
-        $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
-        $user['image'] = $image_loc;
-    }
-
     // POST handling
     if (isset($_POST['submit'])) {
+
+        $image_url = $user['image'];
+        if ($_POST['image_cropped'] != "") {
+            $fd = tmpfile();
+            $metaDatas = stream_get_meta_data($fd);
+            $tmpFilename = $metaDatas['uri'];
+            file_put_contents($tmpFilename, base64_decode(str_replace("data:image/png;base64,", "", $_POST['image_cropped'])));
+            echo base64_encode(file_get_contents($tmpFilename));
+            die();
+            $image = [
+                'name' => 'image_cropped.png',
+                'tmp_name' => $tmpFilename,
+                'size' => filesize($tmpFilename),
+            ];
+            $image_loc = Utils::handleImageUpload('image', Utils::getDefaultImageValidator(), $image);
+            fclose($fd);
+            if ($image_loc != 'image' && $image_loc_cropped != 'image_cropped.png') {
+                $image_url = $image_loc;
+            }
+        }
 
 		// Build array of data to update table width
 		// Cannot directly use $_POST array due to injection potential
@@ -63,7 +75,8 @@
             'major' => $_POST['major'],
             'year' => $_POST['year'],
             't_size' => $_POST['t_size'],
-            'bio' => $_POST['bio']
+            'bio' => $_POST['bio'],
+            'image' => $image_url
         );
 
 		if (Utils::currentUserAdmin()) {
@@ -101,8 +114,6 @@
                 }
                 break;
         }
-        ConfirmBuilder::flush();
-
         header("Location: profile?user=$user[id]");
     }
 
@@ -112,6 +123,7 @@
 ?>
 
 <head>
+    <link rel="stylesheet" href="css/profile.css"/>
     <link rel="stylesheet" href="css/tablesort/theme/blue/style.css"/>
     <link rel="stylesheet" href="js/tablesort/addons/pager/jquery.tablesorter.pager.css"/>
     <script type="text/javascript" src="js/tablesort/jquery.tablesorter.js"></script>
@@ -125,6 +137,8 @@
                 .tablesorterPager({container: $("#pager"), cssPageDisplay: '.pagedisplay', fixedHeight: false});
         });
     </script>
+    <link rel="stylesheet" href="js/croppie/croppie.css"/>
+    <script type="text/javascript" src="js/croppie/croppie.min.js"></script>
 </head>
 
 <body>
@@ -182,7 +196,7 @@
 <!-- Left side of profile with user information contained -->
 <div id="left_column">
   <?php
-    $image = $user['image'];
+    $image = preg_replace("/\.(?!.*\.)/", "_cropped.", $user['image']);
     if (!$image) {
       $image = "images/loginicon.jpg";
     }
@@ -194,11 +208,62 @@
             </form>
             <div id="image_upload_wrapper">
             <div id="image_upload_form">
-    			<img id="profile_image" src="<?= $user['image'] ?: 'images/loginicon.jpg'; ?>"/><br>
+    			<img id="profile_image" src="<?= $user['image'] ?: 'images/loginicon.jpg'; ?>"/>
+
+                <script>
+                    var $basic = $("#profile_image").croppie({
+                        boundary: {
+                            height: 150,
+                            width: 150,
+                        },
+                        viewport: {
+                            width: 100,
+                            height: 100,
+                            type: 'square'
+                        },
+                        enforceBoundary: true,
+                        points: [0, 0, 150, 150],
+                        zoom: 0,
+                        update: function(data) {
+                            var $data = $("#image_upload_data");
+                            $basic.croppie('result', {
+                                type: 'base64',
+                                size: 'original'
+                            }).then(function(data) {
+                                $data.val(data);
+                            });
+                        }
+                    });
+
+                    function readFile(input) {
+                        if (input.files && input.files[0]) {
+            	            var reader = new FileReader();
+
+            	            reader.onload = function (e) {
+            					$('.upload-demo').addClass('ready');
+            	            	$basic.croppie('bind', {
+            	            		url: e.target.result,
+                                    points: [0, 0, 150, 150]
+            	            	}).then(function(){
+            	            		console.log('jQuery bind complete');
+            	            	});
+            	            }
+
+            	            reader.readAsDataURL(input.files[0]);
+            	        }
+            	        else {
+            		        swal("Sorry - your browser doesn't support the FileReader API");
+            		    }
+                    }
+                </script>
                 <label class="image_upload">
-                    <input form="profile" type="file" name="image" value="<?php echo $user['image']; ?>" />
+                    <input form="profile" type="file" name="image" id="image_upload_input" value="<?php echo $user['image']; ?>" />
+                    <input form="profile" type="hidden" name="image_cropped" id="image_upload_data" value="" />
                     <i class="fa fa-upload fa-2x" aria-hidden="true"></i>
                 </label>
+                <script>
+                    $('#image_upload_input').on('change', function () { readFile(this); });
+                </script>
             </div>
             </div>
 

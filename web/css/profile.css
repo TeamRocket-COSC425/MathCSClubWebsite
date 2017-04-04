@@ -11,6 +11,33 @@
 #left_column {
   float:left;
   max-width: 25%;
+  overflow:hidden;
+}
+
+#image_upload_wrapper {
+    margin-bottom: 0;
+}
+
+#image_upload_form {
+    height: auto;
+    display: block;
+}
+
+#image_upload_form img {
+    border-radius: 0 !important;
+}
+
+.image_upload {
+    top: 0;
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    margin-bottom: 1rem;
+}
+
+.croppie-container {
+    height: auto !important;
 }
 
 #right_column {

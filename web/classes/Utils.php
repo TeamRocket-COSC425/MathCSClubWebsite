@@ -107,7 +107,7 @@ class Utils {
         };
     }
 
-    public static function handleImageUpload($name, $image_validator) {
+    public static function handleImageUpload($name, $image_validator, $cropped = null) {
 
         $content = $name;
 
@@ -115,53 +115,65 @@ class Utils {
 		if (isset($_FILES[$name]) && $_FILES[$name]['size'] !== 0) {
             $image = $_FILES[$name];
 
-			$target_dir = 'images/';
-
-            // Grab file extension
-			$imageFileType = pathinfo($image['name'], PATHINFO_EXTENSION);
-            // Generate a file name based on the md5 hash of the file content
-            $target_file = $target_dir . hash_file("md5", $image['tmp_name']) . '.' . $imageFileType;
-
-            $uploadOk = $image_validator($image);
-
-			// If we are still good, begin upload process
-			if ($uploadOk == 1) {
-				if (getenv('S3_BUCKET')) {
-					// S3 info available, upload to AWS
-					$s3 = Aws\S3\S3Client::factory();
-					$bucket = getenv('S3_BUCKET');
-
-					if (!$s3->doesObjectExist($bucket, $target_file)) {
-						$upload = $s3->upload($bucket, $target_file, fopen($image['tmp_name'], 'rb'), 'public-read');
-                        $content = $upload->get('ObjectURL');
-                    } else {
-                        $content = $s3->getObjectUrl($bucket, $target_file);
-                    }
-				} else {
-					// Move into uploads folder, we are on local
-					$target_file = 'uploads/' . $target_file;
-
-					// If the file already exists, reuse it.
-					if (!file_exists($target_file)) {
-						// Otherwise, move the tmp file into the real file's location
-						if (move_uploaded_file($image["tmp_name"], $target_file)) {
-							//echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-						} else {
-							$uploadOk = 0;
-							$errors[] = "Sorry, there was an error uploading your file.";
-						}
-					}
-
-					if ($uploadOk == 1) {
-						$content = $target_file;
-					}
-				}
-			}
-
-            if ($uploadOk !== 1) {
-                return $uploadOk;
-            }
+			$content = self::handleImageDataUpload($image, $image_validator, $cropped ? is_string($cropped) ? $_FILES[$cropped] : $cropped : null);
 		}
+
+        return $content;
+    }
+
+    public static function handleImageDataUpload($image, $image_validator, $cropped = null) {
+        $content = $image['name'];
+
+        $target_dir = 'images/';
+
+        // Grab file extension
+        $imageFileType = pathinfo($image['name'], PATHINFO_EXTENSION);
+        // Generate a file name based on the md5 hash of the file content
+        $target_file = $target_dir . hash_file("md5", $image['tmp_name']) . '.' . $imageFileType;
+        $target_file_cropped = str_replace(".", "_cropped.", $target_file);
+
+        $uploadOk = $image_validator($image);
+
+        // If we are still good, begin upload process
+        if ($uploadOk == 1) {
+            if (getenv('S3_BUCKET')) {
+                // S3 info available, upload to AWS
+                $s3 = Aws\S3\S3Client::factory();
+                $bucket = getenv('S3_BUCKET');
+
+                if (!$s3->doesObjectExist($bucket, $target_file)) {
+                    $upload = $s3->upload($bucket, $target_file, fopen($image['tmp_name'], 'rb'), 'public-read');
+                    $content = $upload->get('ObjectURL');
+                } else {
+                    $content = $s3->getObjectUrl($bucket, $target_file);
+                }
+                if ($cropped) {
+                    $s3->upload($bucket, $target_file_cropped, fopen($cropped['tmp_name'], 'rb'), 'public-read');
+                }
+            } else {
+                // Move into uploads folder, we are on local
+                $target_file = 'uploads/' . $target_file;
+
+                // If the file already exists, reuse it.
+                if (!file_exists($target_file)) {
+                    // Otherwise, move the tmp file into the real file's location
+                    if (move_uploaded_file($image["tmp_name"], $target_file)) {
+                        //echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+                    } else {
+                        $uploadOk = 0;
+                        $errors[] = "Sorry, there was an error uploading your file.";
+                    }
+                }
+
+                if ($cropped) {
+                    file_put_contents($target_file_cropped, file_get_contents($cropped['tmp_file']));
+                }
+
+                if ($uploadOk == 1) {
+                    $content = $target_file;
+                }
+            }
+        }
 
         return $content;
     }
