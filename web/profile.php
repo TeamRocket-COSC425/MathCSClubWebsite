@@ -3,9 +3,10 @@
     <link rel="stylesheet" href="css/forms.css"/>
     <link rel="stylesheet" href="css/profile.css"/>
 </head>
-
-<?php
+ 
+<?php 
     $title = "User Profile";
+
     require_once("classes/Utils.php");
     require_once("classes/Login.php");
     require_once("classes/ConfirmBuilder.php");
@@ -17,8 +18,10 @@
     $user = Utils::getCurrentUser();
     $currentuser = $user;
 
+
     $edit = isset($_GET['edit']);
     $delete = isset($_GET['delete']);
+
     if (isset($_GET['user'])) {
       $user = $db->where('id', $_GET['user'])->getOne('users') ?: $user;
     }
@@ -26,7 +29,7 @@
     if ($user == $currentuser && isset($_GET['user'])) {
         header("Location: " . preg_replace("/\?user=[0-9]+/", "", $_SERVER['REQUEST_URI']));
     }
-
+    // function to check profile image upload size
     $image_validator = function($image) {
         $default_validator = Utils::getDefaultImageValidator();
         if ($default_validator($image)) {
@@ -42,6 +45,7 @@
         return 0;
     };
 
+    // stores the upload image into 
     $image_loc = Utils::handleImageUpload('image', $image_validator);
     if ($image_loc != 'image') {
         $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
@@ -77,7 +81,7 @@
     }
 
     require_once("classes/UserFunctions.php");
-
+    // function that will remove gullcode,mathchallenge,picnic from user database
     if(isset($_GET["drop"]) && Utils::sessionCheck(ConfirmBuilder::KEY_UID, $user['id'])) {
         switch ($_GET['drop']) {
             case 'gullcode':
@@ -129,7 +133,7 @@
 
 <div id="content">
 <?php
-
+    // check to see if user is an admin for editable content
   if (($edit || $delete) && $user !== $currentuser && !Utils::currentUserAdmin()) {
 ?>
     <center>
@@ -151,6 +155,7 @@
   </script>
   <center>
 <?php
+//Function for deleting the user
  if ($delete) {
 	if ($user === $currentuser) {
 ?>
@@ -173,7 +178,8 @@
 ?>
   </center>
 
-<div id = "user_info">
+<div id ="user_info">
+<!-- Left side of profile with user information contained -->
 <div id="left_column">
   <?php
     $image = $user['image'];
@@ -186,7 +192,6 @@
         <div class="form">
             <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" id="profile" enctype="multipart/form-data">
             </form>
-
             <div id="image_upload_wrapper">
             <div id="image_upload_form">
     			<img id="profile_image" src="<?= $user['image'] ?: 'images/loginicon.jpg'; ?>"/><br>
@@ -252,7 +257,8 @@
         </div>
 <?php
     } else {
-        echo '<center><h3>'. $user['name'] . ($user['admin'] ? ' (Admin)' : '') . '</h3></center>';
+       echo "<div class='profileWrapper'> <img src=\"$image\" /> <div class='profileDescription'><b>". $user['name'] . ($user['admin'] ? ' (Admin)' : '')."</b></div></div>";
+        echo '<center><h3></h3></center>';
         $email = $user['email'];
         echo 'Email: ' . $email;
         if ($email !== $user['preferred_email']) {
@@ -294,9 +300,10 @@
     }
   ?>
 </div>
-
+<!-- end left column -->
 
 <div id="right_column">
+<!-- contains user bio, math challenge and gullcode teams and picnic rsvp -->
   <div id="bio">
     <h3> Bio </h3><hr/>
     <p>
@@ -329,7 +336,7 @@
                 if (isset($mentor['id_mentee']) && $mentor['id_mentee'] == $user['id']) {
                     $mentor_user = $db->where('id', $mentor['id_mentor'])->getOne('users');
 ?>
-                    <p>Your selected mentor is <?= $mentor_user['name'] ?>.</p>
+                    <p>Your selected mentor is <?= $mentor_user['name'] ?>. <a href=\"profile?user=$mentor[id]\"></p>
                     <p>Confirmed: <?= $mentor['confirmed'] ? 'Yes' : 'No' ?></p>
 <?php
                     $confirm = (new ConfirmBuilder($user['id']))
@@ -445,7 +452,7 @@
       ?>
       </center>
     </div>
-
+    <!-- function to send information from database about senior picnic -->
     <?php
     if ($user === $currentuser || Utils::currentUserAdmin()) {
         echo '<div id="EndofYearPicnic">';
@@ -467,6 +474,7 @@
             $going = 1;
         }
     }
+
     if($going == 0)
     {
         echo '<h2>RSVP for the end of year picnic?</h2>';
