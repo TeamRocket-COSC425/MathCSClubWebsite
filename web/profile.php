@@ -101,7 +101,6 @@
                 }
                 break;
         }
-        ConfirmBuilder::flush();
 
         header("Location: profile?user=$user[id]");
     }
