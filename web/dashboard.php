@@ -1,9 +1,21 @@
 <?php
+    require_once("classes/Utils.php");
+
+    if (isset($_POST['add_announcement'])) {
+        $data = array(
+            'title' => $_POST['title'],
+            'content' => $_POST['content'],
+            'type' => $_POST['type']
+        );
+        $db->insert('announcements', $data);
+        header("Location: dashboard");
+        die();
+    }
+
     $title = "SU Math/CS Club Dashboard";
     include("includes/header.html");
     include("includes/sidenav.html");
     include("includes/topnav.php");
-    require_once("classes/Utils.php");
 ?>
 
 <head>
