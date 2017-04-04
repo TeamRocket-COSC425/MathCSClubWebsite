@@ -24,7 +24,7 @@
     }
 
     if ($user == $currentuser && isset($_GET['user'])) {
-        header("Location: " . preg_replace("/\?user=[0-9]+/", "", $_SERVER['REQUEST_URI']));
+        header("Location: " . preg_replace("/user=[0-9]+&?/", "", $_SERVER['REQUEST_URI']));
     }
 
     $image_validator = function($image) {
