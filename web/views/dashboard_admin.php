@@ -434,7 +434,7 @@ function scrollTo(id) {
     <script>
     // Apply table sorting
     $(function() {
-        $("#gcFreeAgentstable")
+        $("#gcfreeAgentstable")
             .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
             .tablesorterPager({container: $("#pager4"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
     });
