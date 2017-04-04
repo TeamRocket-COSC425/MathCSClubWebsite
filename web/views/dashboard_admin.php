@@ -563,6 +563,7 @@ function scrollTo(id) {
                     <th>Major</th>
                     <th>Year</th>
                     <th>Profile</th>
+                    <th>Remove Teammate</th>
                 </tr>
             </thead>
             <tbody>
@@ -577,7 +578,15 @@ function scrollTo(id) {
                                 <td>
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
-                                </tr>
+                              
+                                <td>
+                                <?php
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to remove user $user[name] from the team $team[team_name]?")
+                                            ->targetLoc("delete_teammate?user=$user[id]&delete");
+
+                                $confirm->getContent("Remove from $team[team_name]", ['tablebutton']);
+?> </td></tr>
 <?php
                         }
                     }
@@ -618,6 +627,7 @@ function scrollTo(id) {
             <th>Year</th>
             <th>Highest Math</th>
             <th>Profile</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>
@@ -629,6 +639,14 @@ function scrollTo(id) {
 ?>             <td>
                 <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
             </td>
+            <td>
+             <?php
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to remove user $user[name] from the Free Agency?")
+                                            ->targetLoc("delete_teammate?user=$user[id]&delete");
+
+                                $confirm->getContent("Remove from Free Agency", ['tablebutton']);
+?> </td>
             </tr>
 <?php
     }

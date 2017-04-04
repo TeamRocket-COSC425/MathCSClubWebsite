@@ -50,6 +50,12 @@
 <?php
 
  if ($delete) {
+    if(isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
+        $db->where('id', $user['id'])->delete('math_challenge_users_on_teams');
+         if (count($db->where('team_id', $userteam['team_id'])->get('math_challenge_users_on_teams')) == 0) {
+            $db->where('team_id', $userteam['team_id'])->delete('math_challenge_teams');
+        }
+    }
  	if(isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
 		$db->where('id', $user['id'])->delete('gullcode_users_on_teams'); //remove the user from gullcode team
         if (count($db->where('team_id', $userteam['team_id'])->get('gullcode_users_on_teams')) == 0) {
