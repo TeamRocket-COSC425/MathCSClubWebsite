@@ -54,10 +54,10 @@ function scrollTo(id) {
     <form id="new_announcement" method="post" action="dashboard">
         <input type="text" id="announcement_title" name="title" placeholder="Title" required/>
     </form>
-    <textarea form="new_announcement" name="content" placeholder="Content" ></textarea>
+    <textarea form="new_announcement" name="content" id="announcement_editor" placeholder="Content" ></textarea>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script> var mde = new SimpleMDE(); </script>
+    <script> var mde = new SimpleMDE({ element: $("#announcement_editor")[0]}); </script>
     <p class="message">Announcement Type:</p>
     <select form="new_announcement" name="type">
         <option value="note">Note</option>
@@ -75,17 +75,26 @@ function scrollTo(id) {
             'activity' => $_POST['activity']
         );
         $db->insert('fall_activities', $data);
+        $data1 = array(
+            'id' => "Fall-".$_POST['activity'],
+            'content' => $_POST['fallActivityContent']
+        );
+        $db->insert('page_content', $data1);
+
     }
     if(isset($_POST["delete_fall_activity"])){
         $act = $_POST['delete_activity'];
         $db->where('activity', $act)->delete('fall_activities');
-        $db->where('id', $act)->delete('page_content');
+        $db->where('id', "Fall-".$act)->delete('page_content');
     }
 ?>
 
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
+        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor" 
+            placeholder="Activity Description" ></textarea>
+        <script> var mde = new SimpleMDE({ element: $("#fall_activity_editor")[0]}); </script>
     </form>
     <input  form="new_fall_activity" type="submit" name="add_fall_activity"/>
 
@@ -137,11 +146,16 @@ function scrollTo(id) {
             'activity' => $_POST['activity']
         );
         $db->insert('spring_activities', $data);
+        $data1 = array(
+            'id' => "Spring-".$_POST['activity'],
+            'content' => $_POST['springActivityContent']
+        );
+        $db->insert('page_content', $data1);
     }
     if(isset($_POST["delete_spring_activity"])){
         $act = $_POST['delete_activity'];
         $db->where('activity', $act)->delete('spring_activities');
-        $db->where('id', $act)->delete('page_content');
+        $db->where('id', "Spring-".$act)->delete('page_content');
     }
 ?>
 
@@ -149,6 +163,9 @@ function scrollTo(id) {
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
+    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor" 
+        placeholder="Activity Description" ></textarea>
+    <script> var mde = new SimpleMDE({ element: $("#spring_activity_editor")[0]}); </script>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
 
     <?php
@@ -417,7 +434,7 @@ function scrollTo(id) {
     <script>
     // Apply table sorting
     $(function() {
-        $("#gcFreeAgentstable")
+        $("#gcfreeAgentstable")
             .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
             .tablesorterPager({container: $("#pager4"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
     });
