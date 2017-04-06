@@ -3,8 +3,8 @@
     <link rel="stylesheet" href="css/forms.css"/>
     <link rel="stylesheet" href="css/profile.css"/>
 </head>
- 
-<?php 
+
+<?php
     $title = "User Profile";
 
     require_once("classes/Utils.php");
@@ -45,7 +45,7 @@
         return 0;
     };
 
-    // stores the upload image into 
+    // stores the upload image into
     $image_loc = Utils::handleImageUpload('image', $image_validator);
     if ($image_loc != 'image') {
         $db->where('id', $user['id'])->update('users', array('image' => $image_loc));
@@ -361,18 +361,20 @@
                         <tbody>
 <?php
                         foreach ($mentor as $entry) {
-                            $mentee = $db->where('id', $entry['id_mentee'])->getOne('users');
-                            echo '<tr>';
-                            echo "<td>$mentee[name]</td>";
-                            echo "<td>$mentee[id]</td>";
+                            if ($entry['confirmed']) {
+                                $mentee = $db->where('id', $entry['id_mentee'])->getOne('users');
+                                echo '<tr>';
+                                echo "<td>$mentee[name]</td>";
+                                echo "<td>$mentee[id]</td>";
 
-                            $confirm = (new ConfirmBuilder($user['id']))
-                                        ->confirmText("Are you sure you want to drop $mentee[name] as your mentee?")
-                                        ->targetLoc("profile?user=$user[id]&drop=mentor&mentee=$mentee[id]");
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to drop $mentee[name] as your mentee?")
+                                            ->targetLoc("profile?user=$user[id]&drop=mentor&mentee=$mentee[id]");
 
-                            echo '<td>';
-                            $confirm->getContent('Remove', ['tablebutton']);
-                            echo '</td>';
+                                echo '<td>';
+                                $confirm->getContent('Remove', ['tablebutton']);
+                                echo '</td>';
+                            }
                         }
                         echo '</tbody>';
 ?>
