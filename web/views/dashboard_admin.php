@@ -20,6 +20,40 @@ require_once("classes/AdminFunctions.php");
         Admins::clearCompetition("MathChallenge");
     }
 ?>
+
+<?php
+    $errorMsg = "";       //holds error messages
+    $confirmMsg = "";
+
+    //create a new officer
+    if (isset($_POST['add_officer'])) {
+        $ID = $_POST['ID'];
+        $title = $_POST['officerTitle'];
+        $bio = $_POST['officerBio'];
+
+        //get the student from the user table to put into the officers table
+        $db->where("id", $ID);
+        $student = $db->getOne("users");
+
+        if ($student) {
+            $data = Array (
+                'name' => $student['name'],
+                'image' => $student['image'],
+                'bio' => $bio,
+                'id' => $ID
+            );
+            $db->where ('title', $title);
+            if ($db->update ('officers', $data))
+                $confirmMsg = 'records were updated';
+            else
+                $errorMsg = "That ID is not in the database";
+        }
+        else {
+            $errorMsg = "That ID is not in the database";
+        }
+    }
+?>
+
 <script type="text/javascript">
 
 
@@ -794,35 +828,13 @@ function scrollTo(id) {
 
 <div class="adminpane" id="officers">
     <h3>Manage Officers</h3>
-<?php
-    //create a new officer
-    if (isset($_POST['add_officer'])) {
-        $ID = $_POST['ID'];
-        $title = $_POST['officerTitle'];
-        $bio = $_POST['officerBio'];
 
-        //get the student from the user table to put into the officers table
-        $db->where("id", $ID);
-        $student = $db->getOne("users");
-
-        if ($student) {
-            $data = Array (
-                'name' => $student['name'],
-                'image' => $student['image'],
-                'bio' => $bio,
-                'id' => $ID
-            );
-            $db->where ('title', $title);
-            if ($db->update ('officers', $data))
-                echo 'records were updated';
-            else
-                echo 'update failed';
-        }
-        else {
-            echo "That ID is not in the database";
-        }
-    }
-?>
+    <!--Display error messages-->
+    <div class="loginErrors" style="color:red;">
+        <?php if( isset($errorMsg) && $errorMsg != '' ) { echo $errorMsg; } ?>
+        <?php if( isset($confirmMsg) && $confirmMsg != '' ) { echo $confirmMsg; } ?>
+    </div>
+    <br>
 
     <form id="new_officer" method="post" action="dashboard">
         <p class="message">Change an officer</p>
