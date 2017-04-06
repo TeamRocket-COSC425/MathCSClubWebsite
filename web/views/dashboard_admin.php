@@ -44,7 +44,7 @@ require_once("classes/AdminFunctions.php");
             );
             $db->where ('title', $title);
             if ($db->update ('officers', $data))
-                $confirmMsg = 'records were updated';
+                $confirmMsg = 'The officer has been updated.';
             else
                 $errorMsg = "That ID is not in the database";
         }
@@ -70,6 +70,8 @@ function scrollTo(id) {
     <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
     <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
     <a class="button" href="#" onclick="scrollTo('EndofYearPicnic')">End of Year Picnic</a>
+    <a class="button" href="#" onclick="scrollTo('officers')">Update Officer</a>
+        
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -827,19 +829,17 @@ function scrollTo(id) {
 </div>
 
 <div class="adminpane" id="officers">
-    <h3>Manage Officers</h3>
+    <h3>Update an Officer</h3>
 
     <!--Display error messages-->
     <div class="loginErrors" style="color:red;">
         <?php if( isset($errorMsg) && $errorMsg != '' ) { echo $errorMsg; } ?>
         <?php if( isset($confirmMsg) && $confirmMsg != '' ) { echo $confirmMsg; } ?>
     </div>
-    <br>
-
+<br>
     <form id="new_officer" method="post" action="dashboard">
-        <p class="message">Change an officer</p>
-        <select id="reg_input_officer" name="officerTitle" class="officerDrop" required/>
-          <optgroup label="Officer">
+        Which officer you're updating: <select id="reg_input_officer" name="officerTitle" class="officerDrop" required/>
+          <optgroup label="Officer Title">
           <?php
           $officers = $db->get('officers');
           foreach($officers as $officer) {
@@ -849,8 +849,11 @@ function scrollTo(id) {
           ?>
         </optgroup>
         </select>
-        <input type="text" id="ID" name="ID" placeholder="Student ID" required/>
-        <textarea form="new_officer" name="officerBio" id="officerBio" 
-            placeholder="Officer Bio" required></textarea>
+
+        New officer's student ID: <input type="text" id="studentID" name="ID" placeholder="Student ID" required/><br>
+        <center style="color:#777">(The new officer must have a site account with a profile picture)</style></center>
+        <br>
+    Write a bio that will appear on the officer's page:
+        <textarea form="new_officer" name="officerBio" id="officerBio" required></textarea>
     </form>
     <input  form="new_officer" type="submit" name="add_officer"/>
