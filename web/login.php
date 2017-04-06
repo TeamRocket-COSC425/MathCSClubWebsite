@@ -1,7 +1,12 @@
 <?php
   require_once("classes/Login.php");
+  require_once("classes/Utils.php");
   $login = new Login();
   if ($login->isUserLoggedIn()) {
+    $user = Utils::getCurrentUser();
+    global $db;
+    $data = array("last_log_on" => $db->now());
+    $db->where('id', $user['id'])->update("users", $data);
     header("Location: dashboard");
     die();
   } else {
