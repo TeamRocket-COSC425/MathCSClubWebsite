@@ -791,3 +791,54 @@ function scrollTo(id) {
             }
         ?>
 </div>
+
+<div class="adminpane" id="officers">
+    <h3>Manage Officers</h3>
+<?php
+    //create a new officer
+    if (isset($_POST['add_officer'])) {
+        $ID = $_POST['ID'];
+        $title = $_POST['officerTitle'];
+        $bio = $_POST['officerBio'];
+
+        //get the student from the user table to put into the officers table
+        $db->where("id", $ID);
+        $student = $db->getOne("users");
+
+        if ($student) {
+            $data = Array (
+                'name' => $student['name'],
+                'image' => $student['image'],
+                'bio' => $bio,
+                'id' => $ID
+            );
+            $db->where ('title', $title);
+            if ($db->update ('officers', $data))
+                echo 'records were updated';
+            else
+                echo 'update failed';
+        }
+        else {
+            echo "That ID is not in the database";
+        }
+    }
+?>
+
+    <form id="new_officer" method="post" action="dashboard">
+        <p class="message">Change an officer</p>
+        <select id="reg_input_officer" name="officerTitle" class="officerDrop" required/>
+          <optgroup label="Officer">
+          <?php
+          $officers = $db->get('officers');
+          foreach($officers as $officer) {
+            $name = $officer['title'];
+            echo '<option value="'. $name .'">'. $name .'</option>';
+          }
+          ?>
+        </optgroup>
+        </select>
+        <input type="text" id="ID" name="ID" placeholder="Student ID" required/>
+        <textarea form="new_officer" name="officerBio" id="officerBio" 
+            placeholder="Officer Bio" required></textarea>
+    </form>
+    <input  form="new_officer" type="submit" name="add_officer"/>
