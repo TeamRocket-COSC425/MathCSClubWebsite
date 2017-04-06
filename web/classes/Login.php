@@ -92,6 +92,10 @@ class Login
         $_SESSION['user_email'] = $email;
         $_SESSION['user_id']    = $id;
         $_SESSION['user_login_status'] = 1;
+        $user = Utils::getCurrentUser();
+        global $db;
+        $data = array("last_log_on" => $db->now());
+        $db->where('id', $user['id'])->update("users", $data);
     }
 
     /**
