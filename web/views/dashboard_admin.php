@@ -20,6 +20,40 @@ require_once("classes/AdminFunctions.php");
         Admins::clearCompetition("MathChallenge");
     }
 ?>
+
+<?php
+    $errorMsg = "";       //holds error messages
+    $confirmMsg = "";
+
+    //create a new officer
+    if (isset($_POST['add_officer'])) {
+        $ID = $_POST['ID'];
+        $title = $_POST['officerTitle'];
+        $bio = $_POST['officerBio'];
+
+        //get the student from the user table to put into the officers table
+        $db->where("id", $ID);
+        $student = $db->getOne("users");
+
+        if ($student) {
+            $data = Array (
+                'name' => $student['name'],
+                'image' => $student['image'],
+                'bio' => $bio,
+                'id' => $ID
+            );
+            $db->where ('title', $title);
+            if ($db->update ('officers', $data))
+                $confirmMsg = 'The officer has been updated.';
+            else
+                $errorMsg = "That ID is not in the database";
+        }
+        else {
+            $errorMsg = "That ID is not in the database";
+        }
+    }
+?>
+
 <script type="text/javascript">
 
 
@@ -36,6 +70,8 @@ function scrollTo(id) {
     <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
     <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
     <a class="button" href="#" onclick="scrollTo('EndofYearPicnic')">End of Year Picnic</a>
+    <a class="button" href="#" onclick="scrollTo('officers')">Update Officer</a>
+        
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -809,3 +845,33 @@ function scrollTo(id) {
             }
         ?>
 </div>
+
+<div class="adminpane" id="officers">
+    <h3>Update an Officer</h3>
+
+    <!--Display error messages-->
+    <div class="loginErrors" style="color:red;">
+        <?php if( isset($errorMsg) && $errorMsg != '' ) { echo $errorMsg; } ?>
+        <?php if( isset($confirmMsg) && $confirmMsg != '' ) { echo $confirmMsg; } ?>
+    </div>
+<br>
+    <form id="new_officer" method="post" action="dashboard">
+        Which officer you're updating: <select id="reg_input_officer" name="officerTitle" class="officerDrop" required/>
+          <optgroup label="Officer Title">
+          <?php
+          $officers = $db->get('officers');
+          foreach($officers as $officer) {
+            $name = $officer['title'];
+            echo '<option value="'. $name .'">'. $name .'</option>';
+          }
+          ?>
+        </optgroup>
+        </select>
+
+        New officer's student ID: <input type="text" id="studentID" name="ID" placeholder="Student ID" required/><br>
+        <center style="color:#777">(The new officer must have a site account with a profile picture)</style></center>
+        <br>
+    Write a bio that will appear on the officer's page:
+        <textarea form="new_officer" name="officerBio" id="officerBio" required></textarea>
+    </form>
+    <input  form="new_officer" type="submit" name="add_officer"/>
