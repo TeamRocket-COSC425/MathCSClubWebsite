@@ -50,18 +50,41 @@
 <?php
 
  if ($delete) {
+    if(isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
+        $userteam = $db->where('id',  $_GET['user'])->getOne('math_challenge_users_on_teams');
+        $db->where('id', $user['id'])->delete('math_challenge_users_on_teams');
+         if (count($db->where('team_id', $userteam['team_id'])->get('math_challenge_users_on_teams')) == 0) {
+            $db->where('team_id', $userteam['team_id'])->delete('math_challenge_teams');
+        }
+    }
  	if(isset($_SESSION[ConfirmBuilder::KEY_UID]) && $_SESSION[ConfirmBuilder::KEY_UID] == $user['id']) {
 		$db->where('id', $user['id'])->delete('gullcode_users_on_teams'); //remove the user from gullcode team
         if (count($db->where('team_id', $userteam['team_id'])->get('gullcode_users_on_teams')) == 0) {
             $db->where('team_id', $userteam['team_id'])->delete('gullcode_teams');
         }
+    }
 ?>
         "<?= $user['name'] ?>" has been removed.
 		<a class="button" href="dashboard">To Dashboard</a>
 <?php
+	
 	}
-	die();
+  
+  else //removing free agents
+  {
+    
+    $userteam = $db->where('id',  $_GET['user'])->getOne('math_challenge_users_on_teams');
+        $db->where('id', $user['id'])->delete('math_challenge_users_on_teams');
+         if (count($db->where('team_id', $userteam['team_id'])->get('math_challenge_users_on_teams')) == 0) {
+            $db->where('team_id', $userteam['team_id'])->delete('math_challenge_teams');
+        }
+    ?>
+            "<?= $user['name'] ?>" has been removed.
+        <a class="button" href="dashboard">To Dashboard</a>
+        <?php
   }
+
+die();
 ?>
 </center>
 </div>

@@ -22,6 +22,8 @@ require_once("classes/AdminFunctions.php");
 ?>
 <script type="text/javascript">
 
+
+
 function scrollTo(id) {
     $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
 }
@@ -37,6 +39,18 @@ function scrollTo(id) {
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
+<?php
+    if (isset($_POST['add_announcement'])) {
+        $data = array(
+            'title' => $_POST['title'],
+            'content' => $_POST['content'],
+            'type' => $_POST['type']
+        );
+        $db->insert('announcements', $data);
+        header("Location: dashboard");
+        die();
+    }
+?>
     <form id="new_announcement" method="post" action="dashboard">
         <input type="text" id="announcement_title" name="title" placeholder="Title" required/>
     </form>
@@ -78,7 +92,7 @@ function scrollTo(id) {
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
-        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor"
+        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor" 
             placeholder="Activity Description" ></textarea>
         <script> var mde = new SimpleMDE({ element: $("#fall_activity_editor")[0]}); </script>
     </form>
@@ -149,7 +163,7 @@ function scrollTo(id) {
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
-    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor"
+    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor" 
         placeholder="Activity Description" ></textarea>
     <script> var mde = new SimpleMDE({ element: $("#spring_activity_editor")[0]}); </script>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
@@ -549,6 +563,7 @@ function scrollTo(id) {
                     <th>Major</th>
                     <th>Year</th>
                     <th>Profile</th>
+                    <th>Remove Teammate</th>
                 </tr>
             </thead>
             <tbody>
@@ -563,7 +578,15 @@ function scrollTo(id) {
                                 <td>
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
-                                </tr>
+                              
+                                <td>
+                                <?php
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to remove user $user[name] from the team $team[team_name]?")
+                                            ->targetLoc("delete_teammate?user=$user[id]&delete");
+
+                                $confirm->getContent("Remove from $team[team_name]", ['tablebutton']);
+?> </td></tr>
 <?php
                         }
                     }
@@ -604,6 +627,7 @@ function scrollTo(id) {
             <th>Year</th>
             <th>Highest Math</th>
             <th>Profile</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>
@@ -615,6 +639,14 @@ function scrollTo(id) {
 ?>             <td>
                 <a class="button tablebutton" href="profile?user=<?php echo $free_agent['id']; ?>">Profile</a>
             </td>
+            <td>
+             <?php
+                                $confirm = (new ConfirmBuilder($user['id']))
+                                            ->confirmText("Are you sure you want to remove user $free_agent[name] from the Free Agent List?")
+                                            ->targetLoc("delete_teammate?user=$free_agent[id]&deleteFA");
+
+                                $confirm->getContent("Remove from Free Agency", ['tablebutton']);
+?> </td>
             </tr>
 <?php
     }
