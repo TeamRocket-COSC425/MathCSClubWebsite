@@ -46,7 +46,9 @@
 
     $control = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($control["switch"] == 1) {
-      include("views/GC-MC-Register.html");
+?>
+        <center><a href="gc-mc-registration.php?tab=mathchallenge" class="GCsessionButton">Register</a></center>
+<?php
     }
   }
 ?>

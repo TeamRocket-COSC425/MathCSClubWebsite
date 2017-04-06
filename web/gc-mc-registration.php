@@ -50,10 +50,10 @@
 <div class = "tab">
   <div class="tabItems">
   <a href="javascript:void(0)"  onclick="openTab(event,'About Me')" id="defaultOpen"></a>
-  <div class="mcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Math-Challenge')">
+  <div class="mcTab"><a href="javascript:void(0)" class="tablinks" id="mathchallenge" onclick="openTab(event, 'Math-Challenge')">
   <h1>Math Challenge</h1></a></li>
 </div>
-  <div class="gcTab"><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'GullCode')">
+  <div class="gcTab"><a href="javascript:void(0)" class="tablinks" id="gullcode" onclick="openTab(event, 'GullCode')">
   <h1>GullCode</h1></a></li>
 </div>
 </div>
@@ -211,6 +211,13 @@
 ?>
 <script>
   document.getElementById("defaultOpen").click();
+<?php
+  if (isset($_GET['tab'])) {
+?>
+  document.getElementById("<?= $_GET['tab'] ?>").click();
+<?php
+  }
+?>
   function openTab(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
