@@ -107,6 +107,8 @@ input[type="submit"]:hover, a.button:hover, button:hover{
 
 input[type="submit"].dangerbutton, a.dangerbutton, button.dangerbutton {
     background-color: #BD2D2D;
+    margin-top: 5px;
+    margin-bottom: -5px;
 }
 
 input[type="submit"].dangerbutton:hover, a.dangerbutton:hover, button.dangerbutton:hover {
@@ -293,7 +295,7 @@ a.tablebutton, input.tablebutton, button.tablebutton {
     font-size: inherit;
     padding: 4px;
     text-align: center;
-    margin: auto;
+    margin-top: auto;
 }
 
 .tablesorter-pager i {
