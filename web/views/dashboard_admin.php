@@ -19,6 +19,9 @@ require_once("classes/AdminFunctions.php");
     if (isset($_POST['emptyMcRegistration'])){
         Admins::clearCompetition("MathChallenge");
     }
+    if (isset($_POST['removeOldUsers'])){
+        Admins::removeOldUsers();
+    }
 ?>
 
 <?php
@@ -313,6 +316,10 @@ function scrollTo(id) {
             .tablesorterPager({container: $("#pager"), cssPageDisplay: '.pagedisplay', fixedHeight: true});
     });
     </script>
+
+    <form method="post">
+    <input class="dangerbutton" name="removeOldUsers" type="submit" value="Remove Old Users"/>
+    </form>
 </div>
 
 
