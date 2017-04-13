@@ -35,5 +35,19 @@
 				$db->delete("gullcode_users_on_teams");
 			}
 		}
+		public static function removeOldUsers(){
+			global $db;
+			$users = $db->get("users");
+			$cdid = strtotime("now");
+			$msg = "Due to inactivity, your account with sumathcsslub.com has been deleteed.";
+			foreach($users as $user){
+				$lld = strtotime( $user["last_log_on"]);
+				if (($cdid - $lld) >= 31536000)
+				{
+					$err = Utils::sendMail("noreply@sumathcsclub.com", $user["email"], "SU Math/CS Club Account Confirm", $msg, [], "SU Math/CS Club");
+					$db->where("id", $user["id"])->delete("users");
+				}
+			}
+		}
 	}
 ?>
