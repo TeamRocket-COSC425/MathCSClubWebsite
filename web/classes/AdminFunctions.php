@@ -27,11 +27,11 @@
 		public static function clearCompetition($comp){
 			global $db;
 			if ($comp == "MathChallenge"){
-				$db->where("team_id", !0)->delete("math_challenge_teams");
+				$db->where("team_id", 0, "!=")->delete("math_challenge_teams");
 				$db->delete("math_challenge_users_on_teams");
 			}
 			elseif ($comp == "GullCode"){
-				$db->where("team_id", !0)->delete("gullcode_teams");
+				$db->where("team_id", 0, "!=")->delete("gullcode_teams");
 				$db->delete("gullcode_users_on_teams");
 			}
 		}
