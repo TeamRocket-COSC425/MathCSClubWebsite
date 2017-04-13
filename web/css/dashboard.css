@@ -88,9 +88,8 @@ h2, h3 {
     text-align: left;
 }
 
-
-.officerDrop{
-     font-size: 14px;
+.dropMenu{
+    font-size: 14px;
     height: 2.25rem;
     width: 25%;
     margin: 0 10px 10px;
@@ -100,8 +99,8 @@ h2, h3 {
     background: white;
 }
 
-#studentID{
-   font-size: 14px;
+.inputField{
+    font-size: 14px;
     box-sizing: border-box;
     width: 20%;
     height: 2.5rem;
@@ -116,7 +115,23 @@ h2, h3 {
     background: white;
 }
 
-#officerBio{
+.bioField {
+    display: block; 
+    height: 100px;
+    width: 99.5%;
+    border: none; 
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    font-size: 15px;
+    background: white;
+    outline: none;
+    overflow: auto;
+    resize: none;
+}
+
+/*#officerBio{
   display: block; 
     height: 100px;
     width: 99.5%;
@@ -130,4 +145,4 @@ h2, h3 {
     outline: none;
     overflow: auto;
     resize: none;
-}
+}*/
