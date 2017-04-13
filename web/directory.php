@@ -16,25 +16,30 @@
             <div id="search-header">
                 <h2> Search Users </h2>
                 <form>
-                    <input type="text" id="search-query" name="q">
+                    <input type="text" id="search-query" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : "" ?>">
                 </form>
             </div>
 <?php
-            if (isset($_GET['q'])) {
+            if (isset($_GET['q']) && $_GET['q'] != '') {
                 echo '<p>';
                 $query = strtolower(urldecode($_GET['q']));
                 $users = $db->get('users');
-                echo '<ul>';
+                $results = array();
                 foreach ($users as $user) {
                     if (strpos(strtolower($user['name']), $query) !== false) {
-?>
-                        <li>
-                            <div class="user-result" id="user-<?= $user['id'] ?>">
-                                <a href="profile?user=<?= $user['id'] ?>"><?= $user['name'] ?></a>
-                            </div>
-                        </li>
-<?php
+                        $results[] = $user;
                     }
+                }
+                echo "Found " . count($results) . " results:";
+                echo '<ul>';
+                foreach ($results as $result) {
+?>
+                    <li>
+                        <div class="user-result" id="user-<?= $result['id'] ?>">
+                            <a href="profile?user=<?= $result['id'] ?>"><?= $result['name'] ?></a>
+                        </div>
+                    </li>
+<?php
                 }
                 echo '</ul>';
             }

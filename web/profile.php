@@ -27,9 +27,9 @@ if (isset($_GET['user'])) {
 }
 
 if ($user == $currentuser && isset($_GET['user'])) {
-    header("Location: " . preg_replace("/user=[0-9]+&?/", "", $_SERVER['REQUEST_URI']));
+    header("Location: " . preg_replace("/(\?(?!.+&))?user=[0-9]+&?/", "", $_SERVER['REQUEST_URI']));
 }
-    // function to check profile image upload size
+// function to check profile image upload size
 $image_validator = function($image) {
     $default_validator = Utils::getDefaultImageValidator();
     if ($default_validator($image)) {
