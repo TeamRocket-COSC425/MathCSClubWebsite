@@ -35,5 +35,17 @@
 				$db->delete("gullcode_users_on_teams");
 			}
 		}
+		public static function removeOldUsers(){
+			global $db;
+			$users = $db->get("users");
+			$cdid = strtotime("now");
+			foreach($users as $user){
+				$lld = strtotime( $user["last_log_on"]);
+				if (($cdid - $lld) >= 31536000)
+				{
+					$db->where("id", $user["id"])->delete("users");
+				}
+			}
+		}
 	}
 ?>
