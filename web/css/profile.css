@@ -75,6 +75,17 @@
     margin-bottom: 10px;
 }
 
+#searchPeople{
+  display:inline;
+  color: #12bfc3;
+  float: right;
+  font-size: 14px;
+}
+
+.searchLink h3{
+  display:inline;
+}
+
 /* === forms.css OVERRIDES === */
 
 .form {
