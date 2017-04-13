@@ -335,7 +335,7 @@
                 if (isset($mentor['id_mentee']) && $mentor['id_mentee'] == $user['id']) {
                     $mentor_user = $db->where('id', $mentor['id_mentor'])->getOne('users');
 ?>
-                    <p>Your selected mentor is <?= $mentor_user['name'] ?>. <a href=\"profile?user=$mentor[id]\"></a></p>
+                    <p>Your selected mentor is <a href="profile?user=<?php echo $mentor_user['id'];?>"><?= $mentor_user['name'] ?></a></p>
                     <p>Confirmed: <?= $mentor['confirmed'] ? 'Yes' : 'No' ?></p>
 <?php
                     $confirm = (new ConfirmBuilder($user['id']))
