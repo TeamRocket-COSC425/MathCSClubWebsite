@@ -58,7 +58,7 @@ require_once("classes/AdminFunctions.php");
     $errorMsg1 = "";       //holds error messages
     $confirmMsg1 = "";
 
-    //create a new officer
+    //create a new advisor
     if (isset($_POST['add_advisor'])) {
         $newName = $_POST['newAdvisorName'];
         $oldName = $_POST['oldAdvisorName'];
@@ -69,20 +69,15 @@ require_once("classes/AdminFunctions.php");
         $advisor = $db->getOne("club_advisors");
         $position = $advisor['position'];
 
-        if ($advisor) {
-            $data = Array (
-                'name' => $newName,
-                'bio' => $bio
-            );
-            $db->where ('position', $position);
-            if ($db->update ('club_advisors', $data))
-                $confirmMsg1 = 'The officer has been updated.';
-            else
-                $errorMsg1 = "That ID is not in the database";
-        }
-        else {
-            $errorMsg1 = "That ID is not in the database";
-        }
+        $data = Array (
+            'name' => $newName,
+            'bio' => $bio
+        );
+        $db->where ('position', $position);
+        if ($db->update ('club_advisors', $data))
+            $confirmMsg1 = 'The advisor has been updated.';
+        else
+            $errorMsg1 = "Advisor update failed.";
     }
 ?>
 
