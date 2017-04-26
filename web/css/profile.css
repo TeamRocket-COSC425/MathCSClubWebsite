@@ -76,10 +76,30 @@
 }
 
 #searchPeople{
-  display:inline;
+  display: inline;
   color: #12bfc3;
   float: right;
   font-size: 14px;
+}
+
+#searchText, #searchText * {
+  display: inline;
+}
+
+#searchText input{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 250px;
+    height: 30px; 
+    display: inline-block;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#searchPeople a{
+  color: #12bfc3;
 }
 
 .searchLink h3{
@@ -92,4 +112,12 @@
     margin: 0;
     z-index: 0;
     text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+
+#searchText{
+  display:none;
+}
+
 }

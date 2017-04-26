@@ -6,8 +6,8 @@ form {
     display: inline;
 }
 
-#search-header form input {
-    height: 1.5em;
-    vertical-align: text-bottom;
-    margin-left: 10px;
+.form{
+	  margin: 20px auto 10px;
 }
+
+

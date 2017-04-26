@@ -7,16 +7,19 @@
 
 <head>
 	<title>User Directory</title>
+    <link rel="stylesheet" href="css/forms.css"/>
 	<link rel="stylesheet" href="css/directory.css"/>
 </head>
 
 <body>
     <div id="main">
         <div id="content">
-            <div id="search-header">
-                <h2> Search Users </h2>
+            <div id="search-header" class="form">
+                <h2> Search Users</h2>
+                <br><br>
                 <form>
-                    <input type="text" id="search-query" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : "" ?>">
+                    <input type="text" id="search-query" placeholder="Name" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : "" ?>">
+                    <input class="button" type="submit"></input>
                 </form>
             </div>
 <?php

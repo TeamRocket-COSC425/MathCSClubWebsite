@@ -422,7 +422,11 @@ if ($mentor) {
         <?php
         if($team['team_id']!=0){
           ?>
-          <div id="searchPeople"><i class="fa fa-search" aria-hidden="true"></i> Search people to add to your team:</div>
+          <div id="searchPeople"> <a href="directory"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <div id="searchText"> 
+                  <form method="get" action="directory"> 
+                    <input type="text" name="q" placeholder="   Search people to add to your team"></input></form> 
+                </div></div>
 
           <?php
       }
@@ -478,7 +482,11 @@ if ($mentor) {
             <?php
             if($team['team_id']!=0){
               ?>
-              <div id="searchPeople"> <i class="fa fa-search" aria-hidden="true"></i> Search people to add to your team:</div>
+              <div id="searchPeople"> <a href="directory"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <div id="searchText"> 
+                  <form method="get" action="directory"> 
+                    <input type="text" name="q" placeholder="   Search people to add to your team"></input></form> 
+                </div></div>
 
               <?php
           }
@@ -542,7 +550,7 @@ if ($user === $currentuser || Utils::currentUserAdmin()) {
         echo '<h2>RSVP for the end of year picnic?</h2>';
         echo '<form id="RSVP" method="post">
         <p class="message">If you want to bring a dish to the picnic, enter it below:</p>
-        <input type="text" id="item" class="full" name="item" placeholder="item"/>
+        <input type="text" id="item" class="full" name="item" placeholder="Item"/>
         </form>
         <input  form="RSVP" type="submit" name="RSVP"/>';
     }
