@@ -34,6 +34,9 @@ require_once("classes/EditableText.php");
     <center><img src="images/upe/upe.gif"/></center>
 
   </div>
+  <br>
+  <br>
+  <br>
 
 </body>
 </html>
