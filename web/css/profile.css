@@ -92,19 +92,27 @@
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     width: 250px;
-    height: 30px; 
+    height: 30px;
     display: inline-block;
     border: 1px solid #ccc;
     font-size: 14px;
+    padding: 0 4px;
 }
 
-#searchPeople a{
-  color: #12bfc3;
+#searchPeople button {
+    width: inherit;
+    margin-top: 0;
+    background: transparent;
+}
+
+#searchPeople button i {
+    color: #12bfc3;
 }
 
 .searchLink h3{
   display:inline;
 }
+
 
 /* === forms.css OVERRIDES === */
 

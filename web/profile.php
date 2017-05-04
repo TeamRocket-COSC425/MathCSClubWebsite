@@ -423,9 +423,9 @@ if ($mentor) {
         if($team['team_id']!=0){
           ?>
           <div id="searchPeople"> <a href="directory"><i class="fa fa-search" aria-hidden="true"></i></a>
-                <div id="searchText"> 
-                  <form method="get" action="directory"> 
-                    <input type="text" name="q" placeholder="   Search people to add to your team"></input></form> 
+                <div id="searchText">
+                  <form method="get" action="directory">
+                    <input type="text" name="q" placeholder="   Search people to add to your team"></input></form>
                 </div></div>
 
           <?php
@@ -476,17 +476,19 @@ if ($mentor) {
             ?>
         </center>
         <div class="searchLink">
-            <h3> Math Challenge </h3> 
+            <h3> Math Challenge </h3>
 
 
             <?php
             if($team['team_id']!=0){
               ?>
-              <div id="searchPeople"> <a href="directory"><i class="fa fa-search" aria-hidden="true"></i></a>
-                <div id="searchText"> 
-                  <form method="get" action="directory"> 
-                    <input type="text" name="q" placeholder="   Search people to add to your team"></input></form> 
-                </div></div>
+              <form id="searchusers" method="get" action="directory" style="display:none;"></form>
+              <div id="searchPeople">
+                  <button type="submit" href="directory" form="searchusers"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  <div id="searchText">
+                      <input type="text" name="q" placeholder="Search people to add to your team" form="searchusers"></input></form>
+                  </div>
+              </div>
 
               <?php
           }
@@ -511,8 +513,8 @@ if ($mentor) {
     } else {
         ?>
     </center>
-    
-    <h3> Math Challenge </h3> 
+
+    <h3> Math Challenge </h3>
     <hr/>
 
     <center>
