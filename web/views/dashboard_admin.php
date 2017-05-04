@@ -597,7 +597,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table id="mathchallengetable" class="sortedtable">';
+            echo '<table id="mathchallengetable" class="sortedtable tablesorter">';
 ?>
             <thead>
                 <tr>
@@ -640,16 +640,17 @@ function scrollTo(id) {
             ?>
 
     <script>
+    /*
     // Apply table sorting
     $(function() {
         $("#mathchallengetable")
             .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
-    });
-    </script>
+    }); */
+    </script> 
 
             <?php
         }
-    }
+    } 
 
     /* MATH CHALLENGE FREE AGENTS */
 
