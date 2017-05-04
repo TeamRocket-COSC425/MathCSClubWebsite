@@ -65,7 +65,7 @@ require_once("classes/AdminFunctions.php");
         $bio = $_POST['advisorBio'];
 
         //select the correct advisor in the advisors table
-        $db->where("oldAdvisorName", $name);
+        $db->where("name", $oldName);
         $advisor = $db->getOne("club_advisors");
         $position = $advisor['position'];
 
@@ -73,6 +73,13 @@ require_once("classes/AdminFunctions.php");
             'name' => $newName,
             'bio' => $bio
         );
+
+        // stores the upload image into
+        $image_loc = Utils::handleImageUpload('advisorImage', Utils::getDefaultImageValidator());
+        if ($image_loc != 'advisorImage') {
+            $data['image'] = $image_loc;
+        }
+
         $db->where ('position', $position);
         if ($db->update ('club_advisors', $data))
             $confirmMsg1 = 'The advisor has been updated.';
@@ -909,13 +916,13 @@ function scrollTo(id) {
     
     <h3>Update an Advisor</h3>
     <!--Display error messages-->
-    <!-- <div class="loginErrors" style="color:red;">
+    <div class="loginErrors" style="color:red;">
         <?php if( isset($errorMsg1) && $errorMsg1 != '' ) { echo $errorMsg1; } ?>
         <?php if( isset($confirmMsg1) && $confirmMsg1 != '' ) { echo $confirmMsg1; } ?>
-    </div> -->
+    </div>
     <br>
     
-    <form id="new_advisor" method="post" action="dashboard">
+    <form id="new_advisor" method="post" action="dashboard" enctype="multipart/form-data">
     Which advisor you're changing: <select id="reg_input_advisor" name="oldAdvisorName" class="dropMenu" required/>
         <optgroup label="Club Advisor">
             <?php
@@ -930,11 +937,11 @@ function scrollTo(id) {
     New advisor's name: <input type="text" class="inputField" id="advisorName" name="newAdvisorName" placeholder="Name" required/>
     <br>
 
-    Upload an image of the advisor: ???
+    Upload an image of the advisor: <input type="file" id="advisorImageUpload" name="advisorImage" required/>
     <br>
 
     Write a bio that will appear on the officers page:
-    <textarea form="new_officer" class="bioField" name="advisorBio" id="advisorBio" required></textarea>
+    <textarea class="bioField" name="advisorBio" id="advisorBio" required></textarea>
     </form>
     <input  form="new_advisor" type="submit" name="add_advisor"/>
 </div>

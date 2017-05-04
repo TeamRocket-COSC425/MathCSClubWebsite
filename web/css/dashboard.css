@@ -131,18 +131,6 @@ h2, h3 {
     resize: none;
 }
 
-/*#officerBio{
-  display: block; 
-    height: 100px;
-    width: 99.5%;
-     border: none; 
-     border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    font-size: 15px;
-    background: white;
-    outline: none;
-    overflow: auto;
-    resize: none;
-}*/
+input[type="file"] {
+    display: inline;
+}
