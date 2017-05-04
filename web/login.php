@@ -2,7 +2,7 @@
   require_once("classes/Login.php");
   require_once("classes/Utils.php");
   $login = new Login();
-  if ($login->isUserLoggedIn()) {
+  if (!isset($_GET['updated']) && $login->isUserLoggedIn()) {
     $user = Utils::getCurrentUser();
     global $db;
     $data = array("last_log_on" => $db->now());

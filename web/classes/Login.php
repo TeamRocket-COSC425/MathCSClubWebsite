@@ -163,7 +163,7 @@ class Login
 
     private function updatePassword()
     {
-        if (empty($_POST['user_reset_token'])) {
+        if (!$this->isUserLoggedIn() && empty($_POST['user_reset_token'])) {
             $this->errors[] = "No token provided.";
         } elseif (empty($_POST['user_password_new'])) {
             $this->errors[] = "No password given.";
@@ -175,8 +175,16 @@ class Login
 
             global $db;
 
-            $db->where('reset_token', $_POST['user_reset_token']);
-            $user = $db->getOne('users');
+            if ($this->isUserLoggedIn()) {
+                $user = Utils::getCurrentUser();
+                if (!password_verify($_POST['user_password_old'], $user['password'])) {
+                    $this->errors[] = "Invalid old password.";
+                    return;
+                }
+            } else {
+                $db->where('reset_token', $_POST['user_reset_token']);
+                $user = $db->getOne('users');
+            }
 
             if ($user) {
                 $user_password = $_POST['user_password_new'];

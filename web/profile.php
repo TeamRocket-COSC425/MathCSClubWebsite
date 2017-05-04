@@ -279,6 +279,13 @@
 ?>
 			<div id="profile_buttons">
 				<a class="button profile_button" href="<?php echo $url; ?>">Edit Profile</a>
+<?php
+                if ($user === $currentuser) {
+?>
+                    <a class="button profile_button" href="password_reset">Change Password</a>
+<?php
+                }
+?>
 			</div>
 
 <?php
