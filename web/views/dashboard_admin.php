@@ -24,7 +24,7 @@ require_once("classes/AdminFunctions.php");
     }
 ?>
 
-<?php 
+<?php
     //handles the update officers form
     $errorMsg = "";       //holds error messages
     $confirmMsg = "";
@@ -95,20 +95,20 @@ require_once("classes/AdminFunctions.php");
 
 
 
-function scrollTo(id) {
+function scrollToID(id) {
     $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
 }
 </script>
 <div id="navbuttons">
     <h3>Navigation</h3>
-    <a class="button" href="#" onclick="scrollTo('fallactivity')">Fall Activities</a>
-    <a class="button" href="#" onclick="scrollTo('springactivity')">Spring Activities</a>
-    <a class="button" href="#" onclick="scrollTo('users')">User List</a>
-    <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
-    <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
-    <a class="button" href="#" onclick="scrollTo('EndofYearPicnic')">End of Year Picnic</a>
-    <a class="button" href="#" onclick="scrollTo('officers')">Update Officer/Advisor</a>
-        
+    <a class="button" href="#" onclick="scrollToID('fallactivity')">Fall Activities</a>
+    <a class="button" href="#" onclick="scrollToID('springactivity')">Spring Activities</a>
+    <a class="button" href="#" onclick="scrollToID('users')">User List</a>
+    <a class="button" href="#" onclick="scrollToID('gullcodeTables')">Gullcode</a>
+    <a class="button" href="#" onclick="scrollToID('mathChallengeTables')">Math Challenge</a>
+    <a class="button" href="#" onclick="scrollToID('EndofYearPicnic')">End of Year Picnic</a>
+    <a class="button" href="#" onclick="scrollToID('officers')">Update Officer/Advisor</a>
+
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -165,7 +165,7 @@ function scrollTo(id) {
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
-        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor" 
+        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor"
             placeholder="Activity Description" ></textarea>
         <script> var mde = new SimpleMDE({ element: $("#fall_activity_editor")[0]}); </script>
     </form>
@@ -236,7 +236,7 @@ function scrollTo(id) {
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
-    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor" 
+    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor"
         placeholder="Activity Description" ></textarea>
     <script> var mde = new SimpleMDE({ element: $("#spring_activity_editor")[0]}); </script>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
@@ -655,7 +655,7 @@ function scrollTo(id) {
                                 <td>
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
-                              
+
                                 <td>
                                 <?php
                                 $confirm = (new ConfirmBuilder($user['id']))
@@ -680,11 +680,11 @@ function scrollTo(id) {
         $("#mathchallengetable")
             .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
     }); */
-    </script> 
+    </script>
 
             <?php
         }
-    } 
+    }
 
     /* MATH CHALLENGE FREE AGENTS */
 
@@ -921,7 +921,7 @@ function scrollTo(id) {
 
     <br>
     <hr>
-    
+
     <h3>Update an Advisor</h3>
     <!--Display error messages-->
     <div class="loginErrors" style="color:red;">
@@ -929,7 +929,7 @@ function scrollTo(id) {
         <?php if( isset($confirmMsg1) && $confirmMsg1 != '' ) { echo $confirmMsg1; } ?>
     </div>
     <br>
-    
+
     <form id="new_advisor" method="post" action="dashboard" enctype="multipart/form-data">
     Which advisor you're changing: <select id="reg_input_advisor" name="oldAdvisorName" class="dropMenu" required/>
         <optgroup label="Club Advisor">
