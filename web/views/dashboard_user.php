@@ -26,7 +26,7 @@
                     break;
             }
             echo '  ' . $ann['title']  . '</strong> - ' . $date . '</h3>';
-            echo '<p>' . $ann['content'] . '</p>';
+            echo Parsedown::instance()->text($ann['content']);
         echo '</div>';
     }
 
@@ -63,7 +63,7 @@
               </form>
               <input  form="RSVP" type="submit" name="RSVP"/>';
     }
-    else 
+    else
     {
         echo '<h2>Thank you for RSVPing for the end of year picnic</h2>';
         echo '<form method="post">
