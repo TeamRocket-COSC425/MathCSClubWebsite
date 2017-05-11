@@ -404,6 +404,10 @@ if ($mentor) {
 }
 ?>
 
+<?php
+if ($db->where('switch', 1)->where('admin_controls', 'gullcode_register')->getOne('admin_controls'))
+{
+?>
 <div id = "gullcode">
 
   <center>
@@ -463,8 +467,14 @@ if ($mentor) {
 </center>
 
 </div>
+<?php
+}
+?>
 
-
+<?php
+if ($db->where('switch', 1)->where('admin_controls', 'math_challenge_register')->getOne('admin_controls'))
+{
+?>
 <div id = "mathchallenge">
     <center>
       <?php
@@ -511,7 +521,7 @@ if ($mentor) {
             echo "Error, no team found!";
         }
     } else {
-        ?>
+      ?>
     </center>
 
     <h3> Math Challenge </h3>
@@ -520,10 +530,22 @@ if ($mentor) {
     <center>
         <?php
         echo "Not on a team";
+
+        if ($user != $currentuser)
+        {
+          echo
+            '<form method="post">
+            <input name="mcTeamInvite" type="submit" value="Invite ' . $user["name"] .' to Math Challenge team"/>
+          </form>';
+        }
+        
     }
     ?>
 </center>
 </div>
+<?php
+}
+?>
 <!-- function to send information from database about senior picnic -->
 <?php
 if ($user === $currentuser || Utils::currentUserAdmin()) {
