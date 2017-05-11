@@ -25,6 +25,7 @@ require_once("classes/AdminFunctions.php");
 ?>
 
 <?php
+    //handles the update officers form
     $errorMsg = "";       //holds error messages
     $confirmMsg = "";
 
@@ -55,26 +56,59 @@ require_once("classes/AdminFunctions.php");
             $errorMsg = "That ID is not in the database";
         }
     }
+
+    //handles the update advisors form
+    $errorMsg1 = "";       //holds error messages
+    $confirmMsg1 = "";
+
+    //create a new advisor
+    if (isset($_POST['add_advisor'])) {
+        $newName = $_POST['newAdvisorName'];
+        $oldName = $_POST['oldAdvisorName'];
+        $bio = $_POST['advisorBio'];
+
+        //select the correct advisor in the advisors table
+        $db->where("name", $oldName);
+        $advisor = $db->getOne("club_advisors");
+        $position = $advisor['position'];
+
+        $data = Array (
+            'name' => $newName,
+            'bio' => $bio
+        );
+
+        // stores the upload image into
+        $image_loc = Utils::handleImageUpload('advisorImage', Utils::getDefaultImageValidator());
+        if ($image_loc != 'advisorImage') {
+            $data['image'] = $image_loc;
+        }
+
+        $db->where ('position', $position);
+        if ($db->update ('club_advisors', $data))
+            $confirmMsg1 = 'The advisor has been updated.';
+        else
+            $errorMsg1 = "Advisor update failed.";
+    }
 ?>
 
 <script type="text/javascript">
 
 
 
-function scrollTo(id) {
+function scrollToID(id) {
     $('html, body').animate({ scrollTop: $('#' + id).offset().top - 60 }, 'slow');
 }
 </script>
 <div id="navbuttons">
     <h3>Navigation</h3>
-    <a class="button" href="#" onclick="scrollTo('fallactivity')">Fall Activities</a>
-    <a class="button" href="#" onclick="scrollTo('springactivity')">Spring Activities</a>
-    <a class="button" href="#" onclick="scrollTo('users')">User List</a>
-    <a class="button" href="#" onclick="scrollTo('gullcodeTables')">Gullcode</a>
-    <a class="button" href="#" onclick="scrollTo('mathChallengeTables')">Math Challenge</a>
-    <a class="button" href="#" onclick="scrollTo('EndofYearPicnic')">End of Year Picnic</a>
-    <a class="button" href="#" onclick="scrollTo('officers')">Update Officer</a>
-        
+    <a class="button" href="#" onclick="scrollToID('fallactivity')">Fall Activities</a>
+    <a class="button" href="#" onclick="scrollToID('springactivity')">Spring Activities</a>
+    <a class="button" href="#" onclick="scrollToID('users')">User List</a>
+    <a class="button" href="#" onclick="scrollToID('gullcodeTables')">Gullcode</a>
+    <a class="button" href="#" onclick="scrollToID('mathChallengeTables')">Math Challenge</a>
+    <a class="button" href="#" onclick="scrollToID('EndofYearPicnic')">End of Year Picnic</a>
+    <a class="button" href="#" onclick="scrollToID('officers')">Update Officer/Advisor</a>
+
 </div>
 <div class="adminpane form" id="announcements" >
     <h3>Add Announcement</h3>
@@ -131,7 +165,7 @@ function scrollTo(id) {
     <form id="new_fall_activity" method="post" action="dashboard">
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
-        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor" 
+        <textarea form="new_fall_activity" name="fallActivityContent" id="fall_activity_editor"
             placeholder="Activity Description" ></textarea>
         <script> var mde = new SimpleMDE({ element: $("#fall_activity_editor")[0]}); </script>
     </form>
@@ -202,7 +236,7 @@ function scrollTo(id) {
         <p class="message">Add New Activity:</p>
         <input type="text" id="activity" name="activity" placeholder="Activity" required/>
     </form>
-    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor" 
+    <textarea form="new_spring_activity" name="springActivityContent" id="spring_activity_editor"
         placeholder="Activity Description" ></textarea>
     <script> var mde = new SimpleMDE({ element: $("#spring_activity_editor")[0]}); </script>
     <input  form="new_spring_activity" type="submit" name="add_spring_activity"/>
@@ -601,7 +635,7 @@ function scrollTo(id) {
     {
         if($teams) {
             echo '<H4>' . $team['team_name'] . '</H4>';
-            echo '<table id="mathchallengetable" class="sortedtable">';
+            echo '<table id="mathchallengetable" class="sortedtable tablesorter">';
 ?>
             <thead>
                 <tr>
@@ -625,7 +659,7 @@ function scrollTo(id) {
                                 <td>
                                 <a class="button tablebutton" href="profile?user=<?php echo $user['id']; ?>">Profile</a>
                                 </td>
-                              
+
                                 <td>
                                 <?php
                                 $confirm = (new ConfirmBuilder($user['id']))
@@ -644,11 +678,12 @@ function scrollTo(id) {
             ?>
 
     <script>
+    /*
     // Apply table sorting
     $(function() {
         $("#mathchallengetable")
             .tablesorter({sortList: [[0,0]], widgets: ["zebra"]})
-    });
+    }); */
     </script>
 
             <?php
@@ -867,8 +902,8 @@ function scrollTo(id) {
     </div>
 <br>
     <form id="new_officer" method="post" action="dashboard">
-        Which officer you're updating: <select id="reg_input_officer" name="officerTitle" class="officerDrop" required/>
-          <optgroup label="Officer Title">
+        Which officer you're changing: <select id="reg_input_officer" name="officerTitle" class="dropMenu" required/>
+        <optgroup label="Officer Title">
           <?php
           $officers = $db->get('officers');
           foreach($officers as $officer) {
@@ -879,10 +914,46 @@ function scrollTo(id) {
         </optgroup>
         </select>
 
-        New officer's student ID: <input type="text" id="studentID" name="ID" placeholder="Student ID" required/><br>
+        New officer's student ID: <input type="text" class="inputField" id="studentID" name="ID" placeholder="Student ID" required/>
+        <br>
         <center style="color:#777">(The new officer must have a site account with a profile picture)</style></center>
         <br>
-    Write a bio that will appear on the officer's page:
-        <textarea form="new_officer" name="officerBio" id="officerBio" required></textarea>
+        Write a bio that will appear on the officers page:
+        <textarea form="new_officer" class="bioField" name="officerBio" id="officerBio" required></textarea>
     </form>
     <input  form="new_officer" type="submit" name="add_officer"/>
+
+    <br>
+    <hr>
+
+    <h3>Update an Advisor</h3>
+    <!--Display error messages-->
+    <div class="loginErrors" style="color:red;">
+        <?php if( isset($errorMsg1) && $errorMsg1 != '' ) { echo $errorMsg1; } ?>
+        <?php if( isset($confirmMsg1) && $confirmMsg1 != '' ) { echo $confirmMsg1; } ?>
+    </div>
+    <br>
+
+    <form id="new_advisor" method="post" action="dashboard" enctype="multipart/form-data">
+    Which advisor you're changing: <select id="reg_input_advisor" name="oldAdvisorName" class="dropMenu" required/>
+        <optgroup label="Club Advisor">
+            <?php
+            $advisors = $db->get('club_advisors');
+            foreach($advisors as $advisor) {
+              $name = $advisor['name'];
+              echo '<option value="'. $name .'">'. $name .'</option>';
+            }
+            ?>
+        </optgroup>
+    </select>
+    New advisor's name: <input type="text" class="inputField" id="advisorName" name="newAdvisorName" placeholder="Name" required/>
+    <br>
+
+    Upload an image of the advisor: <input type="file" id="advisorImageUpload" name="advisorImage" required/>
+    <br>
+
+    Write a bio that will appear on the officers page:
+    <textarea class="bioField" name="advisorBio" id="advisorBio" required></textarea>
+    </form>
+    <input  form="new_advisor" type="submit" name="add_advisor"/>
+</div>
