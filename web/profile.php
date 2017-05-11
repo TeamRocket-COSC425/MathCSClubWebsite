@@ -530,14 +530,6 @@ if ($db->where('switch', 1)->where('admin_controls', 'math_challenge_register')-
     <center>
         <?php
         echo "Not on a team";
-
-        if ($user != $currentuser)
-        {
-          echo
-            '<form method="post">
-            <input name="mcTeamInvite" type="submit" value="Invite ' . $user["name"] .' to Math Challenge team"/>
-          </form>';
-        }
         
     }
     ?>
