@@ -364,13 +364,15 @@ function scrollToID(id) {
     $gcControl = $db->where("admin_controls", "gullcode_register")->getone("admin_controls");
     if($gcControl["switch"] == 0) {
 ?>
+    <center>Status: <font color="red">Closed</font></center>
     <form method="post">
     <input name="openGcRegistration" type="submit" value="Open Gullcode Registration"/>
-    </form>
+    </form> 
 <?php
     }
     else {
  ?>
+    <center>Status: <font color="green">Open</font></center>
     <form method="post">
     <input name="closeGcRegistration" type="submit" value="Close Gullcode Registration"/>
     </form>
@@ -597,6 +599,7 @@ function scrollToID(id) {
     $mcControl = $db->where("admin_controls", "math_challenge_register")->getone("admin_controls");
     if($mcControl["switch"] == 0) {
  ?>
+    <center>Status: <font color="red">Closed</font></center>
     <form method="post">
     <input name="openMcRegistration" type="submit" value="Open Math Challenge Registration"/>
     </form>
@@ -604,6 +607,7 @@ function scrollToID(id) {
     }
     else {
  ?>
+    <center>Status: <font color="green">Open</font></center>
     <form method="post">
     <input name="closeMcRegistration" type="submit" value="Close Math Challenge Registration"/>
     </form>
