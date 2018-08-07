@@ -33,7 +33,7 @@ if(isset($_POST['contact_name'])){
       $mail = new PHPMailer;
 
       $mail->isSMTP();
-    // $mail->SMTPDebug = 3;
+  
       $mail->Debugoutput = 'html';
 
       if (getenv('MAILTRAP_API_TOKEN')) {
